@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: リファレンス
 discoiquuid: f00ad751-6b95-4365-8500- e1e0108d9536
 translation-type: tm+mt
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+source-git-commit: ec5342f5737f54937493edb0384cdc1d91b13d7c
 
 ---
 
