@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: リファレンス
 discoiquuid: aepee8e- bb34-42a7-9a5e- b7d0e848391a
 translation-type: tm+mt
-source-git-commit: bd8fff69a9c8a32eade60c68fc75c3aa411582af
+source-git-commit: 2f0ca874c23cb7aecbcedc22802c46a295bb4d75
 
 ---
 
@@ -567,20 +567,23 @@ Amazon Elastic Load Balancing（ELB）は、同じ順序になる可能性があ
 
 * **リクエストラインの要素:** HTTPリクエスト `/method``/url``/query`の `/protocol` 要求ライン部分のこれらの特定の部分に従ってリクエストをフィルタリングするためのパターン、およびパターンを含めます。要求行全体ではなく、要求行の要素に対してフィルタリングすることをお勧めします。
 
-* **globbプロパティ**: `/glob` このプロパティは、HTTPリクエストの要求行全体と一致するために使用されます。
-
-/glob プロパティについて詳しくは、[glob プロパティのパターンのデザイン](#designing-patterns-for-glob-properties)を参照してください。/glob プロパティでのワイルドカード文字の使用ルールも、要求行の要素を照合するためのパターンに適用されます。
+* **リクエストラインの高度な要素:** ディスパッチャー4.2.0から、4つの新しいフィルター要素を使用できます。これらの新しい要素は `/path``/selectors``/extension``/suffix` 、それぞれ、およびURLパターンをさらに制御するには、これらの項目を1つ以上含めます。
 
 >[!NOTE]
 >
->ディスパッチャーバージョン4.2.0では、フィルター設定およびログ機能に関するいくつかの機能強化が追加されました。
->
->* [POSIX の正規表現のサポート](dispatcher-configuration.md#main-pars-title-1996763852)
->* [要求 URL の追加要素のフィルタリングのサポート](dispatcher-configuration.md#main-pars-title-694578373)
->* [トレースログ](dispatcher-configuration.md#main-pars-title-1950006642)
->
+>これらの要素が参照するリクエスト行の一部について詳しくは [、Sling URL Decomposition](https://sling.apache.org/documentation/the-sling-engine/url-decomposition.html) Wikiページを参照してください。
 
+* **globbプロパティ**: `/glob` このプロパティは、HTTPリクエストの要求行全体と一致するために使用されます。
 
+>[!CAUTION]
+>
+>グローバルによるフィルタリングは、ディスパッチャーでは推奨されません。そのため、セキュリティ上の問題につながる可能性があるので `/filter` 、セクションでグローバルにグローバルを使用することは避けてください。つまり、次ののではなく、
+
+`/glob "* *.css *"`
+
+ユーザーは、
+
+`/url "*.css"`
 
 #### HTTP 要求の要求行部分 {#the-request-line-part-of-http-requests}
 
@@ -593,6 +596,18 @@ HTTP/1.1では [、リクエストラインを次の](https://www.w3.org/Protoco
 GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF&gt;
 
 パターンでは、リクエストラインのスペース文字と&lt; CRLF&gt;文字を考慮する必要があります。
+
+#### 二重引用符と一重引用符 {#double-quotes-vs-single-quotes}
+
+フィルタールールを作成するときは、単純なパターンに二重引用符を `"pattern"` 使用します。ディスパッチャー4.2.0以降を使用しており、パターンに正規表現が含まれている場合は、regexパターンを一重引用符 `'(pattern1|pattern2)'` 内に囲む必要があります。
+
+#### 正規表現 {#regular-expressions}
+
+ディスパッチャー4.2.0の後には、フィルターパターンにPOSIX拡張正規表現を含めることができます。
+
+#### フィルターのトラブルシューティング {#troubleshooting-filters}
+
+期待どおりにフィルターがトリガーされない場合は、ディスパッチャーで [トレースログ](#trace-logging) を有効にして、リクエストを傍受するフィルターを確認できます。
 
 #### サンプルフィルター：すべて拒否 {#example-filter-deny-all}
 
@@ -659,15 +674,6 @@ GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF&gt;
 ```
 
 #### サンプルフィルター：要求 URL の追加要素のフィルタリング {#example-filter-filter-additional-elements-of-a-request-url}
-
-ディスパッチャー4.2.0で導入された機能強化の1つは、リクエストURLの追加要素をフィルタリングする機能です。導入された新しい要素には、次のものがあります。
-
-* path
-* セレクター
-* 拡張子
-* サフィックス
-
-これらは、フィルタリングルールに同じ名前のプロパティを追加することで設定できます。 `/path`、 `/selectors`および `/extension``/suffix` 、
 
 パス、セレクターおよび拡張子のフィルターを使用して `/content` 、パスとサブツリーからコンテンツグラビングをブロックするルールの例を以下に示します。
 
