@@ -1,32 +1,32 @@
 ---
 title: AEM からのキャッシュされたページの無効化
-seo-title: Adobe AEMからキャッシュされたページの無効化
-description: 効率的なキャッシュ管理を実現するために、ディスパッチャーとAEM間のインタラクションを設定する方法について説明します。
-seo-description: Adobe AEMディスパッチャーとAEMのインタラクションを設定して、キャッシュ管理を有効にする方法について説明します。
+seo-title: Adobe AEM からのキャッシュされたページの無効化
+description: 効率的なキャッシュ管理を確保するため、Dispatcher と AEM の間のインタラクションを設定する方法について説明します。
+seo-description: 効率的なキャッシュ管理を確保するため、Adobe AEM Dispatcher と AEM の間のインタラクションを設定する方法について説明します。
 uuid: 66533299-55c0-4864-9beb-77e281af9359
-cmgrlastmodified: 01.11.2007082229[ahtmoz]
+cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: '1193211344162'
 template: /apps/docs/templates/contentpage
-contentOwner: ユーザーは、
-products: SG_ PERANDATEMENTMANAGER/CLACKER
+contentOwner: User
+products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: リファレンス
-discoiquuid: 79cd94be- a6bc-4d34- bfe9-393b4107925c
-translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+content-type: reference
+discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
+translation-type: ht
+source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
 
 ---
 
 
 # AEM からのキャッシュされたページの無効化 {#invalidating-cached-pages-from-aem}
 
-AEMでディスパッチャーを使用する場合、有効なキャッシュ管理を有効にするには、インタラクションを設定する必要があります。環境によっては、この設定でパフォーマンスを向上させることができます。
+Dispatcher を AEM と共に使用する際は、キャッシュが効果的に管理されるようにインタラクションを設定する必要があります。環境によっては、この設定でパフォーマンスを向上させることができます。
 
-## AEM ユーザーアカウントの設定 {#setting-up-aem-user-accounts}
+## AEM ユーザーアカウントの設定{#setting-up-aem-user-accounts}
 
-デフォルトの `admin` ユーザーアカウントを使用して、デフォルトでインストールされているレプリケーションエージェントを認証します。複製エージェントで使用する専用ユーザーアカウントを作成する必要があります。 [](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)
+デフォルトの `admin` ユーザーアカウントを使用して、デフォルトでインストールされているレプリケーションエージェントを認証します。レプリケーションエージェントで使用する専用のユーザーアカウントを作成する必要があります。[](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)
 
-詳しくは、AEM [Securityチェックリストの&quot;Configure Replication and Transport Users](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) 」セクションを参照してください。
+詳しくは、セキュリティチェックリストの[レプリケーションユーザーとトランスポートユーザーの設定](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)のセクションを参照してください。
 
 ## オーサリング環境からの Dispatcher キャッシュの無効化 {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
@@ -50,36 +50,36 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
  -->
 
-ページのアクティベーション時にディスパッチャーのキャッシュを無効にするために、AEM作成者インスタンス上で複製エージェントを設定するには、次の手順を使用します。
+以下の手順を実行して、ページのアクティベート時に Dispatcher のキャッシュを無効化するよう、AEM オーサーインスタンス上のレプリケーションエージェントを設定します。
 
-1. AEMツールコンソールを開きます。（`https://localhost:4502/miscadmin#/etc`）
-1. 作成者のツール/レプリケーション/エージェントの下に、必要な複製エージェントを開きます。デフォルトでインストールされているディスパッチャーフラッシュエージェントを使用できます。
+1. AEM ツールのコンソールを開きます（`https://localhost:4502/miscadmin#/etc`）。
+1. オーサーインスタンスの Tools/replication/Agents の下にある、必要なレプリケーションエージェントを開きます。デフォルトでインストールされている Dispatcher フラッシュエージェントを使用できます。
 1. 「編集」をクリックし、「設定」タブで「**有効**」が選択されていることを確認します。
 
-1. （オプション）エイリアスまたはバニティパスの無効化要求を有効にするには **、エイリアスの更新** オプションを選択します。
+1. （オプション）エイリアスまたはバニティーパスの無効化要求を有効にするには、「**エイリアスの更新**」オプションを選択します。
 1. 「トランスポート」タブで、Dispatcher へのアクセスに必要な URI を入力します。\
-   標準のディスパッチャーフラッシュエージェントを使用している場合、おそらくホスト名とポートを更新する必要があります。例えば、https://&lt;*DispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate. cache
+   標準の Dispatcher フラッシュエージェントを使用している場合は、ホスト名とポートを更新する必要がある可能性があります。例：https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache
 
-   **注意:** ディスパッチャーフラッシュエージェントの場合、URIプロパティはパスベースの仮想ホストエントリを使用してファームを区別する場合にのみ使用されます。このフィールドを使用して、無効にするファームをターゲット設定します。例えば、&quot;farm#1&quot;には仮想ホストが `www.mysite.com/path1/*` あり、&quot;farm#2&quot;には仮想ホスト `www.mysite.com/path2/*`があります。最初のファームをターゲット `/path1/invalidate.cache` にし、2番目のファームをターゲット `/path2/invalidate.cache` にするためのURLを使用できます。詳しくは、[複数ドメインでの Dispatcher の使用](dispatcher-domains.md)を参照してください。 
+   **注意：** Dispatcher フラッシュエージェントの場合は、パスベースの仮想ホストエントリを使用してファームを区別する場合にのみ URI プロパティが使用されます。このフィールドを使用して、無効化するファームをターゲット設定します。例えば、ファーム #1 の仮想ホストは `www.mysite.com/path1/*` で、ファーム #2 の仮想ホストは `www.mysite.com/path2/*` です。この場合、`/path1/invalidate.cache` の URL を使用して最初のファームをターゲット設定し、`/path2/invalidate.cache` を使用して 2 つ目のファームをターゲット設定できます。詳しくは、[複数ドメインでの Dispatcher の使用](dispatcher-domains.md)を参照してください。 
 
 1. 必要に応じて、その他のパラメーターを設定します。
-1. &quot;OK&quot;をクリックしてエージェントをアクティブ化します。
+1. 「OK」をクリックして、エージェントをアクティベートします。
 
-または、 [AEM Touch UIからディスパッチャーフラッシュエージェントにアクセスして設定すること](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent)もできます。
+または、アクセスを可能にして、[AEM Touch UI](https://helpx.adobe.com/jp/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent)から Dispatcher フラッシュエージェント AEM を設定することもできます。
 
-バニティURLへのアクセスを有効にする方法について詳しくは、&quot;Vanity URLへのアクセス [の有効化」を参照](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)してください。
+バニティー URL へのアクセスを有効にする方法について詳しくは、[バニティー URL へのアクセスの有効化](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)を参照してださい。
 
 >[!NOTE]
 >
 >Dispatcher のキャッシュをフラッシュするエージェントにユーザー名とパスワードを設定する必要はありませんが、これらを設定した場合は基本認証付きで送信されます。
 
-このアプローチには、次の2つの問題があります。
+この方法には、次の 2 つの問題が発生する可能性があります。
 
-* オーサーインスタンスから Dispatcher へのアクセスが可能である必要があります。その2つの間のアクセスが制限されているネットワーク（ファイアウォールなど）が制限されている場合、この問題は発生しない可能性があります。
+* オーサーインスタンスから Dispatcher へのアクセスが可能である必要があります。ただし、使用するネットワーク（ファイアウォールなど）の設定で、この 2 つの間のアクセスが制限されると、アクセスできない場合があります。
 
 * 公開とキャッシュの無効化は同時に行われます。ただし、タイミングによっては、キャッシュからページが削除された直後、新しいページが公開される直前に、削除されたページが要求される場合があります。その場合は、AEM から古いページが返され、Dispatcher で再びキャッシュされます。大規模なサイトの場合は、これが大きな問題になります。
 
-## パブリッシュインスタンスからの Dispatcher キャッシュの無効化 {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## パブリッシュインスタンスからの Dispatcher キャッシュの無効化{#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 キャッシュ管理をオーサー環境からパブリッシュインスタンスに移行すると、パフォーマンスが向上する場合があります。この場合、公開されたページを受信したときにキャッシュの無効化要求を Dispatcher に送信するのは、AEM オーサー環境でなくパブリッシュ環境となります。
 
@@ -103,13 +103,13 @@ Comment Type: draft
 Dispatcher のフラッシュは、パブリッシュインスタンスで動作するレプリケーションエージェントによって制御されます。ただし、この機能の設定はオーサー環境でおこないます。その後、次のようにエージェントをアクティベートして設定を移行します。
 
 1. AEM のツールコンソールを開きます。
-1. ツール/レプリケーション/エージェントの下に、必要な複製エージェントを下に開きます。デフォルトでインストールされているディスパッチャーフラッシュエージェントを使用できます。
+1. パブリッシュインスタンスの Tools/replication/Agents の下にある、必要なレプリケーションエージェントを開きます。デフォルトでインストールされている Dispatcher フラッシュエージェントを使用できます。
 1. 「編集」をクリックし、「設定」タブで「**有効**」が選択されていることを確認します。
-1. （オプション）エイリアスまたはバニティパスの無効化要求を有効にするには **、エイリアスの更新** オプションを選択します。
+1. （オプション）エイリアスまたはバニティーパスの無効化要求を有効にするには、「**エイリアスの更新**」オプションを選択します。
 1. 「トランスポート」タブで、Dispatcher へのアクセスに必要な URI を入力します。\
-   標準のディスパッチャーフラッシュエージェントを使用している場合、おそらくホスト名とポートを更新する必要があります。例えば、 `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
+   標準の Dispatcher フラッシュエージェントを使用している場合は、ホスト名とポートを更新する必要がある可能性があります。例：`http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
 
-   **注意:** ディスパッチャーフラッシュエージェントの場合、URIプロパティはパスベースの仮想ホストエントリを使用してファームを区別する場合にのみ使用されます。このフィールドを使用して、無効にするファームをターゲット設定します。例えば、&quot;farm#1&quot;には仮想ホストが `www.mysite.com/path1/*` あり、&quot;farm#2&quot;には仮想ホスト `www.mysite.com/path2/*`があります。最初のファームをターゲット `/path1/invalidate.cache` にし、2番目のファームをターゲット `/path2/invalidate.cache` にするためのURLを使用できます。詳しくは、[複数ドメインでの Dispatcher の使用](dispatcher-domains.md)を参照してください。 
+   **注意：** Dispatcher フラッシュエージェントの場合は、パスベースの仮想ホストエントリを使用してファームを区別する場合にのみ URI プロパティが使用されます。このフィールドを使用して、無効化するファームをターゲット設定します。例えば、ファーム #1 の仮想ホストは `www.mysite.com/path1/*` で、ファーム #2 の仮想ホストは `www.mysite.com/path2/*` です。この場合、`/path1/invalidate.cache` の URL を使用して最初のファームをターゲット設定し、`/path2/invalidate.cache` を使用して 2 つ目のファームをターゲット設定できます。詳しくは、[複数ドメインでの Dispatcher の使用](dispatcher-domains.md)を参照してください。 
 
 1. 必要に応じて、その他のパラメーターを設定します。
 1. 適用するパブリッシュインスタンスごとに、手順を繰り返します。
@@ -124,9 +124,9 @@ Dispatcher のフラッシュは、パブリッシュインスタンスで動作
 
 この HTTP 要求によって、Dispatcher が特定のファイルをキャッシュから削除します。その後、オプションで、Dispatcher が新しいコピーを使用してキャッシュを更新します。
 
-### キャッシュされたファイルの削除 {#delete-cached-files}
+### キャッシュされたファイルの削除{#delete-cached-files}
 
-HTTP 要求を発行することによって、Dispatcher がキャッシュからファイルを削除します。ディスパッチャーは、そのページのクライアントリクエストを受信した場合にのみ、ファイルを再度キャッシュします。この方法でキャッシュされたファイルを削除すると、同じページの要求を同時に受け取らないWebサイトに適しています。
+HTTP 要求を発行することによって、Dispatcher がキャッシュからファイルを削除します。Dispatcher は、そのページに対するクライアント要求を受信した場合にのみ、ファイルを再びキャッシュします。このようなやり方でキャッシュファイルを削除する方法は、同じページに対する要求を同時に受信する可能性が低い Web サイトに適しています。
 
 HTTP 要求の形式は以下のとおりです。
 
@@ -137,21 +137,21 @@ CQ-Handle: path-pattern
 Content-Length: 0
 ```
 
-Dispatcher は、`CQ-Handler` ヘッダーの値に一致する名前を持つ、キャッシュされたファイルおよびフォルダーをフラッシュ（削除）します。例えば、 `CQ-Handle` 次の項目は `/content/geomtrixx-outdoors/en` 、次の項目と一致します。
+Dispatcher は、`CQ-Handler` ヘッダーの値に一致する名前を持つ、キャッシュされたファイルおよびフォルダーをフラッシュ（削除）します。例えば、`/content/geomtrixx-outdoors/en` という `CQ-Handle` は、以下のアイテムに一致します。
 
 * `en` ディレクトリ内の `geometrixx-outdoors` という名前を持つ（あらゆるファイル拡張子の）すべてのファイル
 
-* 「」（存在する場合）の下に「 `_jcr_content`」という名前のディレクトリ（存在する場合、ページのサブノードのキャッシュされたレンダリングが含まれる）
+* en ディレクトリ（存在する場合、キャッシュされたページのサブノードのレンダリングを格納）の下にある「`_jcr_content`」という名前のすべてのディレクトリ
 
-ディスパッチャーキャッシュ内のその他すべてのファイル（ `/statfileslevel` または設定に応じて特定のレベル）は、ファイルに `.stat` タッチすることで無効になります。このファイルの最終変更日は、キャッシュされたドキュメントの最終変更日と比較され、ファイルが `.stat` 新しい場合に再取得されます。詳しくは、[フォルダーレベルでのファイルの無効化](dispatcher-configuration.md#main-pars_title_26)を参照してください。
+Dispatcher キャッシュ内のその他すべてのファイル（または、`/statfileslevel` 設定によっては特定のレベルまで）は、`.stat` ファイルにアクセスすることによって無効化されます。このファイルの最終変更日が、キャッシュされたドキュメントの最終更新日と比較され、`.stat` ファイルのほうが新しい場合はドキュメントが再取得されます。詳しくは、[フォルダーレベルでのファイルの無効化](dispatcher-configuration.md#main-pars_title_26)を参照してください。
 
 追加の `CQ-Action-Scope: ResourceOnly` ヘッダーを送信することによって、無効化（つまり .stat ファイルへのアクセス）を防ぐことができます。この方法を使用すると、動的に作成され、キャッシュから独立して定期的にフラッシュする必要がある JSON データのように、キャッシュの他の部分を無効化することなく、特定のリソースをフラッシュできます（ニュースや株式相場などを表示するためにサードパーティシステムから取得されるデータなど）。
 
-### ファイルの削除と再キャッシュ {#delete-and-recache-files}
+### ファイルの削除と再キャッシュ{#delete-and-recache-files}
 
 HTTP 要求を発行することによって、Dispatcher がキャッシュされているファイルを削除し、そのファイルを即座に取得して再キャッシュします。Web サイトが同じページに対するクライアント要求を同時に受信する可能性が高い場合は、ファイルを削除して即座に再キャッシュします。即時再キャッシュにより、Dispatcher は同時のクライアント要求それぞれに対して一度ずつではなく、1 回だけページを取得してキャッシュします。
 
-**注意:** ファイルの削除と再作成は、パブリッシュインスタンスでのみ実行する必要があります。作成者インスタンスから実行すると、リソースが発行される前に、リソースの再カウントを試みると競合条件が発生します。
+**注意：** ファイルの削除と再キャッシュは、パブリッシュインスタンス上でのみ実行してください。オーサーインスタンスから実行すると、リソースを公開する前に再キャッシュが試みられた場合に、競合状態が発生します。
 
 HTTP 要求の形式は以下のとおりです。
 
@@ -167,7 +167,7 @@ page_path1
 page_pathn
 ```
 
-即時再キャッシュするページのパスは、メッセージ本文に別々の行として一覧表示されます。`CQ-Handle` の値は、再キャッシュするページを無効化するページのパスです`/statfileslevel`[（Cache](dispatcher-configuration.md#main-pars_146_44_0010) 設定項目のパラメーターを参照）。次の例のHTTPリクエストメッセージでは、このメッセージを削除および再分類 `/content/geometrixx-outdoors/en.html page`します。
+即時再キャッシュするページのパスは、メッセージ本文に別々の行として一覧表示されます。`CQ-Handle` の値は、再キャッシュするページを無効化するページのパスです。（[キャッシュ](dispatcher-configuration.md#main-pars_146_44_0010)設定項目の `/statfileslevel` パラメーターを参照してください）。以下の HTTP 要求メッセージの例では、`/content/geometrixx-outdoors/en.html page` ページを削除して再キャッシュします。
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
@@ -181,7 +181,7 @@ Content-Length: 36
 
 ### サンプルのフラッシュサーブレット {#example-flush-servlet}
 
-以下のコードは、無効化要求を Dispatcher に送信するサーブレットを実装するものです。サーブレットは、パラメーターを含む `handle` リクエストメッセージを `page` 受け取ります。これらのパラメーターはそれぞれ、`CQ-Handle` ヘッダーの値と再キャッシュするページのパスを提供します。サーブレットは、その値を使用して、Dispatcher 向けの HTTP 要求を組み立てます。
+以下のコードは、無効化要求を Dispatcher に送信するサーブレットを実装するものです。このサーブレットは、`handle` パラメーターと `page` パラメーターを含む要求メッセージを受信します。これらのパラメーターはそれぞれ、`CQ-Handle` ヘッダーの値と再キャッシュするページのパスを提供します。サーブレットは、その値を使用して、Dispatcher 向けの HTTP 要求を組み立てます。
 
 サーブレットをパブリッシュインスタンスにデプロイすると、以下の URL によって、Dispatcher が /content/geometrixx-outdoors/en.html ページを削除し、新しいコピーをキャッシュします。
 
