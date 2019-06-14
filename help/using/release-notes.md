@@ -1,145 +1,145 @@
 ---
-title: AEMディスパッチャーリリースノート
-seo-title: AEMディスパッチャーリリースノート
-description: Adobe Experience Managerディスパッチャーに固有のリリースノート
-seo-description: Adobe Experience Managerディスパッチャーに固有のリリースノート
-uuid: ae3cf62-0514-4c03- a3b9-71799a482cbd
+title: AEM Dispatcher リリースノート
+seo-title: AEM Dispatcher リリースノート
+description: Adobe Experience Manager Dispatcher 固有のリリースノート
+seo-description: Adobe Experience Manager Dispatcher 固有のリリースノート
+uuid: ae3ccf62-0514-4c03-a3b9-71799a482cbd
 topic-tags: release-notes
-content-type: リファレンス
-products: SG_ EXPERNEMENTMANAGER/6.4
-discoiquuid: ff3d38e0-71c9-4b41-85f9- fa896393aac5
-translation-type: tm+mt
-source-git-commit: 2d72839d459973cba40f6a938ee157198c7cf50a
+content-type: reference
+products: SG_EXPERIENCEMANAGER/6.4
+discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
+translation-type: ht
+source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
 
 ---
 
 
-# AEMディスパッチャーリリースノート{#aem-dispatcher-release-notes}
+# AEM Dispatcher リリースノート{#aem-dispatcher-release-notes}
 
 ## リリース情報 {#release-information}
 
-|  |
+|  |  |
 |--- |--- |
-| 商品 | Adobe Experience Manager（AEM）ディスパッチャー |
+| 商品 | Adobe Experience Manager (AEM) Dispatcher |
 | バージョン | 4.3.2 |
 | タイプ | マイナーリリース |
-| 日付 | 2019年1月1日 |
+| 日付 | 2019 年 1 月 31 日 |
 | ダウンロード URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services（IIS）](release-notes.md#iis)</li></ul> |
-| 互換性 | AEM6.1以降 |
+| 互換性 | AEM 6.1 以降 |
 
 ## システム要件および使用条件 {#system-requirements-and-prerequisites}
 
-要件と前提条件について詳しくは、 [サポートされるプラットフォーム](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) ページを参照してください。
+要件と前提条件について詳しくは[技術要件](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/technical-requirements.html)ページを参照してください。
 
-最新バージョンのAEMディスパッチャーを使用して最新の機能、最新のバグ修正、最高のパフォーマンスを実現することを強くお勧めします。
+最新の機能、最新のバグフィックス、そして最高のパフォーマンスを利用するため、最新バージョンの AEM Dispatcher を使用することを強くお勧めします。
 
 ## インストール手順 {#installation-instructions}
 
-詳しい手順については、「ディスパッチャー [のインストール」を参照](dispatcher-install.md)してください。
+詳しい手順については、[Dispatcher のインストール](dispatcher-install.md)を参照してください。
 
 ## リリース履歴 {#release-history}
 
-### リリース4.3.2（2019年1月31日） {#jan}
+### リリース 4.3.2（2019 年 1月 31 日） {#jan}
 
 **バグ修正**:
 
-* DESP-734:ハンドラーとして設定されていない場合、ディスパッチャーが挿入_ output_ filterでクラッシュする原因となります
-* Disp-735: RIAは、Albelian Linuxでは機能しません
-* Disp-740: MacOS Mojaveでのディスパッチャーの読み込みは、デフォルトで無効になっています
-* DESP-742:ブロックされたリクエストによって情報が認証チェッカーによって保護されたリソースに漏洩する場合があります
+* DISP-734 - ハンドラーとして設定されていない場合、Dispatcher が insert_output_filter でクラッシュする
+* DISP-735 - Alpine Linux で RE が機能しない
+* DISP-740 - MacOS Mojave での Dispatcher の読み込みがデフォルトで無効になっている
+* DISP-742 - ブロックされたリクエストによって Auth Checker で保護されたリソースに情報が漏洩する場合がある
 
-**改善点**:
+**機能強化**：
 
-* DESP-746:ディスパッチャー内の未署名の文字列が表示されます。警告が表示されます
+* DISP-746 - dispatcher にラベルのない文字列が存在する場合は警告が表示される
 
 **新機能**:
 
-* DISSP-747- Apache環境でリクエスト情報を提供します
+* DISP-747 - Apache 環境で要求の情報を提供
 
-### リリース4.3.1（2018年10月16日） {#oct}
-
-**バグ修正**:
-
-* DISSP-656:ディスパッチャーにより、ETagヘッダーが正しく提供されません
-* DISP-694:ライブ接続を維持し続けるときに警告を抑制します
-* DESP-714: cookieベースのセッション管理がIISで機能しません
-* DESP-715: renderid cookieのセキュアフラグ
-* DISP-720:一時ファイルが閉じていない場合、浪費する可能性があります（開いているファイルが多すぎる）
-* DESP-721: Apacheが子を完全に再起動したときに、ディスパッチャーがポーリングを中断します
-* DESP-722:キャッシュファイルは8進数モード0600で作成されます
-* Disp-723:レンダリングタイムアウトが0に設定されている場合は、暗黙的な10分のタイムアウト（および再試行）
-* DESP-725:文字列後の末尾の文字が名称未設定の値に変換されます
-* DISSP-726:ファームが入力ホストと一致していない場合に警告を記録します
-* DESP-727:ディスパッチャーは、空のキャッシュファイルのコンテンツの長さをリクエストします
-* ディスパッチャーを介してヘッダーファイルにアクセスしようとしたときのDISP-730~404
-* DISSP-731:ディスパッチャーはログ挿入に脆弱な脆弱性を持つ
-* DISSP-732:ディスパッチャーは、URL内の連続した&quot;/&quot;を削除する必要があります
-* DISP-733:ディスパッチャーは、年齢ヘッダーを設定（計算）する必要があります
-
-**改善点**:
-
-* DISSP-656:ディスパッチャーにより、ETagヘッダーが正しく提供されません
-* DISP-694:ライブ接続を維持し続けるときに警告を抑制します
-* DESP-715: renderid cookieのセキュアフラグ
-* DESP-722:キャッシュファイルは8進数モード0600で作成されます
-* DISSP-726:ファームが入力ホストと一致していない場合に警告を記録します
-
-### リリース4.3.0（2018年6月13日） {#jun}
+### リリース 4.3.1（2018 年 10 月 16 日） {#oct}
 
 **バグ修正**:
 
-* DISP-682:数値ログレベルが誤って適用されました
-* DISSP-685-32ビットSolaris SPARCバイナリには、__ didf3への未定義の参照があります
-* DISSP-688:ディスパッチャーが404応答で&quot;X- Cache- Info&quot;ヘッダーを返しません
-* DISP-690: Last- Modifiedヘッダーがキャッシュできません
-* DESP-691- w3wp. exeのアクセス違反
-* DESP-693:ディスパッチャーダウンロードページ上のSolarisサーバーのアーキテクチャ詳細を更新する必要があります
-* ディスパッチャー:ディスパッチャーモジュール4.2.3のDispatcherLogレベルの問題-695
-* DISSP-698:ディスパッチャーTTLは、s- maxageおよびprivateディレクティブをサポートする必要があります
-* DESP-700: Android Linuxではモジュールが正しく機能しません
-* DESP-704:%2bを含むブラウザーリクエストが、発行者にエンコードされていない状態に送信されます
-* DESP-705-二重の空きまたは破損によりディスパッチャーがクラッシュします（fasttop）。
-* DESP-706:無効化中、ディスパッチャーは、無限ループの原因となる可能性のある後方参照コードリンクです
-* DESP-709-一部のバニティURL拡張のブロック
-* Disp-710- Linux用のビルドがセントOS6で使用できない
+* DISP-656 - Dispatcher により誤った ETag ヘッダーが提供される
+* DISP-694 - キープアライブ接続が古くなった場合に警告が表示されない
+* DISP-714 - Cookie ベースのセッション管理は IIS では機能しない
+* DISP-715 - RenderID cookie の Secure フラグ
+* DISP-720 - 一時ファイルが閉じられていないため、システムに極端な負荷がかかる可能性がある（開いているファイルが多すぎる）
+* DISP-721 - Apache が正常に子プロセスを再起動したとき、Dispatcher が poll() を中断する
+* DESP-722 - キャッシュファイルが 8 進数モード 0600 で作成される
+* DISP-723 - レンダリングタイムアウトが 0 に設定されている場合の暗黙的な 10 分のタイムアウト（および再試行）
+* DISP-725 - 文字列後の末尾の文字が名称未設定の値に変換される
+* DISP-726 - ファームが受信ホストと一致していない場合に警告が記録される
+* DESP-727 - Dispatcher が空のキャッシュファイルのコンテンツの長さのリクエストをチェックする
+* DISP-730 - Dispatcher を介してヘッダーファイルにアクセスしようとしたときの 404
+* DISSP-731 - Dispatcher がログインジェクションに対して脆弱性を持つ
+* DISSP-732 - Dispatcher は、URL内の連続した「/」を削除する必要がある
+* DISP-733 - Dispatcher は、Age ヘッダーを設定（計算）する必要がある
 
-**改善点**:
+**機能強化**：
 
-* DISSP-652:ディスパッチャーは、日付ヘッダーに誤りがあります
+* DISP-656 - Dispatcher により誤った ETag ヘッダーが提供される
+* DISP-694 - キープアライブ接続が古くなった場合に警告が表示されない
+* DISP-715 - RenderID cookie の Secure フラグ
+* DESP-722 - キャッシュファイルが 8 進数モード 0600 で作成される
+* DISP-726 - ファームが受信ホストと一致していない場合に警告が記録される
 
-## 参考リソース {#helpful-resources}
+### リリース 4.3.0（2018 年 6 月 13 日） {#jun}
 
-* [AEMディスパッチャーの概要](dispatcher.md)
+**バグ修正**:
+
+* DISP-682 - 数値ログレベルが誤って適用される
+* DISSP-685 - 32 ビット Solaris SPARC バイナリでは __ divdi3 への未定義の参照がある
+* DISSP-688 - Dispatcher が404応答で「X- Cache- Info」ヘッダーを返さない
+* DISP-690 - Last- Modified ヘッダーがキャッシュできない
+* DISP-691 - w3wp. exe でのアクセス違反
+* DISP-693 - Dispatcher ダウンロードページ上の Solaris サーバーのアーキテクチャ詳細を更新する必要がある
+* DISP-695 - Dispatcher モジュール 4.2.3 の DispatcherLog レベルに関する問題
+* DISP-698 - Dispatcher TTLは、s- maxageおよび private ディレクティブをサポートする必要がある
+* DISP-700 - Alpine Linux ではモジュールが正しく機能しない
+* DISP-704 - %2b を含むブラウザーリクエストが、エンコードされていない状態でパブリッシャーに送信される
+* DISP-705 - 二重の空きまたは破損（fasttop）により Dispatcher がクラッシュする。
+* DISP-706 - 無効化中、Dispatcher が逆参照シンボリックリンクをたどるため無限ループが発生する可能性がある
+* DISP-709 - 一部のバニティー URL 拡張のブロック
+* Disp-710- Cent OS 6 では使用できない Linux 用ビルド
+
+**機能強化**：
+
+* DISP-652 - Dispatcher により誤った Data ヘッダーが提供される
+
+## 役立つリソース {#helpful-resources}
+
+* [AEM Dispatcher の概要](dispatcher.md)
 
 ## ダウンロード {#downloads}
 
 ### Apache 2.4 {#apache}
 
-| プラットフォーム | アーキテクチャ | SSLサポート | ダウンロード |
+| プラットフォーム | アーキテクチャ | SSL サポート | ダウンロード |
 |---|---|---|---|
-| AIX | PowerPC（32- bit） | いいえ | [dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz) |
-| AIX | PowerPC（32- bit） | 可 | [dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz) |
-| AIX | PowerPC（64- bit） | いいえ | [dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz) |
-| AIX | PowerPC（64- bit） | 可 | [dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz) |
-| Linux | i686（32- bit） | いいえ | [dispatcher-apache2.4-linux-i686-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.2.tar.gz) |
-| Linux | i686（32- bit） | 可 | [dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz) |
-| Linux | x86_64（64- bit） | いいえ | [dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz) |
-| Linux | x86_64（64- bit） | 可 | [dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz) |
-| macOS | x86_64（64- bit） | いいえ | [dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz) |
+| AIX | PowerPC（32 ビット） | いいえ | [dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz) |
+| AIX | PowerPC（32 ビット） | 可 | [dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz) |
+| AIX | PowerPC（64 ビット） | いいえ | [dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz) |
+| AIX | PowerPC（64 ビット） | 可 | [dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz) |
+| Linux | i686（32 ビット） | いいえ | [dispatcher-apache2.4-linux-i686-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.2.tar.gz) |
+| Linux | i686（32 ビット） | 可 | [dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz) |
+| Linux | x86_64（64 ビット） | いいえ | [dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz) |
+| Linux | x86_64（64 ビット） | 可 | [dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz) |
+| macOS | x86_64（64 ビット） | いいえ | [dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz) |
 | Solaris | AMD（32ビット） | いいえ | [dispatcher-apache2.4-solaris-i386-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-4.3.2.tar.gz) |
 | Solaris | AMD（32ビット） | 可 | [dispatcher-apache2.4-solaris-i386-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-ssl-4.3.2.tar.gz) |
-| Solaris | AMD（64- bit） | いいえ | [dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz) |
-| Solaris | AMD（64- bit） | 可 | [dispatcher-apache2.4-solaris-amd64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-ssl-4.3.2.tar.gz) |
-| Solaris | SPARC（32ビット） | いいえ | [dispatcher-apache2.4-solaris-sparc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-4.3.2.tar.gz) |
+| Solaris | AMD（64ビット） | いいえ | [dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz) |
+| Solaris | AMD（64ビット） | 可 | [dispatcher-apache2.4-solaris-amd64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-ssl-4.3.2.tar.gz) |
+| Solaris | SPARC（32ビット） | 不可 | [dispatcher-apache2.4-solaris-sparc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-4.3.2.tar.gz) |
 | Solaris | SPARC（32ビット） | 可 | [dispatcher-apache2.4-solaris-sparc-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-ssl-4.3.2.tar.gz) |
-| Solaris | SPARC（64- bit） | いいえ | [dispatcher-apache2.4-solaris-sparcv9-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-4.3.2.tar.gz) |
-| Solaris | SPARC（64- bit） | 可 | [dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.2.tar.gz) |
+| Solaris | SPARC（64ビット） | 不可 | [dispatcher-apache2.4-solaris-sparcv9-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-4.3.2.tar.gz) |
+| Solaris | SPARC（64ビット） | 可 | [dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.2.tar.gz) |
 
 ### IIS {#iis}
 
-| プラットフォーム | アーキテクチャ | SSLサポート | ダウンロード |
+| プラットフォーム | アーキテクチャ | SSL サポート | ダウンロード |
 |---|---|---|---|
-| Windows | x86（32ビット） | いいえ | [dispatcher-iis-windows-x86-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.2.zip) |
+| Windows | x86（32ビット） | 不可 | [dispatcher-iis-windows-x86-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.2.zip) |
 | Windows | x86（32ビット） | 可 | [dispatcher-iis-windows-x86-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl-4.3.2.zip) |
-| Windows | x64（64- bit） | いいえ | [dispatcher-iis-windows-x64-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.2.zip) |
-| Windows | x64（64- bit） | 可 | [dispatcher-iis-windows-x64-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl-4.3.2.zip) |
+| Windows | x64（64 ビット） | 不可 | [dispatcher-iis-windows-x64-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.2.zip) |
+| Windows | x64（64 ビット） | 可 | [dispatcher-iis-windows-x64-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl-4.3.2.zip) |
