@@ -1,17 +1,17 @@
 ---
 title: '複数ドメインでの Dispatcher の使用 '
 seo-title: '複数ドメインでの Dispatcher の使用 '
-description: ディスパッチャーを使用して複数のWebドメイン内のページリクエストを処理する方法について説明します。
-seo-description: ディスパッチャーを使用して複数のWebドメイン内のページリクエストを処理する方法について説明します。
-uuid: 7342a1c2- fe61-49be- a240- b487d53c7ec1
-contentOwner: ユーザーは、
+description: 複数 Web ドメインで Dispatcher を使用してページリクエストを処理する方法について説明します。
+seo-description: 複数 Web ドメインで Dispatcher を使用してページリクエストを処理する方法について説明します。
+uuid: 7342a1c2-fe61-49be-a240-b487d53c7ec1
+contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
-products: SG_ PERANDATEMENTMANAGER/CLACKER
+products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: リファレンス
-discoiquuid: 40d91d66- c99b-422d-8e61- c0plailed23272ef
-translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+content-type: reference
+discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
+translation-type: ht
+source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
 
 ---
 
@@ -38,7 +38,7 @@ Dispatcher を使用すると、以下の条件を満たしつつ、複数の We
        | - content nodes
 ```
 
-以下のページが保存 `BrandA.com``/content/sitea`されています。URL `https://BrandA.com/en.html` に対するクライアントリクエストが `/content/sitea/en` 、ノードのレンダリングされたページを返します。同様に、ページ `BrandB.com` は以下 `/content/siteb`のように格納されます。
+`BrandA.com` 用のページは、`/content/sitea` の下に保存されています。URL `https://BrandA.com/en.html` に対するクライアント要求には、`/content/sitea/en` ノード向けにレンダリングされたページが返されます。同様に、`BrandB.com` 用のページは、`/content/siteb` の下に保存されています。
 
 Dispatcher を使用してコンテンツをキャッシュする場合は、クライアント HTTP 要求内のページ URL、キャッシュ内の対応するファイルのパスおよびリポジトリ内の対応するファイルのパスの間に関連付けを作成する必要があります。
 
@@ -64,33 +64,33 @@ Dispatcher フラッシュレプリケーションエージェントが、キャ
 1. Dispatcher フラッシュエージェントが、レプリケートされたコンテンツのキャッシュを無効化するために Dispatcher を呼び出します。
 1. キャッシュされたファイルを無効化するために、Dispatcher が 1 つまたは複数の .stat ファイルにアクセスします。
 
-複数のドメインで Dispatcher を使用するには、AEM、Dispatcher および Web サーバーを設定する必要があります。このページで説明する解決方法は一般的なもので、ほとんどの環境に適用できます。AEMトポロジの複雑さにより、ソリューションには特定の問題を解決するためにさらなるカスタム設定が必要になることがあります。既存のITインフラストラクチャおよび管理ポリシーに適合するようにサンプルを調整する必要があります。
+複数のドメインで Dispatcher を使用するには、AEM、Dispatcher および Web サーバーを設定する必要があります。このページで説明する解決方法は一般的なもので、ほとんどの環境に適用できます。AEM トポロジが複雑なときは、特定の問題を解決するために、さらにカスタム設定が必要な場合があります。既存の IT インフラストラクチャおよび管理ポリシーを満たすには、サンプルの変更が必要になる可能性があります。
 
 ## URL マッピング {#url-mapping}
 
 ドメイン URL とコンテンツパスをキャッシュファイルへと解決するには、プロセスのどこかの時点で、ファイルパスまたはページ URL を変換する必要があります。以下で一般的な戦略を説明しますが、この説明では、プロセスの様々な時点でパスまたは URL の変換をおこないます。
 
 * （推奨）AEM パブリッシュインスタンスが、リソースの解決に Sling マッピングを使用して、内部 URL の書き換えルールを実装する。ドメイン URL はコンテンツリポジトリのパスに変換される（[AEM による受信 URL の書き換え](dispatcher-domains.md#main-pars-title-2)を参照）。
-* Web サーバーが、ドメイン URL をキャッシュのパスに変換する内部 URL 書き換えルールを使用する（Webサーバー [での受信URLの書き直しを参照](dispatcher-domains.md#main-pars-title-1)）。
+* Web サーバーが、ドメイン URL をキャッシュのパスに変換する内部 URL 書き換えルールを使用する。（[Web サーバーによる受信 URL の書き換え](dispatcher-domains.md#main-pars-title-1)を参照）。
 
-一般的に望ましいのは、Web ページに対して短縮された URL を使用することです。通常、ページ URL は、Web コンテンツが格納されたリポジトリフォルダーの構造をミラーリングしています。ただし、URLには、などの最上位のリポジトリノードが表示されません `/content`。クライアントは、AEMリポジトリの構造を認識していません。
+一般的に望ましいのは、Web ページに対して短縮された URL を使用することです。通常、ページ URL は、Web コンテンツが格納されたリポジトリフォルダーの構造をミラーリングしています。ただし、URL には最上位のリポジトリノード（`/content` など）が表示されません。クライアントは、必ずしも AEM リポジトリの構造を意識しません。
 
 ## 一般的な要件 {#general-requirements}
 
-複数のドメインでのディスパッチャーの動作をサポートするために、環境では以下の設定を実装する必要があります。
+Dispatcher を複数のドメインで動作させるために、環境を以下のように設定する必要があります。
 
 * 各ドメイン用のコンテンツをリポジトリの別々のブランチに配置する（以下のサンプルの環境を参照）。
-* Dispatcher フラッシュレプリケーションエージェントを AEM パブリッシュインスタンス上に設定する（発行インスタンスからのディスパッチャーキャッシュ [の無効化を参照](page-invalidate.md)）。
+* Dispatcher フラッシュレプリケーションエージェントを AEM パブリッシュインスタンス上に設定する。（[パブリッシュインスタンスからの Dispatcher キャッシュの無効化](page-invalidate.md)を参照）。
 * ドメインネームシステムが、ドメイン名を Web サーバーの IP アドレスに解決する。
 * Dispatcher キャッシュが、AEM コンテンツリポジトリのディレクトリ構造をミラーリングしている。Web サーバーのドキュメントルートの下のファイルパスは、リポジトリ内のファイルのパスと同じである。
 
-## 提供されているサンプルの環境 {#environment-for-the-provided-examples}
+## 提供されているサンプルの環境{#environment-for-the-provided-examples}
 
 提供されている解決方法のサンプルは、以下の特徴を持つ環境に適用されます。
 
 * AEM オーサーインスタンスおよびパブリッシュインスタンスが Linux システム上にデプロイされている。
 * Apache HTTPD は Web サーバーで、Linux システム上にデプロイされている。
-* AEMコンテンツリポジトリとWebサーバーのドキュメントルートは、次のファイル構造（Apache Webサーバーのドキュメントルート）を使用します`usr/lib/apache/httpd-2.4.3/htdocs)`。
+* AEM コンテンツリポジトリと Web サーバーのドキュメントルートが、以下のファイル構造を使用している（Apache Web サーバーのドキュメントルートは /`usr/lib/apache/httpd-2.4.3/htdocs)`）：
 
    **リポジトリ**
 
@@ -121,11 +121,11 @@ Dispatcher フラッシュレプリケーションエージェントが、キャ
 
 リソース解決に Sling マッピングを使用することによって、受信 URL と AEM のコンテンツパスを関連付けることができます。Dispatcher からのレンダリング要求がリポジトリ内の適切なコンテンツに解決されるように、AEM パブリッシュインスタンスにマッピングを作成します。
 
-Dispatcher のページレンダリング要求は、Web サーバーから渡される URL を使用してページを識別します。URL にドメイン名が含まれる場合は、Sling マッピングによって URL がコンテンツに解決されます。次の図は、 `branda.com/en.html` URLの `/content/sitea/en` ノードへのマッピングを示しています。
+Dispatcher のページレンダリング要求は、Web サーバーから渡される URL を使用してページを識別します。URL にドメイン名が含まれる場合は、Sling マッピングによって URL がコンテンツに解決されます。次の図は、`branda.com/en.html` の URL と `/content/sitea/en` ノードのマッピングを示したものです。
 
 ![](assets/chlimage_1-10.png)
 
-Dispatcher キャッシュは、リポジトリのノード構造をミラーリングしています。したがって、ページのアクティベート時に、キャッシュされたページの無効化によってURLまたはパスの翻訳が不要になります。
+Dispatcher キャッシュは、リポジトリのノード構造をミラーリングしています。そのため、ページがアクティベートされたときに送信される、キャッシュされたページの無効化要求では、URL またはパスを変換する必要がありません。
 
 ![](assets/chlimage_1-11.png)
 
@@ -134,21 +134,21 @@ Dispatcher キャッシュは、リポジトリのノード構造をミラーリ
 異なるドキュメントルートを各 Web ドメインに割り当てられるように、Web サーバー上に仮想ホストを定義します。
 
 * Web サーバーは、Web ドメインごとに仮想ドメインを定義する必要があります。
-* 各ドメインについて、ドメインのWebコンテンツを含むリポジトリ内のフォルダーと一致するようにドキュメントルートを設定します。
+* ドメインごとに、そのドメインの Web コンテンツを格納するリポジトリ内のフォルダーと一致するようにドキュメントルートを設定します。
 * [Dispatcher のインストール](dispatcher-install.md)で説明しているように、各仮想ドメインには Dispatcher 関連の設定も含める必要があります。
 
-次のサンプル `httpd.conf` ファイルでは、Apache Webサーバー用の2つの仮想ドメインを設定します。
+以下のサンプルの `httpd.conf` ファイルでは、1 つの Apache Web サーバーに対して 2 つの仮想ドメインを設定しています。
 
 * （ドメイン名と一致する）サーバー名は branda.com（16 行目）と brandb.com（30 行目）です。
 * 各仮想ドメインのドキュメントルートは、サイトのページを格納する Dispatcher キャッシュ内のディレクトリです（17 および 31 行目）。
 
-この設定により、Webサーバーはリクエストを受信する際に次のアクションを実行 `https://branda.com/en/products.html`します。
+この設定を使用すると、`https://branda.com/en/products.html` に対する要求を受信したときに、Web サーバーが次のアクションを実行します。
 
 * URL を `ServerName` が `branda.com.` の仮想ホストと関連付けます。
 
 * URL を Dispatcher に転送します。
 
-### httpd.conf {#httpd-conf}
+### httpd.conf{#httpd-conf}
 
 ```xml
 # load the Dispatcher module
@@ -198,7 +198,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 仮想ホストは、メインサーバーセクションで設定されている [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) プロパティの値を継承します。仮想ホストに独自の DispatcherConfig プロパティを含めて、メインサーバー設定をオーバーライドできます。
 
-### 複数ドメインを処理するように Dispatcher を設定 {#configure-dispatcher-to-handle-multiple-domains}
+### 複数ドメインを処理するように Dispatcher を設定{#configure-dispatcher-to-handle-multiple-domains}
 
 ドメイン名と対応する仮想ホストを含む URL をサポートするには、以下の Dispatcher ファームを定義します。
 
@@ -209,10 +209,10 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 クライアント HTTP 要求内の URL を Dispatcher キャッシュ内の適切なファイルに解決できるよう、仮想ホスト用の仮想ファームには以下の設定が必要です。
 
-* `/virtualhosts` プロパティはドメイン名に設定されます。Dispatcher は、このプロパティを使用してファームとドメインを関連付けることができます。
-* `/filter` このプロパティを使用すると、ドメイン名の部分の後に切り捨てられたリクエストURLのパスにアクセスできます。`https://branda.com/en.html` 例えば、URLの場合、パスは解釈されるので、フィルターで `/en.html`このパスへのアクセスを許可する必要があります。
+* `/virtualhosts` プロパティをドメイン名に設定します。Dispatcher は、このプロパティを使用してファームとドメインを関連付けることができます。
+* `/filter` プロパティは、ドメイン名部分の後ろを切り捨てた要求 URL のパスへのアクセスを許可します。例えば、`https://branda.com/en.html` という URL の場合 `/en.html` として解釈されるので、フィルターはこのパスへのアクセスを許可する必要があります。
 
-* `/docroot` このプロパティは、ディスパッチャーキャッシュのドメインのサイトコンテンツのルートディレクトリのパスに設定されます。このパスは、元の要求から連結された URL のプレフィックスとして使用されます。例えば、docrootのdocrootを指定すると `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` 、リクエストが `https://branda.com/en.html``/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` ファイルに解決されます。
+* `/docroot` プロパティを Dispatcher キャッシュ内にあるドメインのサイトコンテンツのルートディレクトリのパスに設定します。このパスは、元の要求から連結された URL のプレフィックスとして使用されます。例えば、`/usr/lib/apache/httpd-2.4.3/htdocs/sitea` の docroot は、`/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` ファイルを解決するために `https://branda.com/en.html` を要求します。
 
 さらに、AEM パブリッシュインスタンスを仮想ホストのレンダーとして指定する必要があります。必要に応じて他のファームのプロパティを設定します。以下のコードは、branda.com ドメイン用の簡潔なファーム設定です。
 
@@ -242,10 +242,10 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 以下のプロパティ設定を使用すると、Dispatcher はキャッシュ内のファイルから AEM コンテンツリポジトリ内のファイルを解決できます。
 
-* `/docroot` このプロパティは、WebサーバーのデフォルトのDocrootに設定されます。通常、これは `/content` フォルダーが作成されるディレクトリです。LinuxでのApacheの値の例 `/usr/lib/apache/httpd-2.4.3/htdocs`です。
-* `/filter` このプロパティを使用すると、ディレクトリの `/content` 下のファイルにアクセスできます。
+* `/docroot` プロパティを Web サーバーのデフォルトのドキュメントルートに設定します。一般的に、このディレクトリに `/content` フォルダーが作成されます。Linux 上の Apache の場合の値の一例は、`/usr/lib/apache/httpd-2.4.3/htdocs` になります。
+* `/filter` プロパティは、`/content` ディレクトリの下にあるファイルへのアクセスを許可します。
 
-`/statfileslevel`このプロパティは、各仮想ホストのルートディレクトリに. stotsファイルが作成されるように十分な大きさにする必要があります。このプロパティを使用して、各ドメインのキャッシュを個別に無効化できます。この例のセットアップで `/statfileslevel` は `2``*docroot*/content/sitea` 、ディレクトリと `*docroot*/content/siteb` ディレクトリに. stotsファイルを作成します。
+`/statfileslevel` プロパティには、各仮想ホストのルートディレクトリに .stat ファイルを作成できるだけの高さが必要です。このプロパティを使用して、各ドメインのキャッシュを個別に無効化できます。サンプルの設定として、`/statfileslevel` の値が `2` の場合、`*docroot*/content/sitea` ディレクトリと `*docroot*/content/siteb` ディレクトリに .stat ファイルが作成されます。
 
 さらに、パブリッシュインスタンスを仮想ホストのレンダーとして指定する必要があります。必要に応じて他のファームのプロパティを設定します。以下のコードは、キャッシュの無効化に使用するファームの簡潔な設定です。
 
@@ -280,19 +280,19 @@ Dispatcher initializing (build 4.1.2)
 [Fri Nov 02 16:27:18 2012] [I] [24974(140006182991616)] Dispatcher initialized (build 4.1.2)
 ```
 
-### リソース解決のための Sling マッピングの設定 {#configure-sling-mapping-for-resource-resolution}
+### リソース解決のための Sling マッピングの設定{#configure-sling-mapping-for-resource-resolution}
 
 ドメインベースの URL を AEM パブリッシュインスタンス上のコンテンツに解決できるよう、リソースの解決に Sling マッピングを使用します。リソースマッピングによって、Dispatcher から（もともとはクライアント HTTP 要求から）の受信 URL がコンテンツノードに変換されます。
 
-Slingリソースマッピングについて詳しくは、 [Slingドキュメントの&quot;Resource Resolution](https://sling.apache.org/site/mappings-for-resource-resolution.html) のマッピング」を参照してください。
+Sling リソースマッピングについて詳しくは、Sling に関するドキュメントの「[Mappings for Resource Resolution](https://sling.apache.org/site/mappings-for-resource-resolution.html)」を参照してください。
 
 一般的に、以下のリソースにはマッピングが必要ですが、追加のマッピングが必要な場合もあります。
 
-* The root node of the content page (below `/content`)
-* The design node that the pages use (below `/etc/designs`)
-* The `/libs` folder
+* コンテンツページのルートノード（`/content` の下）
+* ページが使用するデザインノード（`/etc/designs` の下）
+* `/libs` フォルダー
 
-コンテンツページに対するマッピングを作成したら、必要な追加マッピングを検出するために、Web ブラウザーを使用して、Web サーバー上のページを開きます。パブリッシュインスタンスの error.log ファイルで、見つからなかったリソースに関するメッセージを探します。次の例では、マッピングが必要であることを示し `/etc/clientlibs` ています。
+コンテンツページに対するマッピングを作成したら、必要な追加マッピングを検出するために、Web ブラウザーを使用して、Web サーバー上のページを開きます。パブリッシュインスタンスの error.log ファイルで、見つからなかったリソースに関するメッセージを探します。以下のサンプルメッセージは、`/etc/clientlibs` に対するマッピングが必要であることを示しています。
 
 ```shell
 01.11.2012 15:59:24.601 *INFO* [10.36.34.243 [1351799964599] GET /etc/clientlibs/foundation/jquery.js HTTP/1.1] org.apache.sling.engine.impl.SlingRequestProcessorImpl service: Resource /content/sitea/etc/clientlibs/foundation/jquery.js not found
@@ -300,37 +300,37 @@ Slingリソースマッピングについて詳しくは、 [Slingドキュメ�
 
 >[!NOTE]
 >
->リンクが壊れないように、デフォルトの Apache Sling リライターの linkchecker 変換サービスが、ページ内のハイパーリンクを自動的に変更します。ただし、リンクの書き換えは、リンクターゲットが HTML または HTM ファイルの場合にのみ実行されます。他のファイルタイプへのリンクを更新するには、変換サービスコンポーネントを作成して、HTML リライターパイプラインに追加します
+>リンクが壊れないように、デフォルトの Apache Sling リライターの linkchecker 変換サービスが、ページ内のハイパーリンクを自動的に変更します。ただし、リンクの書き換えは、リンクターゲットが HTML または HTM ファイルの場合にのみ実行されます。他のファイルタイプへのリンクを更新するには、変換サービスコンポーネントを作成して、HTML リライターパイプラインに追加します。
 
 ### サンプルのリソースマッピングノード
 
-branda.com ドメイン用のリソースマッピングを実装するノードを以下の表に示します。同様に `brandb.com` 、ドメインに同様のノードが作成 `/etc/map/http/brandb.com`されます。どのケースにおいても、ページの HTML 内の参照が Sling のコンテキストで正しく解決されない場合にはマッピングが必要です。
+branda.com ドメイン用のリソースマッピングを実装するノードを以下の表に示します。同様のノードが `brandb.com` 用にも作成されます（例：`/etc/map/http/brandb.com`）。どのケースにおいても、ページの HTML 内の参照が Sling のコンテキストで正しく解決されない場合にはマッピングが必要です。
 
 | ノードパス | タイプ | プロパティ |
 |--- |--- |--- |
 | `/etc/map/http/branda.com` | sling:Mapping | 名前：sling:internalRedirectタイプ：String値：/content/sitea |
 | `/etc/map/http/branda.com/libs` | sling:Mapping | 名前：sling:internalRedirect<br/>タイプ：String<br/>値：/libs |
-| `/etc/map/http/branda.com/etc` | sling:Mapping |
-| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | 名前:sling:InternalRedirect <br/>VType:String <br/>vValue:/etc/designs |
-| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | 名前:sling:InternalRedirect <br/>VType:String <br/>vValue:/etc/clientlibs |
+| `/etc/map/http/branda.com/etc` | sling:Mapping |  |
+| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | 名前：sling:internalRedirect<br/>VType：String<br/>VValue：/etc/designs |
+| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | 名前：sling:internalRedirect<br/>VType：String<br/>VValue：/etc/clientlibs |
 
 ## Dispatcher フラッシュレプリケーションエージェントの設定 {#configuring-the-dispatcher-flush-replication-agent}
 
-AEM パブリッシュインスタンス上の Dispatcher フラッシュレプリケーションエージェントは、適切な Dispatcher ファームに無効化要求を送信する必要があります。ファームにターゲットを設定するには、（「トランスポート」タブの）Dispatcher フラッシュアプリケーションエージェントの URI プロパティを使用します。キャッシュを無効にするために設定されているディスパッチャーファームの `/virtualhost` プロパティの値を含めます。
+AEM パブリッシュインスタンス上の Dispatcher フラッシュレプリケーションエージェントは、適切な Dispatcher ファームに無効化要求を送信する必要があります。ファームにターゲットを設定するには、（「トランスポート」タブの）Dispatcher フラッシュアプリケーションエージェントの URI プロパティを使用します。キャッシュを無効化するために設定されている Dispatcher ファームの `/virtualhost` プロパティの値を含めます。
 
 `https://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
 
-例えば、前の例の `farm_flush` ファームを使用するには、URIが `https://localhost:80/invalidation_only/dispatcher/invalidate.cache`使用されます。
+例えば、前の例の `farm_flush` ファームを使用する場合、URI は `https://localhost:80/invalidation_only/dispatcher/invalidate.cache` になります。
 
 ![](assets/chlimage_1-12.png)
 
 ## Web サーバーによる受信 URL の書き換え {#the-web-server-rewrites-incoming-urls}
 
-Web サーバーの内部 URL 書き換え機能を使用して、ドメインベースの URL を Dispatcher キャッシュ内のファイルパスに変換します。例えば、 `https://brandA.com/en.html` ページのクライアント要求は、Webサーバーのドキュメントルート内の `content/sitea/en.html`ファイルに変換されます。
+Web サーバーの内部 URL 書き換え機能を使用して、ドメインベースの URL を Dispatcher キャッシュ内のファイルパスに変換します。例えば、`https://brandA.com/en.html` ページに対するクライアント要求は、Web サーバーのドキュメントルート内にある `content/sitea/en.html` ファイルに変換されます。
 
 ![](assets/chlimage_1-13.png)
 
-Dispatcher キャッシュは、リポジトリのノード構造をミラーリングしています。したがって、ページのアクティブ化が行われると、キャッシュされたページを無効にするためのリクエストにURLやパスの翻訳は不要になります。
+Dispatcher キャッシュは、リポジトリのノード構造をミラーリングしています。そのため、ページがアクティベートされたときに送信される、キャッシュされたページの無効化要求では、URL またはパスを変換する必要がありません。
 
 ![](assets/chlimage_1-14.png)
 
@@ -339,10 +339,10 @@ Dispatcher キャッシュは、リポジトリのノード構造をミラーリ
 Web サーバー上に以下の要素を設定します。
 
 * Web ドメインごとに仮想ホストを定義します。
-* 各ドメインについて、ドメインのWebコンテンツを含むリポジトリ内のフォルダーと一致するようにドキュメントルートを設定します。
+* ドメインごとに、そのドメインの Web コンテンツを格納するリポジトリ内のフォルダーと一致するようにドキュメントルートを設定します。
 * 仮想ドメインごとに、受信 URL をキャッシュされたファイルのパスに変換する URL 名変更ルールを作成します。
 * [Dispatcher のインストール](dispatcher-install.md)で説明しているように、各仮想ドメインには Dispatcher 関連の設定も含める必要があります。
-* Dispatcher モジュールは、Web サーバーが書き換えた URL を使用するように設定する必要があります（ディスパッチャーのインストールの `DispatcherUseProcessedURL`[プロパティを参照](dispatcher-install.md)）。
+* Dispatcher モジュールは、Web サーバーが書き換えた URL を使用するように設定する必要があります。（[Dispatcher のインストール](dispatcher-install.md)の `DispatcherUseProcessedURL` プロパティを参照。)
 
 以下のサンプル httpd.conf ファイルでは、1 つの Apache Web サーバーに対して 2 つの仮想ホストを設定しています。
 
@@ -350,15 +350,15 @@ Web サーバー上に以下の要素を設定します。
 
 * 各仮想ドメインのドキュメントルートは、サイトのページを格納する Dispatcher キャッシュ内のディレクトリです（20 および 33 行目）。
 * 各仮想ドメインの URL 書き換えルールは、キャッシュ内のページへのパスの前に要求されたページのパスを付ける正規表現です（19 および 35 行目）。
-* `DispatherUseProcessedURL` プロパティがに設定 `1`されている。（10 行目）。
+* `DispatherUseProcessedURL` プロパティを `1` に設定します。（10 行目）。
 
-例えば、Webサーバーが `https://brandA.com/en/products.html` URLを使用してリクエストを受信すると、次のアクションが実行されます。
+例えば、Web サーバーは、`https://brandA.com/en/products.html` という URL を持つ要求を受信した場合、次のアクションを実行します。
 
 * URL を `ServerName` が `brandA.com.` の仮想ホストと関連付けます。
-* URLを書き直します `/content/sitea/en/products.html.`
+* URL を `/content/sitea/en/products.html.` に書き換えます。
 * URL を Dispatcher に転送します。
 
-### httpd.conf {#httpd-conf-1}
+### httpd.conf{#httpd-conf-1}
 
 ```xml
 # load the Dispatcher module
@@ -412,17 +412,17 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 ### Dispatcher ファームの設定 {#configure-a-dispatcher-farm}
 
-WebサーバーがURLを書き換えた場合、ディスパッチャーはディスパッチャー [の設定に従って単一のファームを定義する必要](dispatcher-configuration.md)があります。Webサーバーの仮想ホストおよびURLの名前変更ルールをサポートするには、次の設定が必要です。
+Web サーバーが URL を書き換える場合、Dispatcher には [Dispatcher の設定](dispatcher-configuration.md)に応じて定義された単一のファームが必要です。Web サーバーの仮想ホストと URL 名変更ルールをサポートするには、以下の設定が必要です。
 
-* `/virtualhosts` このプロパティには、すべてのVirtualHost定義のserverName値を含める必要があります。
-* `/statfileslevel` このプロパティは、各ドメインのコンテンツファイルを含むディレクトリに作成するために十分な大きさの. stotsファイルを作成する必要があります。
+* `/virtualhosts` プロパティにすべての VirtualHost 定義の ServerName 値を含める必要があります。
+* `/statfileslevel` プロパティには、各ドメインのコンテンツファイルを格納するディレクトリ内で .stat ファイルを作成できるよう、十分な大きさにする必要があります。
 
-次の例の設定ファイルは、ディスパッチャーと共にインストールされるサンプル `dispatcher.any` ファイルに基づいています。前 `httpd.conf` のファイルのWebサーバー設定をサポートするには、次の変更が必要です。
+以下のサンプルの `dispatcher.any` ファイルは、Dispatcher と一緒にインストールされるサンプルの ファイルをベースとしています。以前の `httpd.conf` ファイルの Web サーバー設定をサポートするには、次の変更が必要です。
 
-* `/virtualhosts` このプロパティにより、ディスパッチャーは `brandA.com``brandB.com` 、ドメインの要求を処理します。（12 行目）
-* `/statfileslevel` このプロパティは2に設定され、ドメインのWebコンテンツを含む各ディレクトリに統計ファイルが作成されます（41行目）。 `/statfileslevel "2"`
+* `/virtualhosts` プロパティによって、Dispatcher が `brandA.com` ドメインおよび `brandB.com` ドメインに対する要求を処理します。（12 行目）
+* ドメインの Web コンテンツを格納する各ディレクトリに stat ファイルを作成できるよう、`/statfileslevel` プロパティを「2」に設定します（41 行目）：`/statfileslevel "2"`
 
-通常どおり、キャッシュのドキュメントルートはWebサーバーのドキュメントルートと同じです（40行目）。 `/usr/lib/apache/httpd-2.4.3/htdocs`
+通常どおり、キャッシュのドキュメントルートは Web サーバーのドキュメントルートと同じです（40 行目）：`/usr/lib/apache/httpd-2.4.3/htdocs`
 
 ### `dispatcher.any` {#dispatcher-any}
 
@@ -498,59 +498,59 @@ WebサーバーがURLを書き換えた場合、ディスパッチャーはデ�
 >
 >単一の Dispatcher ファームが定義されているので、AEM パブリッシュインスタンス上の Dispatcher フラッシュレプリケーションエージェントに特別な設定は必要ありません。
 
-## 非 HTML ファイルへのリンクの書き換え {#rewriting-links-to-non-html-files}
+## 非 HTML ファイルへのリンクの書き換え{#rewriting-links-to-non-html-files}
 
 .html または .htm 以外の拡張子を持つファイルへの参照を書き換えるには、Sling リライター変換サービスコンポーネントを作成し、デフォルトのリライターパイプラインに追加します。
 
-リソースパスが Web サーバーコンテキストで正しく解決されない場合は、参照を書き換えます。例えば、画像生成コンポーネントが /content/sitea/en/products.navimage.png のようなリンクを作成する場合は、変換サービスが必要です。「[完全な機能を持つインターネット Web サイトの作成方法](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/the-basics.html)」の topnav コンポーネントは、このようなリンクを作成します。
+リソースパスが Web サーバーコンテキストで正しく解決されない場合は、参照を書き換えます。例えば、画像生成コンポーネントが /content/sitea/en/products.navimage.png のようなリンクを作成する場合は、変換サービスが必要です。[完全に機能する Web サイトを作成するには](https://helpx.adobe.com/jp/experience-manager/6-3/sites/developing/using/the-basics.html)の topnav コンポーネントは、このようなリンクを作成します。
 
-[Sling リライター](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html)は、Sling の出力を後処理するモジュールです。リライターの SAX パイプライン実装は、1 つのジェネレーター、1 つまたは複数の変換サービス、1 つのシリアライザーで構成されます。
+[Sling rewriter](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) は、Sling 出力を後処理するモジュールです。リライターの SAX パイプライン実装は、1 つのジェネレーター、1 つまたは複数の変換サービス、1 つのシリアライザーで構成されます。
 
-* **Generator:** Sling出力ストリーム（HTMLドキュメント）を解析し、特定の要素タイプに遭遇したときにSAXイベントを生成します。
+* **ジェネレーター：** Sling 出力ストリーム（HTML ドキュメント）を解析し、特定の要素タイプを検出した場合は SAX イベントを生成します。
 * **変換サービス：** SAX イベントをリッスンし、その結果としてイベントターゲット（HTML 要素）を変更します。リライターパイプラインには、0 個以上の変換サービスが含まれます。変換サービスは順序どおりに実行され、SAX イベントを次の順番の変換サービスに渡します。
-* **シリアライザー：**各変換サービスによる変更を含む、出力をシリアル化します。
+* **シリアライザー：** 各変換サービスによる変更を含む、出力をシリアル化します。
 
 ![](assets/chlimage_1-15.png)
 
-### AEM のデフォルトのリライターパイプライン {#the-aem-default-rewriter-pipeline}
+### AEM のデフォルトのリライターパイプライン{#the-aem-default-rewriter-pipeline}
 
 AEM は、text/html タイプのドキュメントを処理するデフォルトのパイプラインリライターを使用します。
 
-* ジェネレーターが HTML ドキュメントを解析し、img、area、form、base、link、script および body 要素を検出すると、SAX イベントを生成します。generatorエイリアス `htmlparser`は、です。
-* パイプラインには次のトランスファーが含まれています。 `linkchecker`， `mobile`， `mobiledebug`， `contentsync`.`linkchecker` トランスフォーマータは、参照されたHTMLまたはHTMファイルへのパスを外部化して、破損したリンクを防ぎます。
+* ジェネレーターが HTML ドキュメントを解析し、img、area、form、base、link、script および body 要素を検出すると、SAX イベントを生成します。ジェネレーターのエイリアスは `htmlparser` です。
+* パイプラインには、`linkchecker`、`mobile`、`mobiledebug`、`contentsync` という変換サービスが含まれます。`linkchecker` 変換サービスは、リンクが壊れないように、参照される HTML または HTM ファイルへのパスを外部化します。
 * シリアライザーが HTML 出力を書き出します。シリアライザーは、HTML ライターとも言います。
 
-`/libs/cq/config/rewriter/default` ノードがパイプラインを定義します。
+`/libs/cq/config/rewriter/default` ノードはパイプラインを定義します。
 
 ### 変換サービスの作成 {#creating-a-transformer}
 
 変換サービスコンポーネントを作成してパイプラインで使用するには、以下のタスクを実行します。
 
-1. `org.apache.sling.rewriter.TransformerFactory` インターフェイスを実装します。このクラスは、トランスフィータークラスのインスタンスを作成します。`transformer.type` プロパティ（トランスフォーマーエイリアス）の値を指定し、OSGiサービスコンポーネントとしてクラスを設定します。
-1. `org.apache.sling.rewriter.Transformer` インターフェイスを実装します。作業を最小限にするために、 `org.apache.cocoon.xml.sax.AbstractSAXPipe` クラスを拡張できます。startElement メソッドをオーバーライドして、書き換え動作をカスタマイズします。このメソッドは、トランスフォーマーに渡されるすべてのSAXイベントに対して呼び出されます。
+1. `org.apache.sling.rewriter.TransformerFactory` インターフェイスを実装します。このクラスが変換サービスクラスのインスタンスを作成します。`transformer.type` プロパティ（変換サービスのエイリアス）の値を指定し、クラスを OSGi サービスコンポーネントとして設定します。
+1. `org.apache.sling.rewriter.Transformer` インターフェイスを実装します。`org.apache.cocoon.xml.sax.AbstractSAXPipe` クラスを拡張して、作業を最小限に抑えることができます。startElement メソッドをオーバーライドして、書き換え動作をカスタマイズします。このメソッドは、変換サービスに渡されるすべての SAX イベントに対して呼び出されます。
 1. クラスをバンドルおよびデプロイします。
 1. AEM アプリケーションに設定ノードを追加して、パイプラインに変換サービスを追加します。
 
 >[!TIP]
->代わりにTransformerFactoryを設定して、定義されたすべてのリライターにトランスレーターが挿入されるようにすることができます。その結果、パイプラインを設定する必要がなくなります。
+>代わりに、定義されているすべてのリライターに変換サービスを挿入するように、TransformerFactory を設定することもできます。その結果、パイプラインを設定する必要がなくなります。
 >
->* プロパティを `pipeline.mode` に設定 `global`します。
+>* `pipeline.mode` プロパティを `global` に設定します。
 >* `service.ranking` プロパティを正の整数に設定します。
 >* `pipeline.type` プロパティを含めないでください。
 
 
 >[!NOTE]
 >
->Maven プロジェクトを作成するには、コンテンツパッケージ Maven プラグインの [multimodule](https://helpx.adobe.com/experience-manager/aem-previous-versions.html) アーキタイプを使用します。POM がコンテンツパッケージを自動的に作成し、インストールします。
+>Maven プロジェクトを作成するには、コンテンツパッケージ Maven プラグインの [multimodule](https://helpx.adobe.com/jp/experience-manager/aem-previous-versions.html) アーキタイプを使用します。POM がコンテンツパッケージを自動的に作成し、インストールします。
 
 以下の例では、画像ファイルへの参照を書き換える変換サービスを実装しています。
 
-* MyRewriteTransformerFactoryクラスはmyRewriteTransformerオブジェクトをインスタンス化します。trust. typeプロパティは、トランスフォーマーエイリアスをmyTransformerに設定します。エイリアスをパイプラインに含めるには、パイプライン設定ノードの変換サービスのリストにこのエイリアスを含めます。
+* MyRewriterTransformerFactory クラスが、MyRewriterTransformer オブジェクトをインスタンス化します。pipeline.type プロパティが、変換サービスのエイリアスに mytransformer を設定します。エイリアスをパイプラインに含めるには、パイプライン設定ノードの変換サービスのリストにこのエイリアスを含めます。
 * MyRewriterTransformer クラスが、AbstractSAXTransformer クラスの startElement メソッドをオーバーライドします。startElement メソッドが、img 要素の src 属性の値を書き換えます。
 
 このサンプルは堅牢ではないので、実稼動環境では使用しないでください。
 
-### サンプルの TransformerFactory 実装 {#example-transformerfactory-implementation}
+### サンプルの TransformerFactory 実装{#example-transformerfactory-implementation}
 
 ```java
 package com.adobe.example;
@@ -669,4 +669,4 @@ public class MyRewriterTransformer extends AbstractSAXPipe implements Transforme
 
 次の図は、ノードの CRXDE Lite での表現を示しています。
 
-![](assets/chlimage_1-16.png)
+![](assets/chlimage_1-16.pn
