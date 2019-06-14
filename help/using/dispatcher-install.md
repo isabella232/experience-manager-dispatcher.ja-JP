@@ -1,16 +1,16 @@
 ---
 title: Dispatcher のインストール
-seo-title: AEMディスパッチャーのインストール
-description: ディスパッチャーモジュールをMicrosoft Internet Information Server、Apache Web Server、Sun Java Web Server- iPlanetにインストールする方法について説明します。
-seo-description: AEMディスパッチャーモジュールをMicrosoft Internet Information Server、Apache Web Server、Sun Java Web Server- iPlanetにインストールする方法について説明します。
-uuid: 2384b907-1042-4707- b02f- fba2125618cf
-contentOwner: ユーザーは、
+seo-title: AEM Dispatcher のインストール
+description: Microsoft Internet Information Server、Apache Web Server および Sun Java Web Server-iPlanet に Dispatcher モジュールをインストールする方法について説明しまいす。
+seo-description: Microsoft Internet Information Server、Apache Web Server および Sun Java Web Server-iPlanet に AEM Dispatcher モジュールをインストールする方法について説明しまいす。
+uuid: 2384b907-1042-4707-b02f-fba2125618cf
+contentOwner: User
 converted: 'true'
 topic-tags: dispatcher
-content-type: リファレンス
-discoiquuid: f00ad751-6b95-4365-8500- e1e0108d9536
-translation-type: tm+mt
-source-git-commit: ec5342f5737f54937493edb0384cdc1d91b13d7c
+content-type: reference
+discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
+translation-type: ht
+source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
 
 ---
 
@@ -29,21 +29,21 @@ Comment Type: draft
 >
 >Dispatcher のバージョンは AEM とは無関係です。以前のバージョンの AEM のドキュメントに組み込まれている Dispatcher のドキュメントへのリンクをたどると、このページにリダイレクトされる可能性があります。
 
-[ディスパッチャーリリースノート](release-notes.md) ページを使用して、オペレーティングシステムおよびWebサーバー用の最新のディスパッチャーインストールファイルを取得します。Dispatcher のリリース番号は Adobe Experience Manager のリリース番号とは無関係で、Adobe Experience Manager 6.x、5.x および Adobe CQ 5.x リリースと互換性があります。
+使用するオペレーティングシステムと Web サーバー向けの最新の Dispatcher インストールファイルを取得するには、[Dispatcher リリースノート](release-notes.md)を使用します。Dispatcher のリリース番号は Adobe Experience Manager のリリース番号とは無関係で、Adobe Experience Manager 6.x、5.x および Adobe CQ 5.x リリースと互換性があります。
 
 次のファイル命名規則が使用されます。
 
 `dispatcher-<web-server>-<operating-system>-<dispatcher-version-number>.<file-format>`
 
-例えば、ファイルに `dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz` は、Linux i686で実行されるApache2.4Webサーバー用のディスパッチャーバージョン4.3.1と **tar** 形式を使用してパッケージ化されたものがあります。
+`dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz`例えば、ファイルには、Linux i686 上で動作する Apache 2.4 Web サーバー向けの Dispatcher バージョン 4.3.1 が含まれており、**tar** 形式を使用してパッケージ化されています。
 
 各 Web サーバーのファイル名に使用される Web サーバー識別子を以下の表に示します。
 
 | Web サーバー | インストールキット |
 |--- |--- |
-| Apache 2.4 | dispatcher- apache **2.4**-&lt; other parameters&gt; |
-| Apache 2.2 | dispatcher- apache **2.2**-&lt; other parameters&gt; |
-| Microsoft Internet Information Server7.5，8，8.5 | dispatcher-**iis**-&lt;other parameters&gt; |
+| Apache 2.4 | dispatcher-apache **2.4**-&lt;other parameters&gt; |
+| Apache 2.2 | dispatcher-apache **2.2**-&lt;other parameters&gt; |
+| Microsoft Internet Information Server 7.5、8、8.5 | dispatcher-**iis**-&lt;other parameters&gt; |
 | Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;other parameters&gt; |
 
 >[!NOTE]
@@ -55,7 +55,7 @@ Comment Type: draft
 * Dispatcher モジュール
 * サンプルの設定ファイル
 * インストール手順と最新の情報を含む README ファイル
-* 現在および過去のリリースで修正された問題を一覧表示する変更ファイル
+* 現在および過去のリリースで修正された問題を記載した CHANGES ファイル
 
 >[!NOTE]
 >
@@ -94,13 +94,13 @@ Comment Type: draft
 
 ### 必要な IIS コンポーネント {#required-iis-components}
 
-IISバージョン8.5および10では、次のIISコンポーネントをインストールする必要があります。
+IIS バージョン 8.5 および 10 には、以下の IIS コンポーネントがインストールされている必要があります。
 
 * ISAPI 拡張機能
 
 Web Server（IIS）役割も追加する必要があります。役割とコンポーネントを追加するには、Server Manager を使用します。
 
-## Microsoft IIS - Dispatcher モジュールのインストール {#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS - Dispatcher モジュールのインストール{#microsoft-iis-installing-the-dispatcher-module}
 
 Microsoft インターネットインフォメーションサービスには次のようなアーカイブファイルが必要です。
 
@@ -111,7 +111,7 @@ ZIP ファイルには以下のファイルが含まれます。
 | ファイル | 説明 |
 |--- |--- |
 | `disp_iis.dll` | Dispatcher のダイナミックリンクライブラリファイル。 |
-| `disp_iis.ini` | IIS 用の設定ファイル。このサンプルを要件に合わせて更新できます。**注意**:iniファイルは、dllと同じ名前ルートを持つ必要があります。 |
+| `disp_iis.ini` | IIS 用の設定ファイル。このサンプルを要件に合わせて更新できます。**注意**：ini ファイルの name-root は dll と同じである必要があります。 |
 | `dispatcher.any` | Dispatcher 用のサンプルの設定ファイル。 |
 | `author_dispatcher.any` | オーサーインスタンスで動作する Dispatcher 用のサンプルの設定ファイル。 |
 | README | インストール手順と最新の情報を含む Readme ファイル。**注意**：インストールを開始する前に、このファイルを確認してください。 |
@@ -119,19 +119,19 @@ ZIP ファイルには以下のファイルが含まれます。
 
 以下の手順を実行して、Dispatcher ファイルを適切な場所にコピーします。
 
-1. 例えば、Windowsエクスプローラーを使用して `<IIS_INSTALLDIR>/Scripts` ディレクトリを作成 `C:\inetpub\Scripts`します。
+1. Windows エクスプローラーを使用して、`<IIS_INSTALLDIR>/Scripts` ディレクトリを作成します。例：`C:\inetpub\Scripts`
 
-1. ディスパッチャーパッケージから次のファイルをこのスクリプトディレクトリに抽出します。
+1. 以下のファイルを Dispatcher パッケージからこの Scripts ディレクトリに抽出します。
 
    * `disp_iis.dll`
    * `disp_iis.ini`
    * Dispatcher が AEM オーサーインスタンスで動作しているか、パブリッシュインスタンスで動作しているかによって、以下のファイルのどちらか
-      * オーサーインスタンス: `author_dispatcher.any`
-      * パブリッシュインスタンス: `dispatcher.any`
+      * オーサーインスタンス：`author_dispatcher.any`
+      * パブリッシュインスタンス：`dispatcher.any`
 
 ## Microsoft IIS - Dispatcher の INI ファイルの設定 {#microsoft-iis-configure-the-dispatcher-ini-file}
 
-ファイルを `disp_iis.ini` 編集してディスパッチャーのインストールを設定します。`.ini` ファイルの基本形式は次のとおりです。
+`disp_iis.ini` ファイルを編集して Dispatcher のインストールを設定します。`.ini` ファイルの基本的なフォーマットを次に示します。
 
 ```xml
 [main]
@@ -146,11 +146,11 @@ replaceauthorization=0|1
 | パラメーター | 説明 |
 |--- |--- |
 | configpath | ローカルファイルシステム内の `dispatcher.any` の場所（絶対パス）。 |
-| logfile | `dispatcher.log` ファイルの場所。これが設定されていない場合、ログメッセージはWindowsイベントログに送信されます。 |
-| loglevel | イベントログへのメッセージ出力に使用するログレベルを定義します。次の値を指定できます。ログファイルのログレベル: <br/>0-エラーメッセージのみ。<br/>1 - エラーと警告が表示されます。<br/>2 - エラー、警告および情報メッセージ <br/>3-エラー、警告、情報およびデバッグメッセージ。<br/>**注意**:インストールおよびテスト中にログレベルを3に設定し、実稼働環境で実行する場合は0に設定することをお勧めします。 |
-| replaceauthorization | HTTP 要求内の承認ヘッダーの処理方法を指定します。有効な値は次のとおりです。<br/>0 - 認証ヘッダーは変更されません。<br/>1 - &quot;Basic&quot;以外の&quot;Authorization&quot;という名前のヘッダーを、同等の `Basic <IIS:LOGON\_USER>` ものに置き換えます。<br/> |
-| servervariables | サーバー変数の処理方法を定義します。<br/>0 - IISサーバー変数は、ディスパッチャーおよびAEMのいずれにも送信されません。<br/>1 - すべてのIISサーバー変数（ `LOGON\_USER, QUERY\_STRING, ...`など）は、ディスパッチャーに送信され、リクエストヘッダー（キャッシュされていない場合はAEMインスタンス）と共に一緒に送信されます。<br/>サーバー変数には、その `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 他多数があります。すべてのサーバー変数とその詳細の一覧は、IIS のドキュメントを参照してください。 |
-| enable_ chunked_ transfer | クライアント応答の一括転送を有効（1）または無効（0）にするかどうかを定義します。デフォルト値は 0 です。 |
+| logfile | `dispatcher.log` ファイルの場所。このプロパティが設定されていない場合、ログメッセージは Windows のイベントログに出力されます。 |
+| loglevel | イベントログへのメッセージ出力に使用するログレベルを定義します。次の値を指定できます。ログファイルのログレベル：<br/>0-エラーメッセージのみ。<br/>1 - エラーと警告。<br/>2 - エラー、警告および情報メッセージ<br/>3 - エラー、警告、情報およびデバッグメッセージ。<br/>**注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
+| replaceauthorization | HTTP 要求内の承認ヘッダーの処理方法を指定します。有効な値は次のとおりです。<br/>0 - 承認ヘッダーは変更されていません。<br/>1 -「Basic」を除く、「Authorization」という名前のすべてのヘッダーを、その「`Basic <IIS:LOGON\_USER>`」と同等のものに置き換えます。<br/> |
+| servervariables | サーバー変数の処理方法を定義します。<br/>0 - IIS サーバー変数は Dispatcher および AEM に送信されません。<br/>1 - すべての IIS サーバー変数（`LOGON\_USER, QUERY\_STRING, ...` など）は、要求ヘッダー付きで Dispatcher に（およびキャッシュされていない場合は AEM インスタンスにも）送信されます。<br/>サーバー変数は、`AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` など多数あります。すべてのサーバー変数とその詳細の一覧は、IIS のドキュメントを参照してください。 |
+| enable_chunked_transfer | クライアント応答の一括転送を有効（1）または向こう（0）にするかを定義します。デフォルト値は 0 です。 |
 
 設定例：
 
@@ -166,7 +166,7 @@ replaceauthorization=0
 
 Dispatcher ISAPI モジュールを統合するように IIS を設定します。IIS では、ワイルドカードアプリケーションマッピングを使用します。
 
-### 匿名アクセスの設定- IIS8.5および10 {#configuring-anonymous-access-iis-and}
+### 匿名アクセスの設定 - IIS 8.5 および 10 {#configuring-anonymous-access-iis-and}
 
 オーサーインスタンス上のデフォルトのフラッシュレプリケーションエージェントは、フラッシュ要求と一緒にセキュリティ資格情報を送信しないように設定されています。したがって、Dispatcher キャッシュとして使用する Web サイトでは、匿名アクセスを許可する必要があります。
 
@@ -176,7 +176,7 @@ Web サイトが認証メソッドを使用する場合は、それに応じて�
 1. 機能ビューモードを使用して、「IIS」セクションで「認証」をダブルクリックします。
 1. 匿名認証が有効でない場合は「匿名認証」を選択し、「操作」領域で「有効」をクリックします。
 
-### ディスパッチャーISAPIモジュールの統合- IIS8.5および10 {#integrating-the-dispatcher-isapi-module-iis-and}
+### Dispatcher ISAPI モジュールの統合 - IIS 8.5 および 10 {#integrating-the-dispatcher-isapi-module-iis-and}
 
 以下の手順を実行して、Dispatcher ISAPI モジュールを IIS に追加します。
 
@@ -186,73 +186,73 @@ Web サイトが認証メソッドを使用する場合は、それに応じて�
 1. ハンドラーマッピングページの操作パネルで、「ワイルドカードスクリプトマップの追加」をクリックし、以下のプロパティ値を追加して、「OK」をクリックします。
 
    * 要求パス：*
-   * 実行可能ファイル:例えば、disp_ iis. dllファイルの絶対パス `C:\inetpub\Scripts\disp_iis.dll`です。
-   * 名前:ハンドラーマッピングのわかりやすい名前など `Dispatcher`です。
+   * 実行可能ファイル：disp_iis.dll ファイルの絶対パス。例：`C:\inetpub\Scripts\disp_iis.dll`
+   * 名前：ハンドラーマッピングのわかりやすい名前。例：`Dispatcher`
 
 1. 表示されるダイアログボックスで、disp_iis.dll ライブラリを ISAPI および CGI の制限リストに追加して、「はい」をクリックします。
 
    IIS 7.0 および 7.5 の場合、設定は完了です。IIS 8.0 を設定する場合は、残りの手順を続行します。
 
 1. （IIS 8.0）ハンドラーマッピングのリストで、作成したハンドラーマッピングを選択し、「操作」領域で「編集」をクリックします。
-1. （IIS8.0）スクリプトマップを編集ダイアログボックスで、「要求の制限」ボタンをクリックします。
-1. （IIS8.0）まだキャッシュされていないファイルおよびフォルダーにハンドラーを確実に使用するには、&quot;Request Is Mapped To&quot;の選択を解除し、&quot;OK&quot;をクリックします。
+1. （IIS 8.0）スクリプトマップの編集ダイアログボックスで、「要求の制限」ボタンをクリックします。
+1. （IIS 8.0）ハンドラーをまだキャッシュされていないファイルおよびフォルダー用に使用するには、「要求のマップ先が次の場合のみハンドラーを呼び出す」を選択解除してから「OK」をクリックします。
 1. （IIS 8.0）スクリプトマップの編集ダイアログボックスで、「OK」をクリックします。
 
-### キャッシュへのアクセスの設定- IIS8.5および10 {#configuring-access-to-the-cache-iis-and}
+### キャッシュへのアクセス権の設定 - IIS 8.5 および 10 {#configuring-access-to-the-cache-iis-and}
 
-ディスパッチャーのキャッシュとして使用されているフォルダーへの書き込みアクセス権を持つデフォルトのApp Poolユーザーを指定します。
+デフォルトのアプリケーションプールユーザーに、Dispatcher キャッシュとして使用するフォルダーへの書き込みアクセス権を付与します。
 
-1. ディスパッチャーのキャッシュとして使用しているWebサイトのルートフォルダを右クリックし、「プロパティ」をクリック `C:\inetpub\wwwroot`します。
+1. Dispatcher キャッシュとして使用する Web サイトのルートフォルダー（`C:\inetpub\wwwroot` など）を右クリックして、「プロパティ」をクリックします。
 1. 「セキュリティ」タブで「編集」をクリックし、アクセス許可ダイアログボックスで「追加」をクリックします。ユーザーアカウントを選択するためのダイアログボックスが表示されます。「ロケーション」ボタンをクリックし、コンピューター名を選択して、「OK」をクリックします。
 
    次の手順が完了するまで、このダイアログボックスは開いたままにします。
 
-1. 」で、ディスパッチャーのキャッシュに使用するIISサイトを選択し、ウィンドウ右側の&quot;Advanced Settings&quot;をクリックします。
+1. IIS Manager で、Dispatcher キャッシュに使用する IIS サイトを選択し、ウィンドウの右側で「詳細設定」をクリックします。
 1. Application Pool プロパティの値を選択し、クリップボードにコピーします。
-1. 開いているダイアログボックスに戻ります。&quot;Enter The Object Names To Select&quot;ボックスに、クリップボードの内容を入力 `IIS AppPool\` して貼り付けます。値は次の例のようになります。
+1. 開いているダイアログボックスに戻ります。「選択するオブジェクト名を入力してください」ボックスに「`IIS AppPool\`」と入力してから、クリップボードの内容を貼り付けます。値は次の例のようになります。
 
    `IIS AppPool\DefaultAppPool`
 
 1. 「名前の確認」ボタンをクリックします。Windows によってユーザーアカウントが解決されたら、「OK」をクリックします。
-1. ディスパッチャーフォルダーの権限ダイアログボックスで、追加したアカウントを選択し、「フルコントロール」を除くアカウント **のすべての権限を有効にして、&quot;OK&quot;をクリック** します。&quot;OK&quot;をクリックしてフォルダのプロパティダイアログボックスを閉じます。
+1. Dispatcher フォルダーのアクセス許可ダイアログボックスで、追加したアカウントを選択し、アカウントに対する **フルコントロール以外** のすべてのアクセス許可を有効にして、「OK」をクリックします。「OK」をクリックして、フォルダーのプロパティダイアログボックスを閉じます。
 
-### JSON MIMEタイプの登録- IIS8.5および10 {#registering-the-json-mime-type-iis-and}
+### JSON の MIME の種類の登録 - IIS 8.5 および 10 {#registering-the-json-mime-type-iis-and}
 
 Dispatcher で JSON 呼び出しを許可する場合、以下の手順を実行して、JSON の MIME の種類を登録します。
 
 1. IIS Manager で、Web サイトを選択し、機能ビューを使用して、「MIME の種類」をダブルクリックします。
 1. JSON の拡張子がリストにない場合は、操作パネルで「追加」をクリックし、以下のプロパティ値を入力して、「OK」をクリックします。
 
-   * File Name Extension: `.json`
+   * ファイル名拡張子：`.json`
    * MIME Type: `application/json`
 
-### bin Hiddenセグメントの削除- IIS8.5および10 {#removing-the-bin-hidden-segment-iis-and}
+### 非表示セグメント bin の削除 - IIS 8.5 および 10 {#removing-the-bin-hidden-segment-iis-and}
 
 以下の手順を実行して、非表示セグメント `bin` を削除します。新しくない Web サイトには、この非表示セグメントが含まれていることがあります。
 
 1. IIS Manager で、Web サイトを選択し、機能ビューを使用して、「要求のフィルタリング」をダブルクリックします。
 1. `bin` セグメントを選択し、「削除」をクリックして、確認ダイアログボックスで「はい」をクリックします。
 
-### IISメッセージのファイルへのロギング- IIS8.5および10 {#logging-iis-messages-to-a-file-iis-and}
+### IIS メッセージのファイルへの記録 - IIS 8.5 および 10 {#logging-iis-messages-to-a-file-iis-and}
 
 以下の手順を実行して、Dispatcher のログメッセージを Windows のイベントログではなくログファイルに書き込みます。Dispatcher がログファイルを使用するように設定し、そのファイルへの書き込みアクセス権を IIS に付与する必要があります。
 
-1. Windowsエクスプローラーを使用して、IISインストールのlogsフォルダーの `dispatcher` 下にフォルダを作成します。一般的なインストールのためのこのフォルダーのパス `C:\inetpub\logs\dispatcher`です。
+1. Windows エクスプローラーを使用して、IIS インストール環境の logs フォルダーの下に `dispatcher` というフォルダーを作成します。一般的なインストール環境のこのフォルダーのパスは、`C:\inetpub\logs\dispatcher` です。
 
 1. dispatcher フォルダーを右クリックして、「プロパティ」をクリックします。
 1. 「セキュリティ」タブで「編集」をクリックし、アクセス許可ダイアログボックスで「追加」をクリックします。ユーザーアカウントを選択するためのダイアログボックスが表示されます。「ロケーション」ボタンをクリックし、コンピューター名を選択して、「OK」をクリックします。
 
    次の手順が完了するまで、このダイアログボックスは開いたままにします。
 
-1. 」で、ディスパッチャーのキャッシュに使用するIISサイトを選択し、ウィンドウ右側の&quot;Advanced Settings&quot;をクリックします。
+1. IIS Manager で、Dispatcher キャッシュに使用する IIS サイトを選択し、ウィンドウの右側で「詳細設定」をクリックします。
 1. Application Pool プロパティの値を選択し、クリップボードにコピーします。
-1. 開いているダイアログボックスに戻ります。&quot;Enter The Object Names To Select&quot;ボックスに、クリップボードの内容を入力 `IIS AppPool\` して貼り付けます。値は次の例のようになります。
+1. 開いているダイアログボックスに戻ります。「選択するオブジェクト名を入力してください」ボックスに「`IIS AppPool\`」と入力してから、クリップボードの内容を貼り付けます。値は次の例のようになります。
 
    `IIS AppPool\DefaultAppPool`
 
 1. 「名前の確認」ボタンをクリックします。Windows によってユーザーアカウントが解決されたら、「OK」をクリックします。
-1. ディスパッチャーフォルダーの権限ダイアログボックスで、追加したアカウントを選択し、「フルコントロール」を除くアカウント**のすべての権限を有効にして、&quot;OK&quot;をクリックします。&quot;OK&quot;をクリックしてフォルダのプロパティダイアログボックスを閉じます。
-1. テキストエディターを使用して `disp_iis.ini` ファイルを開きます。
+1. Dispatcher フォルダーのアクセス許可ダイアログボックスで、追加したアカウントを選択し、アカウントに対するフルコントロール以外のすべてのアクセス許可を有効にして、「OK」をクリックします。「OK」をクリックして、フォルダーのプロパティダイアログボックスを閉じます。
+1. テキストエディターを使用して、`disp_iis.ini` ファイルを開きます。
 1. 次の例のようなテキスト行を追加して、ログファイルの場所を設定し、ファイルを保存します。
 
    ```xml
@@ -261,10 +261,10 @@ Dispatcher で JSON 呼び出しを許可する場合、以下の手順を実行
 
 ### 次の手順 {#next-steps}
 
-ディスパッチャーの使用を開始する前に、以下を知っておく必要があります。
+Dispatcher の使用を始める前に、以下のことを理解しておく必要があります。
 
-* [ディスパッチャーの設定](dispatcher-configuration.md)
-* [ディスパッチャーと連携](page-invalidate.md) するためのCongure AEM。
+* [Dispatcher の設定](dispatcher-configuration.md)
+* Dispatcher と連携するように [AEM を設定](page-invalidate.md)する
 
 ## Apache Web サーバー {#apache-web-server}
 
@@ -272,31 +272,31 @@ Dispatcher で JSON 呼び出しを許可する場合、以下の手順を実行
 >
 >インストール手順は、**Windows** の場合と **Unix** の場合の両方について記載しています。手順は慎重に実行してください。
 
-### Apache Web サーバーのインストール {#installing-apache-web-server}
+### Apache Web サーバーのインストール{#installing-apache-web-server}
 
-Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org/)またはディストリビューション内のインストールマニュアルを参照してください。
+Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org)またはディストリビューション内のインストールマニュアルを参照してください。
 
 >[!CAUTION]
 >
->ソースファイルをコンパイルして Apache バイナリファイルを作成する場合は、必ず**動的モジュールサポート**を有効にしてください。有効にするには、**--enable-shared** オプションのいずれかを使用します。少なくとも `mod_so` モジュールを含めます。
+>ソースファイルをコンパイルして Apache バイナリファイルを作成する場合は、必ず **動的モジュールサポート** を有効にしてください。有効にするには、**--enable-shared** オプションのいずれかを使用します。少なくとも、`mod_so` モジュールを含めます。
 >
 >詳しくは、Apache Web サーバーのインストールマニュアルを参照してください。
 
-Apache HTTP Server [Security Tips](https://httpd.apache.org/docs/2.2/misc/security_tips.html) および [Security Reportsも参照](https://httpd.apache.org/security_report.html)してください。
+Apache HTTP サーバーの[セキュリティに関するヒント](https://httpd.apache.org/docs/2.2/misc/security_tips.html)および[セキュリティレポート](https://httpd.apache.org/security_report.html)も参照してください。
 
 ### Apache Web サーバー - Dispatcher モジュールの追加 {#apache-web-server-add-the-dispatcher-module}
 
 Dispatcher は次のいずれかの形式で提供されます。
 
-* **Windows**:Dynamic Link Library（DLL）
-* **Unix**:動的共有オブジェクト（DTO）
+* **Windows**：ダイナミックリンクライブラリ（DLL）
+* **Unix**：動的共有オブジェクト（DSO）
 
 インストールアーカイブファイルには、次のファイルが含まれています。選択した環境が Windows か Unix かによって異なります。
 
 | ファイル | 説明 |
 |--- |--- |
 | disp_apache&lt;x.y&gt;.dll | Windows：Dispatcher のダイナミックリンクライブラリファイル。 |
-| dispatcher- apache&lt; x. y&gt;-&lt; rel- nr&gt;. so | UNIX：Dispatcher の共有オブジェクトライブラリファイル。 |
+| dispatcher-apache&lt;x.y&gt;-&lt;rel-nr&gt;.so | UNIX：Dispatcher の共有オブジェクトライブラリファイル。 |
 | mod_dispatcher.so | UNIX：サンプルリンク。 |
 | http.conf.disp&lt;x&gt; | Apache サーバー用のサンプル設定ファイル。 |
 | dispatcher.any | Dispatcher 用のサンプルの設定ファイル。 |
@@ -305,19 +305,19 @@ Dispatcher は次のいずれかの形式で提供されます。
 
 次の手順を実行して、Apache Web サーバーに Dispatcher を追加します。
 
-1. ディスパッチャーファイルを適切なApacheモジュールディレクトリに配置します。
+1. Dispatcher ファイルを、適切な Apache モジュールディレクトリに配置します。
 
-   * **Windows**:配置 `disp_apache<x.y>.dll``<APACHE_ROOT>/modules`
-   * **Unix**:インストールに従って、 `<APACHE_ROOT>/libexec` また `<APACHE_ROOT>/modules`はディレクトリを検索します。\
-      このディレクトリ `dispatcher-apache<options>.so` にコピーします。\
-      長期保守を簡素化するには、ディスパッチャーという名前 `mod_dispatcher.so` のシンボリックリンクを作成することもできます。\
+   * **Windows**：`disp_apache<x.y>.dll` を、`<APACHE_ROOT>/modules` に配置します。
+   * **UNIX**：インストール環境に応じて、`<APACHE_ROOT>/libexec` ディレクトリまたは `<APACHE_ROOT>/modules` ディレクトリを指定します。\
+      `dispatcher-apache<options>.so` を、このディレクトリにコピーします。\
+      長期的な保守を簡単にするために、`mod_dispatcher.so` という名前で Dispatcher へのシンボリックリンクを作成することもできます。\
       `ln -s dispatcher-apache<x>-<os>-<rel-nr>.so mod_dispatcher.so`
 
-1. dispatcher. anyファイルをディレクトリに `<APACHE_ROOT>/conf` コピーします。
+1. dispatcher.any ファイルを `<APACHE_ROOT>/conf` ディレクトリにコピーします。
 
    **注意：** Dispatcher モジュールの DispatcherLog プロパティが適切に設定されていれば、このファイルを別の場所に配置できます（以下の Dispatcher 固有の設定エントリを参照してください）。
 
-### Apache Web サーバー - SELinux プロパティの設定 {#apache-web-server-configure-selinux-properties}
+### Apache Web サーバー - SELinux プロパティの設定{#apache-web-server-configure-selinux-properties}
 
 RedHat Linux Kernel 2.6 上で SELinux を有効にして Dispatcher を実行する場合、Dispatcher のログファイルに次のようなエラーメッセージが書き込まれることがあります。
 
@@ -329,7 +329,7 @@ RedHat Linux Kernel 2.6 上で SELinux を有効にして Dispatcher を実行�
 * ネットワーク接続をおこなう HTTPD スクリプトおよびモジュールを有効にする。
 * キャッシュされたファイルを保存するドキュメントルートの SELinux コンテキストを設定する。
 
-ターミナルウィンドウで次のコマンドを入力し、Apache Webサーバーにインストールしたディスパッチャーモジュールのパス `[path to the dispatcher.so file]` と、docrootが配置されているパス *`path to the docroot`* （ `/opt/cq/cache`例:）を入力します。
+`[path to the dispatcher.so file]` を Apache Web サーバーにインストールした Dispatcher モジュールへのパスで置き換え、*`path to the docroot`* をドキュメントルートがあるパス（例：`/opt/cq/cache`）に置き換えて、以下のコマンドをターミナルウィンドウに入力します。
 
 ```shell
 semanage fcontext -a -t httpd_modules_t [path to the dispatcher.so file]
@@ -340,22 +340,22 @@ semanage fcontext -a -t httpd_sys_content_t "[path to the docroot](/.*)?"
 
 ### Apache Web サーバー - Dispatcher 用の Apache Web サーバーの設定 {#apache-web-server-configure-apache-web-server-for-dispatcher}
 
-Apache Web サーバーは、`httpd.conf` を使用して設定する必要があります。ディスパッチャーインストールキットで、サンプルの設定ファイルがあり `httpd.conf.disp<x>`ます。
+Apache Web サーバーは、`httpd.conf` を使用して設定する必要があります。Dispatcher インストールキットには、`httpd.conf.disp<x>` というサンプルの設定ファイルがあります。
 
 以下の手順は必ずおこなってください。
 
-1. 先に移動 `<APACHE_ROOT>/conf`します。
-1. 編集 `httpd.conf`用に開く
-1. 次の設定エントリを追加する順序で追加する必要があります。
+1. `<APACHE_ROOT>/conf` に移動します。
+1. `httpd.conf` を開いて編集します。
+1. 次の設定エントリを説明の順に追加する必要があります。
 
-   * **起動** 時にモジュールを読み込むにはloadModuleを使用します。
-   * ディスパッチャー固有の設定エントリ（ **DispatcherConfig、DispatcherLog** 、 **DispatcherLogLevelなど**）。
-   * **ディスパッチャーをアクティブ化** するためのsetHandler。**LoadModule**.
-   * **modmMeusePathInfo** でmod_ mimeの **動作を設定**します。
+   * **LoadModule**：起動時のモジュールの読み込み。
+   * Dispatcher 固有の設定エントリ（**DispatcherConfig、DispatcherLog**、**DispatcherLogLevel** など）。
+   * **SetHandler**：Dispatcher.**LoadModule** をアクティベートします。
+   * **ModMimeUsePathInfo**：**mod_mime** の動作を設定します。
 
 1. （オプション）htdocs ディレクトリの所有者を変更することをお勧めします。
 
-   * Apache サーバーはルートとして起動しますが、子プロセスはデーモンとして起動します（セキュリティのため）。documentRoot（`<APACHE_ROOT>/htdocs`）は、ユーザーデーモンに属している必要があります。
+   * Apache サーバーはルートとして起動しますが、子プロセスはデーモンとして起動します（セキュリティのため）。ドキュメントルート（`<APACHE_ROOT>/htdocs`）は、ユーザーデーモンに属している必要があります。
 
       ```xml
       cd <APACHE_ROOT>  
@@ -366,22 +366,22 @@ Apache Web サーバーは、`httpd.conf` を使用して設定する必要が�
 
 次の表に、使用例を示します。実際のエントリは、使用する Apache Web サーバーによって異なります。
 
-|  |
+|  |  |
 |--- |--- |
 | Windows | `... LoadModule dispatcher_module modules\disp_apache.dll ...` |
-| Unix（シンボリックリンク） | `... LoadModule dispatcher_module libexec/mod_dispatcher.so ...` |
+| UNIX（シンボリックリンクと仮定） | `... LoadModule dispatcher_module libexec/mod_dispatcher.so ...` |
 
 >[!NOTE]
 >
 >各ステートメントの最初のパラメーターは、以上の例のとおりに記述する必要があります。
 >
->このコマンドについて詳しくは、設定ファイルの例とApache Web Serverのドキュメントを参照してください。
+>このコマンドについて詳しくは、付属のサンプルの設定ファイル、および Apache Web サーバーのドキュメントを参照してください。
 
-**ディスパッチャー固有の設定エントリ**
+**Dispatcher 固有の設定エントリ**
 
-ディスパッチャー固有の設定エントリは、LoadModuleエントリの後に配置されます。次の表に、UnixとWindowsの両方に適用できる設定例を示します。
+Dispatcher 固有の設定エントリは、LoadModule エントリの後に配置されます。次の表に設定例を示します。この例は Unix でも Windows でも使用できます。
 
-**Windows&amp; Unix**
+**Windows および Unix**
 
 ```
 ...
@@ -403,12 +403,12 @@ DispatcherKeepAliveTimeout 60
 | DispatcherConfig | Dispatcher 設定ファイルの場所と名前。<br/>このプロパティがメインサーバー設定にある場合、すべての仮想ホストがプロパティ値を継承します。ただし、仮想ホストに DispatcherConfig プロパティを含めて、メインサーバー設定をオーバーライドできます。 |
 | DispatcherLog | ログファイルの場所と名前。 |
 | DispatcherLogLevel | ログファイルのログレベル：<br/> 0 - エラー<br/> 1 - 警告<br/> 2 - 情報<br/> 3 - デバッグ<br/> **注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
-| DispatcherNoServerHeader | *このパラメーターは廃止されており、何も効果がありません。*<br/><br/> 使用するサーバーヘッダーを定義します。 <br/><ul><li>undefinedまたは0- HTTPサーバーヘッダーにAEMバージョンが含まれています。 </li><li> 1 - Apache サーバーヘッダーを使用します。</li></ul> |
-| DispatcherDeclineRoot | ルート&quot;/&quot;へのリクエストを拒否するかどうかを定義します。 <br/>**0** -/ <br/>**1へのリクエストを受け入れます** 。また、/はディスパッチャーによって処理されません。正しいマッピングにはmod_ aliasを使用します。 |
-| DispatcherUseProcessedURL | Dispatcher によるすべての詳細な処理に事前処理された URL を使用するかどうかを定義します。<br/> **0** - Web サーバーに渡された元の URL を使用します。<br/>**1** -ディスパッチャーは、Webサーバーに渡される元のURLの代わりに、ディスパッチャーの前にあるハンドラー（つまり `mod_rewrite`、）より前のハンドラーによって既に処理されているURLを使用します。 例えば、元の URL または処理された URL のどちらかが Dispatcher のフィルターと一致する場合などです。URL は、キャッシュファイル構造の基礎としても使用されます。mod_ rewriteについて詳しくは、Apache Webサイトのドキュメントを参照してください。（例: Apache2.2）mod_ rewriteを使用する場合、フラグ&quot;passthrough&quot;を使用することをお勧めします | PT&#39;（次のハンドラーに渡す）。rewriteエンジンは、内部リクエスト_ Rec構造のuriフィールドをファイル名フィールドの値に設定するように強制します。 |
-| DispatcherPassError | ErrorDocument 処理のエラーコードのサポート方法を定義します。<br/> **0** - Dispatcher はクライアントへのすべてのエラー応答をスプールします。<br/> **1** - Dispatcher はクライアントへのエラー応答（ステータスコードが 400 以上）をスプールしませんが、ステータスコードを Apache に渡します。Apache では、ErrorDocument 命令によってそのようなステータスコードを処理できます。<br/>**コード範囲** -応答がApacheに渡されるエラーコードの範囲を指定します。その他のエラーコードはクライアントに渡されます。例えば、次の設定では、エラー412の応答がクライアントに渡され、その他すべてのエラーがApacheに渡されます。DispatcherPasError400-411,413-417 |
-| DispatcherKeepAliveTimeout | キープアライブタイムアウトを秒単位で指定します。ディスパッチャーバージョン4.2.0から、デフォルトのキープアライブ値は60です。値 0 はキープアライブを無効にします。 |
-| DispatcherNoCanURL | このパラメーターをOnに設定すると、canonicalizedの代わりに生のURLがバックエンドに渡され、DispatcherUseProcessedURLの設定がオーバーライドされます。デフォルト値はOffです。<br/>**注意**:ディスパッチャー設定のフィルタールールは、生のURLではなく、常に匿名URLに対して評価されます。 |
+| DispatcherNoServerHeader | *このパラメーターは廃止されており、効果はありません。*<br/><br/>使用するサーバーヘッダーを定義します。<br/><ul><li>未定義または 0 - HTTP サーバーヘッダーには AEM バージョンが含まれます。 </li><li> 1 - Apache サーバーヘッダーを使用します。</li></ul> |
+| DispatcherDeclineRoot | ルート「/」への要求を拒否するかどうかを定義します。<br/>**0** - <br/>/**への要求を受け入れます。1** - Dispatcher は / への要求を処理しません。適切なマッピングをおこなうには mod_alias を使用してください。 |
+| DispatcherUseProcessedURL | Dispatcher によるすべての詳細な処理に事前処理された URL を使用するかどうかを定義します。<br/> **0** - Web サーバーに渡された元の URL を使用します。<br/>**1** - Dispatcher は、Web サーバーに渡された元の URL の代わりに、Dispatcher に先行するハンドラー（つまり、`mod_rewrite`）が既に処理した URL を使用します。例えば、元の URL または処理された URL のどちらかが Dispatcher のフィルターと一致する場合などです。URL は、キャッシュファイル構造の基礎としても使用されます。mod_rewrite については、Apache Web サイトのドキュメント（Apache 2.2 など）を参照してください。mod_rewrite を使用する場合は、&#39;passthrough | PT&#39;（pass through to next handler）フラグを使用して、内部の request_rec 構造の uri フィールドに filename フィールドの値を設定するよう、書き換えエンジンに指示することをお勧めします。 |
+| DispatcherPassError | ErrorDocument 処理のエラーコードのサポート方法を定義します。<br/> **0** - Dispatcher はクライアントへのすべてのエラー応答をスプールします。<br/> **1** - Dispatcher はクライアントへのエラー応答（ステータスコードが 400 以上）をスプールしませんが、ステータスコードを Apache に渡します。Apache では、ErrorDocument 命令によってそのようなステータスコードを処理できます。<br/> **コード範囲** - 応答を Apache に渡すエラーコードの範囲を指定します。その他のエラーコードはクライアントに渡されます。例えば、次の設定では、エラー 412 の応答をクライアントに渡し、その他すべてのエラーを Apache に渡します。DispatcherPassError 400-411,413-417 |
+| DispatcherKeepAliveTimeout | キープアライブタイムアウトを秒単位で指定します。Dispatcher バージョン 4.2.0 以降では、デフォルトのキープアライブ値は 60 です。値 0 はキープアライブを無効にします。 |
+| DispatcherNoCanonURL | このパラメーターを On に設定すると、正規化された URL ではなく 生の URL がバックエンドに渡され、DispatcherUseProcessedURLの設定がオーバーライドされます。デフォルト値は Off です。<br/>**注意**：Dispatcher 設定内のフィルタールールは、名前の URL ではなく、サニタイズされた URL に対して評価されます。 |
 
 
 
@@ -419,16 +419,16 @@ DispatcherKeepAliveTimeout 60
 
 >[!NOTE]
 >
->サーバーヘッダーのデフォルト設定は次のとおりです。 `  
+>サーバーヘッダーのデフォルトの設定は次のとおりです。`  
 ServerTokens Full``  
 DispatcherNoServerHeader 0`\
-AEMバージョン（統計的目的用）を示します。このような情報を無効にしたい場合は、次のように設定します。 `  
+この設定は、（統計目的で）AEM バージョンを示します。このような情報をヘッダー内で利用できないようにするには、次のように設定します。`  
 ServerTokens Prod`\
-詳しくは、ServerTokensディレクティブに関する [Apacheドキュメント（例えばApache2.2の場合](https://httpd.apache.org/docs/2.2/mod/core.html) ）を参照してください。
+詳しくは、[ServerTokens 命令に関する Apache ドキュメント（Apache 2.2 の場合など）](https://httpd.apache.org/docs/2.2/mod/core.html)を参照してください。
 
 **SetHandler**
 
-これらのエントリの後、ディスパッチャー **** の設定（ `<Directory>`， `<Location>`）のコンテキストにsetHandlerステートメントを追加して、受信要求を処理する必要があります。次の例では、Web サイト全体に対する要求を処理するように Dispatcher を設定します。
+前述のエントリの後に、**SetHandler** ステートメントを設定のコンテキスト（`<Directory>`、`<Location>`）に追加し、Dispatcher が受信する要求を処理できるようにする必要があります。次の例では、Web サイト全体に対する要求を処理するように Dispatcher を設定します。
 
 **Windows および UNIX**
 
@@ -483,25 +483,25 @@ AllowOverride None
 
 >[!NOTE]
 **SetHandler** ステートメントのパラメーターは、モジュールで定義されているハンドラーの名前なので、以上の例のとおりに記述する必要があります。**
-このコマンドについて詳しくは、設定ファイルの例とApache Web Serverのドキュメントを参照してください。
+このコマンドについて詳しくは、付属のサンプルの設定ファイル、および Apache Web サーバーのドキュメントを参照してください。
 
-**modmMeusePathInfo**
+**ModMimeUsePathInfo**
 
-**setHandler** ステートメントの後に **、modmMeusePathInfo** 定義も追加する必要があります。
+**SetHandler** ステートメントの後に、**ModMimeUsePathInfo** の定義も追加する必要があります。
 
 >[!NOTE]
-`ModMimeUsePathInfo` このパラメーターは、ディスパッチャーバージョン4.0.9以降を使用している場合にのみ使用し、設定する必要があります。
+`ModMimeUsePathInfo` パラメーターは、Dispatcher バージョン 4.0.9 以上を使用している場合にのみ使用および設定してください。
 （Dispatcher バージョン 4.0.9 は 2011 年にリリースされました。それ以前のバージョンを使用している場合は、最新の Dispatcher バージョンにアップグレードすることをお勧めします。）
 
 すべての Apache 設定で、次のように **ModMimeUsePathInfo** パラメーターを `On` にする必要があります。
 
 `ModMimeUsePathInfo On`
 
-mod_ mimeモジュール（例えば [、Apacheモジュールmod_ mime](https://httpd.apache.org/docs/2.2/mod/mod_mime.html)）を使用して、HTTP応答用に選択したコンテンツにコンテンツメタデータを割り当てます。デフォルト設定では、mod_ mimeがコンテンツタイプを決定するときに、ファイルまたはディレクトリにマップされるURLの一部のみが考慮されます。
+mod_mime モジュール（例は [Apache Module mod_mime](https://httpd.apache.org/docs/2.2/mod/mod_mime.html) を参照）は、コンテンツメタデータを HTTP 応答用に選択されたコンテンツに割り当てる際に使用するものです。デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
 
-この `On``ModMimeUsePathInfo` 場合、パラメーターは `mod_mime`*、完全* なURLに基づいてコンテンツタイプを決定することを指定します。つまり、仮想リソースは拡張子に基づいてメタデータを適用します。
+`ModMimeUsePathInfo`パラメーターを `On` にすると、`mod_mime` によるコンテンツタイプの指定が*完全な* URL に基づいて行われます。つまり、仮想リソースの拡張子に基づいてメタ情報が適用されます。
 
-次の例で **は、modmitMeusepathInfo**をアクティブにします。
+以下に **ModMimeUsePathInfo** のアクティベートの例を示します。
 
 **Windows および UNIX**
 
@@ -519,9 +519,9 @@ AllowOverride None
 ...
 ```
 
-### HTTPSのサポートを有効にする（UnixおよびLinux） {#enable-support-for-https-unix-and-linux}
+### HTTPS のサポートの有効化（UNIX および Linux） {#enable-support-for-https-unix-and-linux}
 
-Dispatcher は、OpenSSL を使用して HTTP 経由でのセキュアな通信を実装します。Dispatcher バージョン **4.2.0** からは、OpenSSL 1.0.0 および OpenSSL 1.0.1 がサポートされています。デフォルトでは、Dispatcher は OpenSSL 1.0.0 を使用します。OpenSSL1.0.1を使用するには、次の手順を使用して、ディスパッチャーがインストールされているOpenSSLライブラリを使用するようにシンボリックリンクを作成します。
+Dispatcher は、OpenSSL を使用して HTTP 経由でのセキュアな通信を実装します。Dispatcher バージョン **4.2.0** からは、OpenSSL 1.0.0 および OpenSSL 1.0.1 がサポートされています。デフォルトでは、Dispatcher は OpenSSL 1.0.0 を使用します。OpenSSL 1.0.1 を使用するには、以下の手順を実行して、Dispatcher がインストールされている OpenSSL ライブラリを使用できるように、シンボリックリンクを作成します。
 
 1. ターミナルを開き、現在のディレクトリを OpenSSL ライブラリがインストールされているディレクトリに変更します。例を以下に示します。
 
@@ -537,34 +537,34 @@ Dispatcher は、OpenSSL を使用して HTTP 経由でのセキュアな通信�
    ```
 
 >[!NOTE]
-カスタマイズバージョンのApacheを使用している場合は、同じバージョン [のOpenSSLを使用してApacheおよびディスパッチャーがコンパイルされていることを確認](https://www.openssl.org/source/)してください。
+カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) を使用してコンパイルされていることを確認してください。
 
 ### 次の手順 {#next-steps-1}
 
 Dispatcher の使用を始める前に、次の作業を実行する必要があります。
 
-* [ディスパッチャーの設定](dispatcher-configuration.md)
-* [ディスパッチャーと連携](page-invalidate.md) するためのCongure AEM。
+* [Dispatcher の設定](dispatcher-configuration.md)
+* Dispatcher と連携するように [AEM を設定](page-invalidate.md)する
 
 ## Sun Java System Web Server／iPlanet {#sun-java-system-web-server-iplanet}
 
 >[!NOTE]
-Windows環境とUNIX環境の両方について説明します。
-実行するタイミングを選択してください。
+Windows の場合と Unix の場合の両方での手順を記載しています。
+実行する手順を選択する際に注意してください。
 
-### Sun Java System Web Server／iPlanet - Web サーバーのインストール {#sun-java-system-web-server-iplanet-installing-your-web-server}
+### Sun Java System Web Server／iPlanet - Web サーバーのインストール{#sun-java-system-web-server-iplanet-installing-your-web-server}
 
 次の Web サーバーのインストール方法について詳しくは、各サーバーのドキュメントを参照してください。
 
 * Sun Java System Web Server
 * iPlanet Web Server
 
-### Sun Java System Web Server／iPlanet - Dispatcher モジュールの追加 {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
+### Sun Java System Web Server／iPlanet - Dispatcher モジュールの追加{#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 Dispatcher は次のいずれかの形式で提供されます。
 
-* **Windows**:Dynamic Link Library（DLL）
-* **Unix**:動的共有オブジェクト（DTO）
+* **Windows**：ダイナミックリンクライブラリ（DLL）
+* **Unix**：動的共有オブジェクト（DSO）
 
 インストールアーカイブファイルには、次のファイルが含まれています。選択した環境が Windows か Unix かによって異なります。
 
@@ -578,36 +578,36 @@ Dispatcher は次のいずれかの形式で提供されます。
 | README | インストール手順と最新の情報を含む Readme ファイル。注意：インストールを開始する前に、このファイルを確認してください。 |
 | CHANGES | 現在および過去のリリースで修正された問題を記載した Changes ファイル。 |
 
-以下の手順を使用して、ディスパッチャーをWebサーバーに追加します。
+次の手順を実行して、Web サーバーに Dispatcher を追加します。
 
-1. ディスパッチャーファイルをWebサーバーの `plugin` ディレクトリに配置します。
+1. 次の Dispatcher ファイルを、Web サーバーの `plugin` ディレクトリに配置します。
 
 ### Sun Java System Web Server／iPlanet - Dispatcher 用の設定 {#sun-java-system-web-server-iplanet-configure-for-the-dispatcher}
 
-Webサーバーを設定する必要 `obj.conf`があります。ディスパッチャーインストールキットで、サンプルの設定ファイルがあり `obj.conf.disp`ます。
+Web サーバーは、`obj.conf` を使用して設定する必要があります。Dispatcher インストールキットには、`obj.conf.disp` というサンプルの設定ファイルがあります。
 
-1. 先に移動 `<WEBSERVER_ROOT>/config`します。
-1. 編集 `obj.conf`用に開く
-1. 開始する行をコピーします。\
+1. `<WEBSERVER_ROOT>/config` に移動します。
+1. `obj.conf` を開いて編集します。
+1. 次で始まる行をコピーします。\
    `Service fn="dispService"`\
-   `obj.conf.disp``obj.conf`をクリックします。
+   `obj.conf.disp` から `obj.conf` の初期化セクションにコピーします。
 
 1. 変更内容を保存します。
-1. 編集 `magnus.conf` 用に開く
-1. 開始する2行をコピーします。\
+1. `magnus.conf` を開いて編集します。
+1. 次のように始まる 2 つの行をコピーします。\
    `Init funcs="dispService, dispInit"`\
-   、および \
+   および\
    `Init fn="dispInit"`\
-   `obj.conf.disp``magnus.conf`をクリックします。
+   `obj.conf.disp` から `magnus.conf` の初期化セクションにコピーします。
 
 1. 変更内容を保存します。
 
 >[!NOTE]
-以下の設定は、すべて1行で、それぞれ `$(SERVER_ROOT)` の値に置き換える `$(PRODUCT_SUBDIR)` 必要があります。
+以下の設定は 1 行で記述し、`$(SERVER_ROOT)` および `$(PRODUCT_SUBDIR)` は対応する値に置き換える必要があります。
 
 **Init**
 
-次の表に、使用できる例を示します。正確なエントリは、特定のWebサーバーに従います。
+次の表に、使用例を示します。実際のエントリは、使用する Web サーバーによって異なります。
 
 **Windows および UNIX**
 
@@ -625,10 +625,10 @@ keepalivetimeout="60"
 |--- |--- |
 | config | 設定ファイル `dispatcher.any.` の場所と名前。 |
 | logfile | ログファイルの場所と名前。 |
-| loglevel | ログファイルにメッセージを書き込むときのログレベル: <br/>**0** Errors <br/>**1** Warnings <br/>**2** Infos <br/>**3** Debug <br/>**注意:** インストールおよびテスト中にログレベルを3に設定し、実稼働環境で実行する場合は0に設定することをお勧めします。 |
-| keepalivetimeout | キープアライブタイムアウトを秒単位で指定します。ディスパッチャーバージョン4.2.0から、デフォルトのキープアライブ値は60です。値 0 はキープアライブを無効にします。 |
+| loglevel | ログファイルにメッセージを書き込む際のログレベル：<br/>**0** - エラー<br/>**1** - 警告<br/>**2** - 情報 **<br/>3** - デバッグ<br/>**注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
+| keepalivetimeout | キープアライブタイムアウトを秒単位で指定します。Dispatcher バージョン 4.2.0 以降では、デフォルトのキープアライブ値は 60 です。値 0 はキープアライブを無効にします。 |
 
-必要に応じて、ディスパッチャーをオブジェクトのサービスとして定義できます。Webサイト全体のディスパッチャーを設定するには、デフォルトのオブジェクトを変更します。
+要件に応じて、Dispatcher をオブジェクトのサービスとして定義できます。Web サイト全体で Dispacher によってデフォルトのオブジェクトを変更できるよう設定するには、次のように指定します。
 
 
 **Windows**
@@ -655,5 +655,5 @@ Service fn="dispService" method="(GET|HEAD|POST)" type="\*/\*"
 
 Dispatcher の使用を始める前に、次の作業を実行する必要があります。
 
-* [ディスパッチャーの設定](dispatcher-configuration.md)
-* [ディスパッチャーと連携](page-invalidate.md) するためのCongure AEM。
+* [Dispatcher の設定](dispatcher-configuration.md)
+* Dispatcher と連携するように [AEM を設定](page-invalidate.md)する
