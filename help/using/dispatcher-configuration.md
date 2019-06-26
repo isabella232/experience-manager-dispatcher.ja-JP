@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 8e8638027c79015a4151539918a17069fb16873a
+source-git-commit: 4f1e3740c7eb91023b819ffed0bb5d0b432002be
 
 ---
 
@@ -1710,7 +1710,7 @@ Web サーバー設定で、次の属性を設定できます。
 * Dispatcher ログファイルの拡張子にタイムスタンプ（logs/dispatcher.log%Y%m%d）が付きます。
 * 週単位（60 x 60 x 24 x 7 = 604800 秒）で交替されます。
 
-ログの交替やパイプ経由のログについては、Apache Web サーバーのドキュメント（[Apache 2.2](https://httpd.apache.org/docs/2.2/logs.html) など）を参照してください。
+ログの交替やパイプ経由のログについては、Apache Web サーバーのドキュメント（[Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html) など）を参照してください。
 
 >[!NOTE]
 >
