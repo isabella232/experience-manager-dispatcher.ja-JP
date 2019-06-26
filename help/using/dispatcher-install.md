@@ -9,8 +9,8 @@ converted: 'true'
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
-translation-type: ht
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+translation-type: tm+mt
+source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
 
 ---
 
@@ -42,7 +42,6 @@ Comment Type: draft
 | Web サーバー | インストールキット |
 |--- |--- |
 | Apache 2.4 | dispatcher-apache **2.4**-&lt;other parameters&gt; |
-| Apache 2.2 | dispatcher-apache **2.2**-&lt;other parameters&gt; |
 | Microsoft Internet Information Server 7.5、8、8.5 | dispatcher-**iis**-&lt;other parameters&gt; |
 | Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;other parameters&gt; |
 
@@ -100,7 +99,7 @@ IIS バージョン 8.5 および 10 には、以下の IIS コンポーネン�
 
 Web Server（IIS）役割も追加する必要があります。役割とコンポーネントを追加するには、Server Manager を使用します。
 
-## Microsoft IIS - Dispatcher モジュールのインストール{#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS - Dispatcher モジュールのインストール {#microsoft-iis-installing-the-dispatcher-module}
 
 Microsoft インターネットインフォメーションサービスには次のようなアーカイブファイルが必要です。
 
@@ -272,9 +271,9 @@ Dispatcher の使用を始める前に、以下のことを理解しておく必
 >
 >インストール手順は、**Windows** の場合と **Unix** の場合の両方について記載しています。手順は慎重に実行してください。
 
-### Apache Web サーバーのインストール{#installing-apache-web-server}
+### Apache Web サーバーのインストール {#installing-apache-web-server}
 
-Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org)またはディストリビューション内のインストールマニュアルを参照してください。
+Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org/)またはディストリビューション内のインストールマニュアルを参照してください。
 
 >[!CAUTION]
 >
@@ -282,7 +281,7 @@ Apache Web サーバーのインストールについては、[オンライン](
 >
 >詳しくは、Apache Web サーバーのインストールマニュアルを参照してください。
 
-Apache HTTP サーバーの[セキュリティに関するヒント](https://httpd.apache.org/docs/2.2/misc/security_tips.html)および[セキュリティレポート](https://httpd.apache.org/security_report.html)も参照してください。
+Also see the Apache HTTP Server [Security Tips](https://httpd.apache.org/docs/2.4/misc/security_tips.html) and [Security Reports](https://httpd.apache.org/security_report.html).
 
 ### Apache Web サーバー - Dispatcher モジュールの追加 {#apache-web-server-add-the-dispatcher-module}
 
@@ -317,7 +316,7 @@ Dispatcher は次のいずれかの形式で提供されます。
 
    **注意：** Dispatcher モジュールの DispatcherLog プロパティが適切に設定されていれば、このファイルを別の場所に配置できます（以下の Dispatcher 固有の設定エントリを参照してください）。
 
-### Apache Web サーバー - SELinux プロパティの設定{#apache-web-server-configure-selinux-properties}
+### Apache Web サーバー - SELinux プロパティの設定 {#apache-web-server-configure-selinux-properties}
 
 RedHat Linux Kernel 2.6 上で SELinux を有効にして Dispatcher を実行する場合、Dispatcher のログファイルに次のようなエラーメッセージが書き込まれることがあります。
 
@@ -405,7 +404,7 @@ DispatcherKeepAliveTimeout 60
 | DispatcherLogLevel | ログファイルのログレベル：<br/> 0 - エラー<br/> 1 - 警告<br/> 2 - 情報<br/> 3 - デバッグ<br/> **注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
 | DispatcherNoServerHeader | *このパラメーターは廃止されており、効果はありません。*<br/><br/>使用するサーバーヘッダーを定義します。<br/><ul><li>未定義または 0 - HTTP サーバーヘッダーには AEM バージョンが含まれます。 </li><li> 1 - Apache サーバーヘッダーを使用します。</li></ul> |
 | DispatcherDeclineRoot | ルート「/」への要求を拒否するかどうかを定義します。<br/>**0** - <br/>/**への要求を受け入れます。1** - Dispatcher は / への要求を処理しません。適切なマッピングをおこなうには mod_alias を使用してください。 |
-| DispatcherUseProcessedURL | Dispatcher によるすべての詳細な処理に事前処理された URL を使用するかどうかを定義します。<br/> **0** - Web サーバーに渡された元の URL を使用します。<br/>**1** - Dispatcher は、Web サーバーに渡された元の URL の代わりに、Dispatcher に先行するハンドラー（つまり、`mod_rewrite`）が既に処理した URL を使用します。例えば、元の URL または処理された URL のどちらかが Dispatcher のフィルターと一致する場合などです。URL は、キャッシュファイル構造の基礎としても使用されます。mod_rewrite については、Apache Web サイトのドキュメント（Apache 2.2 など）を参照してください。mod_rewrite を使用する場合は、&#39;passthrough | PT&#39;（pass through to next handler）フラグを使用して、内部の request_rec 構造の uri フィールドに filename フィールドの値を設定するよう、書き換えエンジンに指示することをお勧めします。 |
+| DispatcherUseProcessedURL | Dispatcher によるすべての詳細な処理に事前処理された URL を使用するかどうかを定義します。<br/> **0** - Web サーバーに渡された元の URL を使用します。<br/>**1** - Dispatcher は、Web サーバーに渡された元の URL の代わりに、Dispatcher に先行するハンドラー（つまり、`mod_rewrite`）が既に処理した URL を使用します。例えば、元の URL または処理された URL のどちらかが Dispatcher のフィルターと一致する場合などです。URL は、キャッシュファイル構造の基礎としても使用されます。mod_rewrite については、Apache Web サイトのドキュメント（Apache 2.4 など）を参照してください。mod_rewrite を使用する場合は、&#39;passthrough | PT&#39;（pass through to next handler）フラグを使用して、内部の request_rec 構造の uri フィールドに filename フィールドの値を設定するよう、書き換えエンジンに指示することをお勧めします。 |
 | DispatcherPassError | ErrorDocument 処理のエラーコードのサポート方法を定義します。<br/> **0** - Dispatcher はクライアントへのすべてのエラー応答をスプールします。<br/> **1** - Dispatcher はクライアントへのエラー応答（ステータスコードが 400 以上）をスプールしませんが、ステータスコードを Apache に渡します。Apache では、ErrorDocument 命令によってそのようなステータスコードを処理できます。<br/> **コード範囲** - 応答を Apache に渡すエラーコードの範囲を指定します。その他のエラーコードはクライアントに渡されます。例えば、次の設定では、エラー 412 の応答をクライアントに渡し、その他すべてのエラーを Apache に渡します。DispatcherPassError 400-411,413-417 |
 | DispatcherKeepAliveTimeout | キープアライブタイムアウトを秒単位で指定します。Dispatcher バージョン 4.2.0 以降では、デフォルトのキープアライブ値は 60 です。値 0 はキープアライブを無効にします。 |
 | DispatcherNoCanonURL | このパラメーターを On に設定すると、正規化された URL ではなく 生の URL がバックエンドに渡され、DispatcherUseProcessedURLの設定がオーバーライドされます。デフォルト値は Off です。<br/>**注意**：Dispatcher 設定内のフィルタールールは、名前の URL ではなく、サニタイズされた URL に対して評価されます。 |
@@ -424,7 +423,7 @@ ServerTokens Full``
 DispatcherNoServerHeader 0`\
 この設定は、（統計目的で）AEM バージョンを示します。このような情報をヘッダー内で利用できないようにするには、次のように設定します。`  
 ServerTokens Prod`\
-詳しくは、[ServerTokens 命令に関する Apache ドキュメント（Apache 2.2 の場合など）](https://httpd.apache.org/docs/2.2/mod/core.html)を参照してください。
+See the [Apache Documentation about ServerTokens Directive (for example, for Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) for more information.
 
 **SetHandler**
 
@@ -497,7 +496,7 @@ AllowOverride None
 
 `ModMimeUsePathInfo On`
 
-mod_mime モジュール（例は [Apache Module mod_mime](https://httpd.apache.org/docs/2.2/mod/mod_mime.html) を参照）は、コンテンツメタデータを HTTP 応答用に選択されたコンテンツに割り当てる際に使用するものです。デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
+The mod_mime module (see for example, [Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)) is used to assign content metadata to the content selected for an HTTP response. デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
 
 `ModMimeUsePathInfo`パラメーターを `On` にすると、`mod_mime` によるコンテンツタイプの指定が*完全な* URL に基づいて行われます。つまり、仮想リソースの拡張子に基づいてメタ情報が適用されます。
 
@@ -537,7 +536,7 @@ Dispatcher は、OpenSSL を使用して HTTP 経由でのセキュアな通信�
    ```
 
 >[!NOTE]
-カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) を使用してコンパイルされていることを確認してください。
+カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) / を使用してコンパイルされていることを確認してください。
 
 ### 次の手順 {#next-steps-1}
 
@@ -552,14 +551,14 @@ Dispatcher の使用を始める前に、次の作業を実行する必要があ
 Windows の場合と Unix の場合の両方での手順を記載しています。
 実行する手順を選択する際に注意してください。
 
-### Sun Java System Web Server／iPlanet - Web サーバーのインストール{#sun-java-system-web-server-iplanet-installing-your-web-server}
+### Sun Java System Web Server／iPlanet - Web サーバーのインストール {#sun-java-system-web-server-iplanet-installing-your-web-server}
 
 次の Web サーバーのインストール方法について詳しくは、各サーバーのドキュメントを参照してください。
 
 * Sun Java System Web Server
 * iPlanet Web Server
 
-### Sun Java System Web Server／iPlanet - Dispatcher モジュールの追加{#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
+### Sun Java System Web Server／iPlanet - Dispatcher モジュールの追加 {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 Dispatcher は次のいずれかの形式で提供されます。
 
