@@ -12,8 +12,8 @@ discoiquuid: 771cfd85-6c26-4ff2-a3fe-dff8d8f7920b
 index: y
 internal: n
 snippet: y
-translation-type: ht
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+translation-type: tm+mt
+source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
 
 ---
 
@@ -35,9 +35,9 @@ Dispatcher が SSL 接続を使用して AEM または CQ レンダーインス�
 
 Dispatcher を設定する前に、SSL を使用するように AEM または CQ を設定してください。
 
-* AEM 6.2：[HTTP over SSL の有効化](https://helpx.adobe.com/jp/experience-manager/6-2/sites/deploying/using/config-ssl.html)
-* AEM 6.1：[HTTP over SSL の有効化](https://docs.adobe.com/content/docs/ja/aem/6-1/deploy/configuring/config-ssl.html)
-* 旧バージョンの AEM：[このページl](https://helpx.adobe.com/jp/experience-manager/aem-previous-versions.html)を参照してください。
+* AEM 6.2: [Enabling HTTP Over SSL](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
+* AEM 6.1: [Enabling HTTP Over SSL](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
+* Older AEM versions: see [this page](https://helpx.adobe.com/experience-manager/aem-previous-versions.html).
 
 ### SSL に関連する要求ヘッダー {#ssl-related-request-headers}
 
@@ -48,7 +48,7 @@ HTTPS 要求を受信すると、Dispatcher は AEM または CQ に送信する
 * `X-Forwarded-SSL-Keysize`
 * `X-Forwarded-SSL-Session-ID`
 
-Apache-2.2 と `mod_ssl` を使用した要求には、次の例のようなヘッダーが含まれます。
+Apache-2.4 と `mod_ssl` を使用した要求には、次の例のようなヘッダーが含まれます。
 
 ```shell
 X-Forwarded-SSL: on
@@ -136,11 +136,11 @@ SSL 経由で AEM または CQ と接続するように Dispatcher を設定す�
 1. [レンダーの証明書を格納したキーストアを作成](dispatcher-ssl.md#main-pars-title-6)し、そのキーストアを使用するようにレンダーの HTTP サービスを設定します。
 1. 相互 SSL 用に [Dispatcher の Web サーバーモジュールを設定](dispatcher-ssl.md#main-pars-title-4)します。
 
-### CA 署名済み証明書の作成または取得{#creating-or-obtaining-ca-signed-certificates}
+### CA 署名済み証明書の作成または取得 {#creating-or-obtaining-ca-signed-certificates}
 
 パブリッシュインスタンスおよび Dispatcher を認証する、CA 署名済み証明書を作成または取得します。
 
-#### CA の作成{#creating-your-ca}
+#### CA の作成 {#creating-your-ca}
 
 CA の機能を果たしている場合は、[OpenSSL](https://www.openssl.org/) を使用して、サーバーとクライアントの証明書に署名する証明機関を作成します（OpenSSL ライブラリがインストールされている必要があります）。サードパーティ CA を利用する場合は、この手順を実行しないでください。
 
@@ -155,7 +155,7 @@ CA の機能を果たしている場合は、[OpenSSL](https://www.openssl.org/)
    >
    >openssl.cnf ファイルのいくつかのプロパティによって、CA.sh スクリプトの動作が制御されます。CA を作成する前に、必要に応じてこのファイルを変更してください。
 
-#### 証明書の作成{#creating-the-certificates}
+#### 証明書の作成 {#creating-the-certificates}
 
 OpenSSL を使用して証明書要求を作成し、サードパーティ CA に送信するか、自身の CA によって署名します。
 
@@ -182,11 +182,11 @@ OpenSSL を使用して証明書要求を作成し、サードパーティ CA �
 1. 手順 2 および 3 を繰り返して、Dispatcher モジュール用の新しい証明書と公開鍵を作成します。必ず Dispatcher インスタンスに固有の Common Name を使用してください。
 1. newcert.pem という名前を dispcert.pem に、newkey.pem という名前を dispkey.pem に変更します。
 
-### レンダーコンピューター上の SSL の設定{#configuring-ssl-on-the-render-computer}
+### レンダーコンピューター上の SSL の設定 {#configuring-ssl-on-the-render-computer}
 
 rendercert.pem ファイルと renderkey.pem ファイルを使用して、レンダーインスタンス上の SSL を設定します。
 
-#### レンダー証明書の JKS 形式への変換{#converting-the-render-certificate-to-jks-format}
+#### レンダー証明書の JKS 形式への変換 {#converting-the-render-certificate-to-jks-format}
 
 以下のコマンドを使用して、PEM ファイルであるレンダー証明書を PKCS#12 ファイルに変換します。レンダー証明書に署名した CA の証明書も含めます。
 
@@ -209,7 +209,7 @@ rendercert.pem ファイルと renderkey.pem ファイルを使用して、レ�
    keytool -changealias -alias 1 -destalias jettyhttp -keystore render.keystore
    ```
 
-#### CA 証明書のレンダーのトラストストアへの追加{#adding-the-ca-cert-to-the-render-s-truststore}
+#### CA 証明書のレンダーのトラストストアへの追加 {#adding-the-ca-cert-to-the-render-s-truststore}
 
 CA の機能を果たしている場合は、CA 証明書をキーストアに読み込みます。次に、キーストアを信頼するように、レンダーインスタンスを実行している JVM を設定します。
 
@@ -247,19 +247,19 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
    CQ_JVM_OPTS='-server -Xmx2048m -XX:MaxPermSize=512M -Djavax.net.ssl.trustStore=/usr/lib/cq6.0/publish/ssl/cacerts.keystore'
    ```
 
-#### レンダーインスタンスの設定{#configuring-the-render-instance}
+#### レンダーインスタンスの設定 {#configuring-the-render-instance}
 
 *「パブリッシュインスタンスでの SSL の有効化」*の説明に従ってレンダー証明書を使用し、SSL を使用するようにレンダーインスタンスの HTTP サービスを設定します。
 
-* AEM 6.2：[HTTP over SSL の有効化](https://helpx.adobe.com/jp/experience-manager/6-2/sites/deploying/using/config-ssl.html)
-* AEM 6.1：[HTTP over SSL の有効化](https://docs.adobe.com/content/docs/ja/aem/6-1/deploy/configuring/config-ssl.html)
-* 旧バージョンの AEM：[このページ](https://helpx.adobe.com/jp/experience-manager/aem-previous-versions.html)を参照してください。
+* AEM 6.2: [Enabling HTTP Over SSL](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
+* AEM 6.1: [Enabling HTTP Over SSL](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
+* Older AEM versions: see [this page.](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)
 
 ### Dispatcher モジュール用の SSL の設定 {#configuring-ssl-for-the-dispatcher-module}
 
 相互 SSL を使用するように Dispatcher を設定するには、Dispatcher 証明書を準備して、Web サーバーモジュールを設定します。
 
-### Dispatcher の統合証明書の作成{#creating-a-unified-dispatcher-certificate}
+### Dispatcher の統合証明書の作成 {#creating-a-unified-dispatcher-certificate}
 
 Dispatcher 証明書と暗号化されていない秘密鍵を組み合わせて、単一の PEM ファイルにします。テキストエディターまたは `cat` コマンドを使用して、以下のサンプルのようなファイルを作成します。
 
