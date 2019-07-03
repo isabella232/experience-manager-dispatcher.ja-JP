@@ -7,10 +7,10 @@ uuid: 253ef0f7-2491-4cec-ab22-97439df29fd6
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: '1193211344162'
 topic-tags: dispatcher
-content-type: reference
+content-type: リファレンス
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 4f1e3740c7eb91023b819ffed0bb5d0b432002be
+source-git-commit: a997d2296e80d182232677af06a2f4ab5a14bfd5
 
 ---
 
@@ -328,7 +328,7 @@ Comment Type: draft
 ```
 
 * `scheme`：（オプション） `https://` または `https://.`
-* `host`：ホストコンピューターの名前または IP アドレスと、必要な場合はポート番号。(See [https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23))
+* `host`：ホストコンピューターの名前または IP アドレスと、必要な場合はポート番号(See [https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23))
 * `uri`：（オプション）リソースへのパス。
 
 次の設定例では、myCompany の .com ドメインと .ch ドメイン、さらに mySubDivision のすべてのドメインに対する要求を処理します。
@@ -413,7 +413,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 >
 >この機能を有効にするには、`/cache` セクションで `/allowAuthorized` を **必ず** `"0"` に設定してください。
 
-レンダーファームにアクセスするためのセキュアセッションを作成して、このファーム内のページにユーザーがアクセスする際にログインが必要になるようにします。ログイン後、ユーザーはファーム内のすべてのページにアクセスできます。閉じられたユーザーグループ（CUG）でのこの機能の使用については、[閉じられたユーザーグループの作成](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed)を参照してください。
+レンダーファームにアクセスするためのセキュアセッションを作成して、このファーム内のページにユーザーがアクセスする際にログインが必要になるようにします。ログインすると、ユーザーはファームのページにアクセスできます。閉じられたユーザーグループ（CUG）でのこの機能の使用については、[閉じられたユーザーグループの作成](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed)を参照してください。Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
 
 `/sessionmanagement` プロパティは `/farms` のサブプロパティです。
 
@@ -427,13 +427,24 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 セッション情報を格納するディレクトリ。ディレクトリが存在しない場合は自動的に作成されます。
 
+>[!CAUTION]
+>
+> When configuring the directory sub-parameter **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. セッション情報を保存するフォルダーへのパスを必ず指定してください。次に例を示します。
+
+```xml
+/sessionmanagement 
+  { 
+  /directory "/usr/local/apache/.sessions"
+  }
+```
+
 **/encode**（オプション）
 
 セッション情報のエンコード方法。md5 アルゴリズムを使用した暗号化には &quot;md5&quot; を、16 進エンコーディングには &quot;hex&quot; を使用します。セッションデータを暗号化すると、ファイルシステムにアクセスできるユーザーでも、セッション内容を読み取れなくなります。デフォルトは &quot;md5&quot; です。
 
 **/header**（オプション）
 
-証情報を格納する HTTP ヘッダーまたは cookie の名前。ヘッダーに情報を格納する場合は、`HTTP:<*header-name*>` を適用します。cookie に情報を格納する場合は、`Cookie:<header-name>` を適用します。値を指定しない場合、`HTTP:authorization` が適用されます。
+認証情報を格納する HTTP ヘッダーまたは cookie の名前。ヘッダーに情報を格納する場合は、`HTTP:<*header-name*>` を適用します。cookie に情報を格納する場合は、`Cookie:<header-name>` を適用します。値を指定しない場合、`HTTP:authorization` が適用されます。
 
 **/timeout**（オプション）
 
@@ -567,21 +578,21 @@ Dispatcher が受け入れる HTTP 要求を指定するには、`/filter` セ�
 
 * **要求行の要素：**`/query`、`/method`、`/url` または `/protocol` と、HTTP 要求の要求行の特定部分に応じて要求をフィルタリングするためのパターンを含めます。要求行全体ではなく、要求行の要素に対してフィルタリングすることをお勧めします。
 
-* **リクエストラインの高度な要素:** ディスパッチャー4.2.0から、4つの新しいフィルター要素を使用できます。These new elements are `/path`, `/selectors`, `/extension` and `/suffix` respectively. URLパターンをさらに制御するには、これらの項目を1つ以上含めます。
+* **要求行の高度な要素：** Dispatcher 4.2.0 から 4 つの新しいフィルター要素を使用できます。`/path`、`/selectors`、`/extension`、`/suffix` の各要素です。これらを 1 つ以上含めると、URL パターンをさらに制御することができます。
 
 >[!NOTE]
 >
->For more information about what part of the request line each of these elements references, see the [Sling URL Decomposition](https://sling.apache.org/documentation/the-sling-engine/url-decomposition.html) wiki page.
+>要求行のうち、これらの各要素が参照する部分について詳しくは、[Sling の URL の分解](https://sling.apache.org/documentation/the-sling-engine/url-decomposition.html) Wiki ページを参照してください。
 
 * **glob プロパティ：** HTTP 要求の要求行全体と照合するには、`/glob` プロパティを使用します。
 
 >[!CAUTION]
 >
->グローバルによるフィルタリングは、ディスパッチャーでは推奨されません。As such, you should avoid using globs in the `/filter` sections since it may lead to security issues. つまり、次ののではなく、
+>Dispatcher では、glob を使用したフィルタリングは廃止されました。そのため、セキュリティ上の問題につながる可能性があるので、`/filter` セクションで glob を使用しないようにしてください。つまり、次の代わりに、
 
 `/glob "* *.css *"`
 
-ユーザーは、
+以下を使用してください。
 
 `/url "*.css"`
 
@@ -597,17 +608,17 @@ GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF&gt;
 
 パターンは、要求行の空白文字と &lt;CRLF&gt; 文字を考慮する必要があります。
 
-#### Double-quotes vs Single-quotes {#double-quotes-vs-single-quotes}
+#### 二重引用符と一重引用符 {#double-quotes-vs-single-quotes}
 
-When creating your filter rules, use double quotation marks `"pattern"` for simple patterns. If you are using Dispatcher 4.2.0 or later and your pattern includes a regular expression, you must enclose the regex pattern `'(pattern1|pattern2)'` within single quotation marks.
+フィルタールールを作成する場合、単純なパターンには二重引用符を使用します（例：`"pattern"`）。Dispatcher 4.2.0 以降を使用しており、パターンに正規表現が含まれている場合は、正規表現パターンを一重引用符で囲む必要があります（例：`'(pattern1|pattern2)'`）。
 
-#### Regular Expressions {#regular-expressions}
+#### 正規表現 {#regular-expressions}
 
-ディスパッチャー4.2.0の後には、フィルターパターンにPOSIX拡張正規表現を含めることができます。
+Dispatcher 4.2.0 以降は、フィルターパターンに POSIX 拡張正規表現を含めることができます。
 
-#### Troubleshooting Filters {#troubleshooting-filters}
+#### フィルターのトラブルシューティング {#troubleshooting-filters}
 
-If your filters are not triggering in the way you would expect, enable [Trace Logging](#trace-logging) on dispatcher so you can see which filter is intercepting the request.
+フィルターが想定どおりにトリガーされない場合は、Dispatcher で[トレースログ](#trace-logging)を有効にして、要求を傍受しているフィルターを確認できるようにします。
 
 #### サンプルフィルター：すべて拒否 {#example-filter-deny-all}
 
@@ -769,7 +780,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!NOTE]
 >
->Apache と共に使用する場合は、Dispatcher モジュールの DispatcherUseProcessedURL プロパティに応じてフィルター URL パターンをデザインしてください。（「[Apache Web サーバー - Dispatcher 用の Apache Web サーバーの設定](dispatcher-install.md#main-pars-55-35-1022)」を参照。)
+>Apache と共に使用する場合は、Dispatcher モジュールの DispatcherUseProcessedURL プロパティに応じてフィルター URL パターンをデザインしてください（「[Apache Web サーバー - Dispatcher 用の Apache Web サーバーの設定](dispatcher-install.md#main-pars-55-35-1022)」を参照。)
 
 >[!NOTE]
 >
@@ -885,7 +896,7 @@ Dispatcher のフィルターは、AEM パブリッシュインスタンス上�
 * /tagging
 * /etc/replication.html
 * /etc/cloudservices.html
-* /welcome
+* /ようこそ
 
 端末またはコマンドプロンプトで次のコマンドを発行して、匿名での書き込みアクセスが可能かどうかを判断します。ノードにはデータを書き込みできません。
 
@@ -943,7 +954,7 @@ CQ または AEM ページ用に設定されているバニティー URL への�
 
 シンジケーション要求は、通常、Dispatcher のみを対象としているので、デフォルトではレンダラー（AEM インスタンスなど）に送信されません。
 
-必要に応じて、/propagateSyndPost プロパティを「1」に設定してシンジケーション要求を Dispatcher に転送します。設定する場合は、フィルターセクションで POST 要求が拒否されていないことを確認する必要があります。
+必要に応じて、シンジケーション要求を Dispatcher に転送するために、/propagateSyndPost プロパティを &quot;1&quot; に設定します。設定する場合、フィルターセクションで POST 要求が拒否されていないことを確認する必要があります。
 
 ## Dispatcher キャッシュの設定 - /cache {#configuring-the-dispatcher-cache-cache}
 
@@ -1146,9 +1157,9 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 * Dispatcher は、ドキュメントルートフォルダーから指定したレベルまでの各フォルダーに `.stat` ファイルを作成します。ドキュメントルートはレベル 0 です。
 * `.stat` ファイルが更新されると、ファイルは無効化されます。`.stat` ファイルの最終変更日と、キャッシュされたドキュメントの最終変更日を比較します。`.stat` ファイルのほうが新しい場合は、ドキュメントを再取得します。
 
-* 特定のレベルにあるファイルが無効化されると、docroot **から** 無効化されたファイルまたは設定された `statsfilevel` まで（いずれか小さい方）の **すべての** `.stat` ファイルが touch されます。
+* 特定のレベルにあるファイルが無効化されると、docroot **から** 無効化されたファイルのレベルまたは設定された `statsfilevel` まで（いずれか小さい方）の **すべての** `.stat` ファイルが touch されます。
 
-   * 例えば、`statfileslevel` プロパティを 6 に設定し、レベル 5 でファイルが無効化されると、docroot から 5 までのすべての `.stat` ファイルが touch されます。この例では、ファイルがレベル 7 で無効化されると、docroot から 6 までのすべての `stat` ファイルが touch されます（`/statfileslevel = "6"` であるため）。
+   * 例えば、`statfileslevel` プロパティを 6 に設定し、レベル 5 でファイルが無効化されると、docroot から 5 までのすべての `.stat` ファイルが touch されます。この例では、ファイルがレベル 7 で無効化されると、docroot から 6 までのすべての .`stat` ファイルが touch されます（`/statfileslevel = "6"` なので）。
 
 無効化されたファイルパスへの**パスに沿った**リソースのみが影響を受けます。次の例を考えて見ましょう。Web サイトで `/content/myWebsite/xx/.` 構造を使用していて、`statfileslevel` を 3 に設定している場合、`.stat` ファイルは次のように作成されます。
 
@@ -1220,7 +1231,7 @@ Adobe Analytics との AEM 統合によって、Web サイトの analytics.sitec
 * 取り扱い\
    無効化するコンテンツのパス
 * アクション\
-   レプリケーションアクション（例：Acivate、Deactivate）
+   レプリケーションアクション（Activate、Deactivate）
 * Action Scope\
    レプリケーションアクションの範囲（ヘッダー `CQ-Action-Scope: ResourceOnly` が送信されない限りは空です。詳しくは、「[AEM からキャッシュされたページの無効化](page-invalidate.md)」を参照してください）。
 
@@ -1494,7 +1505,7 @@ For additional information about the `httponly` flag, read [this page](https://w
 
 ### secure {#secure}
 
-スティッキー接続が有効になっている場合、dispatcher モジュールは `renderid` cookie を設定します。この cookie には **secure** フラグがないため、セキュリティを強化するためにこのフラグを追加する必要があります。これをおこなうには、`dispatcher.any` 設定ファイルの `secure` ノードで `/stickyConnections` プロパティを設定します。プロパティの値（0または1）は、`renderid` cookie に `secure` 属性を追加するかどうかを定義します。デフォルト値は 0 です。これは、受信要求が安全な場合に属性が追加されることを意味します。値が 1 に設定されている場合、受信リクエストがセキュリティ保護されているかどうかに関係なく、secure フラグが追加されます。
+スティッキー接続が有効になっている場合、dispatcher モジュールは `renderid` cookie を設定します。この cookie には **secure** フラグがないため、セキュリティを強化するためにこのフラグを追加する必要があります。これをおこなうには、`secure` 設定ファイルの `/stickyConnections` ノードで `dispatcher.any` プロパティを設定します。プロパティの値（0または1）は、`renderid` cookie に `secure` 属性を追加するかどうかを定義します。デフォルト値は 0 です。これは、受信要求が安全な場合に属性が追加されることを意味します。値が 1 に設定されている場合、受信リクエストがセキュリティ保護されているかどうかに関係なく、secure フラグが追加されます。
 
 ## レンダー接続エラーの処理 {#handling-render-connection-errors}
 
@@ -1725,7 +1736,7 @@ Dispatcher の機能強化の中で、バージョン 4.2.0 ではトレース�
 トレースログはデバッグログよりレベルが高く、ログに追加情報が表示されます。以下に関するログが追加されます。
 
 * 転送されたヘッダーの値
-* 特定のアクションに対して適用されるルール。
+* 特定のアクションに対して適用されるルール
 
 Web サーバーでログレベルを `4` に設定して、トレースログを有効にすることができます。
 
@@ -1762,7 +1773,7 @@ Web サーバー、Dispatcher および AEM インスタンスの基本の操作
 1. Web サーバーと Dispatcher のログファイルおよびエラーファイルを確認します。\
    Web サーバーによっては、次のようなメッセージが表示されます。\
    `[Thu May 30 05:16:36 2002] [notice] Apache/2.0.50 (Unix) configured`\
-   および\
+   および:\
    `[Fri Jan 19 17:22:16 2001] [I] [19096] Dispatcher initialized (build XXXX)`
 
 1. Web サーバー経由で Web サイトにアクセスします。コンテンツが要求どおりに表示されていることを確認します。\
@@ -1794,7 +1805,7 @@ https://localhost:80/libs/wcm/core/content/siteadmin.html
 /info "1"
 ```
 
-以下に例を挙げます。
+以下に例を挙げます。  
 
 ```xml
 /farm
@@ -1819,17 +1830,17 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
    ターゲットファイルはキャッシュに含まれており、Dispatcher は配信することが有効であるとを判断しました。
 * **caching**\
    ターゲットファイルはキャッシュに含まれていないので、Dispatcher は出力をキャッシュして配信することが有効であると判断しました。
-* **caching: stat file is more recent**
-ターゲットファイルはキャッシュに含まれていますが、より新しい stat ファイルにより無効化されます。Dispatcher はターゲットファイルを削除し、出力から再作成して配信します。
-* **not cacheable: no document root**
-ファームの構成にドキュメントルート（設定要素 `cache.docroot`）が含まれていません。
+* **caching: stat file is more recent** 
+ターゲットファイルはキャッシュに含まれていますが、より新しい .stat ファイルによって無効化されます。Dispatcher はターゲットファイルを削除し、出力から再作成して配信します。
+* **not cacheable: no document root** 
+ファームの設定にドキュメントルート（設定要素 `cache.docroot`）が含まれていません。
 * **not cacheable: cache file path too long**\
    ターゲットファイル（ドキュメントルートと URL ファイルが連結されたものが）が、システム上で使用可能な最長ファイル名を超えています。
 * **not cacheable: temporary file path too long**\
    一時ファイル名テンプレートが、システムで使用可能な最長ファイル名を超えています。Dispatcher は、キャッシュされたファイルを作成または上書きする前に、まず一時ファイルを作成します。一時ファイル名は、ターゲットファイル名に文字 `_YYYYXXXXXX` が追加サれた名前です。`Y` と `X` が置き換えられ、一意の名前が作成されます。
 * **not cacheable: request URL has no extension**\
    リクエスト URL に拡張子がないか、ファイル拡張子の後にパスがあります（例：`/test.html/a/path`）。
-* **not cacheable: request wasn&#39;t a GET or HEAD**
+* **not cacheable: request wasn&#39;t a GET or HEAD** 
 HTTP メソッドが GET でも HEAD でもありません。Dispatcher は、出力にキャッシュするべきではない動的データが含まれていると想定します。
 * **not cacheable: request contained a query string**\
    リクエストにクエリ文字列が含まれていました。Dispatcherは、出力が与えられたクエリ文字列に依存しているため、キャッシュされないと想定します。
@@ -1845,9 +1856,9 @@ HTTP メソッドが GET でも HEAD でもありません。Dispatcher は、�
    このファームのキャッシュルールは、一部のリクエスト URL の出力をキャッシュすることを明示的に拒否しています。
 * **not cacheable: authorization checker denied access**\
    ファームの認証チェッカーがキャッシュされたファイルへのアクセスを拒否しました。
-* **not cacheable: session not valid**
+* **not cacheable: session not valid** 
 ファームのキャッシュがセッションマネージャーによって管理され（設定に `sessionmanagement` ノードが含まれている）、ユーザーセッションが無効であるか、有効でなくなっています。
-* **not cacheable: response contains`no_cache `**
-リモートサーバーが `Dispatcher: no_cache` ヘッダーを返し、dispatcher による出力のキャッシュが禁止されています。
-* **not cacheable: response content length is zero**
-応答の内容の長さが 0 です。Dispatcher は長さ 0 のファイルを作成しません。
+* **not cacheable: response contains`no_cache `** 
+リモートサーバーが `Dispatcher: no_cache` ヘッダーを返し、Dispatcher による出力のキャッシュが禁止されています。
+* **not cacheable: response content length is zero** 
+応答のコンテンツ長がゼロになっています。Dispatcher では、長さゼロのファイルは作成されません。
