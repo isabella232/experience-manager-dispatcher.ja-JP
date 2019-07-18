@@ -9,7 +9,7 @@ converted: 'true'
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
-translation-type: tm+mt
+translation-type: ht
 source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
 
 ---
@@ -99,7 +99,7 @@ IIS バージョン 8.5 および 10 には、以下の IIS コンポーネン�
 
 Web Server（IIS）役割も追加する必要があります。役割とコンポーネントを追加するには、Server Manager を使用します。
 
-## Microsoft IIS - Dispatcher モジュールのインストール {#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS - Dispatcher モジュールのインストール{#microsoft-iis-installing-the-dispatcher-module}
 
 Microsoft インターネットインフォメーションサービスには次のようなアーカイブファイルが必要です。
 
@@ -213,7 +213,7 @@ Web サイトが認証メソッドを使用する場合は、それに応じて�
    `IIS AppPool\DefaultAppPool`
 
 1. 「名前の確認」ボタンをクリックします。Windows によってユーザーアカウントが解決されたら、「OK」をクリックします。
-1. Dispatcher フォルダーのアクセス許可ダイアログボックスで、追加したアカウントを選択し、アカウントに対する **フルコントロール以外** のすべてのアクセス許可を有効にして、「OK」をクリックします。「OK」をクリックして、フォルダーのプロパティダイアログボックスを閉じます。
+1. Dispatcher フォルダーのアクセス許可ダイアログボックスで、追加したアカウントを選択し、アカウントに対する&#x200B;**フルコントロール以外**&#x200B;のすべてのアクセス許可を有効にして、「OK」をクリックします。「OK」をクリックして、フォルダーのプロパティダイアログボックスを閉じます。
 
 ### JSON の MIME の種類の登録 - IIS 8.5 および 10 {#registering-the-json-mime-type-iis-and}
 
@@ -271,17 +271,17 @@ Dispatcher の使用を始める前に、以下のことを理解しておく必
 >
 >インストール手順は、**Windows** の場合と **Unix** の場合の両方について記載しています。手順は慎重に実行してください。
 
-### Apache Web サーバーのインストール {#installing-apache-web-server}
+### Apache Web サーバーのインストール{#installing-apache-web-server}
 
-Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org/)またはディストリビューション内のインストールマニュアルを参照してください。
+Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org)またはディストリビューション内のインストールマニュアルを参照してください。
 
 >[!CAUTION]
 >
->ソースファイルをコンパイルして Apache バイナリファイルを作成する場合は、必ず **動的モジュールサポート** を有効にしてください。有効にするには、**--enable-shared** オプションのいずれかを使用します。少なくとも、`mod_so` モジュールを含めます。
+>ソースファイルをコンパイルして Apache バイナリファイルを作成する場合は、必ず&#x200B;**動的モジュールサポート**&#x200B;を有効にしてください。有効にするには、**--enable-shared** オプションのいずれかを使用します。少なくとも、`mod_so` モジュールを含めます。
 >
 >詳しくは、Apache Web サーバーのインストールマニュアルを参照してください。
 
-Also see the Apache HTTP Server [Security Tips](https://httpd.apache.org/docs/2.4/misc/security_tips.html) and [Security Reports](https://httpd.apache.org/security_report.html).
+Apache HTTP サーバーの[セキュリティに関するヒント](https://httpd.apache.org/docs/2.4/misc/security_tips.html)および[セキュリティレポート](https://httpd.apache.org/security_report.html)も参照してください。
 
 ### Apache Web サーバー - Dispatcher モジュールの追加 {#apache-web-server-add-the-dispatcher-module}
 
@@ -316,7 +316,7 @@ Dispatcher は次のいずれかの形式で提供されます。
 
    **注意：** Dispatcher モジュールの DispatcherLog プロパティが適切に設定されていれば、このファイルを別の場所に配置できます（以下の Dispatcher 固有の設定エントリを参照してください）。
 
-### Apache Web サーバー - SELinux プロパティの設定 {#apache-web-server-configure-selinux-properties}
+### Apache Web サーバー - SELinux プロパティの設定{#apache-web-server-configure-selinux-properties}
 
 RedHat Linux Kernel 2.6 上で SELinux を有効にして Dispatcher を実行する場合、Dispatcher のログファイルに次のようなエラーメッセージが書き込まれることがあります。
 
@@ -349,7 +349,7 @@ Apache Web サーバーは、`httpd.conf` を使用して設定する必要が�
 
    * **LoadModule**：起動時のモジュールの読み込み。
    * Dispatcher 固有の設定エントリ（**DispatcherConfig、DispatcherLog**、**DispatcherLogLevel** など）。
-   * **SetHandler**：Dispatcher.**LoadModule** をアクティベートします。
+   * **SetHandler**：Dispatcher.**LoadModule**&#x200B;をアクティベートします。
    * **ModMimeUsePathInfo**：**mod_mime** の動作を設定します。
 
 1. （オプション）htdocs ディレクトリの所有者を変更することをお勧めします。
@@ -380,7 +380,7 @@ Apache Web サーバーは、`httpd.conf` を使用して設定する必要が�
 
 Dispatcher 固有の設定エントリは、LoadModule エントリの後に配置されます。次の表に設定例を示します。この例は Unix でも Windows でも使用できます。
 
-**Windows および Unix**
+**Windows および UNIX**
 
 ```
 ...
@@ -423,7 +423,7 @@ ServerTokens Full``
 DispatcherNoServerHeader 0`\
 この設定は、（統計目的で）AEM バージョンを示します。このような情報をヘッダー内で利用できないようにするには、次のように設定します。`  
 ServerTokens Prod`\
-See the [Apache Documentation about ServerTokens Directive (for example, for Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) for more information.
+詳しくは、[ServerTokens 命令に関する Apache ドキュメント（Apache 2.4 の場合など）](https://httpd.apache.org/docs/2.4/mod/core.html)を参照してください。
 
 **SetHandler**
 
@@ -496,9 +496,9 @@ AllowOverride None
 
 `ModMimeUsePathInfo On`
 
-The mod_mime module (see for example, [Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)) is used to assign content metadata to the content selected for an HTTP response. デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
+mod_mime モジュール（例は [Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html) を参照）は、コンテンツメタデータを HTTP 応答用に選択されたコンテンツに割り当てる際に使用するものです。デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
 
-`ModMimeUsePathInfo`パラメーターを `On` にすると、`mod_mime` によるコンテンツタイプの指定が*完全な* URL に基づいて行われます。つまり、仮想リソースの拡張子に基づいてメタ情報が適用されます。
+`ModMimeUsePathInfo`パラメーターを `On` にすると、`mod_mime` によるコンテンツタイプの指定が&#x200B;*完全な* URL に基づいて行われます。つまり、仮想リソースの拡張子に基づいてメタ情報が適用されます。
 
 以下に **ModMimeUsePathInfo** のアクティベートの例を示します。
 
@@ -536,7 +536,7 @@ Dispatcher は、OpenSSL を使用して HTTP 経由でのセキュアな通信�
    ```
 
 >[!NOTE]
-カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) / を使用してコンパイルされていることを確認してください。
+カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) を使用してコンパイルされていることを確認してください。
 
 ### 次の手順 {#next-steps-1}
 
@@ -624,7 +624,7 @@ keepalivetimeout="60"
 |--- |--- |
 | config | 設定ファイル `dispatcher.any.` の場所と名前。 |
 | logfile | ログファイルの場所と名前。 |
-| loglevel | ログファイルにメッセージを書き込む際のログレベル：<br/>**0** - エラー<br/>**1** - 警告<br/>**2** - 情報 **<br/>3** - デバッグ<br/>**注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
+| loglevel | ログファイルにメッセージを書き込む際のログレベル：<br/>**0** - エラー<br/>**1** - 警告<br/>**2** - 情報&#x200B;**<br/>3** - デバッグ<br/>**注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
 | keepalivetimeout | キープアライブタイムアウトを秒単位で指定します。Dispatcher バージョン 4.2.0 以降では、デフォルトのキープアライブ値は 60 です。値 0 はキープアライブを無効にします。 |
 
 要件に応じて、Dispatcher をオブジェクトのサービスとして定義できます。Web サイト全体で Dispacher によってデフォルトのオブジェクトを変更できるよう設定するには、次のように指定します。
