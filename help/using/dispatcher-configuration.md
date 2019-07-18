@@ -7,9 +7,9 @@ uuid: 253ef0f7-2491-4cec-ab22-97439df29fd6
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: '1193211344162'
 topic-tags: dispatcher
-content-type: リファレンス
+content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
-translation-type: tm+mt
+translation-type: ht
 source-git-commit: a997d2296e80d182232677af06a2f4ab5a14bfd5
 
 ---
@@ -23,9 +23,9 @@ source-git-commit: a997d2296e80d182232677af06a2f4ab5a14bfd5
 
 以下の節では、Dispatcher の様々な設定について説明します。
 
-## IPv4 と IPv6 のサポート {#support-for-ipv-and-ipv}
+## IPv4 と IPv6 のサポート{#support-for-ipv-and-ipv}
 
-AEM と Dispatcher のすべての要素は、IPv4 と IPv6 の両方のネットワークにインストールできます。[IPv4 と IPv6](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html#AdditionalPlatformNotes) を参照してください。
+AEM と Dispatcher のすべての要素は、IPv4 と IPv6 の両方のネットワークにインストールできます。[IPv4 と IPv6](https://helpx.adobe.com/jp/experience-manager/6-3/sites/deploying/using/technical-requirements.html#AdditionalPlatformNotes) を参照してください。
 
 ## Dispatcher の設定ファイル {#dispatcher-configuration-files}
 
@@ -218,9 +218,9 @@ Dispatcher インスタンスを識別する一意の名前を指定するには
 
 >[!CAUTION]
 >
->`/homepage` パラメーター（IISのみ）は機能しなくなりました。Instead, you should use the [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
+>`/homepage` パラメーター（IISのみ）は機能しなくなりました。代わりに [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module) を使用する必要があります。
 >
->Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag ** [&#39;passthrough|PT&#39; (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
+>Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。`mod_rewrite` について詳しくは、Apache Webサイトのドキュメント（ 例えば[Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)）を参照してください。`mod_rewrite` を使用する場合は、[&#39;passthrough|PT&#39; (pass through https://helpx.adobe.com/jp/dispatcher/kb/DispatcherModReWrite.html**to next handler)](https://helpx.adobe.com/jp/dispatcher/kb/DispatcherModReWrite.html) フラグを使用して、内部の `uri` 構造の `request_rec` フィールドに `filename` フィールドの値を設定するよう、書き換えエンジンに指示することをお勧めします。
 
 <!-- 
 
@@ -328,7 +328,7 @@ Comment Type: draft
 ```
 
 * `scheme`：（オプション） `https://` または `https://.`
-* `host`：ホストコンピューターの名前または IP アドレスと、必要な場合はポート番号(See [https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23))
+* `host`：ホストコンピューターの名前または IP アドレスと、必要な場合はポート番号（[https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23)を参照してください。）
 * `uri`：（オプション）リソースへのパス。
 
 次の設定例では、myCompany の .com ドメインと .ch ドメイン、さらに mySubDivision のすべてのドメインに対する要求を処理します。
@@ -342,7 +342,7 @@ Comment Type: draft
     }
 ```
 
-次の設定は、*すべての*要求を処理します。
+次の設定は、*すべての*&#x200B;要求を処理します。
 
 ```xml
    /virtualhosts
@@ -413,7 +413,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 >
 >この機能を有効にするには、`/cache` セクションで `/allowAuthorized` を **必ず** `"0"` に設定してください。
 
-レンダーファームにアクセスするためのセキュアセッションを作成して、このファーム内のページにユーザーがアクセスする際にログインが必要になるようにします。ログインすると、ユーザーはファームのページにアクセスできます。閉じられたユーザーグループ（CUG）でのこの機能の使用については、[閉じられたユーザーグループの作成](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed)を参照してください。Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
+レンダーファームにアクセスするためのセキュアセッションを作成して、このファーム内のページにユーザーがアクセスする際にログインが必要になるようにします。ログイン後、ユーザーはファーム内のページにアクセスできます。閉じられたユーザーグループ（CUG）でのこの機能の使用については、[閉じられたユーザーグループの作成](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed)を参照してください。また、運用を開始する前に、Dispatcher の[セキュリティチェックリスト](/help/using/security-checklist.md)を参照してください。
 
 `/sessionmanagement` プロパティは `/farms` のサブプロパティです。
 
@@ -429,7 +429,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 >[!CAUTION]
 >
-> When configuring the directory sub-parameter **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. セッション情報を保存するフォルダーへのパスを必ず指定してください。次に例を示します。
+> ディレクトリサブパラメーターを設定する場合は、重大な問題が発生する可能性があるので、ルートフォルダー（`/directory "/"`）を指定&#x200B;**しないでください**。セッション情報を格納したフォルダーのパスを必ず指定してください。次に例を示します。
 
 ```xml
 /sessionmanagement 
@@ -563,14 +563,14 @@ Dispatcher が受け入れる HTTP 要求を指定するには、`/filter` セ�
 
 >[!CAUTION]
 >
->Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。Also, read the [AEM Security Cheklist](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html) for additional security details regarding your AEM installation.
+>Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。AEMのインストールに関するセキュリティの詳細については、[AEM セキュリティチェックリスト](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html)を参照してください。
 
 /filter セクションは、HTTP 要求の要求行部分のパターンに応じてコンテンツへのアクセスを拒否または許可する一連のルールで構成されます。/filter セクションに対しては、ホワイトリスト戦略を使用してください。
 
 * まず、すべての要素へのアクセスを拒否します。
 * 必要に応じて、コンテンツへのアクセスを許可します。
 
-### フィルターの定義 {#defining-a-filter}
+### フィルターの定義{#defining-a-filter}
 
 `/filter` の各アイテムには、要求行の特定の要素または要求行全体と照合するタイプとパターンが含まれます。各フィルターには、次のアイテムを含めることができます。
 
@@ -598,7 +598,7 @@ Dispatcher が受け入れる HTTP 要求を指定するには、`/filter` セ�
 
 #### HTTP 要求の要求行部分 {#the-request-line-part-of-http-requests}
 
-HTTP/1.1 defines the [request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html) as follows:
+HTTP/1.1 では、[要求行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html)を次のように定義しています。
 
 *Method Request-URI HTTP-Version*&lt;CRLF&gt;
 
@@ -630,7 +630,7 @@ Dispatcher 4.2.0 以降は、フィルターパターンに POSIX 拡張正規�
 
 明示的に拒否された領域への要求に対して、「404 error code (page not found)」が返されます。
 
-#### サンプルフィルター：特定の領域へのアクセスを拒否 {#example-filter-deny-acess-to-specific-areas}
+#### サンプルフィルター：特定の領域へのアクセスを拒否{#example-filter-deny-acess-to-specific-areas}
 
 フィルターを使用して、サンプルの ASP ページの各種要素と、パブリッシュインスタンス内の機密領域へのアクセスを拒否することもできます。次のフィルターは、ASP ページへのアクセスを拒否するものです。
 
@@ -684,7 +684,7 @@ Dispatcher 4.2.0 以降は、フィルターパターンに POSIX 拡張正規�
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### サンプルフィルター：要求 URL の追加要素のフィルタリング {#example-filter-filter-additional-elements-of-a-request-url}
+#### サンプルフィルター：要求 URL の追加要素のフィルタリング{#example-filter-filter-additional-elements-of-a-request-url}
 
 それぞれ path、selector および extensions に対するフィルターを使用して、`/content` パスからのコンテンツの取得をブロックするルールのサンプルを以下に示します。
 
@@ -788,7 +788,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 アクセスを拡張する場合は、以下の推奨事項について検討します。
 
-* CQ バージョン 5.4 以前を使用している場合は、`/admin` への外部アクセスを常に完全に**無効にしてください。
+* CQ バージョン 5.4 以前を使用している場合は、`/admin` への外部アクセスを常に完全に&#x200B;**&#x200B;無効にしてください。
 
 * `/libs` 内にあるファイルへのアクセスを許可する場合は、注意が必要です。アクセスは、個別に許可する必要があります。
 * レプリケーション複製の設定が表示されないよう、この設定へのアクセスを拒否してください。
@@ -808,7 +808,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!CAUTION]
 >
->If you are [using reports in a publish environment](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/reporting.html#UsingReportsinaPublishEnvironment) you should configure Dispatcher to deny access to `/etc/reports` for external visitors.
+>[パブリッシュ環境でレポートを使用する](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/reporting.html#UsingReportsinaPublishEnvironment)場合は、外部の訪問者が `/etc/reports` にアクセスできないように Dispatcher を設定してください。
 
 ### クエリ文字列の制約 {#restricting-query-strings}
 
@@ -941,7 +941,7 @@ CQ または AEM ページ用に設定されているバニティー URL への�
 
 >[!NOTE]
 >
->If your render is an instance of AEM you must install the [VanityURLS-Components](https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq600/component/vanityurls-components) package to install the vanity URL service. (See [Signing In to Package Share](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/package-manager.html#SigningIntoPackageShare).)
+>AME のインスタンスをレンダリングする場合、バニティー URL サービスをインストールするために [VanityURLS-Components](https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq600/component/vanityurls-components) パッケージをインストールする必要があります。（[パッケージ共有へのサインイン](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/package-manager.html#SigningIntoPackageShare)を参照。）
 
 バニティー URL へのアクセスを有効にするには、以下の手順を実行します。
 
@@ -950,7 +950,7 @@ CQ または AEM ページ用に設定されているバニティー URL への�
 1. `/farms` の下に `/vanity_urls` セクションを追加します。
 1. Apache Web サーバーを再起動します。
 
-## シンジケーション要求の転送 - /propagateSyndPost {#forwarding-syndication-requests-propagatesyndpost}
+## シンジケーション要求の転送 - /propagateSyndPost{#forwarding-syndication-requests-propagatesyndpost}
 
 シンジケーション要求は、通常、Dispatcher のみを対象としているので、デフォルトではレンダラー（AEM インスタンスなど）に送信されません。
 
@@ -1002,7 +1002,7 @@ CQ または AEM ページ用に設定されているバニティー URL への�
 >
 >権限を区別するキャッシュについては、[セキュリティ保護されたコンテンツのキャッシュ](permissions-cache.md)をお読みください。
 
-### キャッシュディレクトリの指定 {#specifying-the-cache-directory}
+### キャッシュディレクトリの指定{#specifying-the-cache-directory}
 
 `/docroot` プロパティは、キャッシュされたファイルを保存するディレクトリを識別します。
 
@@ -1157,7 +1157,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 * Dispatcher は、ドキュメントルートフォルダーから指定したレベルまでの各フォルダーに `.stat` ファイルを作成します。ドキュメントルートはレベル 0 です。
 * `.stat` ファイルが更新されると、ファイルは無効化されます。`.stat` ファイルの最終変更日と、キャッシュされたドキュメントの最終変更日を比較します。`.stat` ファイルのほうが新しい場合は、ドキュメントを再取得します。
 
-* 特定のレベルにあるファイルが無効化されると、docroot **から** 無効化されたファイルのレベルまたは設定された `statsfilevel` まで（いずれか小さい方）の **すべての** `.stat` ファイルが touch されます。
+* 特定のレベルにあるファイルが無効化されると、docroot **から**&#x200B;無効化されたファイルのレベルまたは設定された `statsfilevel` まで（いずれか小さい方）の&#x200B;**すべての** `.stat` ファイルが touch されます。
 
    * 例えば、`statfileslevel` プロパティを 6 に設定し、レベル 5 でファイルが無効化されると、docroot から 5 までのすべての `.stat` ファイルが touch されます。この例では、ファイルがレベル 7 で無効化されると、docroot から 6 までのすべての .`stat` ファイルが touch されます（`/statfileslevel = "6"` なので）。
 
@@ -1172,7 +1172,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 >[!NOTE]
 >
->無効化は、追加のヘッダー `CQ-Action-Scope:ResourceOnly` を送信することで防止できます。これを使用することで、キャッシュの他の部分を無効化せずに、特定のリソースをフラッシュできます。See [this page](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) and [Manually Invalidating the Dispatcher Cache](https://helpx.adobe.com/experience-manager/dispatcher/using/page-invalidate.html) for additional details.
+>無効化は、追加のヘッダー `CQ-Action-Scope:ResourceOnly` を送信することで防止できます。これを使用することで、キャッシュの他の部分を無効化せずに、特定のリソースをフラッシュできます。詳しくは、[このページ](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html)および [Manually Invalidating the Dispatcher Cache](https://helpx.adobe.com/experience-manager/dispatcher/using/page-invalidate.html) を参照してください。
 
 >[!NOTE]
 >
@@ -1222,7 +1222,7 @@ Adobe Analytics との AEM 統合によって、Web サイトの analytics.sitec
 }
 ```
 
-### カスタム無効化スクリプトの使用 {#using-custom-invalidation-scripts}
+### カスタム無効化スクリプトの使用{#using-custom-invalidation-scripts}
 
 /invalidateHandler プロパティを使用して、Dispatcher が無効化要求を受信するたびに呼び出されるスクリプトを定義できます。
 
@@ -1243,7 +1243,7 @@ Adobe Analytics との AEM 統合によって、Web サイトの analytics.sitec
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
 ```
 
-#### サンプルの無効化ハンドラースクリプト {#sample-invalidation-handler-script}
+#### サンプルの無効化ハンドラースクリプト{#sample-invalidation-handler-script}
 
 ```shell
 #!/bin/bash
@@ -1276,7 +1276,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 >
 >定義しない場合は、任意のクライアントからキャッシュ消去を呼び出せますが、繰り返しおこなうとサイトのパフォーマンスに深刻な影響を及ぼす場合があります。
 
-### URL パラメーターの無視 {#ignoring-url-parameters}
+### URL パラメーターの無視{#ignoring-url-parameters}
 
 `ignoreUrlParams` セクションでは、ページをキャッシュするかキャッシュから提供するかを判断するときにどの URL パラメーターを無視するかを定義します。
 
@@ -1348,7 +1348,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 >Dispatcher を使用して AEMから ETag 応答ヘッダーを保存および配信する必要がある場合は、以下の手順を実行します。
 >
 >* `/cache/headers` セクションにヘッダー名を追加します。
->* Add the following [Apache directive](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) in the Dispatcher related section:
+>* Dispatcher 関連のセクションに以下の [Apache ディレクティブ](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag)を追加します。
 >
 
 
@@ -1424,7 +1424,7 @@ Dispatcher は、最大 8 個の統計カテゴリをサポートします。9 �
 >
 >ロードバランシングを使用しない場合は、このセクションを省略できます。
 
-### 統計カテゴリの定義 {#defining-statistics-categories}
+### 統計カテゴリの定義{#defining-statistics-categories}
 
 レンダーを選択するための統計を保持するドキュメントのタイプごとにカテゴリを定義します。/statistics セクションには、/categories セクションが含まれます。カテゴリを定義するには、/categories セクションの下に次の形式の行を追加します。
 
@@ -1501,7 +1501,7 @@ URI のカテゴリを判断するために、Dispatcher は一致が見つか�
 
 スティッキー接続が有効になっている場合、dispatcher モジュールは `renderid` cookie を設定します。この cookie には `httponly` フラグがないため、セキュリティを強化するためにこのフラグを追加する必要があります。これをおこなうには、`httpOnly` 設定ファイルの `/stickyConnections` ノードで `dispatcher.any` プロパティを設定します。プロパティの値（0または1）は、`renderid` cookie に `HttpOnly` 属性を追加するかどうかを定義します。デフォルト値は 0 （属性は追加されない）です。
 
-For additional information about the `httponly` flag, read [this page](https://www.owasp.org/index.php/HttpOnly).
+`httponly` フラグについて詳しくは、[このページ](https://www.owasp.org/index.php/HttpOnly)を参照してください。
 
 ### secure {#secure}
 
@@ -1533,7 +1533,7 @@ For additional information about the `httponly` flag, read [this page](https://w
 /retryDelay "1"
 ```
 
-### 再試行回数の設定 {#configuring-the-number-of-retries}
+### 再試行回数の設定{#configuring-the-number-of-retries}
 
 `/numberOfRetries` プロパティは、Dispatcher がレンダーに対して実行する。接続試行周期の最大回数を設定します。この再試行回数内で Dispatcher がレンダーに接続できなかった場合、Dispatcher は失敗応答を返します。
 
@@ -1565,7 +1565,7 @@ Dispatcher ファーム上でフェイルオーバーメカニズムを有効に
 >
 >本文を含む HTTP 要求を再試行するには、Dispatcher が `Expect: 100-continue` 要求ヘッダーをレンダーに送信してから、実際のコンテンツをスプールします。すると、CQSE を含む CQ 5.5 が、100（CONTINUE）またはエラーコードで即座に応答します。その他のサーブレットコンテナも、このメカニズムをサポートする必要があります。
 
-## 中断エラーの無視 - /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
+## 中断エラーの無視 - /ignoreEINTR{#ignoring-interruption-errors-ignoreeintr}
 
 >[!CAUTION]
 >
@@ -1721,7 +1721,7 @@ Web サーバー設定で、次の属性を設定できます。
 * Dispatcher ログファイルの拡張子にタイムスタンプ（logs/dispatcher.log%Y%m%d）が付きます。
 * 週単位（60 x 60 x 24 x 7 = 604800 秒）で交替されます。
 
-ログの交替やパイプ経由のログについては、Apache Web サーバーのドキュメント（[Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html) など）を参照してください。
+ログの交替やパイプ経由のログについては、Apache Web サーバーのドキュメント（[Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html)など）を参照してください。
 
 >[!NOTE]
 >
@@ -1762,7 +1762,7 @@ Web サーバーでログレベルを `4` に設定して、トレースログ�
 [Thu Mar 03 14:42:45 2016] [T] [11831] 'GET /content.infinity.json HTTP/1.1' was blocked because of /0082
 ```
 
-## 基本操作の確認 {#confirming-basic-operation}
+## 基本操作の確認{#confirming-basic-operation}
 
 Web サーバー、Dispatcher および AEM インスタンスの基本の操作とやり取りを確認するには、次の手順を実行します。
 
