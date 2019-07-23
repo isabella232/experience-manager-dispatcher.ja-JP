@@ -99,7 +99,7 @@ IIS バージョン 8.5 および 10 には、以下の IIS コンポーネン�
 
 Web Server（IIS）役割も追加する必要があります。役割とコンポーネントを追加するには、Server Manager を使用します。
 
-## Microsoft IIS - Dispatcher モジュールのインストール{#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS - Dispatcher モジュールのインストール {#microsoft-iis-installing-the-dispatcher-module}
 
 Microsoft インターネットインフォメーションサービスには次のようなアーカイブファイルが必要です。
 
@@ -271,7 +271,7 @@ Dispatcher の使用を始める前に、以下のことを理解しておく必
 >
 >インストール手順は、**Windows** の場合と **Unix** の場合の両方について記載しています。手順は慎重に実行してください。
 
-### Apache Web サーバーのインストール{#installing-apache-web-server}
+### Apache Web サーバーのインストール {#installing-apache-web-server}
 
 Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org)またはディストリビューション内のインストールマニュアルを参照してください。
 
@@ -316,7 +316,7 @@ Dispatcher は次のいずれかの形式で提供されます。
 
    **注意：** Dispatcher モジュールの DispatcherLog プロパティが適切に設定されていれば、このファイルを別の場所に配置できます（以下の Dispatcher 固有の設定エントリを参照してください）。
 
-### Apache Web サーバー - SELinux プロパティの設定{#apache-web-server-configure-selinux-properties}
+### Apache Web サーバー - SELinux プロパティの設定 {#apache-web-server-configure-selinux-properties}
 
 RedHat Linux Kernel 2.6 上で SELinux を有効にして Dispatcher を実行する場合、Dispatcher のログファイルに次のようなエラーメッセージが書き込まれることがあります。
 
@@ -404,7 +404,7 @@ DispatcherKeepAliveTimeout 60
 | DispatcherLogLevel | ログファイルのログレベル：<br/> 0 - エラー<br/> 1 - 警告<br/> 2 - 情報<br/> 3 - デバッグ<br/> **注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
 | DispatcherNoServerHeader | *このパラメーターは廃止されており、効果はありません。*<br/><br/>使用するサーバーヘッダーを定義します。<br/><ul><li>未定義または 0 - HTTP サーバーヘッダーには AEM バージョンが含まれます。 </li><li> 1 - Apache サーバーヘッダーを使用します。</li></ul> |
 | DispatcherDeclineRoot | ルート「/」への要求を拒否するかどうかを定義します。<br/>**0** - <br/>/**への要求を受け入れます。1** - Dispatcher は / への要求を処理しません。適切なマッピングをおこなうには mod_alias を使用してください。 |
-| DispatcherUseProcessedURL | Dispatcher によるすべての詳細な処理に事前処理された URL を使用するかどうかを定義します。<br/> **0** - Web サーバーに渡された元の URL を使用します。<br/>**1** - Dispatcher は、Web サーバーに渡された元の URL の代わりに、Dispatcher に先行するハンドラー（つまり、`mod_rewrite`）が既に処理した URL を使用します。例えば、元の URL または処理された URL のどちらかが Dispatcher のフィルターと一致する場合などです。URL は、キャッシュファイル構造の基礎としても使用されます。mod_rewrite については、Apache Web サイトのドキュメント（Apache 2.4 など）を参照してください。mod_rewrite を使用する場合は、&#39;passthrough | PT&#39;（pass through to next handler）フラグを使用して、内部の request_rec 構造の uri フィールドに filename フィールドの値を設定するよう、書き換えエンジンに指示することをお勧めします。 |
+| DispatcherUseProcessedURL | Dispatcher によるすべての詳細な処理に事前処理された URL を使用するかどうかを定義します。<br/> **0** - Web サーバーに渡された元の URL を使用します。<br/>**1** - Dispatcher は、Web サーバーに渡された元の URL の代わりに、Dispatcher に先行するハンドラー（つまり、`mod_rewrite`）が既に処理した URL を使用します。例えば、元の URL または処理された URL のどちらかが Dispatcher のフィルターと一致する場合などです。URL は、キャッシュファイル構造の基礎としても使用されます。mod_rewrite については、Apache Web サイトのドキュメント（Apache 2.4 など）を参照してください。mod_rewrite を使用する場合は、'passthrough | PT'（pass through to next handler）フラグを使用して、内部の request_rec 構造の uri フィールドに filename フィールドの値を設定するよう、書き換えエンジンに指示することをお勧めします。 |
 | DispatcherPassError | ErrorDocument 処理のエラーコードのサポート方法を定義します。<br/> **0** - Dispatcher はクライアントへのすべてのエラー応答をスプールします。<br/> **1** - Dispatcher はクライアントへのエラー応答（ステータスコードが 400 以上）をスプールしませんが、ステータスコードを Apache に渡します。Apache では、ErrorDocument 命令によってそのようなステータスコードを処理できます。<br/> **コード範囲** - 応答を Apache に渡すエラーコードの範囲を指定します。その他のエラーコードはクライアントに渡されます。例えば、次の設定では、エラー 412 の応答をクライアントに渡し、その他すべてのエラーを Apache に渡します。DispatcherPassError 400-411,413-417 |
 | DispatcherKeepAliveTimeout | キープアライブタイムアウトを秒単位で指定します。Dispatcher バージョン 4.2.0 以降では、デフォルトのキープアライブ値は 60 です。値 0 はキープアライブを無効にします。 |
 | DispatcherNoCanonURL | このパラメーターを On に設定すると、正規化された URL ではなく 生の URL がバックエンドに渡され、DispatcherUseProcessedURLの設定がオーバーライドされます。デフォルト値は Off です。<br/>**注意**：Dispatcher 設定内のフィルタールールは、名前の URL ではなく、サニタイズされた URL に対して評価されます。 |
@@ -624,7 +624,7 @@ keepalivetimeout="60"
 |--- |--- |
 | config | 設定ファイル `dispatcher.any.` の場所と名前。 |
 | logfile | ログファイルの場所と名前。 |
-| loglevel | ログファイルにメッセージを書き込む際のログレベル：<br/>**0** - エラー<br/>**1** - 警告<br/>**2** - 情報&#x200B;<br/>**3** - デバッグ<br/>**注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
+| loglevel | ログファイルにメッセージを書き込む際のログレベル：<br/>**0** - エラー<br/>**1** - 警告<br/>**2** - 情報<br/>**3** - デバッグ<br/>**注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
 | keepalivetimeout | キープアライブタイムアウトを秒単位で指定します。Dispatcher バージョン 4.2.0 以降では、デフォルトのキープアライブ値は 60 です。値 0 はキープアライブを無効にします。 |
 
 要件に応じて、Dispatcher をオブジェクトのサービスとして定義できます。Web サイト全体で Dispacher によってデフォルトのオブジェクトを変更できるよう設定するには、次のように指定します。
