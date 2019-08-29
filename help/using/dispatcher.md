@@ -8,7 +8,7 @@ pageversionid: '1193211344162'
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
-translation-type: tm+mt
+translation-type: ht
 source-git-commit: de6a513baf3e6b1a1463a442fa840e59f2196e8e
 
 ---
@@ -24,8 +24,8 @@ Dispatcher は、Adobe Experience Manager のキャッシュやロードバラ�
 
 Dispatcher をデプロイするプロセスは、どの Web サーバーや OS プラットフォームを使用する場合でも共通です。
 
-1. Dispatcher について学習します（このページ）。[Dispatcher に関するよくある質問](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html)も参照してください。
-1. [Webサーバーのドキュメント](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) に従って、サポートされているWebサーバーをインストールします。
+1. Dispatcher について学習します（このページ）。[Dispatcher に関するよくある質問](https://helpx.adobe.com/jp/experience-manager/using/dispatcher-faq.html)も参照してください。
+1. Web サーバーのドキュメントに従って、[サポートされている Web サーバー](https://helpx.adobe.com/jp/experience-manager/6-3/sites/deploying/using/technical-requirements.html)をインストールします。
 
 1. Web サーバーに [Dispatcher モジュールをインストール](dispatcher-install.md)し、このモジュールに合わせて Web サーバーを設定します。
 1. [Dispatcher を設定](dispatcher-configuration.md)します（dispatcher.any ファイル）。
@@ -39,8 +39,8 @@ Dispatcher をデプロイするプロセスは、どの Web サーバーや OS 
 必要に応じて、次の情報を使用します。
 
 * [Dispatcher のセキュリティチェックリスト](security-checklist.md)
-* [Dispatcher のナレッジベース](https://helpx.adobe.com/cq/kb/index/dispatcher.html)
-* [Web サイトのキャッシュパフォーマンスの最適化](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
+* [Dispatcher ナレッジベース](https://helpx.adobe.com/jp/experience-manager/kb/index/dispatcher.html)
+* [Web サイトのキャッシュパフォーマンスの最適化](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
 * [複数ドメインでの Dispatcher の使用](dispatcher-domains.md)
 * [Dispatcher での SSL の使用](dispatcher-ssl.md)
 * [権限に影響を受けるキャッシュの実装](permissions-cache.md)
@@ -99,7 +99,7 @@ AEM などのコンテンツ管理サーバーを使用する場合、訪問者�
 
 >[!NOTE]
 >
->HTTP ヘッダーキャッシュの設定がない場合、Dispatcher は、ページの HTML コードのみを保存します。この場合、HTTP ヘッダーは保存されません。Web サイト内で異なるエンコーディングを使用している場合、これらの HTTP ヘッダーが失われる可能性があるので、このことが問題になる可能性があります。HTTPヘッダーキャッシュを有効にするには、ディスパッチャーキャッシュ [の設定を参照してください。](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)
+>HTTP ヘッダーキャッシュの設定がない場合、Dispatcher は、ページの HTML コードのみを保存します。この場合、HTTP ヘッダーは保存されません。Web サイト内で異なるエンコーディングを使用している場合、これらの HTTP ヘッダーが失われる可能性があるので、このことが問題になる可能性があります。HTTP ヘッダーキャッシュを有効にするには、[Dispatcher キャッシュの設定](https://helpx.adobe.com/jp/experience-manager/dispatcher/using/dispatcher-configuration.html)を参照してください。
 
 >[!NOTE]
 >
@@ -124,18 +124,18 @@ Web サイトに変更があったとき、Dispatcher では主に 2 つの方�
 
 1. 変更されたファイルを、キャッシュから削除します。
 1. 同じハンドルで始まるすべてのファイルを、キャッシュから削除します。たとえば、ファイル /jp/index.html が更新された場合、/jp/index で始まるすべてのファイルは削除されます。このメカニズムによって、特に画像ナビゲーションに関して、キャッシュを効率的に使用するサイトをデザインできます。
-1. **statfile** と呼ばれるファイルに&#x200B;*アクセス*&#x200B;します。アクセスすると、statfile のタイムスタンプが最終変更日に更新されます。
+1. **statfile** と呼ばれるファイルに *touch* します。touchすると、statfile のタイムスタンプが最終変更日に更新されます。
 
 次のポイントに注意する必要があります。
 
 * コンテンツの更新は、通常、置き換える必要のあるコンテンツを「把握している」作成システムと組み合わせて使用します。
 * コンテンツの更新が適用されたファイルは削除されますが、すぐに置き換えられるわけではありません。このファイルが次回要求されたとき、Dispatcher は AEM インスタンスから新しいファイルを取得し、キャッシュに配置します。これで、古いコンテンツを上書きしたことになります。
 * 通常、ページのテキストを取り込んで自動生成された画像は、同じハンドルで始まる画像ファイルに格納されます。したがって、ページと画像ファイルは関連があり、削除の対象となります。例えば、mypage.html というページのタイトルテキストを、mypage.titlePicture.gif ファイルとして同じフォルダーに格納できます。したがって、ページの更新ごとにキャッシュにある画像が自動的に削除されるので、画像のバージョンを常にページの現在のバージョンと合わせることができます。
-* statfile は複数持つことができます。例えば、言語フォルダーごとに 1 つずつ持つことができます。ページが更新されると、AEM は statfile を含む次の親フォルダーを探し、そのファイルにアクセスします。**
+* statfile は複数持つことができます。例えば、言語フォルダーごとに 1 つずつ持つことができます。ページが更新されると、AEM は statfile を含む次の親フォルダーを探し、そのファイルに *touch* します。
 
 ### 自動無効化
 
-自動無効化は、キャッシュのパーツを自動的に無効化するもので、ファイル自体の削除は行いません。コンテンツの更新ごとに statfile と呼ばれるファイルにアクセスするので、statfile のタイムスタンプは最終更新日を示します。
+自動無効化は、キャッシュのパーツを自動的に無効化するもので、ファイル自体の削除は行いません。コンテンツの更新ごとに statfile と呼ばれるファイルに touch するので、statfile のタイムスタンプは最終更新日を示します。
 
 Dispatcher は、自動無効化の対象となるファイルのリストを保持しています。このリストにあるドキュメントが要求されると、Dispatcher はキャッシュされたドキュメントの日付と statfile のタイムスタンプを比較します。
 
@@ -145,7 +145,7 @@ Dispatcher は、自動無効化の対象となるファイルのリストを保
 この場合も、注意すべきポイントがいくつかあります。
 
 * 自動無効化は通常、HTML ページなど内部関係が複雑な場合に使用します。このようなページには、リンクやナビゲーションエントリが含まれるので、通常はコンテンツの更新後にこれらのリンクなどを更新する必要があります。自動生成される PDF や画像ファイルがある場合も、これらのファイルに対して自動無効化を選択できます。
-* 自動無効化の機能は、statfile にアクセスする以外は、更新時の Dispatcher の動作に関与しません。ただし、statfile へのアクセスによって、キャッシュコンテンツは自動的に古いものとされます。キャッシュ自体は削除されません
+* 自動無効化の機能は、statfile に touch する以外は、更新時の Dispatcher の動作に関与しません。ただし、statfile への touch によって、キャッシュコンテンツは自動的に古いものとされます。キャッシュ自体は削除されません。
 
 ## Dispatcher がドキュメントを返す方法 {#how-dispatcher-returns-documents}
 
@@ -153,7 +153,7 @@ Dispatcher は、自動無効化の対象となるファイルのリストを保
 
 ### ドキュメントがキャッシュの対象かどうかの判断
 
-You can [define which documents the Dispatcher caches in the configuration file](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html). Dispatcher は、要求とキャッシュ可能なドキュメントのリストを照合します。ドキュメントがこのリストにない場合は、AEM インスタンスにドキュメントを要求します。
+[どのドキュメントを Dispatcher でキャッシュするかは設定ファイルで定義](https://helpx.adobe.com/jp/experience-manager/dispatcher/using/dispatcher-configuration.html)できます。Dispatcher は、要求とキャッシュ可能なドキュメントのリストを照合します。ドキュメントがこのリストにない場合は、AEM インスタンスにドキュメントを要求します。
 
 以下の場合、Dispatcher は&#x200B;*常に* AEM インスタンスに直接ドキュメントを要求します。
 
@@ -163,7 +163,7 @@ You can [define which documents the Dispatcher caches in the configuration file]
 
 >[!NOTE]
 >
->（HTTP ヘッダー用の）GET または HEAD メソッドは、Dispatcher によってキャッシュ可能です。応答ヘッダーのキャッシュについて詳しくは、[HTTP 応答ヘッダーのキャッシュ](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)セクションを参照してください。
+>（HTTP ヘッダー用の）GET または HEAD メソッドは、Dispatcher によってキャッシュ可能です。応答ヘッダーのキャッシュについて詳しくは、[HTTP 応答ヘッダーのキャッシュ](https://helpx.adobe.com/jp/experience-manager/dispatcher/using/dispatcher-configuration.html)セクションを参照してください。
 
 ### ドキュメントがキャッシュされているかどうかの判断
 
@@ -277,17 +277,17 @@ CDN が Dispatcher からリソースを再取得するまでのキャッシュ�
 
 キャッシュで管理されているコンテンツに対してこの手法を使用した場合は、コンテンツの変更がエンドユーザーに表示されるのは、設定されているキャッシュ期間の有効期限が切れて、ドキュメントを再度 Dispatcher から取得したときだけです。
 
-よりきめ細かな制御をおこなうために、API ベースの無効化を使用して、Dispatcher のキャッシュが無効になったら CDN のキャッシュを無効化することができます。CDN の API に基づいて、独自の [ContentBuilder](https://docs.adobe.com/docs/en/cq/current/javadoc/com/day/cq/replication/ContentBuilder.html) と [TransportHandler](https://docs.adobe.com/docs/en/cq/current/javadoc/com/day/cq/replication/TransportHandler.html)（API が REST ベースではない場合）を実装し、これらを使用して CDN のキャッシュを無効化するレプリケーションエージェントを設定できます。
+よりきめ細かな制御をおこなうために、API ベースの無効化を使用して、Dispatcher のキャッシュが無効になったら CDN のキャッシュを無効化することができます。CDN の API に基づいて、独自の [ContentBuilder](https://docs.adobe.com/docs/cq/current/javadoc/com/day/cq/replication/ContentBuilder.html) と [TransportHandler](https://helpx.adobe.com/jp/experience-manager/aem-previous-versions.html)（API が REST ベースではない場合）を実装し、これらを使用して CDN のキャッシュを無効化するレプリケーションエージェントを設定できます。
 
 >[!NOTE]
 >
->[AEM（CQ）Dispatcher Security and CDN+Browser Caching](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) および [Dispatcher のキャッシュ](https://docs.adobe.com/content/ddc/en/gems/dispatcher-caching---new-features-and-optimizations.html)に関する録画済みのプレゼンテーションも参照してください。
+>[AEM（CQ）Dispatcher のセキュリティおよび CDN+ ブラウザーのキャッシュ](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) および [Dispatcher のキャッシュ](https://docs.adobe.com/content/ddc/en/gems/dispatcher-caching---new-features-and-optimizations.html)に関する録画プレゼンテーションも参照してください。
 
 ## オーサリングサーバーでの Dispatcher の使用 {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
->if you are using [AEM with Touch UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html) you should **not** cache author instance content. オーサーインスタンスに対してキャッシュが有効になっている場合、それを無効にしてキャッシュディレクトリの内容を削除する必要があります。キャッシュを無効にするには、`author_dispatcher.any` ファイルを編集し、`/cache` セクションの `/rule` プロパティを次のように変更します。
+>[Touch UI で AEM](https://helpx.adobe.com/jp/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html) を使用している場合、オーサーインスタンスのコンテンツをキャッシュ&#x200B;**しないでください**。オーサーインスタンスに対してキャッシュが有効になっている場合、それを無効にしてキャッシュディレクトリの内容を削除する必要があります。キャッシュを無効にするには、`author_dispatcher.any` ファイルを編集し、`/cache` セクションの `/rule` プロパティを次のように変更します。
 
 ```xml
 /rules
@@ -306,7 +306,7 @@ Dispatcher をオーサーインスタンスの前方で使用して、オーサ
 1. `author_dispatcher.any` をテキストエディターで開き、以下の変更をおこないます。
 
    1. `/renders` セクションの `/hostname` と `/port` がオーサーインスタンスを指すように変更します。
-   1. `/docroot` セクションの `/cache` がキャッシュディレクトリを指すように変更します。タッチ操作対応UIを使用して [AEMを使用している場合は](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)、上記の警告を参照してください。
+   1. `/docroot` セクションの `/cache` がキャッシュディレクトリを指すように変更します。[Touch UI で AEM](https://helpx.adobe.com/jp/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html) を使用している場合は、上記の警告を参照してください。
    1. 変更内容を保存します。
 
 1. 上記で設定した `/cache`／`/docroot` ディレクトリ内にあるすべての既存ファイルを削除します。
