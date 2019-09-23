@@ -8,8 +8,8 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
-translation-type: ht
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+translation-type: tm+mt
+source-git-commit: 2d72839d459973cba40f6a938ee157198c7cf50a
 
 ---
 
@@ -22,14 +22,14 @@ source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
 |--- |--- |
 | 商品 | Adobe Experience Manager (AEM) Dispatcher |
 | バージョン | 4.3.2 |
-| タイプ | マイナーリリース |
+| 種類 | マイナーリリース |
 | 日付 | 2019 年 1 月 31 日 |
 | ダウンロード URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services（IIS）](release-notes.md#iis)</li></ul> |
 | 互換性 | AEM 6.1 以降 |
 
 ## システム要件および使用条件 {#system-requirements-and-prerequisites}
 
-要件と前提条件について詳しくは[技術要件](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/technical-requirements.html)ページを参照してください。
+Please see the [Supported Platforms](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) page for more information regarding requirements and prerequisites.
 
 最新の機能、最新のバグフィックス、そして最高のパフォーマンスを利用するため、最新バージョンの AEM Dispatcher を使用することを強くお勧めします。
 
