@@ -3,8 +3,8 @@ title: Dispatcher に関する主な問題
 seo-title: AEM Dispatcher に関する主な問題
 description: AEM Dispatcher に関する主な問題
 seo-description: Adobe AEM Dispatcher に関する主な問題
-translation-type: ht
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+translation-type: tm+mt
+source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
 
 ---
 
@@ -25,8 +25,8 @@ Dispatcher は、Adobe Experience Managerのキャッシングおよびロード
 
 Dispatcherは、Webサーバーの静的コンテンツを提供する機能を使用します。Dispatcher は、キャッシュされたドキュメントを Web サーバーのドキュメントルートに格納します。Web サイトに変更があったとき、Dispatcher では主に 2 つの方法でキャッシュコンテンツを更新します。
 
-* **コンテンツの更新** によって、変更されたページ、およびそのページに直接関連付けられたファイルを削除します。
-* **自動無効化** によって、キャッシュで変更があった部分を自動的に無効化し、更新後に期限切れとします。例えば、関連するページに期限切れのフラグを付けるだけで、削除はおこないません。
+* **コンテンツの更新**&#x200B;によって、変更されたページ、およびそのページに直接関連付けられたファイルを削除します。
+* **自動無効化**&#x200B;によって、キャッシュで変更があった部分を自動的に無効化し、更新後に期限切れとします。例えば、関連するページに期限切れのフラグを付けるだけで、削除はおこないません。
 
 ### 負荷分散のメリットは何ですか？
 
@@ -115,25 +115,25 @@ en ディレクトリ（存在する場合、キャッシュされたページ�
 
 ### Dispatcher インスタンスと CQ インスタンス間の通信を保護する方法を教えてください。
 
-[Dispatcher セキュリティチェックリスト](security-checklist.md) および[AEM セキュリティチェックリスト](https://helpx.adobe.com/jp/experience-manager/6-4/sites/administering/using/security-checklist.html)ページを参照してください。
+「ディスパッチャ [ーセキュリティチェックリスト](security-checklist.md) 」および「 [AEMセキュリティチェックリスト](https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html) 」ページを参照してください。
 
 ### Dispatcher の問題：`jcr:content` が `jcr%3acontent` に変更される
 
 **質問**：最近、CQ レポジトリからデータを取得する Ajax コードの 1 つに `jcr:content` が含まれていて、それが `jcr%3acontent` にエンコードされたため、結果セットが誤ったものになるという Dispatcher レベルの問題が発生しました。
 
-**回答**：`ResourceResolver.map()` メソッドを使用して、要求先で使用または発行される「わかいやすい URL」を取得してください。このメソッドは、Dispatcher のキャッシュの問題を解決することもできます。map() メソッドはコロン（`:`）をアンダースコアにエンコードし、resolve() メソッドはそれらを 読み取り可能な SLING JCR 形式に戻します。map() メソッドを使用して、Ajax 呼び出しで使用される URL を生成する必要があります。
+**回答**:使用する「わ `ResourceResolver.map()` かりやすい」URLや、発行するGETリクエストを取得するメソッドを使用して、ディスパッチャーのキャッシュの問題を解決してください。 map()メソッドはコロンをアンダースコアにエンコードし、 `:` resolve()メソッドはコロンをSLING JCR可読形式にデコードします。Ajax呼び出しで使用するURLを生成するには、map()メソッドを使用する必要があります。
 
-詳しくはこちらをご覧ください。 [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
+Further read: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
 ## Dispatcher をフラッシュする
 
 ### パブリッシュインスタンスで Dispatcher フラッシュエージェントを設定する方法を教えてください。
 
-[レプリケーション](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents)ページを参照してください。
+「 [Replication](https://helpx.adobe.com/content/help/en/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents) 」ページを参照。
 
 ### Dispatcher のフラッシュ問題のトラブルシューティング方法を教えてください。
 
-[このトラブルシューティング記事を参照してください](https://helpx.adobe.com/content/help/jp/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html)。この記事は以下の質問に回答しています。
+[次の質問に答えるには、この](https://helpx.adobe.com/content/help/en/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html) 「トラブルシューティング」の記事を参照してください。
 
 * Dispatcher キャッシュにコンテンツが保存されていない状況をデバッグするにはどうすればよいですか？
 * キャッシュファイルが更新されない状況をデバッグするにはどうすればよいですか？
