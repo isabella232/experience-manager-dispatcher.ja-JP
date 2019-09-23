@@ -12,8 +12,8 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
-translation-type: ht
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+translation-type: tm+mt
+source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
 
 ---
 
@@ -22,11 +22,11 @@ source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
 
 Dispatcher を AEM と共に使用する際は、キャッシュが効果的に管理されるようにインタラクションを設定する必要があります。環境によっては、この設定でパフォーマンスを向上させることができます。
 
-## AEM ユーザーアカウントの設定{#setting-up-aem-user-accounts}
+## AEM ユーザーアカウントの設定 {#setting-up-aem-user-accounts}
 
-デフォルトの `admin` ユーザーアカウントを使用して、デフォルトでインストールされているレプリケーションエージェントを認証します。レプリケーションエージェントで使用する専用のユーザーアカウントを作成する必要があります。[](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)
+デフォルトの `admin` ユーザーアカウントを使用して、デフォルトでインストールされているレプリケーションエージェントを認証します。レプリケーションエージェントで使用する専用のユーザーアカウントを作成する必要があります。[](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)
 
-詳しくは、セキュリティチェックリストの[レプリケーションユーザーとトランスポートユーザーの設定](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)のセクションを参照してください。
+For more information see the [Configure Replication and Transport Users](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) section of the AEM Security Checklist.
 
 ## オーサリング環境からの Dispatcher キャッシュの無効化 {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
@@ -65,7 +65,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 1. 必要に応じて、その他のパラメーターを設定します。
 1. 「OK」をクリックして、エージェントをアクティベートします。
 
-または、アクセスを可能にして、[AEM Touch UI](https://helpx.adobe.com/jp/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent)から Dispatcher フラッシュエージェント AEM を設定することもできます。
+Alternatively, you can also access and configure the Dispatcher Flush agent from the [AEM Touch UI](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent).
 
 バニティー URL へのアクセスを有効にする方法について詳しくは、[バニティー URL へのアクセスの有効化](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)を参照してださい。
 
@@ -79,7 +79,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 * 公開とキャッシュの無効化は同時に行われます。ただし、タイミングによっては、キャッシュからページが削除された直後、新しいページが公開される直前に、削除されたページが要求される場合があります。その場合は、AEM から古いページが返され、Dispatcher で再びキャッシュされます。大規模なサイトの場合は、これが大きな問題になります。
 
-## パブリッシュインスタンスからの Dispatcher キャッシュの無効化{#invalidating-dispatcher-cache-from-a-publishing-instance}
+## パブリッシュインスタンスからの Dispatcher キャッシュの無効化 {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 キャッシュ管理をオーサー環境からパブリッシュインスタンスに移行すると、パフォーマンスが向上する場合があります。この場合、公開されたページを受信したときにキャッシュの無効化要求を Dispatcher に送信するのは、AEM オーサー環境でなくパブリッシュ環境となります。
 
@@ -124,7 +124,7 @@ Dispatcher のフラッシュは、パブリッシュインスタンスで動作
 
 この HTTP 要求によって、Dispatcher が特定のファイルをキャッシュから削除します。その後、オプションで、Dispatcher が新しいコピーを使用してキャッシュを更新します。
 
-### キャッシュされたファイルの削除{#delete-cached-files}
+### キャッシュされたファイルの削除 {#delete-cached-files}
 
 HTTP 要求を発行することによって、Dispatcher がキャッシュからファイルを削除します。Dispatcher は、そのページに対するクライアント要求を受信した場合にのみ、ファイルを再びキャッシュします。このようなやり方でキャッシュファイルを削除する方法は、同じページに対する要求を同時に受信する可能性が低い Web サイトに適しています。
 
@@ -147,11 +147,11 @@ Dispatcher キャッシュ内のその他すべてのファイル（または、
 
 追加の `CQ-Action-Scope: ResourceOnly` ヘッダーを送信することによって、無効化（つまり .stat ファイルへのアクセス）を防ぐことができます。この方法を使用すると、動的に作成され、キャッシュから独立して定期的にフラッシュする必要がある JSON データのように、キャッシュの他の部分を無効化することなく、特定のリソースをフラッシュできます（ニュースや株式相場などを表示するためにサードパーティシステムから取得されるデータなど）。
 
-### ファイルの削除と再キャッシュ{#delete-and-recache-files}
+### ファイルの削除と再キャッシュ {#delete-and-recache-files}
 
 HTTP 要求を発行することによって、Dispatcher がキャッシュされているファイルを削除し、そのファイルを即座に取得して再キャッシュします。Web サイトが同じページに対するクライアント要求を同時に受信する可能性が高い場合は、ファイルを削除して即座に再キャッシュします。即時再キャッシュにより、Dispatcher は同時のクライアント要求それぞれに対して一度ずつではなく、1 回だけページを取得してキャッシュします。
 
-**注意：** ファイルの削除と再キャッシュは、パブリッシュインスタンス上でのみ実行してください。オーサーインスタンスから実行すると、リソースを公開する前に再キャッシュが試みられた場合に、競合状態が発生します。
+**注意：**&#x200B;ファイルの削除と再キャッシュは、パブリッシュインスタンス上でのみ実行してください。オーサーインスタンスから実行すると、リソースを公開する前に再キャッシュが試みられた場合に、競合状態が発生します。
 
 HTTP 要求の形式は以下のとおりです。
 
