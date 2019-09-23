@@ -9,7 +9,7 @@ converted: 'true'
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
-translation-type: ht
+translation-type: tm+mt
 source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
 
 ---
@@ -273,7 +273,7 @@ Dispatcher の使用を始める前に、以下のことを理解しておく必
 
 ### Apache Web サーバーのインストール {#installing-apache-web-server}
 
-Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org)またはディストリビューション内のインストールマニュアルを参照してください。
+Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org/)またはディストリビューション内のインストールマニュアルを参照してください。
 
 >[!CAUTION]
 >
@@ -281,7 +281,7 @@ Apache Web サーバーのインストールについては、[オンライン](
 >
 >詳しくは、Apache Web サーバーのインストールマニュアルを参照してください。
 
-Apache HTTP サーバーの[セキュリティに関するヒント](https://httpd.apache.org/docs/2.4/misc/security_tips.html)および[セキュリティレポート](https://httpd.apache.org/security_report.html)も参照してください。
+Also see the Apache HTTP Server [Security Tips](https://httpd.apache.org/docs/2.4/misc/security_tips.html) and [Security Reports](https://httpd.apache.org/security_report.html).
 
 ### Apache Web サーバー - Dispatcher モジュールの追加 {#apache-web-server-add-the-dispatcher-module}
 
@@ -423,7 +423,7 @@ ServerTokens Full``
 DispatcherNoServerHeader 0`\
 この設定は、（統計目的で）AEM バージョンを示します。このような情報をヘッダー内で利用できないようにするには、次のように設定します。`  
 ServerTokens Prod`\
-詳しくは、[ServerTokens 命令に関する Apache ドキュメント（Apache 2.4 の場合など）](https://httpd.apache.org/docs/2.4/mod/core.html)を参照してください。
+See the [Apache Documentation about ServerTokens Directive (for example, for Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) for more information.
 
 **SetHandler**
 
@@ -496,7 +496,7 @@ AllowOverride None
 
 `ModMimeUsePathInfo On`
 
-mod_mime モジュール（例は [Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html) を参照）は、コンテンツメタデータを HTTP 応答用に選択されたコンテンツに割り当てる際に使用するものです。デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
+The mod_mime module (see for example, [Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)) is used to assign content metadata to the content selected for an HTTP response. デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
 
 `ModMimeUsePathInfo`パラメーターを `On` にすると、`mod_mime` によるコンテンツタイプの指定が&#x200B;*完全な* URL に基づいて行われます。つまり、仮想リソースの拡張子に基づいてメタ情報が適用されます。
 
@@ -536,7 +536,7 @@ Dispatcher は、OpenSSL を使用して HTTP 経由でのセキュアな通信�
    ```
 
 >[!NOTE]
-カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) を使用してコンパイルされていることを確認してください。
+カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) / を使用してコンパイルされていることを確認してください。
 
 ### 次の手順 {#next-steps-1}
 
