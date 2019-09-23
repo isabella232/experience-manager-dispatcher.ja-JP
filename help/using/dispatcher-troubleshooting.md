@@ -12,8 +12,8 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
-translation-type: ht
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+translation-type: tm+mt
+source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
 
 ---
 
@@ -28,7 +28,7 @@ source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
 
 >[!NOTE]
 >
->詳しくは、[Dispatcher ナレッジベース](https://helpx.adobe.com/jp/experience-manager/kb/index/dispatcher.html)、[Dispatcher のフラッシュ問題のトラブルシューティング](https://helpx.adobe.com/jp/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html)、および [Dispatcher に関する主な問題とよくある質問](dispatcher-faq.md)を参照してください。
+>詳しくは、ディスパッチャ [ーナレッジベース](https://helpx.adobe.com/cq/kb/index/dispatcher.html)、ディスパッチャ [ーのフラッシュの問題のトラブルシューティング](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) 、お [よびディスパッチャーの主な問題に関するFAQ](dispatcher-faq.md) も参照してください。
 
 ## 基本設定の確認 {#check-the-basic-configuration}
 
@@ -47,7 +47,7 @@ source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
       * これらのフィルターが調査中の問題に影響しているか。
 
 
-## IIS 診断ツール{#iis-diagnostic-tools}
+## IIS 診断ツール {#iis-diagnostic-tools}
 
 IIS には、実際のバージョンに応じて様々なトレースツールがあります。
 
@@ -56,12 +56,12 @@ IIS には、実際のバージョンに応じて様々なトレースツール�
 
 これらのツールを使用して、アクティビティを監視できます。
 
-## IIS と 404 Not Found{#iis-and-not-found}
+## IIS と 404 Not Found {#iis-and-not-found}
 
 IIS の使用時、様々な場面で「`404 Not Found`」が返されることがあります。このエラーが返された場合は、次のナレッジベース記事を参照してください。
 
-* [IIS 6/7 POST メソッドが404を返す](https://helpx.adobe.com/jp/experience-manager/kb/IIS6IsapiFilters.html)
-* [IIS 6：基本 `/bin` を含む URLへのリクエストで`404 Not Found`が返される ](https://helpx.adobe.com/jp/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6/7: POST method returns 404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
+* [IIS 6: Requests to URLs that contain the base path  return `/bin``404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
 Dispatcher のキャッシュルートと IIS のドキュメントルートが同じディレクトリに設定されていることも確認してください。
 
