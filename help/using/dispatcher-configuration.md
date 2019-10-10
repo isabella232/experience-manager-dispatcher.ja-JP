@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: a997d2296e80d182232677af06a2f4ab5a14bfd5
+source-git-commit: 119f952439a59e51f769f285c79543aec8fdda37
 
 ---
 
@@ -163,7 +163,7 @@ Dispatcher インスタンスを識別する一意の名前を指定するには
 
 `/farms` プロパティは、設定構造の最上位プロパティです。ファームを定義するには、`/farms` プロパティに子プロパティを追加します。Dispatcher インスタンス内でファームを一意に識別するプロパティ名を使用してください。
 
-`/*farmname*` プロパティは複数値で、次のような Dispatcher 動作を定義する他のプロパティを含みます。
+`/farmname` プロパティは複数値で、次のような Dispatcher 動作を定義する他のプロパティを含みます。
 
 * ファームを適用するページの URL。
 * ドキュメントのレンダリングに使用する 1 つまたは複数のサービス URL（一般的には AEM パブリッシュインスタンスの URL）。
@@ -213,6 +213,7 @@ Dispatcher インスタンスを識別する一意の名前を指定するには
 | [/retryDelay](#specifying-the-page-retry-delay) | 失敗した接続を再試行するまでの遅延。 |
 | [/unavailablePenalty](#reflecting-server-unavailability-in-dispatcher-statistics) | ロードバランシング計算用の統計に影響を与えるペナルティ。 |
 | [/failover](#using-the-fail-over-mechanism) | 元の要求が失敗した場合に異なるレンダーに要求を再送信します。 |
+| [/auth_checker](permissions-cache.md) | For permission-sensitive caching, see [Caching Secured Content](permissions-cache.md). |
 
 ## デフォルトページの指定（IIS のみ） - /homepage {#specify-a-default-page-iis-only-homepage}
 
@@ -545,7 +546,7 @@ Dispatcher バージョン **4.1.6** では、次のように `/always-resolve` 
 また、次の例に示すように、このプロパティは動的な IP 解決の問題が発生した場合にも使用できます。
 
 ```xml
-/rend {
+/renders {
   /0001 {
      /hostname "host-name-here"
      /port "4502"
@@ -974,6 +975,7 @@ CQ または AEM ページ用に設定されているバニティー URL への�
 * /headers
 * /mode
 * /gracePeriod
+* /enableTTL
 
 
 キャッシュセクションの例を次に示します。
@@ -1505,7 +1507,7 @@ For additional information about the `httponly` flag, read [this page](https://w
 
 ### secure {#secure}
 
-スティッキー接続が有効になっている場合、dispatcher モジュールは `renderid` cookie を設定します。この cookie には **secure** フラグがないため、セキュリティを強化するためにこのフラグを追加する必要があります。これをおこなうには、`secure` 設定ファイルの `/stickyConnections` ノードで `dispatcher.any` プロパティを設定します。プロパティの値（0または1）は、`renderid` cookie に `secure` 属性を追加するかどうかを定義します。デフォルト値は 0 です。これは、受信要求が安全な場合に属性が追加されることを意味します。値が 1 に設定されている場合、受信リクエストがセキュリティ保護されているかどうかに関係なく、secure フラグが追加されます。
+スティッキー接続が有効になっている場合、dispatcher モジュールは `renderid` cookie を設定します。この cookie には **secure** フラグがないため、セキュリティを強化するためにこのフラグを追加する必要があります。これをおこなうには、`secure` 設定ファイルの `/stickyConnections` ノードで `dispatcher.any` プロパティを設定します。プロパティの値（0または1）は、`renderid` cookie に `secure` 属性を追加するかどうかを定義します。The default value is 0, which means the attribute will be added **if** the incoming request is secure. 値が 1 に設定されている場合、受信リクエストがセキュリティ保護されているかどうかに関係なく、secure フラグが追加されます。
 
 ## レンダー接続エラーの処理 {#handling-render-connection-errors}
 
