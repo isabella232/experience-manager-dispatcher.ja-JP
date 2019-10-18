@@ -9,7 +9,7 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 translation-type: tm+mt
-source-git-commit: 72e3fb193f018e747f82bf9f8d646a04c69056f6
+source-git-commit: b9916a6736ec8a406fb3b7652bb0fa1279f9ff34
 
 ---
 
@@ -139,7 +139,7 @@ source-git-commit: 72e3fb193f018e747f82bf9f8d646a04c69056f6
 
 ### Apache 2.4 {#apache}
 
-| プラットフォーム | アーキテクチャ | OpenSSL | ダウンロード |
+| プラットフォーム | アーキテクチャ | SSL | ダウンロード |
 |---|---|---|---|
 | Linux | i686（32 ビット） | なし | [dispatcher-apache2.4-linux-i686-4.3.3.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.3.tar.gz) |
 | Linux | i686（32 ビット） | 1.0 | [dispatcher-apache2.4-linux-i686-ssl1.0-4.3.3.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.3.tar.gz) |
@@ -151,7 +151,7 @@ source-git-commit: 72e3fb193f018e747f82bf9f8d646a04c69056f6
 
 ### IIS {#iis}
 
-| プラットフォーム | アーキテクチャ | OpenSSL | ダウンロード |
+| プラットフォーム | アーキテクチャ | SSL | ダウンロード |
 |---|---|---|---|
 | Windows | x86（32ビット） | なし | [dispatcher-iis-windows-x86-4.3.3.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.3.zip) |
 | Windows | x86（32ビット） | 1.0 | [dispatcher-iis-windows-x86-ssl1.0-4.3.3.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.0-4.3.3.zip) |
