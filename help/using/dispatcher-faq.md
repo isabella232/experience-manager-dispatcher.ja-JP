@@ -4,7 +4,7 @@ seo-title: AEM Dispatcher に関する主な問題
 description: AEM Dispatcher に関する主な問題
 seo-description: Adobe AEM Dispatcher に関する主な問題
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 ---
 
@@ -82,7 +82,7 @@ Dispatcher の[インストール](dispatcher-install.md)ページを参照し�
 
 マシンの性能が十分でれば可能です。ただし、異なるマシン上に Dispatcher および AEM パブリッシュインスタンスを設定することをお勧めします。
 
-通常、パブリッシュインスタンスはファイアウォール内に存在し、Dispatcher は DMZ に存在します。同じ物理マシンにパブリッシュインスタンスと Dispatcher の両方を配置することを決定した場合は、ファイアウォール設定で外部ネットワークからパブリッシュインスタンスへの直接アクセスが禁止されていること確認してください。
+通常、発行インスタンスはファイアウォール内にあり、ディスパッチャーはDMZ内に存在します。 同じ物理マシンにパブリッシュインスタンスと Dispatcher の両方を配置することを決定した場合は、ファイアウォール設定で外部ネットワークからパブリッシュインスタンスへの直接アクセスが禁止されていること確認してください。
 
 ### 特定の拡張子を持つファイルのみキャッシュできますか？
 
