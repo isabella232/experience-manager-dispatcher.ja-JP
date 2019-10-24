@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 119f952439a59e51f769f285c79543aec8fdda37
+source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 ---
 
@@ -221,7 +221,7 @@ Dispatcher インスタンスを識別する一意の名前を指定するには
 >
 >`/homepage` パラメーター（IISのみ）は機能しなくなりました。Instead, you should use the [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
 >
->Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag ** ['passthrough|PT' (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
+>Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag **['passthrough|PT' (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
 
 <!-- 
 
@@ -1163,7 +1163,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
    * 例えば、`statfileslevel` プロパティを 6 に設定し、レベル 5 でファイルが無効化されると、docroot から 5 までのすべての `.stat` ファイルが touch されます。この例では、ファイルがレベル 7 で無効化されると、docroot から 6 までのすべての .`stat` ファイルが touch されます（`/statfileslevel = "6"` なので）。
 
-無効化されたファイルパスへの**パスに沿った**リソースのみが影響を受けます。次の例を考えて見ましょう。Web サイトで `/content/myWebsite/xx/.` 構造を使用していて、`statfileslevel` を 3 に設定している場合、`.stat` ファイルは次のように作成されます。
+Only resources **along the path** to the invalidated file are affected. 次の例を考えて見ましょう。Web サイトで `/content/myWebsite/xx/.` 構造を使用していて、`statfileslevel` を 3 に設定している場合、`.stat` ファイルは次のように作成されます。
 
 * `docroot`
 * `/content`
