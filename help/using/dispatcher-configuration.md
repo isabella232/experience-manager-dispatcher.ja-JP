@@ -5,12 +5,12 @@ description: Dispatcher の設定方法について説明します。
 seo-description: Dispatcher の設定方法について説明します。
 uuid: 253ef0f7-2491-4cec-ab22-97439df29fd6
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
-pageversionid: '1193211344162'
+pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
+source-git-commit: 71bca4bea15ca8fa89888e10770743422c56b827
 
 ---
 
@@ -1383,19 +1383,13 @@ FileETag none
 
 詳細については、上記の `/invalidate` および `/statfileslevel` セクションも参照してください。
 
-## 時間に基づくキャッシュの無効化の設定 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
+### 時間に基づくキャッシュの無効化の設定 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-設定した場合、`enableTTL` プロパティはバックエンドからの応答ヘッダーを評価し、`Cache-Control` max-age または `Expires` 日付が含まれる場合は、有効期限と同じ変更時刻を持つ予備の空のファイルがキャッシュファイルの隣に作成されます。変更時刻以降にキャッシュされたファイルが要求されると、自動的にバックエンドから再要求されます。
-
-次の行を `dispatcher.any` ファイルに追加することで、この機能を有効にできます。
-
-```xml
-/enableTTL "1"
-```
+設定した場合、`/enableTTL` プロパティはバックエンドからの応答ヘッダーを評価し、`Cache-Control` max-age または `Expires` 日付が含まれる場合は、有効期限と同じ変更時刻を持つ予備の空のファイルがキャッシュファイルの隣に作成されます。変更時刻以降にキャッシュされたファイルが要求されると、自動的にバックエンドから再要求されます。
 
 >[!NOTE]
 >
->この機能は、Dispatcher のバージョン **4.1.11** で利用できます。
+>この機能は、Dispatcherのバージ **ョン4.1.11** 以降で使用できます。
 
 ## ロードバランシングの設定 - /statistics {#configuring-load-balancing-statistics}
 
