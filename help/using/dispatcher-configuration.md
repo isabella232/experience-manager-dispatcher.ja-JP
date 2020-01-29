@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 71bca4bea15ca8fa89888e10770743422c56b827
+source-git-commit: fb7891406af215c59e9768b699a5d191ba4b1eb2
 
 ---
 
@@ -221,7 +221,7 @@ Dispatcher インスタンスを識別する一意の名前を指定するには
 >
 >`/homepage` パラメーター（IISのみ）は機能しなくなりました。Instead, you should use the [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
 >
->Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag **['passthrough|PT' (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
+>Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag **[&#39;passthrough|PT&#39; (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**to force the rewrite engine to set the`uri`field of the internal`request_rec`structure to the value of the`filename`field.
 
 <!-- 
 
@@ -405,7 +405,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 | 要求 URL | 解決される仮想ホスト |
 |---|---|
-| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/*;` |
+| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/*` |
 | `https://www.mycompany.com/about.html` | `www.mycompany.com` |
 
 ## セキュアセッションの有効化 - /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
@@ -441,7 +441,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 **/encode**（オプション）
 
-セッション情報のエンコード方法。md5 アルゴリズムを使用した暗号化には "md5" を、16 進エンコーディングには "hex" を使用します。セッションデータを暗号化すると、ファイルシステムにアクセスできるユーザーでも、セッション内容を読み取れなくなります。デフォルトは "md5" です。
+セッション情報のエンコード方法。md5 アルゴリズムを使用した暗号化には &quot;md5&quot; を、16 進エンコーディングには &quot;hex&quot; を使用します。セッションデータを暗号化すると、ファイルシステムにアクセスできるユーザーでも、セッション内容を読み取れなくなります。デフォルトは &quot;md5&quot; です。
 
 **/header**（オプション）
 
@@ -449,7 +449,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 **/timeout**（オプション）
 
-最後の使用から、セッションのタイムアウトまでの秒数。指定がない場合は "800" が適用され、ユーザーからの最後の要求から約 13 分でセッションがタイムアウトします。
+最後の使用から、セッションのタイムアウトまでの秒数。指定がない場合は &quot;800&quot; が適用され、ユーザーからの最後の要求から約 13 分でセッションがタイムアウトします。
 
 設定例を次に示します。
 
@@ -482,7 +482,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
   }
 ```
 
-次の /renders セクションの例では、Dispatcher と同じコンピューター上で動作する AEM インスタンスを識別しています。
+次の例の/rendersセクションは、ディスパッチャーと同じコンピューター上で実行されるAEMインスタンスを識別します。
 
 ```xml
 /renders
@@ -517,11 +517,11 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 **/timeout**
 
-AEM インスタンスにアクセスする接続タイムアウトをミリ秒単位で指定します。デフォルトは "0" で、Dispatcher は無制限に待機します。
+AEM インスタンスにアクセスする接続タイムアウトをミリ秒単位で指定します。デフォルトは &quot;0&quot; で、Dispatcher は無制限に待機します。
 
 **/receiveTimeout**
 
-応答が返るまでに許容される時間をミリ秒単位で指定します。デフォルトは "600000" で、Dispatcher は 10 分間待機します。"0" に設定すると、タイムアウトが完全になくなります。\
+応答が返るまでに許容される時間をミリ秒単位で指定します。デフォルトは &quot;600000&quot; で、Dispatcher は 10 分間待機します。&quot;0&quot; に設定すると、タイムアウトが完全になくなります。\
 応答ヘッダーの解析中にタイムアウトに達した場合は、HTTP ステータス 504（Bad Gateway）が返されます。応答本文の読み取り中にタイムアウトに達した場合は、Dispatcher は不完全な応答をクライアントに返しますが、作成されたキャッシュファイルがあれば削除します。
 
 **/ipv4**
@@ -601,13 +601,13 @@ Dispatcher が受け入れる HTTP 要求を指定するには、`/filter` セ�
 
 HTTP/1.1 defines the [request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html) as follows:
 
-*Method Request-URI HTTP-Version*&lt;CRLF&gt;
+*Method Request-URI HTTP-Version*&lt;CRLF>
 
-&lt;CRLF&gt; 文字は、キャリッジリターンとそれに続くラインフィードを表します。次の例は、クライアントが Geometrixx-Outdoors サイトの英語ページを要求したときに受信する要求行です。
+&lt;CRLF> 文字は、キャリッジリターンとそれに続くラインフィードを表します。次の例は、クライアントが Geometrixx-Outdoors サイトの英語ページを要求したときに受信する要求行です。
 
-GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF&gt;
+GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF>
 
-パターンは、要求行の空白文字と &lt;CRLF&gt; 文字を考慮する必要があります。
+パターンは、要求行の空白文字と &lt;CRLF> 文字を考慮する必要があります。
 
 #### 二重引用符と一重引用符 {#double-quotes-vs-single-quotes}
 
@@ -955,7 +955,7 @@ CQ または AEM ページ用に設定されているバニティー URL への�
 
 シンジケーション要求は、通常、Dispatcher のみを対象としているので、デフォルトではレンダラー（AEM インスタンスなど）に送信されません。
 
-必要に応じて、シンジケーション要求を Dispatcher に転送するために、/propagateSyndPost プロパティを "1" に設定します。設定する場合、フィルターセクションで POST 要求が拒否されていないことを確認する必要があります。
+必要に応じて、シンジケーション要求を Dispatcher に転送するために、/propagateSyndPost プロパティを &quot;1&quot; に設定します。設定する場合、フィルターセクションで POST 要求が拒否されていないことを確認する必要があります。
 
 ## Dispatcher キャッシュの設定 - /cache {#configuring-the-dispatcher-cache-cache}
 
@@ -1041,7 +1041,7 @@ statfile にはコンテンツがありません。コンテンツが更新さ�
 
 デフォルトでは、この認証情報を含む要求はキャッシュされません。キャッシュされたドキュメントをクライアントに返す場合、認証は実行されないからです。この設定によって、Dispatcher は、必要な権限を持たないユーザーにキャッシュされたドキュメントを返さなくなります。
 
-ただし、認証済みドキュメントのキャッシュを要件によって承認する場合は、/allowAuthorized を "1" に設定します。
+ただし、認証済みドキュメントのキャッシュを要件によって承認する場合は、/allowAuthorized を &quot;1&quot; に設定します。
 
 `/allowAuthorized "1"`
 
@@ -1292,7 +1292,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 * パラメーターを無視するには、そのパラメーターを許可する glob プロパティを作成します。
 * ページがキャッシュされないようにするには、そのパラメーターを拒否する glob プロパティを作成します。
 
-次の例では、Dispatcher が "q" パラメーターを無視するので、q パラメーターを含む要求 URL はキャッシュされます。
+次の例では、Dispatcher が &quot;q&quot; パラメーターを無視するので、q パラメーターを含む要求 URL はキャッシュされます。
 
 ```xml
 /ignoreUrlParams
@@ -1465,7 +1465,7 @@ URI のカテゴリを判断するために、Dispatcher は一致が見つか�
 
 `/unavailablePenalty` プロパティは、`/farm` セクション（`/statistics` セクションの兄弟）の直接の子です。
 
-`/unavailablePenalty` プロパティが存在しない場合は、値 "1" が使用されます。
+`/unavailablePenalty` プロパティが存在しない場合は、値 &quot;1&quot; が使用されます。
 
 ```xml
 /unavailablePenalty "1"
@@ -1598,7 +1598,7 @@ glob の値にワイルドカード文字と英数字を含めて、パターン
 | ワイルドカード文字 | 説明 | 例 |
 |--- |--- |--- |
 | `*` | 文字列に含まれる任意の文字の 0 個以上の連続するインスタンスに一致します。一致の最後の文字は、次のどちらかの状況によって判断されます。<br/>文字列内のある文字がパターン内の次の文字に一致し、パターンの文字が以下の性質を持つ。<br/><ul><li>* 以外</li><li>? 以外</li><li>リテラル文字（空白を含む）または文字クラス。</li><li>パターンの終わりに達している。</li></ul>文字クラス内のこの文字は、リテラルとして解釈されます。 | `*/geo*` `/content/geometrixx`ノードと `/content/geometrixx-outdoors` ノードの下にあるすべてのページに一致します。以下の HTTP 要求は、glob パターンに一致します。<br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*`<br/> `/content/geometrixx-outdoors` ノードの下にあるすべてのページに一致します。例えば、次の HTTP 要求は glob パターンに一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
-| `?` | 任意の 1 文字に一致します。文字クラス外で使用します。文字クラス内のこの文字は、リテラルとして解釈されます。 | `*outdoors/??/*`<br/>geometrixx-outdoors サイトのすべての言語のページに一致します。例えば、次の HTTP 要求は glob パターンに一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>次の要求は glob パターンに一致しません。<br/><ul><li>"GET /content/geometrixx-outdoors/en.html"</li></ul> |
+| `?` | 任意の 1 文字に一致します。文字クラス外で使用します。文字クラス内のこの文字は、リテラルとして解釈されます。 | `*outdoors/??/*`<br/>geometrixx-outdoors サイトのすべての言語のページに一致します。例えば、次の HTTP 要求は glob パターンに一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>次の要求は glob パターンに一致しません。<br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
 | `[ and ]` | 文字クラスの最初と最後を定めます。文字クラスには、1 つまたは複数の文字範囲および単一の文字を含めることができます。<br/>ターゲット文字が文字クラス内または定義されている範囲内のいずれかの文字に一致する場合、一致が発生します。<br/>閉じ角括弧が含まれない場合、パターンによって一致は発生しません。 | `*[o]men.html*`<br/>次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*`<br/>次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 文字の範囲を定めます。文字クラス内で使用します。文字クラス外のこの文字は、リテラルとして解釈されます。 | `*[m-p]men.html*`次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | 続く文字または文字クラスを打ち消します。文字クラス内の文字および文字範囲の打ち消しにのみ使用してください。ワイルドカード文字 `^ wildcard`.<br/>文字クラス外のこの文字は、リテラルとして解釈されます。 | `*[!o]men.html*`<br/>次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` または `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
@@ -1836,11 +1836,11 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
    一時ファイル名テンプレートが、システムで使用可能な最長ファイル名を超えています。Dispatcher は、キャッシュされたファイルを作成または上書きする前に、まず一時ファイルを作成します。一時ファイル名は、ターゲットファイル名に文字 `_YYYYXXXXXX` が追加サれた名前です。`Y` と `X` が置き換えられ、一意の名前が作成されます。
 * **not cacheable: request URL has no extension**\
    リクエスト URL に拡張子がないか、ファイル拡張子の後にパスがあります（例：`/test.html/a/path`）。
-* **not cacheable: request wasn't a GET or HEAD** 
+* **not cacheable: request wasn&#39;t a GET or HEAD** 
 HTTP メソッドが GET でも HEAD でもありません。Dispatcher は、出力にキャッシュするべきではない動的データが含まれていると想定します。
 * **not cacheable: request contained a query string**\
    リクエストにクエリ文字列が含まれていました。Dispatcherは、出力が与えられたクエリ文字列に依存しているため、キャッシュされないと想定します。
-* **not cacheable: session manager didn't authenticate**\
+* **not cacheable: session manager didn&#39;t authenticate**\
    ファームのキャッシュはセッションマネージャーによって管理され（設定に `sessionmanagement` ノードが含まれている）、リクエストに適切な認証情報が含まれていません。
 * **not cacheable: request contains authorization**\
    ファームはキャッシュの出力（`allowAuthorized 0`）が許可されておらず、リクエストに認証情報が含まれている。
@@ -1854,7 +1854,6 @@ HTTP メソッドが GET でも HEAD でもありません。Dispatcher は、�
    ファームの認証チェッカーがキャッシュされたファイルへのアクセスを拒否しました。
 * **not cacheable: session not valid** 
 ファームのキャッシュがセッションマネージャーによって管理され（設定に `sessionmanagement` ノードが含まれている）、ユーザーセッションが無効であるか、有効でなくなっています。
-* **not cacheable: response contains`no_cache `** 
-リモートサーバーが `Dispatcher: no_cache` ヘッダーを返し、Dispatcher による出力のキャッシュが禁止されています。
+* **not cacheable: response contains`no_cache `**リモートサーバーが`Dispatcher: no_cache`ヘッダーを返し、Dispatcher による出力のキャッシュが禁止されています。
 * **not cacheable: response content length is zero** 
 応答のコンテンツ長がゼロになっています。Dispatcher では、長さゼロのファイルは作成されません。
