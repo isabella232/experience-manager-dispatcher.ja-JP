@@ -11,7 +11,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 translation-type: tm+mt
-source-git-commit: 851202feff9b8fe3c6a44241d0ed12822b07b806
+source-git-commit: 64d26d802dbc9bb0b6815011a16e24c63a7672aa
 
 ---
 
@@ -70,8 +70,8 @@ Dispatcher フラッシュレプリケーションエージェントが、キャ
 
 ドメイン URL とコンテンツパスをキャッシュファイルへと解決するには、プロセスのどこかの時点で、ファイルパスまたはページ URL を変換する必要があります。以下で一般的な戦略を説明しますが、この説明では、プロセスの様々な時点でパスまたは URL の変換をおこないます。
 
-* （推奨）AEM パブリッシュインスタンスが、リソースの解決に Sling マッピングを使用して、内部 URL の書き換えルールを実装する。ドメイン URL はコンテンツリポジトリのパスに変換される（[AEM による受信 URL の書き換え](#aem-rewrites-incoming-urls)を参照）。
-* Web サーバーが、ドメイン URL をキャッシュのパスに変換する内部 URL 書き換えルールを使用する。（[Web サーバーによる受信 URL の書き換え](#the-web-server-rewrites-incoming-urls)を参照）。
+* （推奨）AEM パブリッシュインスタンスが、リソースの解決に Sling マッピングを使用して、内部 URL の書き換えルールを実装する。ドメイン URL はコンテンツリポジトリのパスに変換されるSee [AEM Rewrites Incoming URLs](#aem-rewrites-incoming-urls).
+* Web サーバーが、ドメイン URL をキャッシュのパスに変換する内部 URL 書き換えルールを使用する。See [The Web Server Rewrites Incoming URLs](#the-web-server-rewrites-incoming-urls).
 
 一般的に望ましいのは、Web ページに対して短縮された URL を使用することです。通常、ページ URL は、Web コンテンツが格納されたリポジトリフォルダーの構造をミラーリングしています。ただし、URL には最上位のリポジトリノード（`/content` など）が表示されません。クライアントは、必ずしも AEM リポジトリの構造を意識しません。
 
