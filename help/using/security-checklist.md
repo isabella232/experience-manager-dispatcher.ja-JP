@@ -14,7 +14,7 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
+source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
 
 ---
 
@@ -91,9 +91,9 @@ Dispatcher の設定時に、できる限り外部アクセスを制限してく
 
 ## 専用システムユーザーでの Dispatcher の実行 {#run-dispatcher-with-a-dedicated-system-user}
 
-Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによって Web サーバーが実行されていることを確認してください。Dispatcher のキャッシュフォルダーへの書き込みアクセス権のみを付与することをお勧めします。
+Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによって Web サーバーが実行されていることを確認してください。ディスパッチャーキャッシュフォルダーへの書き込みアクセス権のみを付与することをお勧めします。
 
-さらに、IIS ユーザーは、Web サイトを以下のように設定する必要があります。
+さらに、IISユーザーは、次のようにWebサイトを設定する必要があります。
 
 1. Web サイトの物理パス設定で、「**特定のユーザーとして接続**」を選択します。
 1. ユーザーを設定します。
@@ -102,7 +102,7 @@ Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによ
 
 サービス拒否（DoS）攻撃は、対象となるユーザーがコンピューターリソースを使用できない状態にするものです。
 
-Dispatcher レベルでは、DoS 攻撃を防御するように設定する方法は 2 つあります。 [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (Filters))
+Dispatcher レベルでは、DoS 攻撃を防御するように設定する方法は 2 つあります。 [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (フィルター))
 
 * mod_rewrite モジュール（[Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html) など）を使用し、URL 検証を実行します（URL パターン規則がそれほど複雑ではない場合）。
 
