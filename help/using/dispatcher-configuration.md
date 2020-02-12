@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: fb7891406af215c59e9768b699a5d191ba4b1eb2
+source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
 
 ---
 
@@ -200,19 +200,19 @@ Dispatcher インスタンスを識別する一意の名前を指定するには
 |--- |--- |
 | [/homepage](#specify-a-default-page-iis-only-homepage) | デフォルトのホームページ（オプション）（IIS のみ） |
 | [/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders) | 通過させるクライアント HTTP 要求のヘッダー。 |
-| [/virtualhosts](#identifying-virtual-hosts-virtual-hosts) | このファームの仮想ホスト。 |
-| [/sessionmanagement](#enabling-secure-sessions-session-management) | セッション管理および認証のサポート。 |
+| [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | このファームの仮想ホスト。 |
+| [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | セッション管理および認証のサポート。 |
 | [/renders](#defining-page-renderers-renders) | レンダリングされたページを提供するサーバー（一般的には AEM パブリッシュインスタンス）。 |
 | [/filter](#configuring-access-to-content-filter) | Dispatcher がアクセスできる URL を定義します。 |
 | [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | バニティー URL へのアクセスを設定します。 |
-| [/propagateSyndPost](#forwarding-syndication-requests-propagate-syndpost) | シンジケーション要求の転送のサポート。 |
+| [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | シンジケーション要求の転送のサポート。 |
 | [/cache](#configuring-the-dispatcher-cache-cache) | キャッシュ動作を設定します。 |
 | [/statistics](#configuring-load-balancing-statistics) | ロードバランシング計算用の統計カテゴリの定義。 |
-| [/stickyConnectionsFor](#identifying-a-sticky-connection-folder-sticky-connections-for) | スティッキードキュメントを格納するフォルダー。 |
+| [/stickyConnectionsFor](#identifying-a-sticky-connection-folder-stickyconnectionsfor) | スティッキードキュメントを格納するフォルダー。 |
 | [/health_check](#specifying-a-health-check-page) | サーバーの可用性を判断するために使用する URL。 |
 | [/retryDelay](#specifying-the-page-retry-delay) | 失敗した接続を再試行するまでの遅延。 |
 | [/unavailablePenalty](#reflecting-server-unavailability-in-dispatcher-statistics) | ロードバランシング計算用の統計に影響を与えるペナルティ。 |
-| [/failover](#using-the-fail-over-mechanism) | 元の要求が失敗した場合に異なるレンダーに要求を再送信します。 |
+| [/failover](#using-the-failover-mechanism) | 元の要求が失敗した場合に異なるレンダーに要求を再送信します。 |
 | [/auth_checker](permissions-cache.md) | For permission-sensitive caching, see [Caching Secured Content](permissions-cache.md). |
 
 ## デフォルトページの指定（IIS のみ） - /homepage {#specify-a-default-page-iis-only-homepage}
