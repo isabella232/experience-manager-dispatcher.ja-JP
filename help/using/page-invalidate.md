@@ -5,7 +5,7 @@ description: 効率的なキャッシュ管理を確保するため、Dispatcher
 seo-description: 効率的なキャッシュ管理を確保するため、Adobe AEM Dispatcher と AEM の間のインタラクションを設定する方法について説明します。
 uuid: 66533299-55c0-4864-9beb-77e281af9359
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
-pageversionid: '1193211344162'
+pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -13,7 +13,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: 85497651ce29c8564da4b52c60819a48b776af7b
 
 ---
 
@@ -24,7 +24,7 @@ Dispatcher を AEM と共に使用する際は、キャッシュが効果的に�
 
 ## AEM ユーザーアカウントの設定 {#setting-up-aem-user-accounts}
 
-デフォルトの `admin` ユーザーアカウントを使用して、デフォルトでインストールされているレプリケーションエージェントを認証します。レプリケーションエージェントで使用する専用のユーザーアカウントを作成する必要があります。[](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)
+デフォルトの `admin` ユーザーアカウントを使用して、デフォルトでインストールされているレプリケーションエージェントを認証します。レプリケーションエージェントで使用する専用のユーザーアカウントを作成する必要があります。
 
 For more information see the [Configure Replication and Transport Users](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) section of the AEM Security Checklist.
 
@@ -58,7 +58,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 1. （オプション）エイリアスまたはバニティーパスの無効化要求を有効にするには、「**エイリアスの更新**」オプションを選択します。
 1. 「トランスポート」タブで、Dispatcher へのアクセスに必要な URI を入力します。\
-   標準の Dispatcher フラッシュエージェントを使用している場合は、ホスト名とポートを更新する必要がある可能性があります。例：https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache
+   標準の Dispatcher フラッシュエージェントを使用している場合は、ホスト名とポートを更新する必要がある可能性があります。例：https://&lt;*dispatcherHost*>:&lt;*portApache*>/dispatcher/invalidate.cache
 
    **注意：** Dispatcher フラッシュエージェントの場合は、パスベースの仮想ホストエントリを使用してファームを区別する場合にのみ URI プロパティが使用されます。このフィールドを使用して、無効化するファームをターゲット設定します。例えば、ファーム #1 の仮想ホストは `www.mysite.com/path1/*` で、ファーム #2 の仮想ホストは `www.mysite.com/path2/*` です。この場合、`/path1/invalidate.cache` の URL を使用して最初のファームをターゲット設定し、`/path2/invalidate.cache` を使用して 2 つ目のファームをターゲット設定できます。詳しくは、[複数ドメインでの Dispatcher の使用](dispatcher-domains.md)を参照してください。 
 
