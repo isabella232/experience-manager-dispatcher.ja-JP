@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
+source-git-commit: 183131dec51b67e152a8660c325ed980ae9ef458
 
 ---
 
@@ -405,7 +405,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 | 要求 URL | 解決される仮想ホスト |
 |---|---|
-| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/*` |
+| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/` |
 | `https://www.mycompany.com/about.html` | `www.mycompany.com` |
 
 ## セキュアセッションの有効化 - /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
@@ -564,7 +564,7 @@ Dispatcher が受け入れる HTTP 要求を指定するには、`/filter` セ�
 
 >[!CAUTION]
 >
->Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。また、AEMのインストールに関するその他のセキュリ [ティの詳細については](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html) 、「AEMセキュリティチェックリスト」を参照してください。
+>Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。また、AEMのインストールに関するその他の [セキュリティの詳細については](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html) 、AEMセキュリティチェックリストを参照してください。
 
 /filter セクションは、HTTP 要求の要求行部分のパターンに応じてコンテンツへのアクセスを拒否または許可する一連のルールで構成されます。/filter セクションに対しては、ホワイトリスト戦略を使用してください。
 
