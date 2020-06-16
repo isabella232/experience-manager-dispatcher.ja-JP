@@ -14,7 +14,10 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
+source-git-commit: 9ffdc1d85d1a0da45f95e0780227ee6569cd4b3d
+workflow-type: tm+mt
+source-wordcount: '672'
+ht-degree: 86%
 
 ---
 
@@ -36,7 +39,7 @@ Dispatcher はフロントエンドシステムとして機能し、Adobe Experi
 
 >[!CAUTION]
 >
->稼動させる前に、使用するバージョンの AEM のセキュリティチェックリストも確認する必要があります。対応する [Adobe Experience Manager のドキュメント](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)を参照してください。
+>稼動させる前に、使用するバージョンの AEM のセキュリティチェックリストも確認する必要があります。対応する [Adobe Experience Manager のドキュメント](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html)を参照してください。
 
 ## 最新バージョンの Dispatcher の使用 {#use-the-latest-version-of-dispatcher}
 
@@ -85,15 +88,15 @@ Dispatcher の設定時に、できる限り外部アクセスを制限してく
 
 ブロックする必要がある URL のリストについては、[Dispatcher のセキュリティのテスト](dispatcher-configuration.md#testing-dispatcher-security)を参照してください。
 
-## ブラックリストの代わりにホワイトリストを使用 {#use-whitelists-instead-of-blacklists}
+## ブロックリストの代わりに許可リストを使用 {#use-allowlists-instead-of-blocklists}
 
-アクセスを制御する方法としては、ホワイトリストのほうが優れています。ホワイトリストは、明示的にホワイトリストに含まれているもの以外はすべてのアクセス要求を拒否するからです。このモデルでは、未確認だったり、特定の設定ステージで考慮されていなかった可能性がある新しい要求に対して、より厳しい制御を適用できます。
+許可リストは本質的にアクセス制御を提供するより良い方法です。許可リストに明示的に含まれない限り、すべてのアクセス要求は拒否される必要があると考えられます。 このモデルでは、未確認だったり、特定の設定ステージで考慮されていなかった可能性がある新しい要求に対して、より厳しい制御を適用できます。
 
 ## 専用システムユーザーでの Dispatcher の実行 {#run-dispatcher-with-a-dedicated-system-user}
 
 Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによって Web サーバーが実行されていることを確認してください。ディスパッチャーキャッシュフォルダーへの書き込みアクセス権のみを付与することをお勧めします。
 
-さらに、IISユーザーは、次のようにWebサイトを設定する必要があります。
+また、IISのユーザーは、次のようにWebサイトを設定する必要があります。
 
 1. Web サイトの物理パス設定で、「**特定のユーザーとして接続**」を選択します。
 1. ユーザーを設定します。
@@ -102,7 +105,7 @@ Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによ
 
 サービス拒否（DoS）攻撃は、対象となるユーザーがコンピューターリソースを使用できない状態にするものです。
 
-Dispatcher レベルでは、DoS 攻撃を防御するように設定する方法は 2 つあります。 [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (フィルター))
+Dispatcher レベルでは、DoS 攻撃を防御するように設定する方法は 2 つあります。 [](https://docs.adobe.com/content/docs/jp/dispatcher.html#/filter (フィルター))
 
 * mod_rewrite モジュール（[Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html) など）を使用し、URL 検証を実行します（URL パターン規則がそれほど複雑ではない場合）。
 
@@ -117,6 +120,7 @@ Dispatcher レベルでは、DoS 攻撃を防御するように設定する方�
    * `.doc`
    * `.pdf`
    * `.ppt`
+
    [外部アクセスを制限する](#restrict-access)ための設定ファイルのサンプルを参照できます。このファイルには、mine タイプの制限も含まれます。
 
 パブリッシュインスタンス上ですべての機能を安全に有効にするには、以下のノードへのアクセスを防ぐようにフィルターを設定します。
@@ -149,7 +153,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## CSRF 攻撃を防止するための Dispatcher の設定 {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐことを目的とした[フレームワーク](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps)があります。このフレームワークを適切に利用するには、Dispatcher で CSRF トークンサポートをホワイトリストに登録する必要があります。この情報を出力するには、次の操作をおこないます。
+AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐことを目的とした[フレームワーク](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps)があります。このフレームワークを正しく利用するには、ディスパッチャーでCSRFトークンサポートを許可リストする必要があります。 手順は次のとおりです。
 
 1. `/libs/granite/csrf/token.json` パスを許可するフィルターを作成する。
 1. Dispatcher 設定の `clientheaders` セクションに `CSRF-Token` ヘッダーを追加する。
