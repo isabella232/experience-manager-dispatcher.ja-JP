@@ -5,7 +5,7 @@ description: Dispatcher に関する問題のトラブルシューティング�
 seo-description: AEM Dispatcher に関する問題のトラブルシューティングについて説明します。
 uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
-pageversionid: '1193211344162'
+pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -13,7 +13,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+workflow-type: tm+mt
+source-wordcount: '553'
+ht-degree: 90%
 
 ---
 
@@ -28,7 +31,7 @@ source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
 
 >[!NOTE]
 >
->詳しくは、ディスパッチャ [ーナレッジベース](https://helpx.adobe.com/cq/kb/index/dispatcher.html)、ディスパッチャ [ーのフラッシュの問題のトラブルシューティング](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) 、お [よびディスパッチャーの主な問題に関するFAQ](dispatcher-faq.md) も参照してください。
+>詳細については、 [ディスパッチャーのナレッジベース](https://helpx.adobe.com/cq/kb/index/dispatcher.html)、 [ディスパッチャーのフラッシュの問題の](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) トラブルシューティング [、および](dispatcher-faq.md) ディスパッチャーのトップの問題に関するFAQも参照してください。
 
 ## 基本設定の確認 {#check-the-basic-configuration}
 
@@ -61,7 +64,7 @@ IIS には、実際のバージョンに応じて様々なトレースツール�
 IIS の使用時、様々な場面で「`404 Not Found`」が返されることがあります。このエラーが返された場合は、次のナレッジベース記事を参照してください。
 
 * [IIS 6/7: POST method returns 404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
-* [IIS 6: Requests to URLs that contain the base path  return `/bin``404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6:ベースパスの `/bin` 戻り値を含むURLへの要求 `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
 Dispatcher のキャッシュルートと IIS のドキュメントルートが同じディレクトリに設定されていることも確認してください。
 
@@ -89,14 +92,16 @@ Dispatcher 経由で AEM のオーサーインスタンスにアクセスして�
 * `x-http-method-override`
 * `x-requested-with`
 
-`{  
+```
+{  
 {  
 /clientheaders  
 {  
 ...  
 "x-http-method-override"  
 "x-requested-with"  
-}`
+}
+```
 
 ## mod_dir（Apache）との干渉{#interference-with-mod-dir-apache}
 
