@@ -10,7 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 183131dec51b67e152a8660c325ed980ae9ef458
+source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+workflow-type: tm+mt
+source-wordcount: '8802'
+ht-degree: 96%
 
 ---
 
@@ -221,7 +224,7 @@ Dispatcher インスタンスを識別する一意の名前を指定するには
 >
 >`/homepage` パラメーター（IISのみ）は機能しなくなりました。Instead, you should use the [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
 >
->Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag **[&#39;passthrough|PT&#39; (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**to force the rewrite engine to set the`uri`field of the internal`request_rec`structure to the value of the`filename`field.
+>Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag **[&#39;passthrough|PT&#39; (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
 
 <!-- 
 
@@ -564,7 +567,7 @@ Dispatcher が受け入れる HTTP 要求を指定するには、`/filter` セ�
 
 >[!CAUTION]
 >
->Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。また、AEMのインストールに関するその他の [セキュリティの詳細については](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html) 、AEMセキュリティチェックリストを参照してください。
+>Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。また、AEMのインストールに関するその他のセキュリティの詳細については、 [AEM Security Checklist](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html) （セキュリティチェックリスト）を参照してください。
 
 /filter セクションは、HTTP 要求の要求行部分のパターンに応じてコンテンツへのアクセスを拒否または許可する一連のルールで構成されます。/filter セクションに対しては、ホワイトリスト戦略を使用してください。
 
@@ -1351,6 +1354,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 >
 >* `/cache/headers` セクションにヘッダー名を追加します。
 >* Add the following [Apache directive](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) in the Dispatcher related section:
+
 >
 
 
@@ -1389,7 +1393,7 @@ FileETag none
 
 >[!NOTE]
 >
->この機能は、Dispatcherのバージ **ョン4.1.11** 以降で使用できます。
+>この機能は、Dispatcherのバージョン **4.1.11** 以降で使用できます。
 
 ## ロードバランシングの設定 - /statistics {#configuring-load-balancing-statistics}
 
@@ -1577,9 +1581,11 @@ Dispatcher ファーム上でフェイルオーバーメカニズムを有効に
 
 内部的に、Dispatcher は次のように表現できるループを使用して、リモートサーバー（AEM）からの応答を読み込みます。
 
-`while (response not finished) {  
+```
+while (response not finished) {  
 read more data  
-}`
+}
+```
 
 このようなメッセージは、「`EINTR`」セクションで `read more data` が発生した場合に生成されることがあります。原因は、データの受信前にシグナルを受信したことです。
 
@@ -1828,8 +1834,9 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
    ターゲットファイルはキャッシュに含まれていないので、Dispatcher は出力をキャッシュして配信することが有効であると判断しました。
 * **caching: stat file is more recent** 
 ターゲットファイルはキャッシュに含まれていますが、より新しい .stat ファイルによって無効化されます。Dispatcher はターゲットファイルを削除し、出力から再作成して配信します。
-* **not cacheable: no document root** 
-ファームの設定にドキュメントルート（設定要素 `cache.docroot`）が含まれていません。
+* **not cacheable: no document root**
+ファームの構成にドキュメントルート（構成要素）が含まれていません 
+`cache.docroot`).
 * **not cacheable: cache file path too long**\
    ターゲットファイル（ドキュメントルートと URL ファイルが連結されたものが）が、システム上で使用可能な最長ファイル名を超えています。
 * **not cacheable: temporary file path too long**\
@@ -1854,6 +1861,7 @@ HTTP メソッドが GET でも HEAD でもありません。Dispatcher は、�
    ファームの認証チェッカーがキャッシュされたファイルへのアクセスを拒否しました。
 * **not cacheable: session not valid** 
 ファームのキャッシュがセッションマネージャーによって管理され（設定に `sessionmanagement` ノードが含まれている）、ユーザーセッションが無効であるか、有効でなくなっています。
-* **not cacheable: response contains`no_cache `**リモートサーバーが`Dispatcher: no_cache`ヘッダーを返し、Dispatcher による出力のキャッシュが禁止されています。
+* **キャッシュ不可：応答に次を含む`no_cache `**&#x200B;リモートサーバーが 
+`Dispatcher: no_cache` ヘッダーに置き換え、ディスパッチャーが出力をキャッシュできないようにします。
 * **not cacheable: response content length is zero** 
 応答のコンテンツ長がゼロになっています。Dispatcher では、長さゼロのファイルは作成されません。
