@@ -14,10 +14,10 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 9ffdc1d85d1a0da45f95e0780227ee6569cd4b3d
+source-git-commit: 7889c025fb8fb29e6f11ea01c5248470556d3160
 workflow-type: tm+mt
-source-wordcount: '672'
-ht-degree: 86%
+source-wordcount: '653'
+ht-degree: 85%
 
 ---
 
@@ -35,7 +35,7 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-Dispatcher はフロントエンドシステムとして機能し、Adobe Experience Manager インフラストラクチャに追加のセキュリティレイヤーをもたらします。実稼動させる前に、以下のチェックリストを確認することを強くお勧めします。
+実稼動させる前に、以下のチェックリストを確認することを強くお勧めします。
 
 >[!CAUTION]
 >
@@ -88,9 +88,9 @@ Dispatcher の設定時に、できる限り外部アクセスを制限してく
 
 ブロックする必要がある URL のリストについては、[Dispatcher のセキュリティのテスト](dispatcher-configuration.md#testing-dispatcher-security)を参照してください。
 
-## ブロックリストの代わりに許可リストを使用 {#use-allowlists-instead-of-blocklists}
+## 許可リストの代わりにブロックリストを使用する {#use-allowlists-instead-of-blocklists}
 
-許可リストは本質的にアクセス制御を提供するより良い方法です。許可リストに明示的に含まれない限り、すべてのアクセス要求は拒否される必要があると考えられます。 このモデルでは、未確認だったり、特定の設定ステージで考慮されていなかった可能性がある新しい要求に対して、より厳しい制御を適用できます。
+許可リストは本質的にアクセス制御を提供するより優れた方法です。許可リストに明示的に含まれない限り、すべてのアクセス要求は拒否される必要があると考えられます。 このモデルでは、未確認だったり、特定の設定ステージで考慮されていなかった可能性がある新しい要求に対して、より厳しい制御を適用できます。
 
 ## 専用システムユーザーでの Dispatcher の実行 {#run-dispatcher-with-a-dedicated-system-user}
 
