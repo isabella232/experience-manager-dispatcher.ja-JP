@@ -4,13 +4,13 @@ product: experience manager
 sub-product: adobe experience manager dispatcher
 archetype: Administrator
 user-guide-title: Adobe Experience Manager Dispatcher Help
-breadcrumb-title: Dispatcher Guide
-user-guide-description: Learn to use Dispatcher for caching, load balancing, and improving security for your AEM server.
+breadcrumb-title: Dispatcher ガイド
+user-guide-description: AEM サーバーのキャッシュ、ロードバランシング、セキュリティの向上に Dispatcher を使用する方法について説明します。
 translation-type: tm+mt
 source-git-commit: 5765970c0335df084b5d49efae60997b3a021c47
 workflow-type: tm+mt
-source-wordcount: '70'
-ht-degree: 100%
+source-wordcount: '0'
+ht-degree: 0%
 
 ---
 
