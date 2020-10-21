@@ -1,11 +1,18 @@
 ---
-source-git-commit: 36c4ad10a9140d368fdbf3f0939e6756cc2bfbbf
+source-git-commit: 21f7d8e620bb6dc220bf08a996b5f273e0c11743
+workflow-type: tm+mt
 translation-type: tm+mt
+source-wordcount: '155'
+ht-degree: 42%
 
 ---
-# Adobe Experience Manager Dispatcherドキュメント
+# Adobe Experience Managerディスパッチャードキュメント
 
-これは、Adobe Experience Manager Dispatcherドキュメントのリポジトリです。
+| EXL-PR | EXL | プレビュー | アクティベート | 公開済み | ヘルプ |
+|--- |--- |--- |--- |--- |--- |
+| [![ビルドの状態](https://docs.ci.corp.adobe.com/view/exl-pr/job/authoring-guide-exl.en_pr-exl/badge/icon)](https://docs.ci.corp.adobe.com/view/exl-pr/job/authoring-guide-exl.en_pr-exl/lastBuild/) | [![ビルドの状態](https://docs.ci.corp.adobe.com/view/exl-pr/job/authoring-guide-exl.en_exl/lastBuild/badge/icon)](https://docs.ci.corp.adobe.com/view/exl-pr/job/authoring-guide-exl.en_exl/lastBuild/lastBuild) | [プレビュー URL](https://experienceleague.corp.adobe.com/docs/authoring-guide-exl/using/dispatcher.html?lang=en) | [activate-exl](https://docs.ci.corp.adobe.com/job/activate-exl/build/) | [ライブURL](https://experienceleague.adobe.com/docs/authoring-guide-exl/using/dispatcher.html?lang=en) | [オーサリングガイド](https://experienceleague.adobe.com/docs/authoring-guide-exl/using/home.html?lang=en) |
+
+これは、Adobe Experience Managerディスパッチャードキュメントのリポジトリです。
 
 ドキュメントに対する貢献を歓迎します。次のリソースを参照してください。
 
