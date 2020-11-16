@@ -13,7 +13,10 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
+source-git-commit: f9fb0e94dbd1c67bf87463570e8b5eddaca11bf3
+workflow-type: tm+mt
+source-wordcount: '1375'
+ht-degree: 92%
 
 ---
 
@@ -22,8 +25,8 @@ source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 Dispatcher とレンダーコンピューター間には次の SSL 接続を使用します。
 
-* [一方向 SSL](dispatcher-ssl.md#main-pars-title-1)
-* [相互 SSL](dispatcher-ssl.md#main-pars-title-2)
+* [一方向 SSL](#use-ssl-when-dispatcher-connects-to-aem)
+* [相互 SSL](#configuring-mutual-ssl-between-dispatcher-and-aem)
 
 >[!NOTE]
 >
@@ -37,7 +40,7 @@ Dispatcher を設定する前に、SSL を使用するように AEM または CQ
 
 * AEM 6.2: [Enabling HTTP Over SSL](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
 * AEM 6.1: [Enabling HTTP Over SSL](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
-* 古いバージョンのAEM:詳しく [は、このページ](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)。
+* 古いAEMバージョン：詳し [くは、このページを参照してください](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)。
 
 ### SSL に関連する要求ヘッダー {#ssl-related-request-headers}
 
@@ -120,7 +123,7 @@ SSL 経由で AEM または CQ と接続するように Dispatcher を設定す�
 
 * Dispatcher が SSL 経由でレンダーインスタンスに接続します。
 * レンダーインスタンスが Dispatcher の証明書の有効性を確認します。
-* ディスパッチャーは、レンダリングインスタンスの証明書のCAが信頼されていることを検証します。
+* ディスパッチャーは、レンダリングインスタンスの証明書のCAが信頼できることを確認します。
 * （オプション）Dispatcher が、レンダーインスタンスの証明書がレンダーインスタンスのサーバーアドレスと一致することを確認します。
 
 相互 SSL を設定するには、信頼済みの証明機関（CA）によって署名されている証明書が必要です。自己署名証明書では不十分です。証明書に署名するために、CA の機能を果たすことも、サードパーティ CA のサービスを利用することもできます。相互 SSL を設定するには、以下のアイテムが必要です。
@@ -253,7 +256,7 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 * AEM 6.2: [Enabling HTTP Over SSL](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
 * AEM 6.1: [Enabling HTTP Over SSL](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
-* 古いバージョンのAEM:詳しくは、こ [のページを参照してください。](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)
+* 古いAEMバージョン：詳し [くは、このページを参照してください。](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)
 
 ### Dispatcher モジュール用の SSL の設定 {#configuring-ssl-for-the-dispatcher-module}
 
