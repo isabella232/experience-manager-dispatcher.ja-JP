@@ -13,7 +13,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 translation-type: tm+mt
-source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+source-git-commit: 9af0dc22d32f1176b84c28a70b1a4701414d434e
 workflow-type: tm+mt
 source-wordcount: '553'
 ht-degree: 90%
@@ -37,10 +37,10 @@ ht-degree: 90%
 
 最初の手順は常に、基本事項を確認することです。
 
-* [基本操作の確認](#ConfirmBasicOperation)
-* Web サーバーおよび Dispatcher のログファイルを確認します。必要に応じて、Dispatcher の[ログ](#Logging)に使用する `loglevel` を増やします。
+* [基本操作の確認](/help/using/dispatcher-configuration.md#confirming-basic-operation)
+* Web サーバーおよび Dispatcher のログファイルを確認します。必要に応じて、Dispatcher の[ログ](/help/using/dispatcher-configuration.md#logging)に使用する `loglevel` を増やします。
 
-* [設定の確認](#ConfiguringtheDispatcher)：
+* [設定の確認](/help/using/dispatcher-configuration.md)：
 
    * 複数の Dispatcher があるか。
 
