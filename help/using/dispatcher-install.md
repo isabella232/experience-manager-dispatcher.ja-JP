@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 translation-type: tm+mt
-source-git-commit: ef0fc34cbf2f07090f39613811d6f015ba2305ab
+source-git-commit: 024348672c2a9a4f8a01429572eba27ea8b8a490
 workflow-type: tm+mt
-source-wordcount: '3689'
-ht-degree: 98%
+source-wordcount: '3684'
+ht-degree: 97%
 
 ---
 
@@ -28,11 +28,11 @@ Comment Type: draft
 
  -->
 
+使用するオペレーティングシステムと Web サーバー向けの最新の Dispatcher インストールファイルを取得するには、[Dispatcher リリースノート](release-notes.md)を使用します。Dispatcher のリリース番号は Adobe Experience Manager のリリース番号とは無関係で、Adobe Experience Manager 6.x、5.x および Adobe CQ 5.x リリースと互換性があります。
+
 >[!NOTE]
 >
->Dispatcher のバージョンは AEM とは無関係です。以前のバージョンの AEM のドキュメントに組み込まれている Dispatcher のドキュメントへのリンクをたどると、このページにリダイレクトされる可能性があります。
-
-使用するオペレーティングシステムと Web サーバー向けの最新の Dispatcher インストールファイルを取得するには、[Dispatcher リリースノート](release-notes.md)を使用します。Dispatcher のリリース番号は Adobe Experience Manager のリリース番号とは無関係で、Adobe Experience Manager 6.x、5.x および Adobe CQ 5.x リリースと互換性があります。
+>Adobe Experience Manager6.5では、Dispatcherバージョン4.3.2以降が必要になります。 ただし、DispatcherのバージョンはAEMとは独立しています。例えば、Dispatcherのバージョン4.3.2もAdobe Experience Manager6.4と互換性があります。
 
 次のファイル命名規則が使用されます。
 
@@ -48,7 +48,7 @@ Comment Type: draft
 | Microsoft Internet Information Server 7.5、8、8.5 | dispatcher-**iis**-&lt;other parameters> |
 | Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;other parameters> |
 
->[!NOTE]
+>[!CAUTION]
 >
 >使用するプラットフォームで利用可能な最新バージョンの Dispatcher をインストールしてください。強化された機能を利用できるよう、毎年 Dispatcher インスタンスをアップグレードして、最新バージョンを使用してください。
 
