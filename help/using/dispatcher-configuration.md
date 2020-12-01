@@ -18,7 +18,7 @@ ht-degree: 84%
 
 以下の節では、Dispatcher の様々な設定について説明します。
 
-## IPv4 と IPv6 のサポート {#support-for-ipv-and-ipv}
+## IPv4 と IPv6 のサポート  {#support-for-ipv-and-ipv}
 
 AEM と Dispatcher のすべての要素は、IPv4 と IPv6 の両方のネットワークにインストールできます。[IPv4 と IPv6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=en#ipv-and-ipv) を参照してください。
 
@@ -113,7 +113,7 @@ AEM と Dispatcher のすべての要素は、IPv4 と IPv6 の両方のネッ�
   }
 ```
 
-Use the asterisk (`*`) as a wildcard to specify a range of files to include.
+ワイルドカードとしてアスタリスク(`*`)を使用し、含めるファイルの範囲を指定します。
 
 例えば、`farm_1.any` ～ `farm_5.any` のファイルにファーム 1 ～ 5 が設定されている場合、これらのファイルを次のように含めることができます。
 
@@ -208,15 +208,15 @@ Dispatcher インスタンスを識別する一意の名前を指定するには
 | [/retryDelay](#specifying-the-page-retry-delay) | 失敗した接続を再試行するまでの遅延。 |
 | [/unavailablePenalty](#reflecting-server-unavailability-in-dispatcher-statistics) | ロードバランシング計算用の統計に影響を与えるペナルティ。 |
 | [/failover](#using-the-failover-mechanism) | 元の要求が失敗した場合に異なるレンダーに要求を再送信します。 |
-| [/auth_checker](permissions-cache.md) | For permission-sensitive caching, see [Caching Secured Content](permissions-cache.md). |
+| [/auth_checker](permissions-cache.md) | 権限に依存するキャッシュについては、[セキュリティで保護されたコンテンツのキャッシュ](permissions-cache.md)を参照してください。 |
 
 ## デフォルトページの指定（IIS のみ） - /homepage {#specify-a-default-page-iis-only-homepage}
 
 >[!CAUTION]
 >
->`/homepage` パラメーター（IISのみ）は機能しなくなりました。Instead, you should use the [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
+>`/homepage` パラメーター（IISのみ）は機能しなくなりました。代わりに、[IIS URL書き換えモジュール](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)を使用する必要があります。
 >
->Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag **[&#39;passthrough|PT&#39; (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
+>Apache を使用している場合は `mod_rewrite` モジュールを使用する必要があります。`mod_rewrite`に関する情報については、ApacheのWebサイトのドキュメント（例：[Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)）を参照してください。 `mod_rewrite`を使用する場合は、フラグ&#x200B;**[&#39;passthrough|PT&#39; （次のハンドラにパススルー）](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**&#x200B;を使用して、書き換えエンジンに内部`request_rec`構造の`uri`フィールドを`filename`フィールドの値に設定させることをお勧めします。
 
 <!-- 
 
@@ -317,14 +317,14 @@ Comment Type: draft
 
 ## 仮想ホストの識別 {#identifying-virtual-hosts-virtualhosts}
 
-`/virtualhosts` プロパティは、Dispatcher がこのファームに受け入れるすべてのホスト名と URI の組み合わせのリストを定義します。You can use the asterisk (`*`) character as a wildcard. /`virtualhosts` プロパティの値には、次の形式を使用します。
+`/virtualhosts` プロパティは、Dispatcher がこのファームに受け入れるすべてのホスト名と URI の組み合わせのリストを定義します。ワイルドカードにはアスタリスク(`*`)を使用できます。 /`virtualhosts` プロパティの値には、次の形式を使用します。
 
 ```xml
 [scheme]host[uri][*]
 ```
 
 * `scheme`：（オプション） `https://` または `https://.`
-* `host`：ホストコンピューターの名前または IP アドレスと、必要な場合はポート番号(See [https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23))
+* `host`：ホストコンピューターの名前または IP アドレスと、必要な場合はポート番号([https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23)を参照)。
 * `uri`：（オプション）リソースへのパス。
 
 次の設定例では、myCompany の .com ドメインと .ch ドメイン、さらに mySubDivision のすべてのドメインに対する要求を処理します。
@@ -364,7 +364,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 ### 仮想ホストの解決の例 {#example-virtual-host-resolution}
 
-The following example represents a snippet from a `dispatcher.any` file that defines two Dispatcher farms, and each farm defines a `virtualhosts` property.
+次の例は、2つのディスパッチャーファームを定義する`dispatcher.any`ファイルのスニペットを表しています。各ファームで`virtualhosts`プロパティを定義しています。
 
 ```xml
 /farms
@@ -436,7 +436,7 @@ The following example represents a snippet from a `dispatcher.any` file that def
 
 **/encode**（オプション）
 
-セッション情報のエンコード方法。Use `md5` for encryption using the md5 algorithm, or `hex` for hexadecimal encoding. セッションデータを暗号化すると、ファイルシステムにアクセスできるユーザーでも、セッション内容を読み取れなくなります。デフォルトは、`md5` です。
+セッション情報のエンコード方法。md5アルゴリズムを使用した暗号化には`md5`を、16進数エンコーディングには`hex`を使用します。 セッションデータを暗号化すると、ファイルシステムにアクセスできるユーザーでも、セッション内容を読み取れなくなります。デフォルトは、`md5` です。
 
 **/header**（オプション）
 
@@ -444,7 +444,7 @@ The following example represents a snippet from a `dispatcher.any` file that def
 
 **/timeout**（オプション）
 
-最後の使用から、セッションのタイムアウトまでの秒数。If not specified `"800"` is used, so the session times out a little over 13 minutes after the last request of the user.
+最後の使用から、セッションのタイムアウトまでの秒数。`"800"`を指定しない場合は、ユーザーの最後の要求の後、13分を少し超える時間がセッションのタイムアウトになります。
 
 設定例を次に示します。
 
@@ -512,31 +512,31 @@ The following example represents a snippet from a `dispatcher.any` file that def
 
 **/timeout**
 
-AEM インスタンスにアクセスする接続タイムアウトをミリ秒単位で指定します。The default is `"0"`, causing the Dispatcher to wait indefinitely.
+AEM インスタンスにアクセスする接続タイムアウトをミリ秒単位で指定します。デフォルトは`"0"`で、ディスパッチャーは無期限に待機します。
 
 **/receiveTimeout**
 
-応答が返るまでに許容される時間をミリ秒単位で指定します。The default is `"600000"`, causing Dispatcher to wait for 10 Minutes. A setting of `"0"` eliminates the timeout completely.
+応答が返るまでに許容される時間をミリ秒単位で指定します。デフォルトは`"600000"`で、ディスパッチャーは10分間待機します。 `"0"`を設定すると、タイムアウトが完全になくなります。
 
 応答ヘッダーの解析中にタイムアウトに達した場合は、HTTP ステータス 504（Bad Gateway）が返されます。応答本文の読み取り中にタイムアウトに達した場合は、Dispatcher は不完全な応答をクライアントに返しますが、作成されたキャッシュファイルがあれば削除します。
 
 **/ipv4**
 
-レンダーの IP アドレスを取得するために Dispatcher が `getaddrinfo` 関数（IPv6 用）を使用するか `gethostbyname` 関数（IPv4 用）を使用するかを指定します。値 0 を指定すると、`getaddrinfo` が使用されます。A value of `1` causes `gethostbyname` to be used. デフォルト値は `0` です。
+レンダーの IP アドレスを取得するために Dispatcher が `getaddrinfo` 関数（IPv6 用）を使用するか `gethostbyname` 関数（IPv4 用）を使用するかを指定します。値 0 を指定すると、`getaddrinfo` が使用されます。`1`の値を指定すると、`gethostbyname`が使用されます。 デフォルト値は `0` です。
 
-The `getaddrinfo` function returns a list of IP addresses. Dispatcher は、TCP/IP 接続を確立するまで、そのアドレスのリストを繰り返します。Therefore, the `ipv4` property is important when the render hostname is associated with multiple IP addresses and the host, in response to the `getaddrinfo` function, returns a list of IP addresses that are always in the same order. In this situation, you should use the `gethostbyname` function so that the IP address that Dispatcher connects with is randomized.
+`getaddrinfo`関数は、IPアドレスのリストを返します。 Dispatcher は、TCP/IP 接続を確立するまで、そのアドレスのリストを繰り返します。したがって、レンダリングホスト名が複数のIPアドレスに関連付けられている場合、`ipv4`プロパティは重要です。`getaddrinfo`関数に応じて、常に同じ順序のIPアドレスのリストを返します。 この場合、ディスパッチャーが接続するIPアドレスがランダム化されるように、`gethostbyname`関数を使用する必要があります。
 
 Amazon Elastic Load Balancing（ELB）は、同じ順序になる可能性がある IP アドレスのリストを使用して、getaddrinfo に応答するサービスです。
 
 **/secure**
 
-If the `/secure` property has a value of `"1"` Dispatcher uses HTTPS to communicate with the AEM instance. 詳しくは、[Using SSL with Dispatcher](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl) を参照してください。
+`/secure`プロパティの値が`"1"`である場合、ディスパッチャーはHTTPSを使用してAEMインスタンスと通信します。 詳しくは、[Using SSL with Dispatcher](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl) を参照してください。
 
 **/always-resolve**
 
 Dispatcher バージョン **4.1.6** では、次のように `/always-resolve` プロパティを設定できます。
 
-* When set to `"1"` it will resolve the host-name on every request (the Dispatcher will never cache any IP address). リクエストごとにホスト情報を取得するために追加の呼び出しが必要となるため、パフォーマンスが多少低下する可能性があります。
+* `"1"`に設定すると、リクエストごとにホスト名が解決されます（ディスパッチャーはIPアドレスをキャッシュしません）。 リクエストごとにホスト情報を取得するために追加の呼び出しが必要となるため、パフォーマンスが多少低下する可能性があります。
 * プロパティが設定されていない場合、IP アドレスはデフォルトでキャッシュされます。
 
 また、次の例に示すように、このプロパティは動的な IP 解決の問題が発生した場合にも使用できます。
@@ -560,14 +560,14 @@ Dispatcher が受け入れる HTTP 要求を指定するには、`/filter` セ�
 
 >[!CAUTION]
 >
->Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。また、AEMのインストールに関するその他のセキュリティの詳細については、 [AEMセキュリティチェックリスト](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=en#security) （英語）を参照してください。
+>Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。また、AEMのインストールに関する追加のセキュリティの詳細については、[AEMセキュリティチェックリスト](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=en#security)を参照してください。
 
-The `/filter` section consist of a series of rules that either deny or allow access to content according to patterns in the request-line part of the HTTP request. セクションには、次の許可リスト方法を使用する必要があり `/filter` ます。
+`/filter`セクションは、HTTP要求の要求行部分のパターンに従ってコンテンツへのアクセスを拒否または許可する一連のルールで構成されます。 `/filter`セクションには許可リスト方法を使用する必要があります。
 
 * まず、すべての要素へのアクセスを拒否します。
 * 必要に応じて、コンテンツへのアクセスを許可します。
 
-### フィルターの定義 {#defining-a-filter}
+### フィルターの定義  {#defining-a-filter}
 
 `/filter` の各アイテムには、要求行の特定の要素または要求行全体と照合するタイプとパターンが含まれます。各フィルターには、次のアイテムを含めることができます。
 
@@ -595,15 +595,15 @@ The `/filter` section consist of a series of rules that either deny or allow acc
 
 #### HTTP 要求の要求行部分 {#the-request-line-part-of-http-requests}
 
-HTTP/1.1 defines the [request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html) as follows:
+HTTP/1.1は、[リクエスト行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html)を次のように定義します。
 
 `Method Request-URI HTTP-Version<CRLF>`
 
-The `<CRLF>` characters represent a carriage return followed by a line feed. 次の例は、クライアントがWKNDサイトの英語（米国）ページをリクエストした場合に受け取るリクエストラインです。
+`<CRLF>`文字は、改行の後に改行が続くことを表します。 次の例は、クライアントがWKNDサイトの英語（米国）ページをリクエストした場合に受け取るリクエストラインです。
 
 `GET /content/wknd/us/en.html HTTP.1.1<CRLF>`
 
-Your patterns must take into account the space characters in the request-line and the `<CRLF>` characters.
+パターンでは、リクエスト行のスペース文字と`<CRLF>`文字を考慮する必要があります。
 
 #### 二重引用符と一重引用符 {#double-quotes-vs-single-quotes}
 
@@ -627,7 +627,7 @@ Your patterns must take into account the space characters in the request-line an
 
 明示的に拒否された領域への要求に対して、「404 error code (page not found)」が返されます。
 
-#### Example Filter: Deny Access to Specific Areas {#example-filter-deny-access-to-specific-areas}
+#### フィルターの例：特定の領域へのアクセスを拒否{#example-filter-deny-access-to-specific-areas}
 
 フィルターを使用して、サンプルの ASP ページの各種要素と、パブリッシュインスタンス内の機密領域へのアクセスを拒否することもできます。次のフィルターは、ASP ページへのアクセスを拒否するものです。
 
@@ -681,7 +681,7 @@ Your patterns must take into account the space characters in the request-line an
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### サンプルフィルター：要求 URL の追加要素のフィルタリング {#example-filter-filter-additional-elements-of-a-request-url}
+#### サンプルフィルター：要求 URL の追加要素のフィルタリング  {#example-filter-filter-additional-elements-of-a-request-url}
 
 それぞれ path、selector および extensions に対するフィルターを使用して、`/content` パスからのコンテンツの取得をブロックするルールのサンプルを以下に示します。
 
@@ -706,9 +706,9 @@ Dispatcher を設定する際は、できる限り外部アクセスを制限し
 
 フィルターを作成したら、[ページアクセスをテスト](#testing-dispatcher-security)して、AEM インスタンスがセキュアであることを確認します。
 
-The following `/filter` section of the `dispatcher.any` file can be used as a basis in your [Dispatcher configuration file.](#dispatcher-configuration-files)
+`dispatcher.any`ファイルの次の`/filter`セクションは、[ディスパッチャー設定ファイルの基礎として使用できます。](#dispatcher-configuration-files)
 
-このサンプルは、Dispatcher に付属するデフォルトの設定ファイルをベースとしており、実稼動環境での使用例の役割を果たすことを目的としています。Items prefixed with `#` are deactivated (commented out), care should be taken if you decide to activate any of these (by removing the `#` on that line) as this can have a security impact.
+このサンプルは、Dispatcher に付属するデフォルトの設定ファイルをベースとしており、実稼動環境での使用例の役割を果たすことを目的としています。`#`のプレフィックスが付いた項目は非アクティブ化（コメントアウト）されます。これを行の`#`を削除してアクティブ化する場合は、セキュリティ上の影響があるので注意が必要です。
 
 すべてに対するアクセスを拒否してから、特定の（限られた）要素へのアクセスを許可してください。
 
@@ -781,7 +781,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!NOTE]
 >
->Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher.
+>ダイナミックメディアに関するフィルター`0030`と`0031`は、AEM 6.0以降に適用できます。
 
 アクセスを拡張する場合は、以下の推奨事項について検討します。
 
@@ -805,13 +805,13 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!CAUTION]
 >
->If you are [using reports in a publish environment](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=en#using-reports-in-a-publish-environment) you should configure Dispatcher to deny access to `/etc/reports` for external visitors.
+>発行環境](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=en#using-reports-in-a-publish-environment)でレポートを[使用する場合は、外部訪問者の`/etc/reports`へのアクセスを拒否するようにディスパッチャーを設定する必要があります。
 
 ### クエリ文字列の制約 {#restricting-query-strings}
 
 Dispatcher バージョン 4.1.5 以降では、`/filter` セクションを使用してクエリ文字列を制約します。`allow` フィルター要素を使用して、クエリ文字列を明示的に許可し、一般的な許可を除外することを強くお勧めします。
 
-A single entry can have either `glob` or some combination of `method`, `url`, `query`, and `version`, but not both. 以下の例では、`a=*` ノードに解決される URL に対してクエリ文字列 `/etc` を許可し、その他すべてのクエリ文字列を拒否しています。
+1つのエントリには`glob`、または`method`、`url`、`query`、`version`の組み合わせを指定できますが、両方を指定することはできません。 以下の例では、`a=*` ノードに解決される URL に対してクエリ文字列 `/etc` を許可し、その他すべてのクエリ文字列を拒否しています。
 
 ```xml
 /filter {
@@ -840,7 +840,7 @@ A single entry can have either `glob` or some combination of `method`, `url`, `q
 
 Dispatcher のフィルターは、AEM パブリッシュインスタンス上の以下のページおよびスクリプトへのアクセスをブロックする必要があります。Web ブラウザーを使用して、サイト訪問者として以下のページを開こうと試み、コード 404 が返されることを確認してください。それ以外の結果が得られた場合は、フィルターを調整してください。
 
-Note that you should see normal page rendering for `/content/add_valid_page.html?debug=layout`.
+`/content/add_valid_page.html?debug=layout`に対しては通常のページレンダリングが行われるはずです。
 
 * `/admin`
 * `/system/console`
@@ -937,7 +937,7 @@ AEMページ用に設定されたバニティURLへのアクセスを有効に�
 
 >[!NOTE]
 >
->レンダリングがAEMのインスタンスの場合、バニティURLサービスを有効にするには、 [VanityURLS-ComponentsパッケージをSoftware Distribution](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) （ソフトウェア配布）からインストールする必要があります。 (詳細は、「 [ソフトウェア配布](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=en#software-distribution) 」を参照)。
+>レンダリングがAEMのインスタンスの場合、バニティURLサービスを有効にするには、[VanityURLS-ComponentsパッケージをSoftware Distribution](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components)からインストールする必要があります。 （詳細は[ソフトウェア配布](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=en#software-distribution)を参照）。
 
 バニティー URL へのアクセスを有効にするには、以下の手順を実行します。
 
@@ -946,11 +946,11 @@ AEMページ用に設定されたバニティURLへのアクセスを有効に�
 1. `/farms` の下に `/vanity_urls` セクションを追加します。
 1. Apache Web サーバーを再起動します。
 
-## シンジケーション要求の転送 - /propagateSyndPost {#forwarding-syndication-requests-propagatesyndpost}
+## シンジケーション要求の転送 - /propagateSyndPost  {#forwarding-syndication-requests-propagatesyndpost}
 
 シンジケーション要求は、通常、Dispatcher のみを対象としているので、デフォルトではレンダラー（AEM インスタンスなど）に送信されません。
 
-If necessary, set the `/propagateSyndPost` property to `"1"` to forward syndication requests to Dispatcher. 設定する場合、フィルターセクションで POST 要求が拒否されていないことを確認する必要があります。
+必要に応じて、`/propagateSyndPost`プロパティを`"1"`に設定し、シンジケーション要求をディスパッチャーに転送します。 設定する場合、フィルターセクションで POST 要求が拒否されていないことを確認する必要があります。
 
 ## Dispatcher キャッシュの設定 - /cache {#configuring-the-dispatcher-cache-cache}
 
@@ -997,7 +997,7 @@ If necessary, set the `/propagateSyndPost` property to `"1"` to forward syndicat
 >
 >権限を区別するキャッシュについては、[セキュリティ保護されたコンテンツのキャッシュ](permissions-cache.md)をお読みください。
 
-### キャッシュディレクトリの指定 {#specifying-the-cache-directory}
+### キャッシュディレクトリの指定  {#specifying-the-cache-directory}
 
 `/docroot` プロパティは、キャッシュされたファイルを保存するディレクトリを識別します。
 
@@ -1012,29 +1012,29 @@ If necessary, set the `/propagateSyndPost` property to `"1"` to forward syndicat
 
 `/statfile` プロパティは、statfile として使用するファイルを識別します。Dispatcher は、このファイルを使用して、最も新しいコンテンツ更新時刻を登録します。statfile には、Web サーバー上の任意のファイルを指定できます。
 
-statfile にはコンテンツがありません。コンテンツが更新されると、Dispatcher がタイムスタンプを更新します。The default statfile is named `.stat` and is stored in the docroot. Dispatcher は、statfile へのアクセスをブロックします。
+statfile にはコンテンツがありません。コンテンツが更新されると、Dispatcher がタイムスタンプを更新します。デフォルトのstatfileは`.stat`という名前で、docrootに保存されます。 Dispatcher は、statfile へのアクセスをブロックします。
 
 >[!NOTE]
 >
->If `/statfileslevel` is configured, Dispatcher ignores the `/statfile` property and uses `.stat` as the name.
+>`/statfileslevel`が設定されている場合、Dispatcherは`/statfile`プロパティを無視し、`.stat`を名前として使用します。
 
 ### エラー発生時の古くなったドキュメントの返送 {#serving-stale-documents-when-errors-occur}
 
 `/serveStaleOnError` プロパティは、レンダーサーバーがエラーを返した場合に Dispatcher が無効になったドキュメントを返すかどうかを制御します。デフォルトでは、statfile にアクセスし、キャッシュされたコンテンツが無効になると、Dispatcher は次回要求時にキャッシュされたコンテンツを削除します。
 
-If `/serveStaleOnError` is set to `"1"`, Dispatcher does not delete invalidated content from the cache unless the render server returns a successful response. AEM からの応答 5xx または接続タイムアウトによって、Dispatcher は期限切れのコンテンツを返し、HTTP ステータス 111（再検証失敗）で応答します。
+`/serveStaleOnError`を`"1"`に設定した場合、レンダリングサーバーが正常な応答を返さない限り、無効なコンテンツはキャッシュから削除されません。 AEM からの応答 5xx または接続タイムアウトによって、Dispatcher は期限切れのコンテンツを返し、HTTP ステータス 111（再検証失敗）で応答します。
 
 ### 認証使用時のキャッシュ {#caching-when-authentication-is-used}
 
 `/allowAuthorized` プロパティは、以下のいずれかの認証情報を含む要求をキャッシュするかどうかを制御します。
 
-* The `authorization` header
-* A cookie named `authorization`
-* A cookie named `login-token`
+* `authorization`ヘッダー
+* `authorization`という名前のCookie
+* `login-token`という名前のCookie
 
 デフォルトでは、この認証情報を含む要求はキャッシュされません。キャッシュされたドキュメントをクライアントに返す場合、認証は実行されないからです。この設定によって、Dispatcher は、必要な権限を持たないユーザーにキャッシュされたドキュメントを返さなくなります。
 
-However, if your requirements permit the caching of authenticated documents, set `/allowAuthorized` to one:
+ただし、要件によって認証済みドキュメントのキャッシュが許可されている場合は、`/allowAuthorized`を1に設定します。
 
 `/allowAuthorized "1"`
 
@@ -1046,7 +1046,7 @@ However, if your requirements permit the caching of authenticated documents, set
 
 `/rules` プロパティは、ドキュメントパスに応じてキャッシュされるドキュメントを制御します。`/rules` プロパティにかかわらず、Dispatcher は以下の状況にあるドキュメントをキャッシュしません。
 
-* If the request URI contains a question mark (`?`).
+* リクエストURIに疑問符(`?`)が含まれる場合。
    * 疑問符は通常、キャッシュの必要がない、検索結果などの動的ページを指します。
 * ファイル拡張子が不明の場合。
    * Web サーバーでドキュメントのタイプ（MIME タイプ）を判別するために、拡張子が必要です。
@@ -1061,10 +1061,10 @@ However, if your requirements permit the caching of authenticated documents, set
 >
 >（HTTP ヘッダー用の）GET または HEAD メソッドは、Dispatcher によってキャッシュ可能です。応答ヘッダーのキャッシュについて詳しくは、[HTTP 応答ヘッダーのキャッシュ](#caching-http-response-headers)セクションを参照してください。
 
-Each item in the `/rules` property includes a [`glob`](#designing-patterns-for-glob-properties) pattern and a type:
+`/rules`プロパティの各項目には、[`glob`](#designing-patterns-for-glob-properties)パターンとタイプが含まれます。
 
-* The `glob` pattern is used to match the path of the document.
-* The type indicates whether to cache the documents that match the `glob` pattern. 値は、allow（ドキュメントをキャッシュする）または deny（ドキュメントを常にレンダリングする）のどちらかです。
+* `glob`パターンは、ドキュメントのパスと一致させるために使用されます。
+* 型は、`glob`パターンに一致するドキュメントをキャッシュするかどうかを示します。 値は、allow（ドキュメントをキャッシュする）または deny（ドキュメントを常にレンダリングする）のどちらかです。
 
 以上のルールで除外されるもの以外にも動的ページがない場合、Dispatcher ですべてのドキュメントをキャッシュできます。この場合、ルールセクションは次のようになります。
 
@@ -1156,7 +1156,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
    * 例えば、`statfileslevel` プロパティを 6 に設定し、レベル 5 でファイルが無効化されると、docroot から 5 までのすべての `.stat` ファイルが touch されます。この例では、ファイルがレベル 7 で無効化されると、docroot から 6 までのすべての .`stat` ファイルが touch されます（`/statfileslevel = "6"` なので）。
 
-Only resources **along the path** to the invalidated file are affected. 次の例を考えて見ましょう。Web サイトで `/content/myWebsite/xx/.` 構造を使用していて、`statfileslevel` を 3 に設定している場合、`.stat` ファイルは次のように作成されます。
+無効化されたファイルへのパス&#x200B;**に沿ったリソース**&#x200B;のみが影響を受けます。 次の例を考えて見ましょう。Web サイトで `/content/myWebsite/xx/.` 構造を使用していて、`statfileslevel` を 3 に設定している場合、`.stat` ファイルは次のように作成されます。
 
 * `docroot`
 * `/content`
@@ -1167,7 +1167,7 @@ Only resources **along the path** to the invalidated file are affected. 次の�
 
 >[!NOTE]
 >
->無効化は、追加のヘッダー `CQ-Action-Scope:ResourceOnly` を送信することで防止できます。これを使用することで、キャッシュの他の部分を無効化せずに、特定のリソースをフラッシュできます。See [this page](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) and [Manually Invalidating the Dispatcher Cache](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/page-invalidate.html?lang=en#configuring) for additional details.
+>無効化は、追加のヘッダー `CQ-Action-Scope:ResourceOnly` を送信することで防止できます。これを使用することで、キャッシュの他の部分を無効化せずに、特定のリソースをフラッシュできます。詳しくは、[このページ](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html)と[手動でディスパッチャーキャッシュを無効にする](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/page-invalidate.html?lang=en#configuring)を参照してください。
 
 >[!NOTE]
 >
@@ -1191,11 +1191,11 @@ Only resources **along the path** to the invalidated file are affected. 次の�
 
 glob プロパティについて詳しくは、[glob プロパティのパターンのデザイン](#designing-patterns-for-glob-properties)を参照してください。
 
-この設定を有効にすると、次のアクティビティ `/content/wknd/us/en` が発生します。
+この設定は、`/content/wknd/us/en`がアクティブ化されると次のアクティビティを引き起こします。
 
-* パターン en.* are removed from the `/content/wknd/us` folder.
-* フォルダーが削除さ `/content/wknd/us/en./_jcr_content` れます。
-* All the other files that match the `/invalidate` configuration are not immediately deleted. これらのファイルは、次回の要求が発生すると削除されます。In our example `/content/wknd.html` is not deleted, it will be deleted when `/content/wknd.html` is requested.
+* パターン en.*は`/content/wknd/us`フォルダーから削除されます。
+* `/content/wknd/us/en./_jcr_content`フォルダーが削除されます。
+* `/invalidate`構成に一致する他のファイルはすべて、直ちに削除されません。 これらのファイルは、次回の要求が発生すると削除されます。この例では、`/content/wknd.html`は削除されていません。`/content/wknd.html`が要求されると削除されます。
 
 自動生成した PDF や ZIP ファイルをダウンロード用に提供する場合は、これらのファイルも自動的に無効化する必要があります。この場合の設定例を次に示します。
 
@@ -1209,7 +1209,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
   }
 ```
 
-The AEM integration with Adobe Analytics delivers configuration data in an `analytics.sitecatalyst.js` file in your website. The example `dispatcher.any` file that is provided with Dispatcher includes the following invalidation rule for this file:
+Adobe AnalyticsとのAEM統合により、Webサイトの`analytics.sitecatalyst.js`ファイルに設定データが配信されます。 ディスパッチャーと共に提供される例の`dispatcher.any`ファイルには、このファイルに対する次の無効化規則が含まれています。
 
 ```xml
 {
@@ -1219,13 +1219,13 @@ The AEM integration with Adobe Analytics delivers configuration data in an `anal
 
 ### カスタム無効化スクリプトの使用 {#using-custom-invalidation-scripts}
 
-The `/invalidateHandler` property allows you to define a script which is called for each invalidation request received by Dispatcher.
+`/invalidateHandler`プロパティを使用すると、ディスパッチャーが受け取る無効化要求ごとに呼び出されるスクリプトを定義できます。
 
 このスクリプトは、以下の引数と共に呼び出されます。
 
 * ハンドル — 無効化されたコンテンツのパス
 * アクション：レプリケーション・アクション（アクティブ化、非アクティブ化など）
-* Action Scope - The replication Action&#39;s Scope (empty, unless a header of `CQ-Action-Scope: ResourceOnly` is sent, see [Invalidating Cached Pages from AEM](page-invalidate.md) for details)
+* Action Scope — レプリケーションアクションの範囲（`CQ-Action-Scope: ResourceOnly`のヘッダーが送信されない限り空白）。詳細については、[AEM](page-invalidate.md)からのキャッシュページの無効化を参照してください。
 
 このスクリプトは、他のアプリケーションに固有のキャッシュの無効化など、多種多様なユースケースを扱ったり、外部化されたページの URL とドキュメントルート内のその場所がコンテンツパスと一致しないケースを扱ったりするのに利用できます。
 
@@ -1235,7 +1235,7 @@ The `/invalidateHandler` property allows you to define a script which is called 
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
 ```
 
-#### サンプルの無効化ハンドラースクリプト {#sample-invalidation-handler-script}
+#### サンプルの無効化ハンドラースクリプト  {#sample-invalidation-handler-script}
 
 ```shell
 #!/bin/bash
@@ -1245,7 +1245,7 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 
 ### キャッシュをフラッシュできるクライアントの制限 {#limiting-the-clients-that-can-flush-the-cache}
 
-The `/allowedClients` property defines specific clients that are allowed to flush the cache. このグロビングパターンが、IP と照合されます。
+`/allowedClients`プロパティは、キャッシュのフラッシュを許可する特定のクライアントを定義します。 このグロビングパターンが、IP と照合されます。
 
 以下の例の内容は次のとおりです。
 
@@ -1264,11 +1264,11 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 
 >[!CAUTION]
 >
->It is recommended that you define the `/allowedClients`.
+>`/allowedClients`を定義することをお勧めします。
 >
 >定義しない場合は、任意のクライアントからキャッシュ消去を呼び出せますが、繰り返しおこなうとサイトのパフォーマンスに深刻な影響を及ぼす場合があります。
 
-### URL パラメーターの無視 {#ignoring-url-parameters}
+### URL パラメーターの無視  {#ignoring-url-parameters}
 
 `ignoreUrlParams` セクションでは、ページをキャッシュするかキャッシュから提供するかを判断するときにどの URL パラメーターを無視するかを定義します。
 
@@ -1282,7 +1282,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 * パラメーターを無視するには、そのパラメーターを許可する glob プロパティを作成します。
 * ページがキャッシュされないようにするには、そのパラメーターを拒否する glob プロパティを作成します。
 
-The following example causes Dispatcher to ignores the `q` parameter, so that request URLs that include the q parameter are cached:
+次の例では、Dispatcherが`q`パラメーターを無視するので、qパラメーターを含むリクエストURLはキャッシュされます。
 
 ```xml
 /ignoreUrlParams
@@ -1340,7 +1340,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 >Dispatcher を使用して AEMから ETag 応答ヘッダーを保存および配信する必要がある場合は、以下の手順を実行します。
 >
 >* `/cache/headers` セクションにヘッダー名を追加します。
->* Add the following [Apache directive](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) in the Dispatcher related section:
+>* 次の追加[Apacheディレクティブ](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag)は、ディスパッチャー関連のセクションにあります。
 
 >
 >
@@ -1362,7 +1362,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 * `0002` その他のユーザーによる書き込みを許可します。
 * `0001` その他のユーザーによるディレクトリ内の検索を許可します。
 
-The default value is `0755` which allows the owner to read, write or search and the group and others to read or search.
+デフォルト値は`0755`で、所有者は読み取り、書き込み、検索を行い、グループと他のユーザーは読み取り、検索を行うことができます。
 
 ### . stat ファイルの更新のスロットリング{#throttling-stat-file-touching}
 
@@ -1378,7 +1378,7 @@ The default value is `0755` which allows the owner to read, write or search and 
 
 >[!NOTE]
 >
->この機能は、Dispatcherのバージョン **4.1.11** 以降で使用できます。
+>この機能は、Dispatcherのバージョン&#x200B;**4.1.11**&#x200B;以降で利用できます。
 
 ## ロードバランシングの設定 - /statistics {#configuring-load-balancing-statistics}
 
@@ -1409,9 +1409,9 @@ Dispatcher は、最大 8 個の統計カテゴリをサポートします。9 �
 >
 >ロードバランシングを使用しない場合は、このセクションを省略できます。
 
-### 統計カテゴリの定義 {#defining-statistics-categories}
+### 統計カテゴリの定義  {#defining-statistics-categories}
 
-レンダーを選択するための統計を保持するドキュメントのタイプごとにカテゴリを定義します。The `/statistics` section contains a `/categories` section. To define a category, add a line below the `/categories` section that has the following format:
+レンダーを選択するための統計を保持するドキュメントのタイプごとにカテゴリを定義します。`/statistics`セクションには`/categories`セクションが含まれています。 カテゴリを定義するには、`/categories`セクションの下に次の形式の行を追加します。
 
 `/name { /glob "pattern"}`
 
@@ -1419,7 +1419,7 @@ Dispatcher は、最大 8 個の統計カテゴリをサポートします。9 �
 
 URI のカテゴリを判断するために、Dispatcher は一致が見つかるまで URI と各カテゴリのパターンを比較します。Dispatcher は、リストの先頭のカテゴリから始め、順序に従って比較を続けます。したがって、より具体的なパターンを持つカテゴリを先頭に配置してください。
 
-For example, Dispatcher the default `dispatcher.any` file defines an HTML category and an others category. HTML カテゴリのほうが具体的なので、先頭に配置されています。
+例えば、デフォルトの`dispatcher.any`ファイルをディスパッチャーが定義するのは、HTMLカテゴリとその他のカテゴリです。 HTML カテゴリのほうが具体的なので、先頭に配置されています。
 
 ```xml
 /statistics
@@ -1454,7 +1454,7 @@ For example, Dispatcher the default `dispatcher.any` file defines an HTML catego
 
 `/unavailablePenalty` プロパティは、`/farm` セクション（`/statistics` セクションの兄弟）の直接の子です。
 
-If no `/unavailablePenalty` property exists, a value of `"1"` is used.
+`/unavailablePenalty`プロパティが存在しない場合は、`"1"`の値が使用されます。
 
 ```xml
 /unavailablePenalty "1"
@@ -1484,13 +1484,13 @@ If no `/unavailablePenalty` property exists, a value of `"1"` is used.
 
 ### httpOnly {#httponly}
 
-スティッキー接続が有効になっている場合、dispatcher モジュールは `renderid` cookie を設定します。この cookie には `httponly` フラグがないため、セキュリティを強化するためにこのフラグを追加する必要があります。これをおこなうには、`httpOnly` 設定ファイルの `/stickyConnections` ノードで `dispatcher.any` プロパティを設定します。The property&#39;s value (either `0` or `1`) defines whether the `renderid` cookie has the `HttpOnly` attribute appended. The default value is `0`, which means the attribute will not be added.
+スティッキー接続が有効になっている場合、dispatcher モジュールは `renderid` cookie を設定します。この cookie には `httponly` フラグがないため、セキュリティを強化するためにこのフラグを追加する必要があります。これをおこなうには、`httpOnly` 設定ファイルの `/stickyConnections` ノードで `dispatcher.any` プロパティを設定します。プロパティの値（`0`または`1`）は、`renderid` cookieに`HttpOnly`属性が追加されるかどうかを定義します。 デフォルト値は`0`で、属性は追加されません。
 
-For additional information about the `httponly` flag, read [this page](https://www.owasp.org/index.php/HttpOnly).
+`httponly`フラグの詳細は[このページ](https://www.owasp.org/index.php/HttpOnly)を読んでください。
 
 ### secure {#secure}
 
-スティッキー接続が有効になっている場合、dispatcher モジュールは `renderid` cookie を設定します。この cookie には `secure` フラグがないため、セキュリティを強化するためにこのフラグを追加する必要があります。これをおこなうには、`secure` 設定ファイルの `/stickyConnections` ノードで `dispatcher.any` プロパティを設定します。The property&#39;s value (either `0` or `1`) defines whether the `renderid` cookie has the `secure` attribute appended. The default value is `0`, which means the attribute will be added **if** the incoming request is secure. If the value is set to `1`, then the secure flag will be added regardless of whether the incoming request is secure or not.
+スティッキー接続が有効になっている場合、dispatcher モジュールは `renderid` cookie を設定します。この cookie には `secure` フラグがないため、セキュリティを強化するためにこのフラグを追加する必要があります。これをおこなうには、`secure` 設定ファイルの `/stickyConnections` ノードで `dispatcher.any` プロパティを設定します。プロパティの値（`0`または`1`）は、`renderid` cookieに`secure`属性が追加されるかどうかを定義します。 デフォルト値は`0`で、**if**&#x200B;受信要求がセキュリティで保護されている場合、属性が&lt;a1/>追加されます。 値が`1`に設定されている場合は、受信要求がセキュリティで保護されているかどうかに関係なく、セキュアフラグが追加されます。
 
 ## レンダー接続エラーの処理 {#handling-render-connection-errors}
 
@@ -1510,7 +1510,7 @@ For additional information about the `httponly` flag, read [this page](https://w
 
 ### ページ再試行遅延の指定 {#specifying-the-page-retry-delay}
 
-The `/retryDelay` property sets the time (in seconds) that Dispatcher waits between rounds of connection attempts with the farm renders. 周期ごとに、Dispatcher が 1 つのレンダーに対して接続を試行する最大回数は、ファーム内のレンダーの数です。
+`/retryDelay`プロパティは、ファームでの接続試行の数ラウンド間の待機時間（秒）を設定します。 周期ごとに、Dispatcher が 1 つのレンダーに対して接続を試行する最大回数は、ファーム内のレンダーの数です。
 
 `/retryDelay` が明示的に定義されていない場合、Dispatcher は値 `"1"` を使用します。デフォルト値は、ほとんどのケースに適しています。
 
@@ -1518,7 +1518,7 @@ The `/retryDelay` property sets the time (in seconds) that Dispatcher waits betw
 /retryDelay "1"
 ```
 
-### 再試行回数の設定 {#configuring-the-number-of-retries}
+### 再試行回数の設定  {#configuring-the-number-of-retries}
 
 `/numberOfRetries` プロパティは、Dispatcher がレンダーに対して実行する。接続試行周期の最大回数を設定します。この再試行回数内で Dispatcher がレンダーに接続できなかった場合、Dispatcher は失敗応答を返します。
 
@@ -1549,7 +1549,7 @@ Dispatcher ファーム上でフェイルオーバーメカニズムを有効に
 >
 >本文を含む HTTP 要求を再試行するには、Dispatcher が `Expect: 100-continue` 要求ヘッダーをレンダーに送信してから、実際のコンテンツをスプールします。すると、CQSE を含む CQ 5.5 が、100（CONTINUE）またはエラーコードで即座に応答します。その他のサーブレットコンテナも、このメカニズムをサポートする必要があります。
 
-## 中断エラーの無視 - /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
+## 中断エラーの無視 - /ignoreEINTR  {#ignoring-interruption-errors-ignoreeintr}
 
 >[!CAUTION]
 >
@@ -1559,7 +1559,7 @@ Dispatcher ファーム上でフェイルオーバーメカニズムを有効に
 
 システムコールの対象が NFS 経由でアクセスするリモートシステム上にある場合、ファイルシステムからのシステムコールはすべて `EINTR` で中断される可能性があります。これらのシステムコールがタイムアウトするか中断されるかは、基盤となるファイルシステムがローカルマシンにどのようにマウントされたかに基づきます。
 
-Use the `/ignoreEINTR` parameter if your instance has such a configuration and the log contains the following message:
+インスタンスにこのような設定があり、ログに次のメッセージが含まれる場合は、`/ignoreEINTR`パラメーターを使用します。
 
 `Error while reading response: Interrupted system call`
 
@@ -1577,13 +1577,13 @@ read more data
 
 `/ignoreEINTR "1"`
 
-`/ignoreEINTR` を `"1"` に設定すると、Dispatcher は応答全体が読み込まれるまでデータの読み込みを続行します。The default value is `0` and deactivates the option.
+`/ignoreEINTR` を `"1"` に設定すると、Dispatcher は応答全体が読み込まれるまでデータの読み込みを続行します。デフォルト値は`0`で、このオプションを無効にします。
 
 ## glob プロパティのパターンのデザイン {#designing-patterns-for-glob-properties}
 
-Dispatcher 設定ファイルのいくつかのセクションでは、`glob` プロパティをクライアント要求の選択条件として使用します。The values of `glob` properties are patterns that Dispatcher compares to an aspect of the request, such as the path of the requested resource, or the IP address of the client. 例えば、`/filter` セクションのアイテムは、 パターンを使用して、Dispatcher が従う、または拒否するページのパスを識別します。`glob`
+Dispatcher 設定ファイルのいくつかのセクションでは、`glob` プロパティをクライアント要求の選択条件として使用します。`glob`プロパティの値は、要求されたリソースのパス、クライアントのIPアドレスなど、要求の一部と比較されるパターンです。 例えば、`/filter` セクションのアイテムは、 パターンを使用して、Dispatcher が従う、または拒否するページのパスを識別します。`glob`
 
-The `glob` values can include wildcard characters and alphanumeric characters to define the pattern.
+`glob`値には、パターンを定義するワイルドカード文字と英数字を含めることができます。
 
 | ワイルドカード文字 | 説明 | 例 |
 |--- |--- |--- |
@@ -1704,7 +1704,7 @@ Web サーバー設定で、次の属性を設定できます。
 
 この設定により、ログが自動的に次のように交替されます。
 
-* the dispatcher log file; with a timestamp in the extension (`logs/dispatcher.log%Y%m%d`).
+* ディスパッチャーログファイル；拡張子(`logs/dispatcher.log%Y%m%d`)のタイムスタンプ。
 * 週単位（60 x 60 x 24 x 7 = 604800 秒）で交替されます。
 
 ログの交替やパイプ経由のログについては、Apache Web サーバーのドキュメント（[Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html) など）を参照してください。
@@ -1748,7 +1748,7 @@ Web サーバーでログレベルを `4` に設定して、トレースログ�
 [Thu Mar 03 14:42:45 2016] [T] [11831] 'GET /content.infinity.json HTTP/1.1' was blocked because of /0082
 ```
 
-## 基本操作の確認 {#confirming-basic-operation}
+## 基本操作の確認  {#confirming-basic-operation}
 
 Web サーバー、Dispatcher および AEM インスタンスの基本の操作とやり取りを確認するには、次の手順を実行します。
 
@@ -1819,7 +1819,7 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
 ターゲットファイルはキャッシュに含まれていますが、より新しい .stat ファイルによって無効化されます。Dispatcher はターゲットファイルを削除し、出力から再作成して配信します。
 * **not cacheable: no document root**
 ファームの構成にドキュメントルート（構成要素）が含まれていません 
-`cache.docroot`).
+`cache.docroot`)をクリックします。
 * **not cacheable: cache file path too long**\
    ターゲットファイル（ドキュメントルートと URL ファイルが連結されたものが）が、システム上で使用可能な最長ファイル名を超えています。
 * **not cacheable: temporary file path too long**\
@@ -1844,7 +1844,8 @@ HTTP メソッドが GET でも HEAD でもありません。Dispatcher は、�
    ファームの認証チェッカーがキャッシュされたファイルへのアクセスを拒否しました。
 * **not cacheable: session not valid** 
 ファームのキャッシュがセッションマネージャーによって管理され（設定に `sessionmanagement` ノードが含まれている）、ユーザーセッションが無効であるか、有効でなくなっています。
-* **キャッシュ不可：応答に次を含む`no_cache`**&#x200B;リモートサーバーが 
+* **キャッシュ不可：応答に次を含む`no_cache`**
+リモートサーバーが 
 `Dispatcher: no_cache` ヘッダーに置き換え、ディスパッチャーが出力をキャッシュできないようにします。
 * **not cacheable: response content length is zero** 
 応答のコンテンツ長がゼロになっています。Dispatcher では、長さゼロのファイルは作成されません。
