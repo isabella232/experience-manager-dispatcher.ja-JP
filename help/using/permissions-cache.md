@@ -11,6 +11,9 @@ content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 translation-type: tm+mt
 source-git-commit: 8dd56f8b90331f0da43852e25893bc6f3e606a97
+workflow-type: tm+mt
+source-wordcount: '762'
+ht-degree: 100%
 
 ---
 
@@ -29,7 +32,7 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 
 以下の図は、Web ブラウザーが権限を区別するキャッシュを使用するページを要求したときに発生するイベントの順序を示したものです。
 
-## ページがキャッシュされていて、ユーザーが承認されている場合 {#page-is-cached-and-user-is-authorized}
+## ページがキャッシュされていて、ユーザーが承認されている場合  {#page-is-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1.png)
 
@@ -38,7 +41,7 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 1. レンダーがオーソライザーを呼び出してセキュリティチェックを実行し、Dispatcher に応答します。応答メッセージには、ユーザーが承認されていることを示す HTTP ステータスコード 200 が含まれます。
 1. Dispatcher がブラウザーに応答メッセージを送信します。応答メッセージは、レンダーの応答のヘッダー行と、本文としてキャッシュされたコンテンツで構成されます。
 
-## ページがキャッシュされていないが、ユーザーが承認されている場合 {#page-is-not-cached-and-user-is-authorized}
+## ページがキャッシュされていないが、ユーザーが承認されている場合  {#page-is-not-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1-1.png)
 
@@ -47,7 +50,7 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 1. レンダーがオーソライザーサーブレットを呼び出して、セキュリティチェックを実行します。ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
 1. Dispatcher がブラウザーに応答を転送します。Dispatcher が、レンダーの応答メッセージの本文をキャッシュに追加します。
 
-## ユーザーが承認されていない場合 {#user-is-not-authorized}
+## ユーザーが承認されていない場合  {#user-is-not-authorized}
 
 ![](assets/chlimage_1-2.png)
 
@@ -67,7 +70,7 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 >一般的に、安全なリソースは、安全ではないファイルとは別のフォルダーに保存します。例：/content/secure/
 
 
-## 承認サーブレットの作成 {#create-the-authorization-servlet}
+## 承認サーブレットの作成  {#create-the-authorization-servlet}
 
 Web コンテンツを要求するユーザーの認証と承認を実行するサーブレットを作成し、デプロイします。このサーブレットは、AEM のユーザーアカウントとリポジトリの ACL や、LDAP 検索サービスなど、あらゆる認証および承認メソッドを使用できます。Dispatcher がレンダーとして使用する AEM インスタンスにサーブレットをデプロイします。
 
