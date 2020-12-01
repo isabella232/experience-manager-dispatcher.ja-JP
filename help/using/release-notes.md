@@ -10,6 +10,9 @@ products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 translation-type: tm+mt
 source-git-commit: 328bc82673783b4a2df2d68481fa7eec88b74b01
+workflow-type: tm+mt
+source-wordcount: '805'
+ht-degree: 69%
 
 ---
 
@@ -22,14 +25,14 @@ source-git-commit: 328bc82673783b4a2df2d68481fa7eec88b74b01
 |--- |--- |
 | 商品 | Adobe Experience Manager (AEM) Dispatcher |
 | バージョン | 4.3.3 |
-| 種類 | マイナーリリース |
-| 日付 | 2019年10月19日 |
+| 型 | マイナーリリース |
+| 日付 | 2019 年 10 月 18 日 |
 | ダウンロード URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services（IIS）](release-notes.md#iis)</li></ul> |
 | 互換性 | AEM 6.1 以降 |
 
 ## システム要件および使用条件 {#system-requirements-and-prerequisites}
 
-要件と前提条件の詳細につ [いては、「サポートされるプラットフォーム](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) 」ページを参照してください。
+要件と前提条件の詳細については、[サポートされるプラットフォーム](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/technical-requirements.html)のページを参照してください。
 
 最新の機能、最新のバグフィックス、そして最高のパフォーマンスを利用するため、最新バージョンの AEM Dispatcher を使用することを強くお勧めします。
 
@@ -39,29 +42,29 @@ source-git-commit: 328bc82673783b4a2df2d68481fa7eec88b74b01
 
 ## リリース履歴 {#release-history}
 
-### Release 4.3.3 (2019-Oct-18) {#october}
+### リリース4.3.3 （2019年10月18日） {#october}
 
 **バグ修正**:
 
-* DISP-739 - logLevelディスパッチャー：レ **ベル** が機能しない
-* DISP-749:Alpine linuxディスパッチャーがトレースログレベルでクラッシュします。
+* DISP-739 - LogLevelディスパッチャー：**level**&#x200B;が機能しません
+* DISP-749 - Alpine Linuxディスパッチャーがトレースログレベルでクラッシュする
 
 **機能強化**：
 
-* DISP-813 - openssl 1.1.x用のディスパッチャーのサポート
-* DISP-814：キャッシュフラッシュ中にApache 40xエラーが発生する
-* DISP-818 - mod_expiresは、キャッシュ不能なコンテンツのCache-Controlヘッダを追加します。
+* DISP-813 - openssl 1.1.xに対するディスパッチャーのサポート
+* DISP-814 — キャッシュフラッシュ中のApache 40xエラー
+* DISP-818 - mod_expiresは、キャッシュ不能なコンテンツ用のCache-Controlヘッダーを追加します。
 * DISP-821 — ログコンテキストをソケットに格納しない
 * DISP-822 — ディスパッチャーは、pselectの代わりにppollを使用する必要があります。
 * DISP-824 — セキュリティで保護されたDispatcherUseForwardedHost
 * DISP-825 — ディスクに空き領域がなくなった場合のログスペシャルメッセージ
-* DISP-826 — クエリ文字列を使用したURIの再取得をサポートします。
+* DISP-826 -クエリ文字列を使用したURIの再取得をサポート
 
 **新機能**:
 
 * DISP-703 — ファーム固有のキャッシュヒット率
 * DISP-827 — テスト用のローカルサーバー
-* DISP-828 — ディスパッチャー用のテスト用ドッカーイメージを作成します。
+* DISP-828 — ディスパッチャー用のテスト用ドッカーイメージを作成します
 
 ### リリース 4.3.2（2019 年 1月 31 日） {#jan}
 
