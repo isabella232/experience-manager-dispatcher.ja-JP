@@ -9,12 +9,15 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: ba323503-1494-4048-941d-c1d14f2e85b2
-redirecttarget: https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
 translation-type: tm+mt
 source-git-commit: 2ca816ac0776d72be651b76ff4f45e0c3ed1450f
+workflow-type: tm+mt
+source-wordcount: '1167'
+ht-degree: 100%
 
 ---
 
@@ -43,11 +46,12 @@ Dispatcher は、パフォーマンスの最適化に利用できる多数の組
 >
 >* URL を使用してページおよび要求として格納できるデータはすべてキャッシュ可能です。
 >* その他のデータ（HTTP ヘッダー、cookie、セッションデータ、フォームデータなど）は格納できません。
+
 >
 >
 通常、多くのキャッシュ戦略は適切な URL の選択を含んでおり、この追加データには依存しません。
 
-## 一貫性のあるページエンコーディングの使用 {#using-consistent-page-encoding}
+## 一貫性のあるページエンコーディングの使用  {#using-consistent-page-encoding}
 
 HTTP 要求ヘッダーはキャッシュされないので、ページエンコーディング情報をヘッダーに格納すると、問題が発生する可能性があります。この場合、Dispatcher がキャッシュからページを提供すると、Web サーバーのデフォルトのエンコーディングがそのページに使用されます。この問題を回避する方法は 2 つあります。
 
@@ -76,7 +80,7 @@ www.myCompany.com/pictures/gallery.christmas.1.html
 >
 >この URL は、gallery.html と同じページおよび同じテンプレートを呼び出します。テンプレートの定義では、ページをレンダリングするスクリプトを指定できます。または、すべてのページに同じスクリプトを使用できます。
 
-## URL ごとのカスタマイズ {#customize-by-url}
+## URL ごとのカスタマイズ  {#customize-by-url}
 
 ユーザーによるフォントサイズの変更（またはその他の任意のレイアウトのカスタマイズ）を許可する場合は、それぞれのカスタマイズが URL に反映されるようにする必要があります。
 
@@ -98,7 +102,7 @@ www.myCompany.com/news/main.large.html
 >
 >テンプレートの定義のスクリプトグロブを使用すると、印刷ページをレンダリングする個別のスクリプトを指定できます。
 
-## タイトルとして使用する画像ファイルの無効化 {#invalidating-image-files-used-as-titles}
+## タイトルとして使用する画像ファイルの無効化  {#invalidating-image-files-used-as-titles}
 
 ページタイトルまたはその他のテキストを写真としてレンダリングする場合は、そのファイルを、ページ上のコンテンツの更新時に自動的に削除されるような方法で格納することをお勧めします。
 
@@ -115,7 +119,7 @@ www.myCompany.com/news/main.large.html
 >
 >画像ファイルは必ずしも AEM インスタンスに物理的に存在するわけではありません。画像ファイルを動的に作成するスクリプトを使用できます。そのファイルを Dispatcher が Web サーバーに格納します。
 
-## ナビゲーションに使用する画像ファイルの無効化 {#invalidating-image-files-used-for-navigation}
+## ナビゲーションに使用する画像ファイルの無効化  {#invalidating-image-files-used-for-navigation}
 
 ナビゲーションエントリ用の写真を使用する場合の方法は、タイトルを使用する場合と基本的に同じですが、若干複雑になります。すべてのナビゲーション画像をターゲットページと共に格納します。通常用とアクティブ用の 2 つの写真を使用する場合は、次のスクリプトを使用できます。
 
@@ -127,7 +131,7 @@ www.myCompany.com/news/main.large.html
 
 変更されないページの場合、通常、そのページ自体は自動的に無効化されますが、写真はキャッシュに残ります。
 
-## パーソナライズ {#personalization}
+## パーソナライゼーション {#personalization}
 
 Dispatcher はパーソナライズされたデータをキャッシュできないので、パーソナライズは必要な場所にのみ適用することをお勧めします。その理由は次のとおりです。
 
@@ -142,15 +146,16 @@ Dispatcher はパーソナライズされたデータをキャッシュできな
 >
 >* iFrame を使用して、全ユーザーに共通する部分と、特定ユーザーのすべてのページに共通する部分とにページを分割します。こうすれば、それぞれの部分をキャッシュできます。
 >* クライアント側 JavaScript を利用して、パーソナライズされた情報を表示します。ただし、ユーザーが JavaScript を無効にした場合でも、ページが正しく表示されるようにする必要があります。
+
 >
 
 
 
-## スティッキー接続 {#sticky-connections}
+## スティッキー接続  {#sticky-connections}
 
 [スティッキー接続](dispatcher.md#TheBenefitsofLoadBalancing)を使用すると、1 人のユーザー用のドキュメントがすべて同じサーバーで作成されるようになります。ユーザーがそのフォルダーを離れて後から戻ってきた場合も、この接続は維持されます。これをおこなうには、Web サイトのスティッキー接続に必要なすべてのドキュメントを保持するためのフォルダーを 1 つ定義します。このフォルダーには他のドキュメントを格納しないようにします。そうすると、パーソナライズされたページとセッションデータを使用する場合に、ロードバランシングに影響が生じます。
 
-## MIME タイプ {#mime-types}
+## MIME タイプ  {#mime-types}
 
 ブラウザーがファイル形式を特定する方法は 2 つあります。
 
