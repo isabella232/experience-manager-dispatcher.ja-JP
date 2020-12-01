@@ -102,7 +102,7 @@ IIS バージョン 8.5 および 10 には、以下の IIS コンポーネン�
 
 Web Server（IIS）役割も追加する必要があります。役割とコンポーネントを追加するには、Server Manager を使用します。
 
-## Microsoft IIS - Dispatcher モジュールのインストール {#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS - Dispatcher モジュールのインストール  {#microsoft-iis-installing-the-dispatcher-module}
 
 Microsoft インターネットインフォメーションサービスには次のようなアーカイブファイルが必要です。
 
@@ -274,7 +274,7 @@ Dispatcher の使用を始める前に、以下のことを理解しておく必
 >
 >インストール手順は、**Windows** の場合と **Unix** の場合の両方について記載しています。手順は慎重に実行してください。
 
-### Apache Web サーバーのインストール {#installing-apache-web-server}
+### Apache Web サーバーのインストール  {#installing-apache-web-server}
 
 Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org/)またはディストリビューション内のインストールマニュアルを参照してください。
 
@@ -284,7 +284,7 @@ Apache Web サーバーのインストールについては、[オンライン](
 >
 >詳しくは、Apache Web サーバーのインストールマニュアルを参照してください。
 
-Also see the Apache HTTP Server [Security Tips](https://httpd.apache.org/docs/2.4/misc/security_tips.html) and [Security Reports](https://httpd.apache.org/security_report.html).
+また、Apache HTTPサーバー[セキュリティのヒント](https://httpd.apache.org/docs/2.4/misc/security_tips.html)と[セキュリティレポート](https://httpd.apache.org/security_report.html)も参照してください。
 
 ### Apache Web サーバー - Dispatcher モジュールの追加 {#apache-web-server-add-the-dispatcher-module}
 
@@ -295,7 +295,7 @@ Dispatcher は次のいずれかの形式で提供されます。
 
 インストールアーカイブファイルには、次のファイルが含まれています。選択した環境が Windows か Unix かによって異なります。
 
-| File | 説明 |
+| ファイル | 説明 |
 |--- |--- |
 | disp_apache&lt;x.y>.dll | Windows：Dispatcher のダイナミックリンクライブラリファイル。 |
 | dispatcher-apache&lt;x.y>-&lt;rel-nr>.so | UNIX：Dispatcher の共有オブジェクトライブラリファイル。 |
@@ -303,7 +303,7 @@ Dispatcher は次のいずれかの形式で提供されます。
 | http.conf.disp&lt;x> | Apache サーバー用のサンプル設定ファイル。 |
 | dispatcher.any | Dispatcher 用のサンプルの設定ファイル。 |
 | README | インストール手順と最新の情報を含む Readme ファイル。**注意**：インストールを開始する前に、このファイルを確認してください。 |
-| CHANGES | 現在および過去のリリースで修正された問題を記載した Changes ファイル。 |
+| 変更点 | 現在および過去のリリースで修正された問題を記載した Changes ファイル。 |
 
 次の手順を実行して、Apache Web サーバーに Dispatcher を追加します。
 
@@ -319,7 +319,7 @@ Dispatcher は次のいずれかの形式で提供されます。
 
    **注意：** Dispatcher モジュールの DispatcherLog プロパティが適切に設定されていれば、このファイルを別の場所に配置できます（以下の Dispatcher 固有の設定エントリを参照してください）。
 
-### Apache Web サーバー - SELinux プロパティの設定 {#apache-web-server-configure-selinux-properties}
+### Apache Web サーバー - SELinux プロパティの設定  {#apache-web-server-configure-selinux-properties}
 
 RedHat Linux Kernel 2.6 上で SELinux を有効にして Dispatcher を実行する場合、Dispatcher のログファイルに次のようなエラーメッセージが書き込まれることがあります。
 
@@ -426,7 +426,7 @@ ServerTokens Full``
 DispatcherNoServerHeader 0`\
 この設定は、（統計目的で）AEM バージョンを示します。このような情報をヘッダー内で利用できないようにするには、次のように設定します。`  
 ServerTokens Prod`\
-See the [Apache Documentation about ServerTokens Directive (for example, for Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) for more information.
+詳細については、[Apache Documentation about ServerTokens Directive （例えば、Apache 2.4の場合）](https://httpd.apache.org/docs/2.4/mod/core.html)を参照してください。
 
 **SetHandler**
 
@@ -499,7 +499,7 @@ AllowOverride None
 
 `ModMimeUsePathInfo On`
 
-The mod_mime module (see for example, [Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)) is used to assign content metadata to the content selected for an HTTP response. デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
+mod_mimeモジュール（例：[Apacheモジュールmod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)）は、HTTP応答用に選択されたコンテンツにコンテンツメタデータを割り当てるために使用されます。 デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
 
 `ModMimeUsePathInfo`パラメーターを `On` にすると、`mod_mime` によるコンテンツタイプの指定が&#x200B;*完全な* URL に基づいて行われます。つまり、仮想リソースの拡張子に基づいてメタ情報が適用されます。
 
@@ -570,7 +570,7 @@ Dispatcher は次のいずれかの形式で提供されます。
 
 インストールアーカイブファイルには、次のファイルが含まれています。選択した環境が Windows か Unix かによって異なります。
 
-| File | 説明 |
+| ファイル | 説明 |
 |---|---|
 | `disp_ns.dll` | Windows：Dispatcher のダイナミックリンクライブラリファイル。 |
 | `dispatcher.so` | UNIX：Dispatcher の共有オブジェクトライブラリファイル。 |
@@ -578,7 +578,7 @@ Dispatcher は次のいずれかの形式で提供されます。
 | `obj.conf.disp` | iPlanet／Sun Java System Web Server 用のサンプルの設定ファイル。 |
 | `dispatcher.any` | Dispatcher 用のサンプルの設定ファイル。 |
 | README | インストール手順と最新の情報を含む Readme ファイル。注意：インストールを開始する前に、このファイルを確認してください。 |
-| CHANGES | 現在および過去のリリースで修正された問題を記載した Changes ファイル。 |
+| 変更点 | 現在および過去のリリースで修正された問題を記載した Changes ファイル。 |
 
 次の手順を実行して、Web サーバーに Dispatcher を追加します。
 
