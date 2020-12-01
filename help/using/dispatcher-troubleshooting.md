@@ -31,7 +31,7 @@ ht-degree: 90%
 
 >[!NOTE]
 >
->詳細については、 [ディスパッチャーのナレッジベース](https://helpx.adobe.com/cq/kb/index/dispatcher.html)、 [ディスパッチャーのフラッシュの問題の](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) トラブルシューティング [、および](dispatcher-faq.md) ディスパッチャーのトップの問題に関するFAQも参照してください。
+>[ディスパッチャーのナレッジベース](https://helpx.adobe.com/cq/kb/index/dispatcher.html)、[ディスパッチャーのフラッシュの問題のトラブルシューティング](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html)、[ディスパッチャーの主な問題FAQ](dispatcher-faq.md)も参照してください。
 
 ## 基本設定の確認 {#check-the-basic-configuration}
 
@@ -50,7 +50,7 @@ ht-degree: 90%
       * これらのフィルターが調査中の問題に影響しているか。
 
 
-## IIS 診断ツール {#iis-diagnostic-tools}
+## IIS 診断ツール  {#iis-diagnostic-tools}
 
 IIS には、実際のバージョンに応じて様々なトレースツールがあります。
 
@@ -59,12 +59,12 @@ IIS には、実際のバージョンに応じて様々なトレースツール�
 
 これらのツールを使用して、アクティビティを監視できます。
 
-## IIS と 404 Not Found {#iis-and-not-found}
+## IIS と 404 Not Found  {#iis-and-not-found}
 
 IIS の使用時、様々な場面で「`404 Not Found`」が返されることがあります。このエラーが返された場合は、次のナレッジベース記事を参照してください。
 
 * [IIS 6/7: POST method returns 404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
-* [IIS 6:ベースパスの `/bin` 戻り値を含むURLへの要求 `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6:ベースパス `/bin` 戻り値を含むURLへの要求  `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
 Dispatcher のキャッシュルートと IIS のドキュメントルートが同じディレクトリに設定されていることも確認してください。
 
