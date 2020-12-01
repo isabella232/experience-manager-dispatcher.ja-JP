@@ -5,6 +5,9 @@ description: AEM Dispatcher に関する主な問題
 seo-description: Adobe AEM Dispatcher に関する主な問題
 translation-type: tm+mt
 source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
+workflow-type: tm+mt
+source-wordcount: '1644'
+ht-degree: 91%
 
 ---
 
@@ -82,7 +85,7 @@ Dispatcher の[インストール](dispatcher-install.md)ページを参照し�
 
 マシンの性能が十分でれば可能です。ただし、異なるマシン上に Dispatcher および AEM パブリッシュインスタンスを設定することをお勧めします。
 
-通常、発行インスタンスはファイアウォール内にあり、ディスパッチャーはDMZ内に存在します。 同じ物理マシンにパブリッシュインスタンスと Dispatcher の両方を配置することを決定した場合は、ファイアウォール設定で外部ネットワークからパブリッシュインスタンスへの直接アクセスが禁止されていること確認してください。
+通常、発行インスタンスはファイアウォール内にあり、ディスパッチャーはDMZ内にあります。 同じ物理マシンにパブリッシュインスタンスと Dispatcher の両方を配置することを決定した場合は、ファイアウォール設定で外部ネットワークからパブリッシュインスタンスへの直接アクセスが禁止されていること確認してください。
 
 ### 特定の拡張子を持つファイルのみキャッシュできますか？
 
@@ -115,25 +118,25 @@ en ディレクトリ（存在する場合、キャッシュされたページ�
 
 ### Dispatcher インスタンスと CQ インスタンス間の通信を保護する方法を教えてください。
 
-「ディスパッチャ [ーセキュリティチェックリスト](security-checklist.md) 」および「 [AEMセキュリティチェックリスト](https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html) 」ページを参照してください。
+「[ディスパッチャーセキュリティチェックリスト](security-checklist.md)」および「[AEMセキュリティチェックリスト](https://helpx.adobe.com/jp/experience-manager/6-4/sites/administering/using/security-checklist.html)」のページを参照してください。
 
 ### Dispatcher の問題：`jcr:content` が `jcr%3acontent` に変更される
 
 **質問**：最近、CQ レポジトリからデータを取得する Ajax コードの 1 つに `jcr:content` が含まれていて、それが `jcr%3acontent` にエンコードされたため、結果セットが誤ったものになるという Dispatcher レベルの問題が発生しました。
 
-**回答**:使用する「わ `ResourceResolver.map()` かりやすい」URLや、発行するGETリクエストを取得するメソッドを使用して、ディスパッチャーのキャッシュの問題を解決してください。 map()メソッドはコロンをアンダースコアにエンコードし、 `:` resolve()メソッドはコロンをSLING JCR可読形式にデコードします。Ajax呼び出しで使用するURLを生成するには、map()メソッドを使用する必要があります。
+**回答**:使用する「わかりやすい」URLの取得や、ディスパッチャーでのキャッシュの問題の解決には、 `ResourceResolver.map()` メソッドを使用して、取得リクエストの発行や取得を行ってください。map()メソッドは`:`コロンをアンダースコアにエンコードし、resolve()メソッドはそれらをSLING JCR可読形式にデコードします。Ajax呼び出しで使用するURLを生成するには、map()メソッドを使用する必要があります。
 
-Further read: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
+詳細は以下を参照してください。[https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
 ## Dispatcher をフラッシュする
 
 ### パブリッシュインスタンスで Dispatcher フラッシュエージェントを設定する方法を教えてください。
 
-「 [Replication](https://helpx.adobe.com/content/help/en/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents) 」ページを参照。
+[レプリケーション](https://helpx.adobe.com/content/help/en/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents)のページを参照してください。
 
 ### Dispatcher のフラッシュ問題のトラブルシューティング方法を教えてください。
 
-[次の質問に答えるには、この](https://helpx.adobe.com/content/help/en/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html) 「トラブルシューティング」の記事を参照してください。
+[次の質問に答えるには、このトラブルシューティング](https://helpx.adobe.com/content/help/en/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html) 記事を参照してください。
 
 * Dispatcher キャッシュにコンテンツが保存されていない状況をデバッグするにはどうすればよいですか？
 * キャッシュファイルが更新されない状況をデバッグするにはどうすればよいですか？
