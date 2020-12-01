@@ -82,13 +82,13 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 Dispatcher の設定時に、できる限り外部アクセスを制限してください。Dispatcher に関するドキュメントの[サンプルの /filter セクション](dispatcher-configuration.md#main-pars_184_1_title)を参照してください。
 
-## 管理 URL へのアクセスの拒否 {#make-sure-access-to-administrative-urls-is-denied}
+## 管理 URL へのアクセスの拒否  {#make-sure-access-to-administrative-urls-is-denied}
 
 フィルターを使用して、Web コンソールなどすべての管理 URL への外部アクセスを確実にブロックします。
 
 ブロックする必要がある URL のリストについては、[Dispatcher のセキュリティのテスト](dispatcher-configuration.md#testing-dispatcher-security)を参照してください。
 
-## 許可リストの代わりにブロックリストを使用する {#use-allowlists-instead-of-blocklists}
+## 許可リストブロックリストの代わりに{#use-allowlists-instead-of-blocklists}を使用
 
 許可リストは本質的にアクセス制御を提供するより優れた方法です。許可リストに明示的に含まれない限り、すべてのアクセス要求は拒否される必要があると考えられます。 このモデルでは、未確認だったり、特定の設定ステージで考慮されていなかった可能性がある新しい要求に対して、より厳しい制御を適用できます。
 
@@ -101,7 +101,7 @@ Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによ
 1. Web サイトの物理パス設定で、「**特定のユーザーとして接続**」を選択します。
 1. ユーザーを設定します。
 
-## サービス拒否（DoS）攻撃の防止 {#prevent-denial-of-service-dos-attacks}
+## サービス拒否（DoS）攻撃の防止  {#prevent-denial-of-service-dos-attacks}
 
 サービス拒否（DoS）攻撃は、対象となるユーザーがコンピューターリソースを使用できない状態にするものです。
 
@@ -162,7 +162,7 @@ AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐ�
 
 クリックジャッキングを防ぐには、`SAMEORIGIN` に設定した HTTP ヘッダー `X-FRAME-OPTIONS` を指定するように Web サーバーを設定することをお勧めします。
 
-For more [information on clickjacking please see the OWASP site](https://www.owasp.org/index.php/Clickjacking).
+クリックジャックに関する詳細[は、OWASPサイト](https://www.owasp.org/index.php/Clickjacking)を参照してください。
 
 ## 侵入テストの実施 {#perform-a-penetration-test}
 
