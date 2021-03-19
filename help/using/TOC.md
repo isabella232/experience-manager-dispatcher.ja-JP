@@ -6,10 +6,14 @@ archetype: Administrator
 user-guide-title: Adobe Experience Manager Dispatcher Help
 breadcrumb-title: Dispatcher ガイド
 user-guide-description: AEM サーバーのキャッシュ、ロードバランシング、セキュリティの向上に Dispatcher を使用する方法について説明します。
+feature-set: Experience Manager
+feature: Dispatcher
+topic: Administration
+role: Administrator
 translation-type: tm+mt
-source-git-commit: 5765970c0335df084b5d49efae60997b3a021c47
+source-git-commit: d03518767918288f03d289f19253f15803a313c7
 workflow-type: tm+mt
-source-wordcount: '87'
+source-wordcount: '90'
 ht-degree: 100%
 
 ---
