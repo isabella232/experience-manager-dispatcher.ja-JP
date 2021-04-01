@@ -1,14 +1,14 @@
 ---
-cloud: experience-cloud
+cloud: Experience Cloud
 solution: Experience Manager
 type: ドキュメント
 git-repo: https://git.corp.adobe.com/AdobeDocs/experience-manager-dispatcher.ja-JP
 index: y
 translation-type: tm+mt
-source-git-commit: d03518767918288f03d289f19253f15803a313c7
+source-git-commit: da6af93fa3dec8e3b2f146e9c8c6183a3185199b
 workflow-type: tm+mt
-source-wordcount: '112'
-ht-degree: 100%
+source-wordcount: '0'
+ht-degree: 0%
 
 ---
 
