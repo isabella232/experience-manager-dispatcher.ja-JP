@@ -8,21 +8,20 @@ breadcrumb-title: Dispatcher ガイド
 user-guide-description: AEM サーバーのキャッシュ、ロードバランシング、セキュリティの向上に Dispatcher を使用する方法について説明します。
 feature-set: Experience Manager
 feature: Dispatcher
-topic: Administration
+topic: 管理
 role: Administrator
-translation-type: tm+mt
 source-git-commit: da6af93fa3dec8e3b2f146e9c8c6183a3185199b
 workflow-type: tm+mt
-source-wordcount: '0'
-ht-degree: 0%
+source-wordcount: '89'
+ht-degree: 100%
 
 ---
 
 
-# AEM Dispatcher のヘルプ{#using}
+# AEM Dispatcher のヘルプ {#using}
 
 + [概要](dispatcher.md)
-+ はじめに{#getting-started}
++ はじめに {#getting-started}
    + [Dispatcher のインストール](dispatcher-install.md)
    + [Dispatcher のセキュリティチェックリスト](security-checklist.md)
    + [AEM Dispatcher リリースノート](release-notes.md)
