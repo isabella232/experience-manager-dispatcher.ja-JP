@@ -9,14 +9,13 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
-translation-type: tm+mt
-source-git-commit: 8dd56f8b90331f0da43852e25893bc6f3e606a97
+exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: tm+mt
 source-wordcount: '762'
 ht-degree: 100%
 
 ---
-
 
 # セキュリティ保護されたコンテンツのキャッシュ {#caching-secured-content}
 
@@ -157,7 +156,7 @@ Dispatcher が起動すると、Dispatcher のログファイルには、次の�
 
 以下の auth_checker セクションの例では、前のトピックのサーブレットを使用するように Dispatcher を設定しています。filter セクションは、権限チェックをセキュアな HTML リソースに対してのみ実行するようにします。
 
-### 設定例 {#example-configuration}
+### 設定例  {#example-configuration}
 
 ```xml
 /auth_checker
@@ -197,4 +196,3 @@ Dispatcher が起動すると、Dispatcher のログファイルには、次の�
     }
   }
 ```
-
