@@ -12,14 +12,13 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
-translation-type: tm+mt
-source-git-commit: 9af0dc22d32f1176b84c28a70b1a4701414d434e
+exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: tm+mt
 source-wordcount: '553'
 ht-degree: 90%
 
 ---
-
 
 # Dispatcher に関する問題のトラブルシューティング {#troubleshooting-dispatcher-problems}
 
@@ -31,7 +30,7 @@ ht-degree: 90%
 
 >[!NOTE]
 >
->[ディスパッチャーのナレッジベース](https://helpx.adobe.com/cq/kb/index/dispatcher.html)、[ディスパッチャーのフラッシュの問題のトラブルシューティング](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html)、[ディスパッチャーの主な問題FAQ](dispatcher-faq.md)も参照してください。
+>詳しくは、[Dispatcherナレッジベース](https://helpx.adobe.com/cq/kb/index/dispatcher.html)、[Dispatcherのフラッシュ問題のトラブルシューティング](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html)および[Dispatcherに関する主な問題に関するFAQ](dispatcher-faq.md)も参照してください。
 
 ## 基本設定の確認 {#check-the-basic-configuration}
 
@@ -64,7 +63,7 @@ IIS には、実際のバージョンに応じて様々なトレースツール�
 IIS の使用時、様々な場面で「`404 Not Found`」が返されることがあります。このエラーが返された場合は、次のナレッジベース記事を参照してください。
 
 * [IIS 6/7: POST method returns 404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
-* [IIS 6:ベースパス `/bin` 戻り値を含むURLへの要求  `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6:ベースパスが返すURLへのリクエ `/bin` スト  `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
 Dispatcher のキャッシュルートと IIS のドキュメントルートが同じディレクトリに設定されていることも確認してください。
 
