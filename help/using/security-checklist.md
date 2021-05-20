@@ -13,14 +13,13 @@ jcr-lastmodifiedby: remove-legacypath-6-1
 index: y
 internal: n
 snippet: y
-translation-type: tm+mt
-source-git-commit: 7889c025fb8fb29e6f11ea01c5248470556d3160
+exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: tm+mt
 source-wordcount: '653'
 ht-degree: 85%
 
 ---
-
 
 # Dispatcher のセキュリティチェックリスト{#the-dispatcher-security-checklist}
 
@@ -88,15 +87,15 @@ Dispatcher の設定時に、できる限り外部アクセスを制限してく
 
 ブロックする必要がある URL のリストについては、[Dispatcher のセキュリティのテスト](dispatcher-configuration.md#testing-dispatcher-security)を参照してください。
 
-## 許可リストブロックリストの代わりに{#use-allowlists-instead-of-blocklists}を使用
+## 許可リストの代わりにブロックリスト{#use-allowlists-instead-of-blocklists}を使用
 
-許可リストは本質的にアクセス制御を提供するより優れた方法です。許可リストに明示的に含まれない限り、すべてのアクセス要求は拒否される必要があると考えられます。 このモデルでは、未確認だったり、特定の設定ステージで考慮されていなかった可能性がある新しい要求に対して、より厳しい制御を適用できます。
+は許可リスト、アクセス制御を提供するより優れた方法です。明示的にアクセス要求がその一部でない限り、すべてのアクセス要求を拒否する必要があると考えているからで許可リストす。 このモデルでは、未確認だったり、特定の設定ステージで考慮されていなかった可能性がある新しい要求に対して、より厳しい制御を適用できます。
 
 ## 専用システムユーザーでの Dispatcher の実行 {#run-dispatcher-with-a-dedicated-system-user}
 
-Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによって Web サーバーが実行されていることを確認してください。ディスパッチャーキャッシュフォルダーへの書き込みアクセス権のみを付与することをお勧めします。
+Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによって Web サーバーが実行されていることを確認してください。Dispatcherのキャッシュフォルダーに対する書き込みアクセス権のみを付与することをお勧めします。
 
-また、IISのユーザーは、次のようにWebサイトを設定する必要があります。
+さらに、IISのユーザーは、Webサイトを次のように設定する必要があります。
 
 1. Web サイトの物理パス設定で、「**特定のユーザーとして接続**」を選択します。
 1. ユーザーを設定します。
@@ -153,7 +152,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## CSRF 攻撃を防止するための Dispatcher の設定 {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐことを目的とした[フレームワーク](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps)があります。このフレームワークを正しく利用するには、ディスパッチャーでCSRFトークンサポートを許可リストする必要があります。 手順は次のとおりです。
+AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐことを目的とした[フレームワーク](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps)があります。このフレームワークを適切に利用するには、DispatcherでCSRFトークンのサ許可リストポートをする必要があります。 手順は次のとおりです。
 
 1. `/libs/granite/csrf/token.json` パスを許可するフィルターを作成する。
 1. Dispatcher 設定の `clientheaders` セクションに `CSRF-Token` ヘッダーを追加する。
@@ -162,9 +161,8 @@ AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐ�
 
 クリックジャッキングを防ぐには、`SAMEORIGIN` に設定した HTTP ヘッダー `X-FRAME-OPTIONS` を指定するように Web サーバーを設定することをお勧めします。
 
-クリックジャックに関する詳細[は、OWASPサイト](https://www.owasp.org/index.php/Clickjacking)を参照してください。
+クリックジャッキングに関する詳細は、OWASPのサイト](https://www.owasp.org/index.php/Clickjacking)を参照してください。[
 
 ## 侵入テストの実施 {#perform-a-penetration-test}
 
 実稼動に移行する前に、AEM インフラストラクチャの侵入テストを実施することを強くお勧めします。
-
