@@ -12,14 +12,13 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
-translation-type: tm+mt
-source-git-commit: 85497651ce29c8564da4b52c60819a48b776af7b
+exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: tm+mt
 source-wordcount: '1427'
 ht-degree: 97%
 
 ---
-
 
 # AEM からのキャッシュされたページの無効化 {#invalidating-cached-pages-from-aem}
 
@@ -29,7 +28,7 @@ Dispatcher を AEM と共に使用する際は、キャッシュが効果的に�
 
 デフォルトの `admin` ユーザーアカウントを使用して、デフォルトでインストールされているレプリケーションエージェントを認証します。レプリケーションエージェントで使用する専用のユーザーアカウントを作成する必要があります。
 
-詳しくは、AEMセキュリティチェックリストの「[レプリケーションとトランスポートのユーザーを構成する](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)」を参照してください。
+詳しくは、AEMセキュリティチェックリストの[レプリケーションユーザーとトランスポートユーザーの設定](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)の節を参照してください。
 
 ## オーサリング環境からの Dispatcher キャッシュの無効化 {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
@@ -68,7 +67,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 1. 必要に応じて、その他のパラメーターを設定します。
 1. 「OK」をクリックして、エージェントをアクティベートします。
 
-または、[AEMタッチUI](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent)からディスパッチャーフラッシュエージェントにアクセスして設定することもできます。
+または、[AEM Touch UI](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent)からDispatcherフラッシュエージェントにアクセスして設定することもできます。
 
 バニティー URL へのアクセスを有効にする方法について詳しくは、[バニティー URL へのアクセスの有効化](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)を参照してださい。
 
@@ -252,4 +251,3 @@ public class Flushcache extends SlingSafeMethodsServlet {
  }
 }
 ```
-
