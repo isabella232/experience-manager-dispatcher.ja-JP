@@ -9,14 +9,13 @@ converted: true
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
-translation-type: tm+mt
-source-git-commit: 024348672c2a9a4f8a01429572eba27ea8b8a490
+exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: tm+mt
 source-wordcount: '3684'
 ht-degree: 97%
 
 ---
-
 
 # Dispatcher のインストール {#installing-dispatcher}
 
@@ -32,7 +31,7 @@ Comment Type: draft
 
 >[!NOTE]
 >
->Adobe Experience Manager6.5では、Dispatcherバージョン4.3.2以降が必要になります。 ただし、DispatcherのバージョンはAEMとは独立しています。例えば、Dispatcherのバージョン4.3.2もAdobe Experience Manager6.4と互換性があります。
+>Adobe Experience Manager 6.5にはDispatcherバージョン4.3.2以降が必要です。 ただし、DispatcherのバージョンはAEMとは独立しています。例えば、Dispatcherのバージョン4.3.2もAdobe Experience Manager 6.4と互換性があります。
 
 次のファイル命名規則が使用されます。
 
@@ -284,7 +283,7 @@ Apache Web サーバーのインストールについては、[オンライン](
 >
 >詳しくは、Apache Web サーバーのインストールマニュアルを参照してください。
 
-また、Apache HTTPサーバー[セキュリティのヒント](https://httpd.apache.org/docs/2.4/misc/security_tips.html)と[セキュリティレポート](https://httpd.apache.org/security_report.html)も参照してください。
+また、Apache HTTPサーバーの[セキュリティに関するヒント](https://httpd.apache.org/docs/2.4/misc/security_tips.html)および[セキュリティレポート](https://httpd.apache.org/security_report.html)も参照してください。
 
 ### Apache Web サーバー - Dispatcher モジュールの追加 {#apache-web-server-add-the-dispatcher-module}
 
@@ -426,7 +425,7 @@ ServerTokens Full``
 DispatcherNoServerHeader 0`\
 この設定は、（統計目的で）AEM バージョンを示します。このような情報をヘッダー内で利用できないようにするには、次のように設定します。`  
 ServerTokens Prod`\
-詳細については、[Apache Documentation about ServerTokens Directive （例えば、Apache 2.4の場合）](https://httpd.apache.org/docs/2.4/mod/core.html)を参照してください。
+詳しくは、[ServerTokens命令に関するApacheドキュメント（Apache 2.4の場合など）](https://httpd.apache.org/docs/2.4/mod/core.html)を参照してください。
 
 **SetHandler**
 
@@ -499,7 +498,7 @@ AllowOverride None
 
 `ModMimeUsePathInfo On`
 
-mod_mimeモジュール（例：[Apacheモジュールmod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)）は、HTTP応答用に選択されたコンテンツにコンテンツメタデータを割り当てるために使用されます。 デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
+mod_mimeモジュール（例は[Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)を参照）は、コンテンツメタデータをHTTP応答用に選択されたコンテンツに割り当てる際に使用します。 デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
 
 `ModMimeUsePathInfo`パラメーターを `On` にすると、`mod_mime` によるコンテンツタイプの指定が&#x200B;*完全な* URL に基づいて行われます。つまり、仮想リソースの拡張子に基づいてメタ情報が適用されます。
 
