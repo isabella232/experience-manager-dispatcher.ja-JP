@@ -10,14 +10,13 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
-translation-type: tm+mt
-source-git-commit: 64d26d802dbc9bb0b6815011a16e24c63a7672aa
+exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: tm+mt
 source-wordcount: '2983'
 ht-degree: 98%
 
 ---
-
 
 # 複数ドメインでの Dispatcher の使用 {#using-dispatcher-with-multiple-domains}
 
@@ -73,8 +72,8 @@ Dispatcher フラッシュレプリケーションエージェントが、キャ
 
 ドメイン URL とコンテンツパスをキャッシュファイルへと解決するには、プロセスのどこかの時点で、ファイルパスまたはページ URL を変換する必要があります。以下で一般的な戦略を説明しますが、この説明では、プロセスの様々な時点でパスまたは URL の変換をおこないます。
 
-* （推奨）AEM パブリッシュインスタンスが、リソースの解決に Sling マッピングを使用して、内部 URL の書き換えルールを実装する。ドメイン URL はコンテンツリポジトリのパスに変換される[AEM着信URLの書き換え](#aem-rewrites-incoming-urls)を参照してください。
-* Web サーバーが、ドメイン URL をキャッシュのパスに変換する内部 URL 書き換えルールを使用する。[Webサーバーは受信URLを書き換えます](#the-web-server-rewrites-incoming-urls)を参照してください。
+* （推奨）AEM パブリッシュインスタンスが、リソースの解決に Sling マッピングを使用して、内部 URL の書き換えルールを実装する。ドメイン URL はコンテンツリポジトリのパスに変換される[AEM Rewrites Incoming URLs](#aem-rewrites-incoming-urls)を参照してください。
+* Web サーバーが、ドメイン URL をキャッシュのパスに変換する内部 URL 書き換えルールを使用する。[Webサーバーによる受信URLの書き換え](#the-web-server-rewrites-incoming-urls)を参照してください。
 
 一般的に望ましいのは、Web ページに対して短縮された URL を使用することです。通常、ページ URL は、Web コンテンツが格納されたリポジトリフォルダーの構造をミラーリングしています。ただし、URL には最上位のリポジトリノード（`/content` など）が表示されません。クライアントは、必ずしも AEM リポジトリの構造を意識しません。
 
@@ -287,7 +286,7 @@ Dispatcher initializing (build 4.1.2)
 
 ドメインベースの URL を AEM パブリッシュインスタンス上のコンテンツに解決できるよう、リソースの解決に Sling マッピングを使用します。リソースマッピングによって、Dispatcher から（もともとはクライアント HTTP 要求から）の受信 URL がコンテンツノードに変換されます。
 
-Slingリソースマッピングについて詳しくは、Slingドキュメントの[リソース解決のマッピング](https://sling.apache.org/site/mappings-for-resource-resolution.html)を参照してください。
+Slingリソースマッピングについて詳しくは、Slingのドキュメントの[Mappings for Resource Resolution](https://sling.apache.org/site/mappings-for-resource-resolution.html)を参照してください。
 
 一般的に、以下のリソースにはマッピングが必要ですが、追加のマッピングが必要な場合もあります。
 
@@ -309,7 +308,7 @@ Slingリソースマッピングについて詳しくは、Slingドキュメン�
 
 branda.com ドメイン用のリソースマッピングを実装するノードを以下の表に示します。同様のノードが `brandb.com` 用にも作成されます（例：`/etc/map/http/brandb.com`）。どのケースにおいても、ページの HTML 内の参照が Sling のコンテキストで正しく解決されない場合にはマッピングが必要です。
 
-| ノードパス | 型 | Property |
+| ノードパス | タイプ | プロパティ |
 |--- |--- |--- |
 | `/etc/map/http/branda.com` | sling:Mapping | 名前：sling:internalRedirectタイプ：String値：/content/sitea |
 | `/etc/map/http/branda.com/libs` | sling:Mapping | 名前：sling:internalRedirect<br/>タイプ：String<br/>値：/libs |
@@ -544,7 +543,7 @@ AEM は、text/html タイプのドキュメントを処理するデフォルト
 
 >[!NOTE]
 >
->Maven プロジェクトを作成するには、コンテンツパッケージ Maven プラグインの [multimodule](https://helpx.adobe.com/experience-manager/aem-previous-versions.html) アーキタイプを使用します。POM がコンテンツパッケージを自動的に作成し、インストールします。
+>Maven プロジェクトを作成するには、コンテンツパッケージ Maven プラグインの [multimodule](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=ja#previous-updates) アーキタイプを使用します。POM がコンテンツパッケージを自動的に作成し、インストールします。
 
 以下の例では、画像ファイルへの参照を書き換える変換サービスを実装しています。
 
