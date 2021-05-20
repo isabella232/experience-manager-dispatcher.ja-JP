@@ -8,14 +8,13 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
-translation-type: tm+mt
-source-git-commit: 10f436e941e553bd85abe978059aac3a60c6769f
+exl-id: c9266683-6890-4359-96db-054b7e856dd0
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: tm+mt
 source-wordcount: '3199'
 ht-degree: 93%
 
 ---
-
 
 # Dispatcher の概要 {#dispatcher-overview}
 
@@ -23,22 +22,22 @@ ht-degree: 93%
 >
 >Dispatcher のバージョンは AEM とは無関係です。以前のバージョンの AEM のドキュメントに組み込まれている Dispatcher のドキュメントへのリンクをたどると、このページにリダイレクトされる可能性があります。
 
-ディスパッチャーは、Adobe Experience Managerのキャッシュおよびロードバランシングのツールで、エンタープライズクラスのWebサーバーと組み合わせて使用できます。
+Dispatcherは、Adobe Experience Managerのキャッシュやロードバランシングを行うツールで、エンタープライズクラスのWebサーバーと組み合わせて使用できます。
 
-ディスパッチャーをデプロイするプロセスは、選択したWebサーバーとOSプラットフォームとは独立しています。
+Dispatcherをデプロイするプロセスは、選択したWebサーバーとOSプラットフォームとは独立しています。
 
 1. Dispatcher について学習します（このページ）。[Dispatcher に関するよくある質問](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html)も参照してください。
-1. Webサーバーのドキュメントに従って、[サポートされるWebサーバー](https://helpx.adobe.com/jp/experience-manager/6-3/sites/deploying/using/technical-requirements.html)をインストールします。
+1. Webサーバーのドキュメントに従って、[サポートされているWebサーバー](https://helpx.adobe.com/jp/experience-manager/6-3/sites/deploying/using/technical-requirements.html)をインストールします。
 1. Web サーバーに [Dispatcher モジュールをインストール](dispatcher-install.md)し、このモジュールに合わせて Web サーバーを設定します。
 1. [Dispatcher を設定](dispatcher-configuration.md)します（dispatcher.any ファイル）。
 1. コンテンツの更新によってキャッシュが無効化されるように [AEM を設定](page-invalidate.md)します。
 
 >[!NOTE]
 >
->AEMでのディスパッチャーの動作をより深く理解するには：
+>DispatcherとAEMの連携の仕組みをより深く理解するには：
 >
->* [2017年7月のAEMコミュニティの専門家に質問する](https://bit.ly/ATACE0717)を参照してください。
->* [このリポジトリ](https://github.com/adobe/aem-dispatcher-experiments)にアクセスします。 「テイクホーム」のラボ形式での実験の集まりが含まれています。
+>* [2017年7月のAEMコミュニティの専門家への質問](https://bit.ly/ATACE0717)を参照してください。
+>* [このリポジトリ](https://github.com/adobe/aem-dispatcher-experiments)にアクセスします。 実験の集まりを「テイクホーム」のラボ形式で収録しています。
 
 
 
@@ -105,7 +104,7 @@ AEM などのコンテンツ管理サーバーを使用する場合、訪問者�
 
 >[!NOTE]
 >
->HTTP ヘッダーキャッシュの設定がない場合、Dispatcher は、ページの HTML コードのみを保存します。この場合、HTTP ヘッダーは保存されません。Web サイト内で異なるエンコーディングを使用している場合、これらの HTTP ヘッダーが失われる可能性があるので、このことが問題になる可能性があります。HTTPヘッダーキャッシュを有効にするには、「[ディスパッチャーキャッシュの設定」を参照してください。](https://helpx.adobe.com/jp/experience-manager/dispatcher/using/dispatcher-configuration.html)
+>HTTP ヘッダーキャッシュの設定がない場合、Dispatcher は、ページの HTML コードのみを保存します。この場合、HTTP ヘッダーは保存されません。Web サイト内で異なるエンコーディングを使用している場合、これらの HTTP ヘッダーが失われる可能性があるので、このことが問題になる可能性があります。HTTPヘッダーキャッシュを有効にするには、[Dispatcherキャッシュの設定](https://helpx.adobe.com/jp/experience-manager/dispatcher/using/dispatcher-configuration.html)を参照してください。
 
 >[!NOTE]
 >
@@ -159,7 +158,7 @@ Dispatcher は、自動無効化の対象となるファイルのリストを保
 
 ### ドキュメントがキャッシュの対象かどうかの判断
 
-ディスパッチャーが設定ファイル](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)にキャッシュするドキュメントを[定義できます。 Dispatcher は、要求とキャッシュ可能なドキュメントのリストを照合します。ドキュメントがこのリストにない場合は、AEM インスタンスにドキュメントを要求します。
+設定ファイル](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)で、Dispatcherがキャッシュするドキュメントを[定義できます。 Dispatcher は、要求とキャッシュ可能なドキュメントのリストを照合します。ドキュメントがこのリストにない場合は、AEM インスタンスにドキュメントを要求します。
 
 以下の場合、Dispatcher は&#x200B;*常に* AEM インスタンスに直接ドキュメントを要求します。
 
@@ -293,7 +292,7 @@ CDN が Dispatcher からリソースを再取得するまでのキャッシュ�
 
 >[!CAUTION]
 >
->タッチ操作対応UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)で[AEMを使用している場合は、作成者インスタンスのコンテンツを&#x200B;**キャッシュしないでください。**&#x200B;オーサーインスタンスに対してキャッシュが有効になっている場合、それを無効にしてキャッシュディレクトリの内容を削除する必要があります。キャッシュを無効にするには、`author_dispatcher.any` ファイルを編集し、`/cache` セクションの `/rule` プロパティを次のように変更します。
+>タッチ操作対応UIで[AEMを使用している場合は、オーサーインスタンスのコンテンツを&#x200B;**キャッシュしない**&#x200B;でください。 ](https://helpx.adobe.com/jp/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)オーサーインスタンスに対してキャッシュが有効になっている場合、それを無効にしてキャッシュディレクトリの内容を削除する必要があります。キャッシュを無効にするには、`author_dispatcher.any` ファイルを編集し、`/cache` セクションの `/rule` プロパティを次のように変更します。
 
 ```xml
 /rules
@@ -312,7 +311,7 @@ Dispatcher をオーサーインスタンスの前方で使用して、オーサ
 1. `author_dispatcher.any` をテキストエディターで開き、以下の変更をおこないます。
 
    1. `/renders` セクションの `/hostname` と `/port` がオーサーインスタンスを指すように変更します。
-   1. `/docroot` セクションの `/cache` がキャッシュディレクトリを指すように変更します。タッチ操作対応UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)で[AEMを使用している場合は、上記の警告を参照してください。
+   1. `/docroot` セクションの `/cache` がキャッシュディレクトリを指すように変更します。タッチUIで[AEM](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)を使用している場合は、上記の警告を参照してください。
    1. 変更内容を保存します。
 
 1. 上記で設定した `/cache`／`/docroot` ディレクトリ内にあるすべての既存ファイルを削除します。
