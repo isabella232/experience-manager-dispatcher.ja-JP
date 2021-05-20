@@ -13,7 +13,6 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-translation-type: tm+mt
 source-git-commit: 2ca816ac0776d72be651b76ff4f45e0c3ed1450f
 workflow-type: tm+mt
 source-wordcount: '1167'
@@ -46,8 +45,10 @@ Dispatcher は、パフォーマンスの最適化に利用できる多数の組
 >
 >* URL を使用してページおよび要求として格納できるデータはすべてキャッシュ可能です。
 >* その他のデータ（HTTP ヘッダー、cookie、セッションデータ、フォームデータなど）は格納できません。
+
 >
->通常、多くのキャッシュ戦略は適切な URL の選択を含んでおり、この追加データには依存しません。
+>
+通常、多くのキャッシュ戦略は適切な URL の選択を含んでおり、この追加データには依存しません。
 
 ## 一貫性のあるページエンコーディングの使用  {#using-consistent-page-encoding}
 
@@ -129,7 +130,7 @@ www.myCompany.com/news/main.large.html
 
 変更されないページの場合、通常、そのページ自体は自動的に無効化されますが、写真はキャッシュに残ります。
 
-## パーソナライゼーション {#personalization}
+## パーソナライズ機能 {#personalization}
 
 Dispatcher はパーソナライズされたデータをキャッシュできないので、パーソナライズは必要な場所にのみ適用することをお勧めします。その理由は次のとおりです。
 
@@ -144,6 +145,7 @@ Dispatcher はパーソナライズされたデータをキャッシュできな
 >
 >* iFrame を使用して、全ユーザーに共通する部分と、特定ユーザーのすべてのページに共通する部分とにページを分割します。こうすれば、それぞれの部分をキャッシュできます。
 >* クライアント側 JavaScript を利用して、パーソナライズされた情報を表示します。ただし、ユーザーが JavaScript を無効にした場合でも、ページが正しく表示されるようにする必要があります。
+
 >
 
 
