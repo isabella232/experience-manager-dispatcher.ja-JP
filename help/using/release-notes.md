@@ -8,14 +8,13 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
-translation-type: tm+mt
-source-git-commit: 328bc82673783b4a2df2d68481fa7eec88b74b01
+exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: tm+mt
 source-wordcount: '805'
 ht-degree: 69%
 
 ---
-
 
 # AEM Dispatcher リリースノート{#aem-dispatcher-release-notes}
 
@@ -25,14 +24,14 @@ ht-degree: 69%
 |--- |--- |
 | 商品 | Adobe Experience Manager (AEM) Dispatcher |
 | バージョン | 4.3.3 |
-| 型 | マイナーリリース |
-| 日付 | 2019 年 10 月 18 日 |
+| タイプ | マイナーリリース |
+| 日付 | 2019 年 18 月 10 日 |
 | ダウンロード URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services（IIS）](release-notes.md#iis)</li></ul> |
 | 互換性 | AEM 6.1 以降 |
 
 ## システム要件および使用条件 {#system-requirements-and-prerequisites}
 
-要件と前提条件の詳細については、[サポートされるプラットフォーム](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/technical-requirements.html)のページを参照してください。
+要件と前提条件について詳しくは、[サポートされるプラットフォーム](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/technical-requirements.html)のページを参照してください。
 
 最新の機能、最新のバグフィックス、そして最高のパフォーマンスを利用するため、最新バージョンの AEM Dispatcher を使用することを強くお勧めします。
 
@@ -42,31 +41,31 @@ ht-degree: 69%
 
 ## リリース履歴 {#release-history}
 
-### リリース4.3.3 （2019年10月18日） {#october}
+### リリース4.3.3（2019年10月19日） {#october}
 
 **バグ修正**:
 
-* DISP-739 - LogLevelディスパッチャー：**level**&#x200B;が機能しません
+* DISP-739 - LogLevel Dispatcher:**level**&#x200B;が機能しません
 * DISP-749 - Alpine Linuxディスパッチャーがトレースログレベルでクラッシュする
 
 **機能強化**：
 
-* DISP-813 - openssl 1.1.xに対するディスパッチャーのサポート
+* DISP-813 - Dispatcherでのopenssl 1.1.xのサポート
 * DISP-814 — キャッシュフラッシュ中のApache 40xエラー
 * DISP-818 - mod_expiresは、キャッシュ不能なコンテンツ用のCache-Controlヘッダーを追加します。
 * DISP-821 — ログコンテキストをソケットに格納しない
-* DISP-822 — ディスパッチャーは、pselectの代わりにppollを使用する必要があります。
-* DISP-824 — セキュリティで保護されたDispatcherUseForwardedHost
-* DISP-825 — ディスクに空き領域がなくなった場合のログスペシャルメッセージ
-* DISP-826 -クエリ文字列を使用したURIの再取得をサポート
+* DISP-822 - Dispatcherはpselectの代わりにppollを使用する必要がある
+* DISP-824 — セキュアなDispatcherUseForwardedHost
+* DISP-825 — ディスクに空き領域がなくなった場合の特別なメッセージをログに記録する
+* DISP-826 — クエリ文字列を使用したURIの再取得のサポート
 
 **新機能**:
 
 * DISP-703 — ファーム固有のキャッシュヒット率
 * DISP-827 — テスト用のローカルサーバー
-* DISP-828 — ディスパッチャー用のテスト用ドッカーイメージを作成します
+* DISP-828 - Dispatcher用のテスト用Dockerイメージの作成
 
-### リリース 4.3.2（2019 年 1月 31 日） {#jan}
+### リリース 4.3.2（2019 年 1月 31 日）  {#jan}
 
 **バグ修正**:
 
@@ -83,7 +82,7 @@ ht-degree: 69%
 
 * DISP-747 - Apache 環境で要求の情報を提供
 
-### リリース 4.3.1（2018 年 10 月 16 日） {#oct}
+### リリース 4.3.1（2018 年 10 月 16 日）  {#oct}
 
 **バグ修正**:
 
@@ -111,7 +110,7 @@ ht-degree: 69%
 * DESP-722 - キャッシュファイルが 8 進数モード 0600 で作成される
 * DISP-726 - ファームが受信ホストと一致していない場合に警告が記録される
 
-### リリース 4.3.0（2018 年 6 月 13 日） {#jun}
+### リリース 4.3.0（2018 年 6 月 13 日）  {#jun}
 
 **バグ修正**:
 
