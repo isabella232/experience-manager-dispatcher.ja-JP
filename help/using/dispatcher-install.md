@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 35739785aa835a0b995fab4710a0e37bd0ff62b4
 workflow-type: tm+mt
 source-wordcount: '3684'
 ht-degree: 97%
@@ -101,7 +101,7 @@ IIS バージョン 8.5 および 10 には、以下の IIS コンポーネン�
 
 Web Server（IIS）役割も追加する必要があります。役割とコンポーネントを追加するには、Server Manager を使用します。
 
-## Microsoft IIS - Dispatcher モジュールのインストール  {#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS - Dispatcher モジュールのインストール {#microsoft-iis-installing-the-dispatcher-module}
 
 Microsoft インターネットインフォメーションサービスには次のようなアーカイブファイルが必要です。
 
@@ -273,7 +273,7 @@ Dispatcher の使用を始める前に、以下のことを理解しておく必
 >
 >インストール手順は、**Windows** の場合と **Unix** の場合の両方について記載しています。手順は慎重に実行してください。
 
-### Apache Web サーバーのインストール  {#installing-apache-web-server}
+### Apache Web サーバーのインストール {#installing-apache-web-server}
 
 Apache Web サーバーのインストールについては、[オンライン](https://httpd.apache.org/)またはディストリビューション内のインストールマニュアルを参照してください。
 
@@ -318,7 +318,7 @@ Dispatcher は次のいずれかの形式で提供されます。
 
    **注意：** Dispatcher モジュールの DispatcherLog プロパティが適切に設定されていれば、このファイルを別の場所に配置できます（以下の Dispatcher 固有の設定エントリを参照してください）。
 
-### Apache Web サーバー - SELinux プロパティの設定  {#apache-web-server-configure-selinux-properties}
+### Apache Web サーバー - SELinux プロパティの設定 {#apache-web-server-configure-selinux-properties}
 
 RedHat Linux Kernel 2.6 上で SELinux を有効にして Dispatcher を実行する場合、Dispatcher のログファイルに次のようなエラーメッセージが書き込まれることがあります。
 
@@ -420,12 +420,17 @@ DispatcherKeepAliveTimeout 60
 
 >[!NOTE]
 >
->サーバーヘッダーのデフォルトの設定は次のとおりです。`  
-ServerTokens Full``  
-DispatcherNoServerHeader 0`\
-この設定は、（統計目的で）AEM バージョンを示します。このような情報をヘッダー内で利用できないようにするには、次のように設定します。`  
-ServerTokens Prod`\
-詳しくは、[ServerTokens命令に関するApacheドキュメント（Apache 2.4の場合など）](https://httpd.apache.org/docs/2.4/mod/core.html)を参照してください。
+>サーバーヘッダーのデフォルトの設定は次のとおりです。
+>
+>`ServerTokens Full`
+>
+>`DispatcherNoServerHeader 0`
+>
+>この設定は、（統計目的で）AEM バージョンを示します。このような情報をヘッダー内で利用できないようにするには、次のように設定します。
+>
+>`ServerTokens Prod`
+>
+>詳しくは、[ServerTokens命令に関するApacheドキュメント（Apache 2.4の場合など）](https://httpd.apache.org/docs/2.4/mod/core.html)を参照してください。
 
 **SetHandler**
 
@@ -483,16 +488,20 @@ AllowOverride None
 ```
 
 >[!NOTE]
-**SetHandler** ステートメントのパラメーターは、モジュールで定義されているハンドラーの名前なので、以上の例のとおりに記述する必要があります。**
-このコマンドについて詳しくは、付属のサンプルの設定ファイル、および Apache Web サーバーのドキュメントを参照してください。
+>
+>**SetHandler** ステートメントのパラメーターは、モジュールで定義されているハンドラーの名前なので、以上の例のとおりに記述する必要があります。**
+>
+>このコマンドについて詳しくは、付属のサンプルの設定ファイル、および Apache Web サーバーのドキュメントを参照してください。
 
 **ModMimeUsePathInfo**
 
 **SetHandler** ステートメントの後に、**ModMimeUsePathInfo** の定義も追加する必要があります。
 
 >[!NOTE]
-`ModMimeUsePathInfo` パラメーターは、Dispatcher バージョン 4.0.9 以上を使用している場合にのみ使用および設定してください。
-（Dispatcher バージョン 4.0.9 は 2011 年にリリースされました。それ以前のバージョンを使用している場合は、最新の Dispatcher バージョンにアップグレードすることをお勧めします。）
+>
+>`ModMimeUsePathInfo` パラメーターは、Dispatcher バージョン 4.0.9 以上を使用している場合にのみ使用および設定してください。
+>
+>（Dispatcher バージョン 4.0.9 は 2011 年にリリースされました。それ以前のバージョンを使用している場合は、最新の Dispatcher バージョンにアップグレードすることをお勧めします。）
 
 すべての Apache 設定で、次のように **ModMimeUsePathInfo** パラメーターを `On` にする必要があります。
 
@@ -520,7 +529,7 @@ AllowOverride None
 ...
 ```
 
-### HTTPS のサポートの有効化（UNIX および Linux） {#enable-support-for-https-unix-and-linux}
+### HTTPS のサポートの有効化（UNIX および Linux）  {#enable-support-for-https-unix-and-linux}
 
 Dispatcher は、OpenSSL を使用して HTTP 経由でのセキュアな通信を実装します。Dispatcher バージョン **4.2.0** からは、OpenSSL 1.0.0 および OpenSSL 1.0.1 がサポートされています。デフォルトでは、Dispatcher は OpenSSL 1.0.0 を使用します。OpenSSL 1.0.1 を使用するには、以下の手順を実行して、Dispatcher がインストールされている OpenSSL ライブラリを使用できるように、シンボリックリンクを作成します。
 
@@ -538,7 +547,8 @@ Dispatcher は、OpenSSL を使用して HTTP 経由でのセキュアな通信�
    ```
 
 >[!NOTE]
-カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) / を使用してコンパイルされていることを確認してください。
+>
+>カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) / を使用してコンパイルされていることを確認してください。
 
 ### 次の手順 {#next-steps-1}
 
@@ -550,8 +560,10 @@ Dispatcher の使用を始める前に、次の作業を実行する必要があ
 ## Sun Java System Web Server／iPlanet {#sun-java-system-web-server-iplanet}
 
 >[!NOTE]
-Windows の場合と Unix の場合の両方での手順を記載しています。
-実行する手順を選択する際に注意してください。
+>
+>Windows の場合と Unix の場合の両方での手順を記載しています。
+>
+>実行する手順を選択する際に注意してください。
 
 ### Sun Java System Web Server／iPlanet - Web サーバーのインストール {#sun-java-system-web-server-iplanet-installing-your-web-server}
 
@@ -604,7 +616,8 @@ Web サーバーは、`obj.conf` を使用して設定する必要がありま�
 1. 変更内容を保存します。
 
 >[!NOTE]
-以下の設定は 1 行で記述し、`$(SERVER_ROOT)` および `$(PRODUCT_SUBDIR)` は対応する値に置き換える必要があります。
+>
+>以下の設定は 1 行で記述し、`$(SERVER_ROOT)` および `$(PRODUCT_SUBDIR)` は対応する値に置き換える必要があります。
 
 **Init**
 
