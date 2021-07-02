@@ -2,9 +2,9 @@
 title: Dispatcher の設定
 description: Dispatcher の設定方法について説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 35739785aa835a0b995fab4710a0e37bd0ff62b4
 workflow-type: tm+mt
-source-wordcount: '8513'
+source-wordcount: '8512'
 ht-degree: 84%
 
 ---
@@ -17,7 +17,7 @@ ht-degree: 84%
 
 以下の節では、Dispatcher の様々な設定について説明します。
 
-## IPv4 と IPv6 のサポート  {#support-for-ipv-and-ipv}
+## IPv4 と IPv6 のサポート {#support-for-ipv-and-ipv}
 
 AEM と Dispatcher のすべての要素は、IPv4 と IPv6 の両方のネットワークにインストールできます。[IPv4 と IPv6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=en#ipv-and-ipv) を参照してください。
 
@@ -566,7 +566,7 @@ Dispatcher が受け入れる HTTP 要求を指定するには、`/filter` セ�
 * まず、すべての要素へのアクセスを拒否します。
 * 必要に応じて、コンテンツへのアクセスを許可します。
 
-### フィルターの定義  {#defining-a-filter}
+### フィルターの定義 {#defining-a-filter}
 
 `/filter` の各アイテムには、要求行の特定の要素または要求行全体と照合するタイプとパターンが含まれます。各フィルターには、次のアイテムを含めることができます。
 
@@ -626,7 +626,7 @@ HTTP/1.1では、[要求行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.h
 
 明示的に拒否された領域への要求に対して、「404 error code (page not found)」が返されます。
 
-#### サンプルのフィルター：特定の領域へのアクセスを拒否{#example-filter-deny-access-to-specific-areas}
+#### サンプルのフィルター：特定の領域へのアクセスを拒否 {#example-filter-deny-access-to-specific-areas}
 
 フィルターを使用して、サンプルの ASP ページの各種要素と、パブリッシュインスタンス内の機密領域へのアクセスを拒否することもできます。次のフィルターは、ASP ページへのアクセスを拒否するものです。
 
@@ -680,7 +680,7 @@ HTTP/1.1では、[要求行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.h
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### サンプルフィルター：要求 URL の追加要素のフィルタリング  {#example-filter-filter-additional-elements-of-a-request-url}
+#### サンプルフィルター：要求 URL の追加要素のフィルタリング {#example-filter-filter-additional-elements-of-a-request-url}
 
 それぞれ path、selector および extensions に対するフィルターを使用して、`/content` パスからのコンテンツの取得をブロックするルールのサンプルを以下に示します。
 
@@ -940,12 +940,12 @@ AEMページ用に設定されたバニティーURLへのアクセスを有効�
 
 バニティー URL へのアクセスを有効にするには、以下の手順を実行します。
 
-1. レンダーサービスがAEMインスタンスの場合は、パブリッシュインスタンスに「com.adobe.granite.dispatcher.vanityurl.content」パッケージをインストールします（上記の注を参照）。
+1. レンダーサービスがAEMインスタンスの場合、パブリッシュインスタンスに`com.adobe.granite.dispatcher.vanityurl.content`パッケージをインストールします（上記の注意を参照）。
 1. AEM または CQ ページ向けに設定したバニティー URL ごとに、[`/filter`](#configuring-access-to-content-filter) 設定がその URL を拒否していることを確認します。必要に応じて、この URL を拒否するフィルターを追加します。
 1. `/farms` の下に `/vanity_urls` セクションを追加します。
 1. Apache Web サーバーを再起動します。
 
-## シンジケーション要求の転送 - /propagateSyndPost  {#forwarding-syndication-requests-propagatesyndpost}
+## シンジケーション要求の転送 - /propagateSyndPost {#forwarding-syndication-requests-propagatesyndpost}
 
 シンジケーション要求は、通常、Dispatcher のみを対象としているので、デフォルトではレンダラー（AEM インスタンスなど）に送信されません。
 
@@ -994,9 +994,9 @@ AEMページ用に設定されたバニティーURLへのアクセスを有効�
 
 >[!NOTE]
 >
->権限を区別するキャッシュについては、[セキュリティ保護されたコンテンツのキャッシュ](permissions-cache.md)をお読みください。
+>権限を区別するキャッシュについては、[セキュリティ保護されたコンテンツのキャッシュ](permissions-cache.md)を参照してください。
 
-### キャッシュディレクトリの指定  {#specifying-the-cache-directory}
+### キャッシュディレクトリの指定 {#specifying-the-cache-directory}
 
 `/docroot` プロパティは、キャッシュされたファイルを保存するディレクトリを識別します。
 
@@ -1234,7 +1234,7 @@ AEMとAdobe Analyticsの統合により、設定データがWebサイトの`anal
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
 ```
 
-#### サンプルの無効化ハンドラースクリプト  {#sample-invalidation-handler-script}
+#### サンプルの無効化ハンドラースクリプト {#sample-invalidation-handler-script}
 
 ```shell
 #!/bin/bash
@@ -1267,7 +1267,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 >
 >定義しない場合は、任意のクライアントからキャッシュ消去を呼び出せますが、繰り返しおこなうとサイトのパフォーマンスに深刻な影響を及ぼす場合があります。
 
-### URL パラメーターの無視  {#ignoring-url-parameters}
+### URL パラメーターの無視 {#ignoring-url-parameters}
 
 `ignoreUrlParams` セクションでは、ページをキャッシュするかキャッシュから提供するかを判断するときにどの URL パラメーターを無視するかを定義します。
 
@@ -1363,7 +1363,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 
 デフォルト値は`0755`で、所有者は読み取り、書き込みまたは検索を行い、グループとその他のユーザーは読み取りまたは検索を行うことができます。
 
-### . stat ファイルの更新のスロットリング{#throttling-stat-file-touching}
+### . stat ファイルの更新のスロットリング {#throttling-stat-file-touching}
 
 デフォルトの `/invalidate` のプロパティでは、アクティベーションごとに、すべての `.html` ファイルが無効化されます（パスが `/invalidate` セクションに一致する場合）。トラフィック量が多い Web サイトでは、複数回のアクティベーションによってバックエンドの CPU 負荷が増加します。このようなシナリオでは、Web サイトをレスポンシブに維持するために、「スロットル」 `.stat` ファイルを使用することをお勧めします。これを行うには、`/gracePeriod` プロパティを使用します。
 
@@ -1408,7 +1408,7 @@ Dispatcher は、最大 8 個の統計カテゴリをサポートします。9 �
 >
 >ロードバランシングを使用しない場合は、このセクションを省略できます。
 
-### 統計カテゴリの定義  {#defining-statistics-categories}
+### 統計カテゴリの定義 {#defining-statistics-categories}
 
 レンダーを選択するための統計を保持するドキュメントのタイプごとにカテゴリを定義します。`/statistics`セクションには`/categories`セクションが含まれます。 カテゴリを定義するには、`/categories`セクションの下に次の形式の行を追加します。
 
@@ -1517,7 +1517,7 @@ URI のカテゴリを判断するために、Dispatcher は一致が見つか�
 /retryDelay "1"
 ```
 
-### 再試行回数の設定  {#configuring-the-number-of-retries}
+### 再試行回数の設定 {#configuring-the-number-of-retries}
 
 `/numberOfRetries` プロパティは、Dispatcher がレンダーに対して実行する。接続試行周期の最大回数を設定します。この再試行回数内で Dispatcher がレンダーに接続できなかった場合、Dispatcher は失敗応答を返します。
 
@@ -1548,7 +1548,7 @@ Dispatcher ファーム上でフェイルオーバーメカニズムを有効に
 >
 >本文を含む HTTP 要求を再試行するには、Dispatcher が `Expect: 100-continue` 要求ヘッダーをレンダーに送信してから、実際のコンテンツをスプールします。すると、CQSE を含む CQ 5.5 が、100（CONTINUE）またはエラーコードで即座に応答します。その他のサーブレットコンテナも、このメカニズムをサポートする必要があります。
 
-## 中断エラーの無視 - /ignoreEINTR  {#ignoring-interruption-errors-ignoreeintr}
+## 中断エラーの無視 - /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
 
 >[!CAUTION]
 >
@@ -1747,7 +1747,7 @@ Web サーバーでログレベルを `4` に設定して、トレースログ�
 [Thu Mar 03 14:42:45 2016] [T] [11831] 'GET /content.infinity.json HTTP/1.1' was blocked because of /0082
 ```
 
-## 基本操作の確認  {#confirming-basic-operation}
+## 基本操作の確認 {#confirming-basic-operation}
 
 Web サーバー、Dispatcher および AEM インスタンスの基本の操作とやり取りを確認するには、次の手順を実行します。
 
