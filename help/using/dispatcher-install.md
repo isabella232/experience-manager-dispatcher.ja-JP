@@ -1,8 +1,8 @@
 ---
 title: Dispatcher のインストール
-seo-title: AEM Dispatcher のインストール
+seo-title: Installing AEM Dispatcher
 description: Microsoft Internet Information Server、Apache Web Server および Sun Java Web Server-iPlanet に Dispatcher モジュールをインストールする方法について説明しまいす。
-seo-description: Microsoft Internet Information Server、Apache Web Server および Sun Java Web Server-iPlanet に AEM Dispatcher モジュールをインストールする方法について説明しまいす。
+seo-description: Learn how to install the AEM Dispatcher module on Microsoft Internet Information Server, Apache Web Server and Sun Java Web Server-iPlanet.
 uuid: 2384b907-1042-4707-b02f-fba2125618cf
 contentOwner: User
 converted: true
@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 35739785aa835a0b995fab4710a0e37bd0ff62b4
+source-git-commit: bd03499fae4096fe5642735eb466276f1a179dec
 workflow-type: tm+mt
-source-wordcount: '3684'
-ht-degree: 97%
+source-wordcount: '3693'
+ht-degree: 96%
 
 ---
 
@@ -31,7 +31,7 @@ Comment Type: draft
 
 >[!NOTE]
 >
->Adobe Experience Manager 6.5にはDispatcherバージョン4.3.2以降が必要です。 ただし、DispatcherのバージョンはAEMとは独立しています。例えば、Dispatcherのバージョン4.3.2もAdobe Experience Manager 6.4と互換性があります。
+>Adobe Experience Manager 6.5 には Dispatcher バージョン 4.3.2 以降が必要です。 ただし、Dispatcher のバージョンはAEMとは独立しています。例えば、Dispatcher のバージョン 4.3.2 もAdobe Experience Manager 6.4 と互換性があります。
 
 次のファイル命名規則が使用されます。
 
@@ -50,6 +50,10 @@ Comment Type: draft
 >[!CAUTION]
 >
 >使用するプラットフォームで利用可能な最新バージョンの Dispatcher をインストールしてください。強化された機能を利用できるよう、毎年 Dispatcher インスタンスをアップグレードして、最新バージョンを使用してください。
+
+>[!NOTE]
+>
+>バージョン 4.3.3 からバージョン 4.3.4 に特別にアップグレードしたお客様は、キャッシュ不能コンテンツに対してヘッダーがどのように設定されるかに関して、異なる動作に気が付きます。 この変更の詳細については、 [リリースノート](/help/using/release-notes.md#nov) ページ。
 
 アーカイブごとに次のファイルが含まれています。
 
@@ -283,7 +287,7 @@ Apache Web サーバーのインストールについては、[オンライン](
 >
 >詳しくは、Apache Web サーバーのインストールマニュアルを参照してください。
 
-また、Apache HTTPサーバーの[セキュリティに関するヒント](https://httpd.apache.org/docs/2.4/misc/security_tips.html)および[セキュリティレポート](https://httpd.apache.org/security_report.html)も参照してください。
+Apache HTTP サーバーも参照してください。 [セキュリティに関するヒント](https://httpd.apache.org/docs/2.4/misc/security_tips.html) および [セキュリティレポート](https://httpd.apache.org/security_report.html).
 
 ### Apache Web サーバー - Dispatcher モジュールの追加 {#apache-web-server-add-the-dispatcher-module}
 
@@ -430,7 +434,7 @@ DispatcherKeepAliveTimeout 60
 >
 >`ServerTokens Prod`
 >
->詳しくは、[ServerTokens命令に関するApacheドキュメント（Apache 2.4の場合など）](https://httpd.apache.org/docs/2.4/mod/core.html)を参照してください。
+>詳しくは、 [ServerTokens 命令に関する Apache ドキュメント（Apache 2.4 の場合など）](https://httpd.apache.org/docs/2.4/mod/core.html) を参照してください。
 
 **SetHandler**
 
@@ -507,7 +511,7 @@ AllowOverride None
 
 `ModMimeUsePathInfo On`
 
-mod_mimeモジュール（例は[Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)を参照）は、コンテンツメタデータをHTTP応答用に選択されたコンテンツに割り当てる際に使用します。 デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
+mod_mime モジュール ( 例： [Apache モジュール mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)) は、コンテンツメタデータを HTTP 応答用に選択されたコンテンツに割り当てるために使用します。 デフォルト設定では、mod_mime によるコンテンツタイプの指定で、ファイルまたはディレクトリにマップされる URL の一部だけが使用されます。
 
 `ModMimeUsePathInfo`パラメーターを `On` にすると、`mod_mime` によるコンテンツタイプの指定が&#x200B;*完全な* URL に基づいて行われます。つまり、仮想リソースの拡張子に基づいてメタ情報が適用されます。
 

@@ -9,10 +9,10 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 4f37bc2571c3272beeb1764ca0bf0347e086cc07
+source-git-commit: bd03499fae4096fe5642735eb466276f1a179dec
 workflow-type: tm+mt
-source-wordcount: '852'
-ht-degree: 64%
+source-wordcount: '941'
+ht-degree: 58%
 
 ---
 
@@ -48,9 +48,9 @@ ht-degree: 64%
 * DISP-833 - X-Forwarded-Host ヘッダーには、コンマで区切られたホスト名のリストが含まれている場合があります
 * DISP-835 - DispatcherUseForwardedHost が最後に来た場合にホストヘッダーをスローする
 
-
 **機能強化**：
 
+* DISP-874 - DISP-818 の実装をフラグを介してオンまたはオフにする Dispatcher 設定を作成します。 `DispatcherRestrictUncacheableContent`. デフォルト値は Off です。Off に設定すると、mod によって設定されたキャッシュヘッダーが削除され、キャッシュ不能なコンテンツの有効期限が切れます。 これは、バージョン 4.3.3 で見つかった動作とは異なります（ただし、4.3.3 より前のバージョンと同じです）。 保持 `DispatcherRestrictUncacheableContent`ブラウザーキャッシュの柔軟性を高めるため、のデフォルトの「オフ」が推奨されるアプローチです。 バージョン 4.3.3 から 4.3.4 にアップグレードする際に、バージョン 4.3.3 と同じ動作を維持する場合は、明示的に `DispatcherRestrictUncacheableContent` をオンにします。
 * DISP-841 - Dispatcher は、504 応答コードに対して/serverStaleOnError を考慮しません
 * DISP-874 - DISP-818 の実装をオンまたはオフにする Dispatcher 設定を作成する
 * DISP-883 - Dispatcher での URL リクエストの分解を示すトレース
