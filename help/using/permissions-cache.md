@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 753f9fc35968996ee83d5947585fd52f2b981632
+source-git-commit: 11c3d7d627c96bb6ef647b5a067d3926eca347fc
 workflow-type: tm+mt
-source-wordcount: '827'
+source-wordcount: '829'
 ht-degree: 85%
 
 ---
@@ -46,7 +46,7 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 
 1. Dispatcher が、コンテンツがキャッシュされていない、または更新が必要であると判断します。
 1. Dispatcher が、元の要求をレンダーに転送します。
-1. レンダーは、AEM Authorizer サーブレット（Dispatcher AuthChcker サーブレットではない）を呼び出してセキュリティチェックを実行します。 ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
+1. レンダーは、AEM Authorizer サーブレット（Dispatcher AuthChcker サーブレットではありません）を呼び出してセキュリティチェックを実行します。 ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
 1. Dispatcher がブラウザーに応答を転送します。Dispatcher が、レンダーの応答メッセージの本文をキャッシュに追加します。
 
 ## ユーザーが承認されていない場合 {#user-is-not-authorized}
@@ -57,7 +57,7 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 1. Dispatcher がレンダーに要求メッセージを送信します。要求メッセージには、ブラウザーの要求のヘッダー行がすべて含まれます。
 1. レンダーは Auth Checker サーブレットを呼び出してセキュリティチェックを実行しますが、失敗し、レンダーは元の要求を Dispatcher に転送します。
 1. Dispatcher が、元の要求をレンダーに転送します。
-1. レンダーは、AEM Authorizer サーブレット（Dispatcher AuthChcker サーブレットではない）を呼び出してセキュリティチェックを実行します。 ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
+1. レンダーは、AEM Authorizer サーブレット（Dispatcher AuthChcker サーブレットではありません）を呼び出してセキュリティチェックを実行します。 ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
 1. Dispatcher がブラウザーに応答を転送します。Dispatcher が、レンダーの応答メッセージの本文をキャッシュに追加します。
 
 
