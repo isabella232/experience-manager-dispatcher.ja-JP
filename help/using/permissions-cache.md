@@ -1,8 +1,8 @@
 ---
 title: セキュリティ保護されたコンテンツのキャッシュ
-seo-title: AEM Dispatcher のセキュリティ保護されたコンテンツのキャッシュ
+seo-title: Caching Secured Content in AEM Dispatcher
 description: Dispatcher における権限を区別するキャッシュのしくみについて説明します。
-seo-description: Dispatcher における権限を区別するキャッシュのしくみについて説明します。
+seo-description: Learn how permission-sensitive caching works in AEM Dispatcher.
 uuid: abfed68a-2efe-45f6-bdf7-2284931629d6
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 753f9fc35968996ee83d5947585fd52f2b981632
 workflow-type: tm+mt
-source-wordcount: '762'
-ht-degree: 100%
+source-wordcount: '827'
+ht-degree: 85%
 
 ---
 
@@ -21,7 +21,7 @@ ht-degree: 100%
 
 権限を区別するキャッシュを使用して、セキュリティ保護されたページをキャッシュできます。Dispatcher は、ページに対するユーザーのアクセス権限を確認してから、キャッシュされたページを配信します。
 
-Dispatcher には、権限を区別するキャッシュを実装する AuthChecker モジュールが含まれます。このモジュールがアクティベートされると、レンダーが AEM サーブレットを呼び出して、ユーザー認証と要求されたコンテンツに対する承認を実行します。サーブレットの応答によって、コンテンツを Web ブラウザーに配信するかどうかが決定されます。
+Dispatcher には、権限を区別するキャッシュを実装する AuthChecker モジュールが含まれます。モジュールがアクティブ化されると、Dispatcher はAEMサーブレットを呼び出して、要求されたコンテンツに対するユーザー認証と認証を実行します。 サーブレットの応答は、コンテンツがキャッシュから Web ブラウザーに配信されるかどうかを決定します。
 
 認証および承認メソッドは AEM デプロイメントに固有なので、サーブレットを作成する必要があります。
 
@@ -31,31 +31,35 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 
 以下の図は、Web ブラウザーが権限を区別するキャッシュを使用するページを要求したときに発生するイベントの順序を示したものです。
 
-## ページがキャッシュされていて、ユーザーが承認されている場合  {#page-is-cached-and-user-is-authorized}
+## ページがキャッシュされていて、ユーザーが承認されている場合 {#page-is-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1.png)
 
 1. Dispatcher が、要求されたコンテンツがキャッシュされていて有効であると判断します。
 1. Dispatcher がレンダーに要求メッセージを送信します。HEAD セクションには、ブラウザー要求のヘッダー行がすべて含まれます。
-1. レンダーがオーソライザーを呼び出してセキュリティチェックを実行し、Dispatcher に応答します。応答メッセージには、ユーザーが承認されていることを示す HTTP ステータスコード 200 が含まれます。
+1. レンダーは、認証チェッカーサーブレットを呼び出してセキュリティチェックを実行し、Dispatcher に応答します。 応答メッセージには、ユーザーが承認されていることを示す HTTP ステータスコード 200 が含まれます。
 1. Dispatcher がブラウザーに応答メッセージを送信します。応答メッセージは、レンダーの応答のヘッダー行と、本文としてキャッシュされたコンテンツで構成されます。
 
-## ページがキャッシュされていないが、ユーザーが承認されている場合  {#page-is-not-cached-and-user-is-authorized}
+## ページがキャッシュされていないが、ユーザーが承認されている場合 {#page-is-not-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1-1.png)
 
 1. Dispatcher が、コンテンツがキャッシュされていない、または更新が必要であると判断します。
 1. Dispatcher が、元の要求をレンダーに転送します。
-1. レンダーがオーソライザーサーブレットを呼び出して、セキュリティチェックを実行します。ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
+1. レンダーは、AEM Authorizer サーブレット（Dispatcher AuthChcker サーブレットではない）を呼び出してセキュリティチェックを実行します。 ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
 1. Dispatcher がブラウザーに応答を転送します。Dispatcher が、レンダーの応答メッセージの本文をキャッシュに追加します。
 
-## ユーザーが承認されていない場合  {#user-is-not-authorized}
+## ユーザーが承認されていない場合 {#user-is-not-authorized}
 
 ![](assets/chlimage_1-2.png)
 
 1. Dispatcher がキャッシュを調べます。
 1. Dispatcher がレンダーに要求メッセージを送信します。要求メッセージには、ブラウザーの要求のヘッダー行がすべて含まれます。
-1. レンダーがオーソライザーサーブレットを呼び出してセキュリティチェックを実行し、失敗すると、元の要求を Dispatcher に転送します。
+1. レンダーは Auth Checker サーブレットを呼び出してセキュリティチェックを実行しますが、失敗し、レンダーは元の要求を Dispatcher に転送します。
+1. Dispatcher が、元の要求をレンダーに転送します。
+1. レンダーは、AEM Authorizer サーブレット（Dispatcher AuthChcker サーブレットではない）を呼び出してセキュリティチェックを実行します。 ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
+1. Dispatcher がブラウザーに応答を転送します。Dispatcher が、レンダーの応答メッセージの本文をキャッシュに追加します。
+
 
 ## 権限に影響を受けるキャッシュの実装 {#implementing-permission-sensitive-caching}
 
@@ -68,8 +72,7 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 >
 >一般的に、安全なリソースは、安全ではないファイルとは別のフォルダーに保存します。例：/content/secure/
 
-
-## 承認サーブレットの作成  {#create-the-authorization-servlet}
+## Auth Checker サーブレットの作成 {#create-the-auth-checker-servlet}
 
 Web コンテンツを要求するユーザーの認証と承認を実行するサーブレットを作成し、デプロイします。このサーブレットは、AEM のユーザーアカウントとリポジトリの ACL や、LDAP 検索サービスなど、あらゆる認証および承認メソッドを使用できます。Dispatcher がレンダーとして使用する AEM インスタンスにサーブレットをデプロイします。
 
@@ -156,7 +159,7 @@ Dispatcher が起動すると、Dispatcher のログファイルには、次の�
 
 以下の auth_checker セクションの例では、前のトピックのサーブレットを使用するように Dispatcher を設定しています。filter セクションは、権限チェックをセキュアな HTML リソースに対してのみ実行するようにします。
 
-### 設定例  {#example-configuration}
+### 設定例 {#example-configuration}
 
 ```xml
 /auth_checker
