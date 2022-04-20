@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 11c3d7d627c96bb6ef647b5a067d3926eca347fc
+source-git-commit: 18fa55f4be3a93b5484c3a0fa408031a43944f27
 workflow-type: tm+mt
 source-wordcount: '829'
-ht-degree: 85%
+ht-degree: 83%
 
 ---
 
@@ -157,7 +157,7 @@ Dispatcher が起動すると、Dispatcher のログファイルには、次の�
 
 `AuthChecker: initialized with URL 'configured_url'.`
 
-以下の auth_checker セクションの例では、前のトピックのサーブレットを使用するように Dispatcher を設定しています。filter セクションは、権限チェックをセキュアな HTML リソースに対してのみ実行するようにします。
+以下の auth_checker の例では、前のトピックのサーブレットを使用するように Dispatcher を設定しています。 filter セクションは、権限チェックをセキュアな HTML リソースに対してのみ実行するようにします。
 
 ### 設定例 {#example-configuration}
 
