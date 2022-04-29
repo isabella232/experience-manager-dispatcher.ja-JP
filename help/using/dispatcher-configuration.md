@@ -2,7 +2,7 @@
 title: Dispatcher の設定
 description: Dispatcher の設定方法について説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 9ad35121bde90916a0376b33853e190b382ce5cd
+source-git-commit: deb232be3c4c5e3d11d13cbccb282409d90b93bb
 workflow-type: tm+mt
 source-wordcount: '8528'
 ht-degree: 84%
@@ -397,7 +397,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 以下の表は、この例の場合に、指定された HTTP 要求がどの仮想ホストへと解決されるかを示しています。
 
-| 要求 URL | 解決される仮想ホスト |
+| リクエスト URL | 解決される仮想ホスト |
 |---|---|
 | `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/` |
 | `https://www.mycompany.com/about.html` | `www.mycompany.com` |
@@ -559,7 +559,7 @@ Dispatcher が受け入れる HTTP 要求を指定するには、`/filter` セ�
 
 >[!CAUTION]
 >
->Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。また、 [AEMセキュリティチェックリスト](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=en#security) AEMのインストールに関するセキュリティの詳細については、を参照してください。
+>Dispatcher を使用してアクセスを制限する場合の詳しい考慮事項については、[Dispatcher セキュリティチェックリスト](security-checklist.md)を参照してください。また、 [AEMセキュリティチェックリスト](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=ja#security) AEMのインストールに関するセキュリティの詳細については、を参照してください。
 
 この `/filter` セクションは、HTTP 要求の要求行部分のパターンに従ってコンテンツへのアクセスを拒否または許可する一連のルールで構成されます。 の許可リスト戦略を `/filter` セクション：
 
@@ -840,7 +840,7 @@ Dispatcher バージョン 4.1.5 以降では、`/filter` セクションを使�
 
 ### Dispatcher のセキュリティのテスト {#testing-dispatcher-security}
 
-Dispatcher のフィルターは、AEM パブリッシュインスタンス上の以下のページおよびスクリプトへのアクセスをブロックする必要があります。Web ブラウザーを使用して、サイト訪問者として以下のページを開こうと試み、コード 404 が返されることを確認してください。それ以外の結果が得られた場合は、フィルターを調整してください。
+Dispatcher のフィルターは、AEM パブリッシュインスタンス上の以下のページおよびスクリプトへのアクセスをブロックする必要があります。Web ブラウザーを使用して、サイト訪問者として以下のページを開こうと試み、コード 403 が返されることを確認してください。それ以外の結果が得られた場合は、フィルターを調整してください。
 
 次の場合は、通常のページレンダリングが表示されます。 `/content/add_valid_page.html?debug=layout`.
 
@@ -1343,7 +1343,6 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 >
 >* `/cache/headers` セクションにヘッダー名を追加します。
 >* 以下を追加します。 [Apache ディレクティブ](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) Dispatcher 関連の節で、以下の操作をおこないます。
-
 >
 >```xml
 >FileETag none
@@ -1820,7 +1819,7 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
 ターゲットファイルはキャッシュに含まれていますが、より新しい .stat ファイルによって無効化されます。Dispatcher はターゲットファイルを削除し、出力から再作成して配信します。
 * **not cacheable: no document root**
 ファームの構成にドキュメントルート（設定要素）が含まれていません 
-`cache.docroot`) をクリックします。
+`cache.docroot`）内に表示されます。
 * **not cacheable: cache file path too long**\
    ターゲットファイル（ドキュメントルートと URL ファイルが連結されたものが）が、システム上で使用可能な最長ファイル名を超えています。
 * **not cacheable: temporary file path too long**\
