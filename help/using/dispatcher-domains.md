@@ -1,8 +1,8 @@
 ---
 title: '複数ドメインでの Dispatcher の使用 '
-seo-title: '複数ドメインでの Dispatcher の使用 '
+seo-title: Using Dispatcher with Multiple Domains
 description: 複数 Web ドメインで Dispatcher を使用してページリクエストを処理する方法について説明します。
-seo-description: 複数 Web ドメインで Dispatcher を使用してページリクエストを処理する方法について説明します。
+seo-description: Learn how to use Dispatcher to process page requests in multiple web domains.
 uuid: 7342a1c2-fe61-49be-a240-b487d53c7ec1
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
@@ -11,10 +11,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 9d168ab7139e46b0c768fc3bab37245459eca002
 workflow-type: tm+mt
-source-wordcount: '2983'
-ht-degree: 98%
+source-wordcount: '2965'
+ht-degree: 99%
 
 ---
 
@@ -72,8 +72,8 @@ Dispatcher フラッシュレプリケーションエージェントが、キャ
 
 ドメイン URL とコンテンツパスをキャッシュファイルへと解決するには、プロセスのどこかの時点で、ファイルパスまたはページ URL を変換する必要があります。以下で一般的な戦略を説明しますが、この説明では、プロセスの様々な時点でパスまたは URL の変換をおこないます。
 
-* （推奨）AEM パブリッシュインスタンスが、リソースの解決に Sling マッピングを使用して、内部 URL の書き換えルールを実装する。ドメイン URL はコンテンツリポジトリのパスに変換される[AEM Rewrites Incoming URLs](#aem-rewrites-incoming-urls)を参照してください。
-* Web サーバーが、ドメイン URL をキャッシュのパスに変換する内部 URL 書き換えルールを使用する。[Webサーバーによる受信URLの書き換え](#the-web-server-rewrites-incoming-urls)を参照してください。
+* （推奨）AEM パブリッシュインスタンスが、リソースの解決に Sling マッピングを使用して、内部 URL の書き換えルールを実装する。ドメイン URL はコンテンツリポジトリのパスに変換される詳しくは、 [AEMによる受信 URL の書き換え](#aem-rewrites-incoming-urls).
+* Web サーバーが、ドメイン URL をキャッシュのパスに変換する内部 URL 書き換えルールを使用する。詳しくは、 [Web サーバーによる受信 URL の書き換え](#the-web-server-rewrites-incoming-urls).
 
 一般的に望ましいのは、Web ページに対して短縮された URL を使用することです。通常、ページ URL は、Web コンテンツが格納されたリポジトリフォルダーの構造をミラーリングしています。ただし、URL には最上位のリポジトリノード（`/content` など）が表示されません。クライアントは、必ずしも AEM リポジトリの構造を意識しません。
 
@@ -86,7 +86,7 @@ Dispatcher を複数のドメインで動作させるために、環境を以下
 * ドメインネームシステムが、ドメイン名を Web サーバーの IP アドレスに解決する。
 * Dispatcher キャッシュが、AEM コンテンツリポジトリのディレクトリ構造をミラーリングしている。Web サーバーのドキュメントルートの下のファイルパスは、リポジトリ内のファイルのパスと同じである。
 
-## 提供されているサンプルの環境  {#environment-for-the-provided-examples}
+## 提供されているサンプルの環境 {#environment-for-the-provided-examples}
 
 提供されている解決方法のサンプルは、以下の特徴を持つ環境に適用されます。
 
@@ -150,7 +150,7 @@ Dispatcher キャッシュは、リポジトリのノード構造をミラーリ
 
 * URL を Dispatcher に転送します。
 
-### httpd.conf  {#httpd-conf}
+### httpd.conf {#httpd-conf}
 
 ```xml
 # load the Dispatcher module
@@ -200,7 +200,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 仮想ホストは、メインサーバーセクションで設定されている [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) プロパティの値を継承します。仮想ホストに独自の DispatcherConfig プロパティを含めて、メインサーバー設定をオーバーライドできます。
 
-### 複数ドメインを処理するように Dispatcher を設定  {#configure-dispatcher-to-handle-multiple-domains}
+### 複数ドメインを処理するように Dispatcher を設定 {#configure-dispatcher-to-handle-multiple-domains}
 
 ドメイン名と対応する仮想ホストを含む URL をサポートするには、以下の Dispatcher ファームを定義します。
 
@@ -282,11 +282,11 @@ Dispatcher initializing (build 4.1.2)
 [Fri Nov 02 16:27:18 2012] [I] [24974(140006182991616)] Dispatcher initialized (build 4.1.2)
 ```
 
-### リソース解決のための Sling マッピングの設定  {#configure-sling-mapping-for-resource-resolution}
+### リソース解決のための Sling マッピングの設定 {#configure-sling-mapping-for-resource-resolution}
 
 ドメインベースの URL を AEM パブリッシュインスタンス上のコンテンツに解決できるよう、リソースの解決に Sling マッピングを使用します。リソースマッピングによって、Dispatcher から（もともとはクライアント HTTP 要求から）の受信 URL がコンテンツノードに変換されます。
 
-Slingリソースマッピングについて詳しくは、Slingのドキュメントの[Mappings for Resource Resolution](https://sling.apache.org/site/mappings-for-resource-resolution.html)を参照してください。
+Sling リソースマッピングについて詳しくは、 [リソース解決のマッピング](https://sling.apache.org/site/mappings-for-resource-resolution.html) （Sling ドキュメント）を参照してください。
 
 一般的に、以下のリソースにはマッピングが必要ですが、追加のマッピングが必要な場合もあります。
 
@@ -360,7 +360,7 @@ Web サーバー上に以下の要素を設定します。
 * URL を `/content/sitea/en/products.html.` に書き換えます。
 * URL を Dispatcher に転送します。
 
-### httpd.conf  {#httpd-conf-1}
+### httpd.conf {#httpd-conf-1}
 
 ```xml
 # load the Dispatcher module
@@ -500,11 +500,11 @@ Web サーバーが URL を書き換える場合、Dispatcher には [Dispatcher
 >
 >単一の Dispatcher ファームが定義されているので、AEM パブリッシュインスタンス上の Dispatcher フラッシュレプリケーションエージェントに特別な設定は必要ありません。
 
-## 非 HTML ファイルへのリンクの書き換え  {#rewriting-links-to-non-html-files}
+## 非 HTML ファイルへのリンクの書き換え {#rewriting-links-to-non-html-files}
 
 .html または .htm 以外の拡張子を持つファイルへの参照を書き換えるには、Sling リライター変換サービスコンポーネントを作成し、デフォルトのリライターパイプラインに追加します。
 
-リソースパスが Web サーバーコンテキストで正しく解決されない場合は、参照を書き換えます。例えば、画像生成コンポーネントが /content/sitea/en/products.navimage.png のようなリンクを作成する場合は、変換サービスが必要です。「[完全な機能を持つインターネット Web サイトの作成方法](https://helpx.adobe.com/jp/experience-manager/6-3/sites/developing/using/the-basics.html)」の topnav コンポーネントは、このようなリンクを作成します。
+リソースパスが Web サーバーコンテキストで正しく解決されない場合は、参照を書き換えます。例えば、画像生成コンポーネントが /content/sitea/en/products.navimage.png のようなリンクを作成する場合は、変換サービスが必要です。「[完全な機能を持つインターネット Web サイトの作成方法](https://helpx.adobe.com/jp/experience-manager/6-5/sites/developing/using/the-basics.html)」の topnav コンポーネントは、このようなリンクを作成します。
 
 [Sling リライター](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html)は、Sling の出力を後処理するモジュールです。リライターの SAX パイプライン実装は、1 つのジェネレーター、1 つまたは複数の変換サービス、1 つのシリアライザーで構成されます。
 
@@ -514,7 +514,7 @@ Web サーバーが URL を書き換える場合、Dispatcher には [Dispatcher
 
 ![](assets/chlimage_1-15.png)
 
-### AEM のデフォルトのリライターパイプライン  {#the-aem-default-rewriter-pipeline}
+### AEM のデフォルトのリライターパイプライン {#the-aem-default-rewriter-pipeline}
 
 AEM は、text/html タイプのドキュメントを処理するデフォルトのパイプラインリライターを使用します。
 
@@ -552,7 +552,7 @@ AEM は、text/html タイプのドキュメントを処理するデフォルト
 
 このサンプルは堅牢ではないので、実稼動環境では使用しないでください。
 
-### サンプルの TransformerFactory 実装  {#example-transformerfactory-implementation}
+### サンプルの TransformerFactory 実装 {#example-transformerfactory-implementation}
 
 ```java
 package com.adobe.example;
