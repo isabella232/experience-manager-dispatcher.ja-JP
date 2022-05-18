@@ -1,18 +1,18 @@
 ---
 title: Dispatcher の概要
-seo-title: Adobe AEM Dispatcher の概要
-description: この記事は、Dispatcher の一般的な概要を提供します。
-seo-description: この記事は、Adobe Experience Manager Dispatcher の一般的な概要を提供します。
+seo-title: Adobe AEM Dispatcher Overview
+description: AEM Cloud Services のセキュリティやキャッシュなどを強化するために Dispatcher を使用する方法を説明します。
+seo-description: This article provides a general overview of Adobe Experience Manager Dispatcher.
 uuid: 71766f86-5e91-446b-a078-061b179d090d
 pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 76f7a3fc8d98657c5f46912f452c05fce1b5be61
 workflow-type: tm+mt
-source-wordcount: '3199'
-ht-degree: 93%
+source-wordcount: '3190'
+ht-degree: 94%
 
 ---
 
@@ -22,22 +22,22 @@ ht-degree: 93%
 >
 >Dispatcher のバージョンは AEM とは無関係です。以前のバージョンの AEM のドキュメントに組み込まれている Dispatcher のドキュメントへのリンクをたどると、このページにリダイレクトされる可能性があります。
 
-Dispatcherは、Adobe Experience Managerのキャッシュやロードバランシングを行うツールで、エンタープライズクラスのWebサーバーと組み合わせて使用できます。
+Dispatcher は、Adobe Experience Manager のキャッシュや負荷分散を利用するツールで、エンタープライズクラスの web サーバーと組み合わせて使用できます。
 
-Dispatcherをデプロイするプロセスは、選択したWebサーバーとOSプラットフォームとは独立しています。
+Dispatcher をデプロイするプロセスは、選択した Web サーバーや OS プラットフォームとは独立しています。
 
 1. Dispatcher について学習します（このページ）。[Dispatcher に関するよくある質問](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html)も参照してください。
-1. Webサーバーのドキュメントに従って、[サポートされているWebサーバー](https://helpx.adobe.com/jp/experience-manager/6-3/sites/deploying/using/technical-requirements.html)をインストールします。
+1. のインストール [サポート対象の web サーバー](https://helpx.adobe.com/jp/experience-manager/6-3/sites/deploying/using/technical-requirements.html) web サーバーのドキュメントに従って。
 1. Web サーバーに [Dispatcher モジュールをインストール](dispatcher-install.md)し、このモジュールに合わせて Web サーバーを設定します。
 1. [Dispatcher を設定](dispatcher-configuration.md)します（dispatcher.any ファイル）。
 1. コンテンツの更新によってキャッシュが無効化されるように [AEM を設定](page-invalidate.md)します。
 
 >[!NOTE]
 >
->DispatcherとAEMの連携の仕組みをより深く理解するには：
+>Dispatcher とAEMの連携の仕組みをより深く理解するには：
 >
->* [2017年7月のAEMコミュニティの専門家への質問](https://bit.ly/ATACE0717)を参照してください。
->* [このリポジトリ](https://github.com/adobe/aem-dispatcher-experiments)にアクセスします。 実験の集まりを「テイクホーム」のラボ形式で収録しています。
+>* 詳しくは、 [2017 年 7 月のAEM Community Experts への質問](https://bit.ly/ATACE0717).
+>* アクセス [このリポジトリ](https://github.com/adobe/aem-dispatcher-experiments). 実験の集まりを「テイクホーム」ラボ形式で収蔵しています。
 
 
 
@@ -58,7 +58,7 @@ Dispatcherをデプロイするプロセスは、選択したWebサーバーとO
 >
 >しかし、Dispatcher は&#x200B;**オーサーインスタンス**&#x200B;の応答性を高めるために使用することもできます。特に、多数のユーザーが Web サイトを編集および更新する場合には効果的です。このケースについて詳しくは、以下の[オーサリングサーバーでの Dispatcher の使用](#using-a-dispatcher-with-an-author-server)を参照してください。
 
-## Dispatcher を使用してキャッシュを実装する理由  {#why-use-dispatcher-to-implement-caching}
+## Dispatcher を使用してキャッシュを実装する理由 {#why-use-dispatcher-to-implement-caching}
 
 Web パブリッシングには、次の 2 つの基本的な手段があります。
 
@@ -80,7 +80,7 @@ Dispatcher には、動的サイトのコンテンツに基づいて静的 HTML 
 
 この節では、この機能の基本原理について説明します。
 
-### 静的 Web サーバー  {#static-web-server}
+### 静的 Web サーバー {#static-web-server}
 
 ![](assets/chlimage_1-3.png)
 
@@ -88,7 +88,7 @@ Apache や IIS などの静的 Web サーバーは、Web サイトの訪問者�
 
 このプロセスはごく単純なので、非常に効率的です。訪問者がファイル（HTML ページなど）を要求すると、ファイルは通常メモリから直接取得され、最悪の場合でもローカルドライブから読み取られます。静的 Web サーバーは長い間使用されてきたので、様々な管理およびセキュリティ管理ツールがあり、ネットワークのインフラストラクチャーにも適切に統合できます。
 
-### コンテンツ管理サーバー  {#content-management-servers}
+### コンテンツ管理サーバー {#content-management-servers}
 
 ![](assets/chlimage_1-4.png)
 
@@ -96,7 +96,7 @@ AEM などのコンテンツ管理サーバーを使用する場合、訪問者�
 
 このエンジンによって、豊富で動的なコンテンツを作成でき、Web サイトの柔軟性と機能性を高めることができます。ただし、レイアウトエンジンは静的サーバーより多くの処理能力が必要なので、レイアウトエンジンを設定すると、多くの訪問者がシステムを使用した場合に動作が遅くなる可能性があります。
 
-## Dispatcher によるキャッシュの実行方法  {#how-dispatcher-performs-caching}
+## Dispatcher によるキャッシュの実行方法 {#how-dispatcher-performs-caching}
 
 ![](assets/chlimage_1-5.png)
 
@@ -104,7 +104,7 @@ AEM などのコンテンツ管理サーバーを使用する場合、訪問者�
 
 >[!NOTE]
 >
->HTTP ヘッダーキャッシュの設定がない場合、Dispatcher は、ページの HTML コードのみを保存します。この場合、HTTP ヘッダーは保存されません。Web サイト内で異なるエンコーディングを使用している場合、これらの HTTP ヘッダーが失われる可能性があるので、このことが問題になる可能性があります。HTTPヘッダーキャッシュを有効にするには、[Dispatcherキャッシュの設定](https://helpx.adobe.com/jp/experience-manager/dispatcher/using/dispatcher-configuration.html)を参照してください。
+>HTTP ヘッダーキャッシュの設定がない場合、Dispatcher は、ページの HTML コードのみを保存します。この場合、HTTP ヘッダーは保存されません。Web サイト内で異なるエンコーディングを使用している場合、これらの HTTP ヘッダーが失われる可能性があるので、このことが問題になる可能性があります。HTTP ヘッダーキャッシュを有効にするには、 [Dispatcher キャッシュの設定](https://helpx.adobe.com/jp/experience-manager/dispatcher/using/dispatcher-configuration.html)
 
 >[!NOTE]
 >
@@ -152,13 +152,13 @@ Dispatcher は、自動無効化の対象となるファイルのリストを保
 * 自動無効化は通常、HTML ページなど内部関係が複雑な場合に使用します。このようなページには、リンクやナビゲーションエントリが含まれるので、通常はコンテンツの更新後にこれらのリンクなどを更新する必要があります。自動生成される PDF や画像ファイルがある場合も、これらのファイルに対して自動無効化を選択できます。
 * 自動無効化の機能は、statfile に touch する以外は、更新時の Dispatcher の動作に関与しません。ただし、statfile への touch によって、キャッシュコンテンツは自動的に古いものとされます。キャッシュ自体は削除されません。
 
-## Dispatcher がドキュメントを返す方法  {#how-dispatcher-returns-documents}
+## Dispatcher がドキュメントを返す方法 {#how-dispatcher-returns-documents}
 
 ![](assets/chlimage_1-6.png)
 
 ### ドキュメントがキャッシュの対象かどうかの判断
 
-設定ファイル](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)で、Dispatcherがキャッシュするドキュメントを[定義できます。 Dispatcher は、要求とキャッシュ可能なドキュメントのリストを照合します。ドキュメントがこのリストにない場合は、AEM インスタンスにドキュメントを要求します。
+以下が可能です。 [設定ファイルで Dispatcher がキャッシュするドキュメントを定義する](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html). Dispatcher は、要求とキャッシュ可能なドキュメントのリストを照合します。ドキュメントがこのリストにない場合は、AEM インスタンスにドキュメントを要求します。
 
 以下の場合、Dispatcher は&#x200B;*常に* AEM インスタンスに直接ドキュメントを要求します。
 
@@ -211,7 +211,7 @@ Dispatcher はキャッシュされたファイルを、静的 Web サイトに�
 >
 >通常は、単一の Dispatcher だけで使用可能なパブリッシュインスタンスの容量を満たすことができますが、一部のアプリケーションでは、2 つの Dispatcher インスタンス間でもロードバランシングをおこなうとよい場合が稀にあります。Dispatcher を追加すると、使用可能なパブリッシュインスタンスの負荷が大きくなり、ほとんどのアプリケーションでパフォーマンスが低下しやすくなるので、複数の Dispatcher の設定は慎重に考慮する必要があります。
 
-## Dispatcher によるロードバランシングの実行方法  {#how-the-dispatcher-performs-load-balancing}
+## Dispatcher によるロードバランシングの実行方法 {#how-the-dispatcher-performs-load-balancing}
 
 ### パフォーマンスの統計
 
@@ -242,7 +242,7 @@ Dispatcher は、AEM の各インスタンスのドキュメント処理速度�
 
 この場合、各要求が経由する Dispatcher は 1 つだけにしてください。別の Dispatcher から渡された要求は処理されません。したがって、どちらの Dispatcher も AEM Web サイトに直接アクセスするようにしてください。
 
-## CDN での Dispatcher の使用  {#using-dispatcher-with-a-cdn}
+## CDN での Dispatcher の使用 {#using-dispatcher-with-a-cdn}
 
 Akamai Edge Delivery または Amazon Cloud Front などのコンテンツ配信ネットワーク（CDN）は、エンドユーザーに近い場所からコンテンツを配信します。そのため、以下のことが可能です。
 
@@ -262,7 +262,7 @@ HTTP インフラストラクチャの構成要素として、CDN は Dispatcher
 
 ほとんどの場合は、Dispatcher が次のサーバーとなり、キャッシュからドキュメントを提供し、CDN サーバーに返される応答ヘッダーに影響を与えます。
 
-## CDN キャッシュの制御  {#controlling-a-cdn-cache}
+## CDN キャッシュの制御 {#controlling-a-cdn-cache}
 
 CDN が Dispatcher からリソースを再取得するまでのキャッシュ期間を制御するには、様々な方法があります。
 
@@ -292,7 +292,7 @@ CDN が Dispatcher からリソースを再取得するまでのキャッシュ�
 
 >[!CAUTION]
 >
->タッチ操作対応UIで[AEMを使用している場合は、オーサーインスタンスのコンテンツを&#x200B;**キャッシュしない**&#x200B;でください。 ](https://helpx.adobe.com/jp/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)オーサーインスタンスに対してキャッシュが有効になっている場合、それを無効にしてキャッシュディレクトリの内容を削除する必要があります。キャッシュを無効にするには、`author_dispatcher.any` ファイルを編集し、`/cache` セクションの `/rule` プロパティを次のように変更します。
+>を使用している場合は、 [タッチ UI を使用したAEM](https://helpx.adobe.com/jp/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html) 以下を実行します。 **not** オーサーインスタンスのコンテンツをキャッシュします。 オーサーインスタンスに対してキャッシュが有効になっている場合、それを無効にしてキャッシュディレクトリの内容を削除する必要があります。キャッシュを無効にするには、`author_dispatcher.any` ファイルを編集し、`/cache` セクションの `/rule` プロパティを次のように変更します。
 
 ```xml
 /rules
@@ -311,7 +311,7 @@ Dispatcher をオーサーインスタンスの前方で使用して、オーサ
 1. `author_dispatcher.any` をテキストエディターで開き、以下の変更をおこないます。
 
    1. `/renders` セクションの `/hostname` と `/port` がオーサーインスタンスを指すように変更します。
-   1. `/docroot` セクションの `/cache` がキャッシュディレクトリを指すように変更します。タッチUIで[AEM](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)を使用している場合は、上記の警告を参照してください。
+   1. `/docroot` セクションの `/cache` がキャッシュディレクトリを指すように変更します。を使用している場合 [タッチ UI を使用したAEM](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)に設定する場合は、上記の警告を参照してください。
    1. 変更内容を保存します。
 
 1. 上記で設定した `/cache`／`/docroot` ディレクトリ内にあるすべての既存ファイルを削除します。
