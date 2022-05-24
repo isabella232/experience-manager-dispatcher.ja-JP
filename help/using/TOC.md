@@ -1,18 +1,18 @@
 ---
 cloud: Experience Cloud
 product: experience manager
-sub-product: adobe experience manager dispatcher
+sub-product: experience manager dispatcher
 archetype: Administrator
 user-guide-title: Adobe Experience Manager Dispatcher Help
 breadcrumb-title: Dispatcher ガイド
 user-guide-description: AEM サーバーのキャッシュ、ロードバランシング、セキュリティの向上に Dispatcher を使用する方法について説明します。
 feature-set: Experience Manager
 feature: Dispatcher
-topic: 管理
+topic: Administration
 role: Admin
-source-git-commit: 4439a4f0adfb8e2e0d08636225d2399638d27af3
+source-git-commit: a21b527700b3a5c3a11eadaefc729e754ba2b37b
 workflow-type: tm+mt
-source-wordcount: '89'
+source-wordcount: '84'
 ht-degree: 100%
 
 ---
@@ -28,7 +28,7 @@ ht-degree: 100%
 + 設定 {#configuring}
    + [Dispatcher の設定](dispatcher-configuration.md)
    + [AEM からのキャッシュされたページの無効化](page-invalidate.md)
-   + [Web サイトのキャッシュパフォーマンスの最適化](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
+   + [Web サイトのキャッシュパフォーマンスの最適化](https://helpx.adobe.com/jp/experience-manager/6-5/sites/deploying/using/configuring-performance.html)
    + [セキュリティ保護されたコンテンツのキャッシュ](permissions-cache.md)
    + [複数ドメインでの Dispatcher の使用 ](dispatcher-domains.md)
    + [Dispatcher での SSL の使用](dispatcher-ssl.md)

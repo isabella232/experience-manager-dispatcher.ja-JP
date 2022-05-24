@@ -1,8 +1,8 @@
 ---
 title: Dispatcher のセキュリティチェックリスト
-seo-title: Dispatcher のセキュリティチェックリスト
+seo-title: The Dispatcher Security Checklist
 description: 本番環境に進む前に、セキュリティチェックリストを完了する必要があります。
-seo-description: 本番環境に進む前に、セキュリティチェックリストを完了する必要があります。
+seo-description: A security checklist that should be completed before going on production.
 uuid: 7bfa3202-03f6-48e9-8d2e-2a40e137ecbe
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -14,10 +14,10 @@ index: y
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: a21b527700b3a5c3a11eadaefc729e754ba2b37b
 workflow-type: tm+mt
-source-wordcount: '653'
-ht-degree: 85%
+source-wordcount: '638'
+ht-degree: 86%
 
 ---
 
@@ -38,7 +38,7 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
 >[!CAUTION]
 >
->稼動させる前に、使用するバージョンの AEM のセキュリティチェックリストも確認する必要があります。対応する [Adobe Experience Manager のドキュメント](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html)を参照してください。
+>稼動させる前に、使用するバージョンの AEM のセキュリティチェックリストも確認する必要があります。対応する [Adobe Experience Manager のドキュメント](https://helpx.adobe.com/jp/experience-manager/6-5/sites/administering/using/security-checklist.html)を参照してください。
 
 ## 最新バージョンの Dispatcher の使用 {#use-the-latest-version-of-dispatcher}
 
@@ -81,26 +81,26 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 Dispatcher の設定時に、できる限り外部アクセスを制限してください。Dispatcher に関するドキュメントの[サンプルの /filter セクション](dispatcher-configuration.md#main-pars_184_1_title)を参照してください。
 
-## 管理 URL へのアクセスの拒否  {#make-sure-access-to-administrative-urls-is-denied}
+## 管理 URL へのアクセスの拒否 {#make-sure-access-to-administrative-urls-is-denied}
 
 フィルターを使用して、Web コンソールなどすべての管理 URL への外部アクセスを確実にブロックします。
 
 ブロックする必要がある URL のリストについては、[Dispatcher のセキュリティのテスト](dispatcher-configuration.md#testing-dispatcher-security)を参照してください。
 
-## 許可リストの代わりにブロックリスト{#use-allowlists-instead-of-blocklists}を使用
+## 許可リストの代わりに使用ブロックリスト {#use-allowlists-instead-of-blocklists}
 
-は許可リスト、アクセス制御を提供するより優れた方法です。明示的にアクセス要求がその一部でない限り、すべてのアクセス要求を拒否する必要があると考えているからで許可リストす。 このモデルでは、未確認だったり、特定の設定ステージで考慮されていなかった可能性がある新しい要求に対して、より厳しい制御を適用できます。
+は許可リスト、明示的にアクセスの一部でない限り、すべてのアクセス要求を拒否する必要があると考えるので、アクセス制御を提供するより優れた方法許可リストです。 このモデルでは、未確認だったり、特定の設定ステージで考慮されていなかった可能性がある新しい要求に対して、より厳しい制御を適用できます。
 
 ## 専用システムユーザーでの Dispatcher の実行 {#run-dispatcher-with-a-dedicated-system-user}
 
-Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによって Web サーバーが実行されていることを確認してください。Dispatcherのキャッシュフォルダーに対する書き込みアクセス権のみを付与することをお勧めします。
+Dispatcher の設定時に、最低限の権限を持つ専用ユーザーによって Web サーバーが実行されていることを確認してください。Dispatcher のキャッシュフォルダーへの書き込みアクセス権のみを付与することをお勧めします。
 
-さらに、IISのユーザーは、Webサイトを次のように設定する必要があります。
+さらに、IIS のユーザーは、Web サイトを次のように設定する必要があります。
 
 1. Web サイトの物理パス設定で、「**特定のユーザーとして接続**」を選択します。
 1. ユーザーを設定します。
 
-## サービス拒否（DoS）攻撃の防止  {#prevent-denial-of-service-dos-attacks}
+## サービス拒否（DoS）攻撃の防止 {#prevent-denial-of-service-dos-attacks}
 
 サービス拒否（DoS）攻撃は、対象となるユーザーがコンピューターリソースを使用できない状態にするものです。
 
@@ -152,16 +152,16 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## CSRF 攻撃を防止するための Dispatcher の設定 {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐことを目的とした[フレームワーク](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps)があります。このフレームワークを適切に利用するには、DispatcherでCSRFトークンのサ許可リストポートをする必要があります。 手順は次のとおりです。
+AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐことを目的とした[フレームワーク](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps)があります。このフレームワークを適切に利用するには、Dispatcher で CSRF トークンのサ許可リストポートをする必要があります。 手順は次のとおりです。
 
 1. `/libs/granite/csrf/token.json` パスを許可するフィルターを作成する。
 1. Dispatcher 設定の `clientheaders` セクションに `CSRF-Token` ヘッダーを追加する。
 
 ## クリックジャッキングの防止 {#prevent-clickjacking}
 
-クリックジャッキングを防ぐには、`SAMEORIGIN` に設定した HTTP ヘッダー `X-FRAME-OPTIONS` を指定するように Web サーバーを設定することをお勧めします。
+クリックジャッキングを防ぐには、`SAMEORIGIN` に設定した HTTP ヘッダー `X-FRAME-OPTIONS` を指定するように web サーバーを設定することをお勧めします。
 
-クリックジャッキングに関する詳細は、OWASPのサイト](https://www.owasp.org/index.php/Clickjacking)を参照してください。[
+クリックジャッキングについて詳しくは、[OWASP のサイト](https://www.owasp.org/index.php/Clickjacking)を参照してください。
 
 ## 侵入テストの実施 {#perform-a-penetration-test}
 
