@@ -9,7 +9,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 76f7a3fc8d98657c5f46912f452c05fce1b5be61
+source-git-commit: 85a7f38ecb5f5fe620ff51a7cdbe29f546559288
 workflow-type: tm+mt
 source-wordcount: '3190'
 ht-degree: 94%
@@ -27,7 +27,7 @@ Dispatcher は、Adobe Experience Manager のキャッシュや負荷分散を�
 Dispatcher をデプロイするプロセスは、選択した Web サーバーや OS プラットフォームとは独立しています。
 
 1. Dispatcher について学習します（このページ）。[Dispatcher に関するよくある質問](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html)も参照してください。
-1. のインストール [サポート対象の web サーバー](https://helpx.adobe.com/jp/experience-manager/6-3/sites/deploying/using/technical-requirements.html) web サーバーのドキュメントに従って。
+1. のインストール [サポート対象の web サーバー](https://helpx.adobe.com/jp/experience-manager/6-5/sites/deploying/using/technical-requirements.html) web サーバーのドキュメントに従って。
 1. Web サーバーに [Dispatcher モジュールをインストール](dispatcher-install.md)し、このモジュールに合わせて Web サーバーを設定します。
 1. [Dispatcher を設定](dispatcher-configuration.md)します（dispatcher.any ファイル）。
 1. コンテンツの更新によってキャッシュが無効化されるように [AEM を設定](page-invalidate.md)します。
