@@ -11,7 +11,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 2aed8101766363834c2fb5b27e0dbd004fc5daf9
+source-git-commit: 7d2d1cbbb2fb444769239d48c9fbff4cfd2373a2
 workflow-type: tm+mt
 source-wordcount: '2965'
 ht-degree: 99%
@@ -62,9 +62,11 @@ Dispatcher フラッシュレプリケーションエージェントが、キャ
 
 ![](assets/chlimage_1-9.png)
 
-1. AEM オーサーインスタンス上でページがアクティベートされ、コンテンツがパブリッシュインスタンスにレプリケートされます。
-1. Dispatcher フラッシュエージェントが、レプリケートされたコンテンツのキャッシュを無効化するために Dispatcher を呼び出します。
-1. キャッシュされたファイルを無効化するために、Dispatcher が 1 つまたは複数の .stat ファイルにアクセスします。
+<ol type="a">
+  <li>AEM オーサーインスタンス上でページがアクティベートされ、コンテンツがパブリッシュインスタンスにレプリケートされます。</li>
+  <li>Dispatcher フラッシュエージェントが、レプリケートされたコンテンツのキャッシュを無効化するために Dispatcher を呼び出します。</li>
+  <li>キャッシュされたファイルを無効化するために、Dispatcher が 1 つまたは複数の .stat ファイルにアクセスします。</li>
+</ol>
 
 複数のドメインで Dispatcher を使用するには、AEM、Dispatcher および Web サーバーを設定する必要があります。このページで説明する解決方法は一般的なもので、ほとんどの環境に適用できます。AEM トポロジが複雑なときは、特定の問題を解決するために、さらにカスタム設定が必要な場合があります。既存の IT インフラストラクチャおよび管理ポリシーを満たすには、サンプルの変更が必要になる可能性があります。
 
