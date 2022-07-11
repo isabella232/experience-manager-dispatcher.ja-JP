@@ -14,9 +14,9 @@ index: y
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: a21b527700b3a5c3a11eadaefc729e754ba2b37b
+source-git-commit: 5a387498c7fd83cad1fafdbfded6a78f55acbc14
 workflow-type: tm+mt
-source-wordcount: '638'
+source-wordcount: '639'
 ht-degree: 86%
 
 ---
@@ -161,7 +161,7 @@ AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐ�
 
 クリックジャッキングを防ぐには、`SAMEORIGIN` に設定した HTTP ヘッダー `X-FRAME-OPTIONS` を指定するように web サーバーを設定することをお勧めします。
 
-クリックジャッキングについて詳しくは、[OWASP のサイト](https://www.owasp.org/index.php/Clickjacking)を参照してください。
+クリックジャッキングについて詳しくは、[OWASP のサイト](https://owasp.org/www-community/attacks/Clickjacking)を参照してください。
 
 ## 侵入テストの実施 {#perform-a-penetration-test}
 
