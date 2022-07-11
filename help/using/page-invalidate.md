@@ -1,8 +1,8 @@
 ---
 title: AEM からのキャッシュされたページの無効化
-seo-title: Adobe AEM からのキャッシュされたページの無効化
+seo-title: Invalidating Cached Pages From Adobe AEM
 description: 効率的なキャッシュ管理を確保するため、Dispatcher と AEM の間のインタラクションを設定する方法について説明します。
-seo-description: 効率的なキャッシュ管理を確保するため、Adobe AEM Dispatcher と AEM の間のインタラクションを設定する方法について説明します。
+seo-description: Learn how to configure the interaction between Adobe AEM Dispatcher and AEM to ensure effective cache management.
 uuid: 66533299-55c0-4864-9beb-77e281af9359
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -13,9 +13,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 25f8569bdeb6b675038bea02637900e9d0fc1f27
 workflow-type: tm+mt
-source-wordcount: '1427'
+source-wordcount: '1404'
 ht-degree: 97%
 
 ---
@@ -24,11 +24,11 @@ ht-degree: 97%
 
 Dispatcher を AEM と共に使用する際は、キャッシュが効果的に管理されるようにインタラクションを設定する必要があります。環境によっては、この設定でパフォーマンスを向上させることができます。
 
-## AEM ユーザーアカウントの設定  {#setting-up-aem-user-accounts}
+## AEM ユーザーアカウントの設定 {#setting-up-aem-user-accounts}
 
 デフォルトの `admin` ユーザーアカウントを使用して、デフォルトでインストールされているレプリケーションエージェントを認証します。レプリケーションエージェントで使用する専用のユーザーアカウントを作成する必要があります。
 
-詳しくは、AEMセキュリティチェックリストの[レプリケーションユーザーとトランスポートユーザーの設定](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)の節を参照してください。
+詳しくは、 [レプリケーションユーザーとトランスポートユーザーの設定](https://helpx.adobe.com/jp/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) AEMセキュリティチェックリストの「 」セクションにある
 
 ## オーサリング環境からの Dispatcher キャッシュの無効化 {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
@@ -67,7 +67,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 1. 必要に応じて、その他のパラメーターを設定します。
 1. 「OK」をクリックして、エージェントをアクティベートします。
 
-または、[AEM Touch UI](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent)からDispatcherフラッシュエージェントにアクセスして設定することもできます。
+または、 [AEM Touch UI](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html#configuring-a-dispatcher-flush-agent).
 
 バニティー URL へのアクセスを有効にする方法について詳しくは、[バニティー URL へのアクセスの有効化](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)を参照してださい。
 
@@ -81,7 +81,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 * 公開とキャッシュの無効化は同時に行われます。ただし、タイミングによっては、キャッシュからページが削除された直後、新しいページが公開される直前に、削除されたページが要求される場合があります。その場合は、AEM から古いページが返され、Dispatcher で再びキャッシュされます。大規模なサイトの場合は、これが大きな問題になります。
 
-## パブリッシュインスタンスからの Dispatcher キャッシュの無効化  {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## パブリッシュインスタンスからの Dispatcher キャッシュの無効化 {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 キャッシュ管理をオーサー環境からパブリッシュインスタンスに移行すると、パフォーマンスが向上する場合があります。この場合、公開されたページを受信したときにキャッシュの無効化要求を Dispatcher に送信するのは、AEM オーサー環境でなくパブリッシュ環境となります。
 
@@ -126,7 +126,7 @@ Dispatcher のフラッシュは、パブリッシュインスタンスで動作
 
 この HTTP 要求によって、Dispatcher が特定のファイルをキャッシュから削除します。その後、オプションで、Dispatcher が新しいコピーを使用してキャッシュを更新します。
 
-### キャッシュされたファイルの削除  {#delete-cached-files}
+### キャッシュされたファイルの削除 {#delete-cached-files}
 
 HTTP 要求を発行することによって、Dispatcher がキャッシュからファイルを削除します。Dispatcher は、そのページに対するクライアント要求を受信した場合にのみ、ファイルを再びキャッシュします。このようなやり方でキャッシュファイルを削除する方法は、同じページに対する要求を同時に受信する可能性が低い Web サイトに適しています。
 
@@ -149,7 +149,7 @@ Dispatcher キャッシュ内のその他すべてのファイル（または、
 
 追加の `CQ-Action-Scope: ResourceOnly` ヘッダーを送信することによって、無効化（つまり .stat ファイルへのアクセス）を防ぐことができます。この方法を使用すると、動的に作成され、キャッシュから独立して定期的にフラッシュする必要がある JSON データのように、キャッシュの他の部分を無効化することなく、特定のリソースをフラッシュできます（ニュースや株式相場などを表示するためにサードパーティシステムから取得されるデータなど）。
 
-### ファイルの削除と再キャッシュ  {#delete-and-recache-files}
+### ファイルの削除と再キャッシュ {#delete-and-recache-files}
 
 HTTP 要求を発行することによって、Dispatcher がキャッシュされているファイルを削除し、そのファイルを即座に取得して再キャッシュします。Web サイトが同じページに対するクライアント要求を同時に受信する可能性が高い場合は、ファイルを削除して即座に再キャッシュします。即時再キャッシュにより、Dispatcher は同時のクライアント要求それぞれに対して一度ずつではなく、1 回だけページを取得してキャッシュします。
 
@@ -192,7 +192,6 @@ Content-Length: 36
 >[!NOTE]
 >
 >このサンプルのサーブレットは安全ではありません。HTTP POST 要求メッセージの使用法を説明することだけを目的としたものです。実際のソリューションでは、サーブレットへのアクセスをセキュリティ保護してください。
-
 
 ```java
 package com.adobe.example;
