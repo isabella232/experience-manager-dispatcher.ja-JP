@@ -2,9 +2,9 @@
 title: Dispatcher の設定
 description: Dispatcher の設定方法について説明します。IPv4 および IPv6 のサポート、構成ファイル、環境変数、インスタンス名の設定、ファームの定義、仮想ホストの識別などについて説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 385495c76cd770409e9a002c685e8d375b159207
+source-git-commit: d7045fd779bf2c59034247266930e4b79ec2156f
 workflow-type: tm+mt
-source-wordcount: '8573'
+source-wordcount: '8572'
 ht-degree: 83%
 
 ---
@@ -1374,7 +1374,7 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 
 ### 時間に基づくキャッシュの無効化の設定 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-1(/enableTTL &quot;1&quot;) に設定した場合、 `/enableTTL` プロパティは、バックエンドからの応答ヘッダーを評価し、ヘッダーに `Cache-Control` max-age または `Expires` 日付：キャッシュファイルの横に、有効期限と同じ変更時刻を持つ予備の空のファイルが作成されます。 変更時刻以降にキャッシュされたファイルが要求されると、自動的にバックエンドから再要求されます。
+1 に設定した場合 (`/enableTTL "1"`)、 `/enableTTL` プロパティは、バックエンドからの応答ヘッダーを評価し、ヘッダーに `Cache-Control` max-age または `Expires` 日付：キャッシュファイルの横に、有効期限と同じ変更時刻を持つ予備の空のファイルが作成されます。 変更時刻以降にキャッシュされたファイルが要求されると、自動的にバックエンドから再要求されます。
 
 >[!NOTE]
 >
