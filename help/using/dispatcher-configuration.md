@@ -2,10 +2,10 @@
 title: Dispatcher の設定
 description: Dispatcher の設定方法について説明します。IPv4 および IPv6 のサポート、構成ファイル、環境変数、インスタンス名の設定、ファームの定義、仮想ホストの識別などについて説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 3455a90308d8661725850e19b67d7ff65f6f662f
+source-git-commit: f379daec71240150706eb90d930dbc756bbf8eb1
 workflow-type: tm+mt
-source-wordcount: '8561'
-ht-degree: 83%
+source-wordcount: '8636'
+ht-degree: 81%
 
 ---
 
@@ -1280,31 +1280,38 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 
 あるページに対してパラメーターを無視する場合は、そのページが初めて要求されたときにページがキャッシュされます。そのページに対する以降の要求には、要求内のパラメーターの値にかかわらず、キャッシュされたページが返されます。
 
+>[!NOTE]
+>
+>この場合、 `ignoreUrlParams` 設定を適切に許可リスト指定した。 そのため、すべてのクエリパラメーターは無視され、既知のクエリパラメーターまたは予期されたクエリパラメーターのみが無視されます（「拒否」）。 その他の詳細と例については、 [このページ](https://github.com/adobe/aem-dispatcher-optimizer-tool/blob/main/docs/Rules.md#dot---the-dispatcher-publish-farm-cache-should-have-its-ignoreurlparams-rules-configured-in-an-allow-list-manner).
+
 無視するパラメーターを指定するには、`ignoreUrlParams` プロパティに glob ルールを追加します。
 
-* パラメーターを無視するには、そのパラメーターを許可する glob プロパティを作成します。
-* ページがキャッシュされないようにするには、そのパラメーターを拒否する glob プロパティを作成します。
+* URL パラメーターを含む要求にもかかわらずページをキャッシュするには、パラメーター（無視）を許可する glob プロパティを作成します。
+* ページがキャッシュされないようにするには、このパラメーターを拒否する glob プロパティを作成します（無視します）。
 
-次の例では、Dispatcher が `q` パラメーターを使用して、q パラメーターを含む要求 URL をキャッシュする必要があります。
+次の例では、Dispatcher が、 `nocache` パラメーター。 したがって、 `nocache` パラメーターは、Dispatcher によってキャッシュされません。
 
 ```xml
 /ignoreUrlParams
 {
-    /0001 { /glob "*" /type "deny" }
-    /0002 { /glob "q" /type "allow" }
+    # allow-the-url-parameter-nocache-to-bypass-dispatcher-on-every-request
+    /0001 { /glob "nocache" /type "deny" }
+    # all-other-url-parameters-are-ignored-by-dispatcher-and-requests-are-cached
+    /0002 { /glob "*" /type "allow" }
 }
 ```
 
-例の `ignoreUrlParams` 値を使用すると、`q` パラメーターは無視されるので、次の HTTP 要求によってページがキャッシュされます。
+のコンテキストでは、 `ignoreUrlParams` 上記の設定例では、次の HTTP 要求によって、ページがキャッシュされます。これは、 `willbecached` パラメーターは無視されます：
 
 ```xml
-GET /mypage.html?q=5
+GET /mypage.html?willbecached=true
 ```
 
-例の `ignoreUrlParams` 値を使用すると、****`p` パラメーターは無視されないので、次の HTTP 要求によってページがキャッシュされません。
+のコンテキストでは、 `ignoreUrlParams` 設定例では、次の HTTP 要求によってページが **not** キャッシュされるのは `nocache` パラメーターは無視されません：
 
 ```xml
-GET /mypage.html?q=5&p=4
+GET /mypage.html?nocache=true
+GET /mypage.html?nocache=true&willbecached=true
 ```
 
 glob プロパティについて詳しくは、[glob プロパティのパターンのデザイン](#designing-patterns-for-glob-properties)を参照してください。
