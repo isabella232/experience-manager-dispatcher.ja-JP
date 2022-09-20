@@ -13,10 +13,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: f447ff9b3785248a4906c1c9abdcbd18576aa36d
+source-git-commit: f255701f23a628ba0d8b6cd91228462e1b552ffa
 workflow-type: tm+mt
-source-wordcount: '1404'
-ht-degree: 97%
+source-wordcount: '1421'
+ht-degree: 95%
 
 ---
 
@@ -114,6 +114,7 @@ Dispatcher のフラッシュは、パブリッシュインスタンスで動作
    **注意：** Dispatcher フラッシュエージェントの場合は、パスベースの仮想ホストエントリを使用してファームを区別する場合にのみ URI プロパティが使用されます。このフィールドを使用して、無効化するファームをターゲット設定します。例えば、ファーム #1 の仮想ホストは `www.mysite.com/path1/*` で、ファーム #2 の仮想ホストは `www.mysite.com/path2/*` です。この場合、`/path1/invalidate.cache` の URL を使用して最初のファームをターゲット設定し、`/path2/invalidate.cache` を使用して 2 つ目のファームをターゲット設定できます。詳しくは、[複数ドメインでの Dispatcher の使用](dispatcher-domains.md)を参照してください。 
 
 1. 必要に応じて、その他のパラメーターを設定します。
+1. パブリッシュインスタンスにログインし、フラッシュエージェントの設定を検証します。 また、有効になっていることを確認します。
 1. 適用するパブリッシュインスタンスごとに、手順を繰り返します。
 
 設定後、オーサーインスタンスからパブリッシュインスタンスにページをアクティベートすると、このエージェントが標準のレプリケーションを開始します。ログには、次の例のような、パブリッシュサーバーからの要求を示すメッセージが含まれます。
