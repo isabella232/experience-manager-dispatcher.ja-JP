@@ -2,9 +2,9 @@
 title: Dispatcher の設定
 description: Dispatcher の設定方法について説明します。IPv4 および IPv6 のサポート、構成ファイル、環境変数、インスタンス名の設定、ファームの定義、仮想ホストの識別などについて説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: f379daec71240150706eb90d930dbc756bbf8eb1
+source-git-commit: 112aa011e7a338be2b397d0c9b785fc2d9905b5d
 workflow-type: tm+mt
-source-wordcount: '8636'
+source-wordcount: '8675'
 ht-degree: 81%
 
 ---
@@ -406,7 +406,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 
 >[!CAUTION]
 >
->この機能を有効にするには、`/cache` セクションで `/allowAuthorized` を **必ず** `"0"` に設定してください。
+>この機能を有効にするには、`/allowAuthorized` セクションで **を**&#x200B;必ず`"0"` `/cache` に設定してください。詳しくは、 [認証使用時のキャッシュ](#caching-when-authentication-is-used) 」セクションに、 `/allowAuthorized 0 ` 認証情報を含むリクエスト： **not** キャッシュ済み 権限を区別するキャッシュが必要な場合は、 [セキュリティ保護されたコンテンツのキャッシュ](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html?lang=ja) ページ。
 
 レンダーファームにアクセスするためのセキュアセッションを作成して、このファーム内のページにユーザーがアクセスする際にログインが必要になるようにします。ログイン後、ユーザーはファーム内のページにアクセスできます。閉じられたユーザーグループ（CUG）でのこの機能の使用については、[閉じられたユーザーグループの作成](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=en#creating-the-user-group-to-be-used)を参照してください。また、運用を開始する前に、Dispatcher の[セキュリティチェックリスト](/help/using/security-checklist.md)を参照してください。
 
