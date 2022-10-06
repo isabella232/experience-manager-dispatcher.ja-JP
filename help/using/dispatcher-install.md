@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: d19a27256c44ec00fd440b2f8a2fe408a4a4b7c8
+source-git-commit: 63dc6184b502b517238c60ef6223b39bd7594306
 workflow-type: tm+mt
 source-wordcount: '3693'
 ht-degree: 96%
@@ -113,7 +113,7 @@ Microsoft インターネットインフォメーションサービスには次�
 
 ZIP ファイルには以下のファイルが含まれます。
 
-| File | 説明 |
+| ファイル | 説明 |
 |--- |--- |
 | `disp_iis.dll` | Dispatcher のダイナミックリンクライブラリファイル。 |
 | `disp_iis.ini` | IIS 用の設定ファイル。このサンプルを要件に合わせて更新できます。**注意**：ini ファイルの name-root は dll と同じである必要があります。 |
@@ -190,7 +190,7 @@ Web サイトが認証メソッドを使用する場合は、それに応じて�
 1. 機能ビューモードを使用して、「IIS」セクションで「ハンドラーマッピング」をダブルクリックします。
 1. ハンドラーマッピングページの操作パネルで、「ワイルドカードスクリプトマップの追加」をクリックし、以下のプロパティ値を追加して、「OK」をクリックします。
 
-   * 要求パス：*
+   * リクエストパス： &#42;
    * 実行可能ファイル：disp_iis.dll ファイルの絶対パス。例：`C:\inetpub\Scripts\disp_iis.dll`
    * 名前：ハンドラーマッピングのわかりやすい名前。例：`Dispatcher`
 
