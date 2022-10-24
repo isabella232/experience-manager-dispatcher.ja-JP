@@ -2,7 +2,7 @@
 title: Dispatcher の設定
 description: Dispatcher の設定方法について説明します。IPv4 および IPv6 のサポート、構成ファイル、環境変数、インスタンス名の設定、ファームの定義、仮想ホストの識別などについて説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 112aa011e7a338be2b397d0c9b785fc2d9905b5d
+source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
 workflow-type: tm+mt
 source-wordcount: '8675'
 ht-degree: 81%
@@ -841,7 +841,7 @@ Dispatcher バージョン 4.1.5 以降では、`/filter` セクションを使�
 
 ### Dispatcher のセキュリティのテスト {#testing-dispatcher-security}
 
-Dispatcher のフィルターは、AEM パブリッシュインスタンス上の以下のページおよびスクリプトへのアクセスをブロックする必要があります。Web ブラウザーを使用して、サイト訪問者として以下のページを開こうと試み、コード 403 が返されることを確認してください。それ以外の結果が得られた場合は、フィルターを調整してください。
+Dispatcher のフィルターは、AEM パブリッシュインスタンス上の以下のページおよびスクリプトへのアクセスをブロックする必要があります。Web ブラウザーを使用して、サイト訪問者として以下のページを開こうと試み、コード 404 が返されることを確認してください。それ以外の結果が得られた場合は、フィルターを調整してください。
 
 次の場合は、通常のページレンダリングが表示されます。 `/content/add_valid_page.html?debug=layout`.
 
@@ -901,7 +901,7 @@ Dispatcher のフィルターは、AEM パブリッシュインスタンス上�
 
 `curl -X POST "https://anonymous:anonymous@hostname:port/content/usergenerated/mytestnode"`
 
-ターミナルまたはコマンドプロンプトで次のコマンドを発行して、Dispatcher キャッシュの無効化を試み、コード 404 の応答を受け取ることを確認します。
+ターミナルまたはコマンドプロンプトで次のコマンドを発行して、Dispatcher キャッシュの無効化を試み、コード 403 応答を受け取ることを確認します。
 
 `curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
