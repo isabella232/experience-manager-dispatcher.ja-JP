@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 63dc6184b502b517238c60ef6223b39bd7594306
+source-git-commit: 663e493f3e1ae26c264e574cec4e0b271a971809
 workflow-type: tm+mt
 source-wordcount: '3693'
 ht-degree: 96%
@@ -264,7 +264,7 @@ Dispatcher で JSON 呼び出しを許可する場合、以下の手順を実行
    logfile=C:\inetpub\logs\dispatcher\dispatcher.log
    ```
 
-### 次の手順 {#next-steps}
+### 次のステップ {#next-steps}
 
 Dispatcher の使用を始める前に、以下のことを理解しておく必要があります。
 
@@ -339,8 +339,8 @@ RedHat Linux Kernel 2.6 上で SELinux を有効にして Dispatcher を実行�
 ```shell
 semanage fcontext -a -t httpd_modules_t [path to the dispatcher.so file]
 setsebool -P httpd_can_network_connect on
-chcon -R --type httpd_sys_content_t [path to the docroot]
-semanage fcontext -a -t httpd_sys_content_t "[path to the docroot](/.*)?"
+chcon -R --type httpd_sys_rw_content_t [path to the docroot]
+semanage fcontext -a -t httpd_sys_rw_content_t "[path to the docroot](/.*)?"
 ```
 
 ### Apache Web サーバー - Dispatcher 用の Apache Web サーバーの設定 {#apache-web-server-configure-apache-web-server-for-dispatcher}
@@ -554,7 +554,7 @@ Dispatcher は、OpenSSL を使用して HTTP 経由でのセキュアな通信�
 >
 >カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) / を使用してコンパイルされていることを確認してください。
 
-### 次の手順 {#next-steps-1}
+### 次のステップ {#next-steps-1}
 
 Dispatcher の使用を始める前に、次の作業を実行する必要があります。
 
@@ -669,7 +669,7 @@ Service fn="dispService" method="(GET|HEAD|POST)" type="\*/\*"
 ...
 ```
 
-### 次の手順 {#next-steps-2}
+### 次のステップ {#next-steps-2}
 
 Dispatcher の使用を始める前に、次の作業を実行する必要があります。
 
