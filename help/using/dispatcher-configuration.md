@@ -2,7 +2,7 @@
 title: Dispatcher の設定
 description: Dispatcher の設定方法について説明します。IPv4 および IPv6 のサポート、構成ファイル、環境変数、インスタンス名の設定、ファームの定義、仮想ホストの識別などについて説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
+source-git-commit: 9ee19d28b9d18f2ffd4f45129e48b5431beacc77
 workflow-type: tm+mt
 source-wordcount: '8675'
 ht-degree: 81%
@@ -625,7 +625,7 @@ HTTP/1.1 では [リクエストライン](https://www.w3.org/Protocols/rfc2616/
 次のサンプルのフィルターセクションによって、Dispatcher がすべてのファイルに対する要求を拒否します。すべてのファイルへのアクセスを拒否してから、特定の領域へのアクセスを許可してください。
 
 ```xml
-  /0001  { /glob "*" /type "deny" }
+/0001  { /type "deny" /url "*"  }
 ```
 
 明示的に拒否された領域への要求に対して、「404 error code (page not found)」が返されます。
@@ -692,8 +692,8 @@ HTTP/1.1 では [リクエストライン](https://www.w3.org/Protocols/rfc2616/
 /006 {
         /type "deny"
         /path "/content/*"
-        /selectors '(feed|rss|pages|languages|blueprint|infinity|tidy)'
-        /extension '(json|xml|html)'
+        /selectors '(feed|rss|pages|languages|blueprint|infinity|tidy|sysview|docview|query|jcr:content|_jcr_content|search|childrenlist|ext|assets|assetsearch|[0-9-]+)'
+        /extension '(json|xml|html|feed))'
         }
 ```
 
@@ -729,7 +729,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
   /filter
       {
       # Deny everything first and then allow specific entries
-      /0001 { /type "deny" /glob "*" }
+      /0001  { /type "deny" /url "*"  }
 
       # Open consoles
 #     /0011 { /type "allow" /url "/admin/*"  }  # allow servlet engine admin
