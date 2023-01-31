@@ -2,9 +2,9 @@
 title: Dispatcher の設定
 description: Dispatcher の設定方法について説明します。IPv4 および IPv6 のサポート、構成ファイル、環境変数、インスタンス名の設定、ファームの定義、仮想ホストの識別などについて説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 51be516f90587ceda19180f13727c8372a794261
+source-git-commit: 0378cfc2585339920894dd354c59929ef2bf49e0
 workflow-type: tm+mt
-source-wordcount: '8675'
+source-wordcount: '8710'
 ht-degree: 81%
 
 ---
@@ -1284,6 +1284,11 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 
 * URL パラメーターを含む要求にもかかわらずページをキャッシュするには、パラメーター（無視）を許可する glob プロパティを作成します。
 * ページがキャッシュされないようにするには、このパラメーターを拒否する glob プロパティを作成します（無視します）。
+
+>[!NOTE]
+>
+>glob プロパティを設定する際は、クエリパラメーター名と一致する必要があることに注意してください。 例えば、次の URL の「p1」パラメーターを無視する場合は、 `http://example.com/path/test.html?p1=test&p2=v2`を指定した場合、glob プロパティは次のようになります。
+> `/0002 { /glob "p1" /type "allow" }`
 
 次の例では、Dispatcher が、 `nocache` パラメーター。 したがって、 `nocache` パラメーターは、Dispatcher によってキャッシュされません。
 
