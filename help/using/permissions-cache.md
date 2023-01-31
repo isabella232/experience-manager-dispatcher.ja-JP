@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 18fa55f4be3a93b5484c3a0fa408031a43944f27
+source-git-commit: ef395d122b1f248cbcdad5a74ff111872c4d2b00
 workflow-type: tm+mt
-source-wordcount: '829'
-ht-degree: 83%
+source-wordcount: '856'
+ht-degree: 80%
 
 ---
 
@@ -144,6 +144,10 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 ```
 
 ## 権限を区別するキャッシュ用の Dispatcher の設定 {#configure-dispatcher-for-permission-sensitive-caching}
+
+>[!NOTE]
+>
+>要件によって認証済みドキュメントのキャッシュが許可されている場合は、/cache セクションの/allowAuthorized プロパティをに設定します。 `/allowAuthorized 1`. 詳しくは、 [認証使用時のキャッシュ](/help/using/dispatcher-configuration.md) を参照してください。
 
 dispatcher.any ファイルの auth_checker セクションで、権限を区別するキャッシュの動作を制御します。auth_checker セクションには、以下のサブセクションが含まれます。
 
