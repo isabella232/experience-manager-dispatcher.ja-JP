@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: ef395d122b1f248cbcdad5a74ff111872c4d2b00
+source-git-commit: 31eaa42b17838d97cacd5c535e04be01a3eb6807
 workflow-type: tm+mt
-source-wordcount: '856'
-ht-degree: 80%
+source-wordcount: '918'
+ht-degree: 75%
 
 ---
 
@@ -60,7 +60,6 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 1. レンダーは、AEM Authorizer サーブレット（Dispatcher AuthChcker サーブレットではありません）を呼び出してセキュリティチェックを実行します。 ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
 1. Dispatcher がブラウザーに応答を転送します。Dispatcher が、レンダーの応答メッセージの本文をキャッシュに追加します。
 
-
 ## 権限に影響を受けるキャッシュの実装 {#implementing-permission-sensitive-caching}
 
 権限に影響を受けるキャッシュを実装するには、以下のタスクを実行します。
@@ -71,6 +70,11 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 >[!NOTE]
 >
 >一般的に、安全なリソースは、安全ではないファイルとは別のフォルダーに保存します。例：/content/secure/
+
+>[!NOTE]
+>
+>Dispatcher の前に CDN（またはその他のキャッシュ）がある場合、CDN がプライベートコンテンツをキャッシュしないように、それに応じてキャッシュヘッダーを設定する必要があります。 （例：`Header always set Cache-Control private`）。
+>AEMas a Cloud Serviceの場合は、 [キャッシュ](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html) プライベートキャッシュヘッダーを設定する方法の詳細については、ページを参照してください。
 
 ## Auth Checker サーブレットの作成 {#create-the-auth-checker-servlet}
 
