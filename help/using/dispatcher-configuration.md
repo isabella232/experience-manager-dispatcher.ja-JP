@@ -2,10 +2,10 @@
 title: Dispatcher の設定
 description: Dispatcher の設定方法について説明します。IPv4 および IPv6 のサポート、構成ファイル、環境変数、インスタンス名の設定、ファームの定義、仮想ホストの識別などについて説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0378cfc2585339920894dd354c59929ef2bf49e0
+source-git-commit: 0ac7c1cf3fc9330665b7a758cea38410c1958f1c
 workflow-type: tm+mt
-source-wordcount: '8710'
-ht-degree: 81%
+source-wordcount: '8984'
+ht-degree: 78%
 
 ---
 
@@ -1383,7 +1383,31 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 
 ### 時間に基づくキャッシュの無効化の設定 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-1 に設定した場合 (`/enableTTL "1"`)、 `/enableTTL` プロパティは、バックエンドからの応答ヘッダーを評価し、ヘッダーに `Cache-Control` max-age または `Expires` 日付：キャッシュファイルの横に、有効期限と同じ変更時刻を持つ予備の空のファイルが作成されます。 変更時刻以降にキャッシュされたファイルが要求されると、自動的にバックエンドから再要求されます。
+時間に基づくキャッシュの無効化は、 `/enableTTL` プロパティに含まれ、HTTP 標準の正規の有効期限ヘッダーが存在すること。 プロパティを 1 に設定した場合 (`/enableTTL "1"`) の場合は、バックエンドからの応答ヘッダーを評価し、ヘッダーに `Cache-Control`, `max-age` または `Expires` 日付：キャッシュされたファイルの横に、有効期限と同じ変更時刻を持つ、補助的な空のファイルが作成されます。 変更時刻以降にキャッシュされたファイルが要求されると、自動的にバックエンドから再要求されます。
+
+Dispatcher バージョン 4.3.5 以前は、TTL 無効化ロジックは設定済みの TTL 値にのみ基づいていました。 Dispatcher バージョン 4.3.5 では、両方の TTL が設定されます。 **および** dispatcher キャッシュの無効化ルールが考慮されます。 したがって、キャッシュされたファイルの場合は次のようになります。
+
+1. If `/enableTTL` が 1 に設定されている場合、ファイルの有効期限がチェックされます。 設定された TTL に従ってファイルの有効期限が切れた場合、他のチェックは実行されず、キャッシュされたファイルがバックエンドから再リクエストされます。
+2. ファイルが期限切れでないか、 `/enableTTL` が設定されていない場合、標準キャッシュの無効化ルールは、 [/statfileslevel](#invalidating-files-by-folder-level) および [/invalidate](#automatically-invalidating-cached-files). つまり、Dispatcher は、TTL の期限が切れていないファイルを無効にできます。
+
+この新しい実装では、ファイルの TTL が長い（CDN 上などで）場合でも、TTL が期限切れになっていなくても無効にできます。 Dispatcher のキャッシュヒット率よりもコンテンツの鮮度を優先します。
+
+逆に、必要に応じて **のみ** 有効期限ロジックをファイルに適用し、 `/enableTTL` を 1 に設定し、そのファイルを標準のキャッシュ無効化メカニズムから除外します。 例えば、次のことができます。
+
+* の設定 [無効化ルール](#automatically-invalidating-cached-files) を指定します。 以下のスニペットでは、で終わるすべてのファイルが `.example.html` は無視され、設定された TTL を過ぎた場合にのみ期限切れになります。
+
+```xml
+  /invalidate
+  {
+   /0000  { /glob "*" /type "deny" }
+   /0001  { /glob "*.html" /type "allow" }
+   /0002  { /glob "*.example.html" /type "deny" }
+  }
+```
+
+* 高い [/statfilelevel](#invalidating-files-by-folder-level) したがって、ファイルは自動的に無効化されません。
+
+これにより、 `.stat` ファイルの無効化は使用されず、指定したファイルに対して TTL の有効期限のみが有効になります。
 
 >[!NOTE]
 >
