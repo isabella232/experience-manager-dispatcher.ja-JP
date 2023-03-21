@@ -4,10 +4,10 @@ seo-title: Top issues for AEM Dispatcher
 description: AEM Dispatcher に関する主な問題
 seo-description: Top issues for Adobe AEM Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
+source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
 workflow-type: tm+mt
 source-wordcount: '1578'
-ht-degree: 74%
+ht-degree: 71%
 
 ---
 
@@ -131,7 +131,7 @@ geometrixx-outdoors directory ディレクトリ内の という名前を持つ�
 
 ### パブリッシュインスタンスで Dispatcher フラッシュエージェントを設定する方法を教えてください。
 
-詳しくは、 [レプリケーション](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents) ページ。
+詳しくは、 [レプリケーション](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents) ページ。
 
 ### Dispatcher のフラッシュ問題のトラブルシューティング方法を教えてください。
 
@@ -152,11 +152,11 @@ geometrixx-outdoors directory ディレクトリ内の という名前を持つ�
 
 Dispatcher はドキュメントが最新かどうかをどう判断しますか？ドキュメントが最新かどうかを判断するために、Dispatcher は次の手順を実行します。
 
-ドキュメントが自動無効化の対象であるかどうかチェックします。対象でない場合、ドキュメントは最新であると認識されます。ドキュメントが自動無効化の対象として設定されている場合、Dispatcher は最新の変更情報と比べてドキュメントが古いかどうかチェックします。ドキュメントが古い場合、Dispatcher は AEM インスタンスに最新バージョンを要求し、キャッシュ内のバージョンを置き換えます。
+ドキュメントが自動無効化の対象であるかどうかチェックします。対象でない場合、ドキュメントは最新であると認識されます。ドキュメントが自動無効化の対象として設定されている場合、Dispatcher は最新の変更情報と比べてドキュメントが古いかどうかチェックします。古いバージョンの場合、Dispatcher はAEMインスタンスから現在のバージョンを要求し、キャッシュ内のバージョンを置き換えます。
 
 ### Dispatcher はどのようにドキュメントを返しますか？
 
-[Dispatcher 設定](dispatcher-configuration.md)ファイル `dispatcher.any` を使用して、Dispatcher がドキュメントをキャッシュするかどうかを定義できます。Dispatcher は、要求とキャッシュ可能なドキュメントのリストを照合します。ドキュメントがこのリストにない場合は、AEM インスタンスにドキュメントを要求します。
+[Dispatcher 設定](dispatcher-configuration.md)ファイル `dispatcher.any` を使用して、Dispatcher がドキュメントをキャッシュするかどうかを定義できます。Dispatcher は、要求とキャッシュ可能なドキュメントのリストを照合します。ドキュメントがこのリストにない場合、Dispatcher はAEMインスタンスからドキュメントを要求します。
 
 `/rules` プロパティは、ドキュメントパスに応じてキャッシュされるドキュメントを制御します。`/rules` プロパティにかかわらず、Dispatcher は以下の状況にあるドキュメントをキャッシュしません。
 
