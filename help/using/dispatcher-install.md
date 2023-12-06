@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 3bb9cb81ac98147bf12e9370d02002dd91ee374e
+source-git-commit: 570eafa7889ff4db820f80eccd529046464d9cfb
 workflow-type: tm+mt
-source-wordcount: '3726'
-ht-degree: 65%
+source-wordcount: '3797'
+ht-degree: 52%
 
 ---
 
@@ -171,7 +171,7 @@ replaceauthorization=0
 
 Dispatcher ISAPI モジュールを統合するように IIS を設定します。 IIS では、ワイルドカードアプリケーションマッピングを使用します。
 
-### 匿名アクセスの設定 - IIS 8.5 および 10 {#configuring-anonymous-access-iis-and}
+### 匿名アクセスの設定 — IIS 8.5 および 10 {#configuring-anonymous-access-iis-and}
 
 オーサーインスタンス上のデフォルトのフラッシュレプリケーションエージェントが、フラッシュリクエストを含むセキュリティ資格情報を送信しないように設定されています。 したがって、Dispatcher キャッシュを使用する Web サイトでは、匿名アクセスを許可する必要があります。
 
@@ -181,7 +181,7 @@ Web サイトで認証方法を使用している場合は、それに応じて�
 1. 機能表示モードを使用して、「IIS」セクションで「認証」をダブルクリックします。
 1. 「匿名認証」が有効になっていない場合は、「匿名認証」を選択し、「アクション」領域で「有効」をクリックします。
 
-### Dispatcher ISAPI モジュールの統合 - IIS 8.5 および 10 {#integrating-the-dispatcher-isapi-module-iis-and}
+### Dispatcher ISAPI モジュールの統合 — IIS 8.5 および 10 {#integrating-the-dispatcher-isapi-module-iis-and}
 
 以下の手順を実行して、Dispatcher ISAPI モジュールを IIS に追加します。
 
@@ -203,7 +203,7 @@ Web サイトで認証方法を使用している場合は、それに応じて�
 1. （IIS 8.0）ハンドラーをまだキャッシュされていないファイルおよびフォルダー用に使用するには、「要求のマップ先が次の場合のみハンドラーを呼び出す」を選択解除してから「OK」をクリックします。
 1. （IIS 8.0）スクリプトマップの編集ダイアログボックスで、「OK」をクリックします。
 
-### キャッシュへのアクセス権の設定 - IIS 8.5 および 10 {#configuring-access-to-the-cache-iis-and}
+### キャッシュへのアクセスの設定 — IIS 8.5 および 10 {#configuring-access-to-the-cache-iis-and}
 
 デフォルトのアプリケーションプールユーザーに、Dispatcher キャッシュとして使用するフォルダーへの書き込みアクセス権を付与します。
 
@@ -221,7 +221,7 @@ Web サイトで認証方法を使用している場合は、それに応じて�
 1. 「名前を確認」ボタンをクリックします。 Windows がユーザーアカウントを解決したら、[OK] をクリックします。
 1. Dispatcher フォルダーのアクセス許可ダイアログボックスで、追加したアカウントを選択し、アカウントに対する&#x200B;**フルコントロール以外**&#x200B;のすべてのアクセス許可を有効にして、「OK」をクリックします。「OK」をクリックして、フォルダーのプロパティダイアログボックスを閉じます。
 
-### JSON の MIME の種類の登録 - IIS 8.5 および 10 {#registering-the-json-mime-type-iis-and}
+### JSON の MIME の種類の登録 — IIS 8.5 および 10 {#registering-the-json-mime-type-iis-and}
 
 Dispatcher で JSON 呼び出しを許可する場合は、以下の手順を実行して JSON MIME タイプを登録します。
 
@@ -231,14 +231,14 @@ Dispatcher で JSON 呼び出しを許可する場合は、以下の手順を実
    * ファイル名拡張子：`.json`
    * MIME Type: `application/json`
 
-### 非表示セグメント bin の削除 - IIS 8.5 および 10 {#removing-the-bin-hidden-segment-iis-and}
+### 非表示セグメント bin の削除 — IIS 8.5 および 10 {#removing-the-bin-hidden-segment-iis-and}
 
 以下の手順を実行して、非表示セグメント `bin` を削除します。新しくない Web サイトには、この隠しセグメントを含めることができます。
 
 1. IIS Manager で、Web サイトを選択し、機能ビューを使用して、「要求のフィルタリング」をダブルクリックします。
 1. `bin` セグメントを選択し、「削除」をクリックして、確認ダイアログボックスで「はい」をクリックします。
 
-### IIS メッセージのファイルへの記録 - IIS 8.5 および 10 {#logging-iis-messages-to-a-file-iis-and}
+### IIS メッセージのファイルへの記録 — IIS 8.5 および 10 {#logging-iis-messages-to-a-file-iis-and}
 
 次の手順を実行して、Dispatcher ログメッセージを Windows イベントログではなくログファイルに書き込みます。 ログファイルを使用するように Dispatcher を設定し、IIS にファイルへの書き込みアクセス権を付与する必要があります。
 
@@ -289,7 +289,7 @@ Apache Web サーバーのインストール方法については、インスト
 
 Apache HTTP サーバーも参照してください。 [セキュリティに関するヒント](https://httpd.apache.org/docs/2.4/misc/security_tips.html) および [セキュリティレポート](https://httpd.apache.org/security_report.html).
 
-### Apache Web サーバー - Dispatcher モジュールの追加 {#apache-web-server-add-the-dispatcher-module}
+### Apache Web サーバー — Dispatcher モジュールの追加 {#apache-web-server-add-the-dispatcher-module}
 
 Dispatcher は次のどちらかの形式で提供されます。
 
@@ -334,7 +334,7 @@ RedHat Linux Kernel 2.6 上で SELinux を有効にして Dispatcher を実行�
 * HTTPD スクリプトおよびモジュールを有効にして、ネットワーク接続を行います。
 * キャッシュされたファイルを保存するドキュメントルートの SELinux コンテキストを設定する。
 
-`[path to the dispatcher.so file]` を Apache Web サーバーにインストールした Dispatcher モジュールへのパスで置き換え、*`path to the docroot`* をドキュメントルートがあるパス（例：`/opt/cq/cache`）に置き換えて、以下のコマンドをターミナルウィンドウに入力します。
+次のコマンドをターミナルウィンドウに入力し、 `[path to the dispatcher.so file]` を、Apache Web サーバーにインストールした Dispatcher モジュールへのパスに置き換え、 *`path to the docroot`* には、ドキュメントルートが存在するパス ( 例： `/opt/cq/cache`):
 
 ```shell
 semanage fcontext -a -t httpd_modules_t [path to the dispatcher.so file]
@@ -343,7 +343,7 @@ chcon -R --type httpd_sys_rw_content_t [path to the docroot]
 semanage fcontext -a -t httpd_sys_rw_content_t "[path to the docroot](/.*)?"
 ```
 
-### Apache Web サーバー - Dispatcher 用の Apache Web サーバーの設定 {#apache-web-server-configure-apache-web-server-for-dispatcher}
+### Apache Web サーバー — Dispatcher 用の Apache Web サーバーの設定 {#apache-web-server-configure-apache-web-server-for-dispatcher}
 
 Apache Web サーバーは、`httpd.conf` を使用して設定する必要があります。Dispatcher インストールキットには、`httpd.conf.disp<x>` というサンプルの設定ファイルがあります。
 
@@ -355,7 +355,7 @@ Apache Web サーバーは、`httpd.conf` を使用して設定する必要が�
 
    * **LoadModule**：起動時のモジュールの読み込み。
    * Dispatcher 固有の設定エントリ（**DispatcherConfig、DispatcherLog**、**DispatcherLogLevel** など）。
-   * **SetHandler**：Dispatcher.**LoadModule**&#x200B;をアクティベートします。
+   * **SetHandler** Dispatcher をアクティベートする場合。 **LoadModule**.
    * **ModMimeUsePathInfo**：**mod_mime** の動作を設定します。
 
 1. （オプション）htdocs ディレクトリの所有者を変更することをお勧めします。
@@ -411,13 +411,13 @@ DispatcherKeepAliveTimeout 60
 |--- |--- |
 | DispatcherConfig | Dispatcher 設定ファイルの場所と名前。<br/>このプロパティがメインサーバー設定にある場合、すべての仮想ホストがプロパティ値を継承します。ただし、仮想ホストに DispatcherConfig プロパティを含めて、メインサーバー設定をオーバーライドできます。 |
 | DispatcherLog | ログファイルの場所と名前。 |
-| DispatcherLogLevel | ログファイルのログレベル：<br/> 0 - エラー<br/> 1 - 警告<br/> 2 - 情報<br/> 3 - デバッグ&#x200B;<br/>**注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
-| DispatcherNoServerHeader | *このパラメーターは廃止されており、効果はありません。*<br/><br/>&#x200B;使用するサーバーヘッダーを定義します。<br/><ul><li>未定義または 0 - HTTP サーバーヘッダーには AEM バージョンが含まれます。 </li><li> 1 - Apache サーバーヘッダーを使用します。</li></ul> |
-| DispatcherDeclineRoot | ルート「/」への要求を拒否するかどうかを定義します。<br/>**0** - <br/>**/ への要求を受け入れます。1** - Dispatcher は / への要求を処理しません。適切なマッピングをおこなうには mod_alias を使用してください。 |
-| DispatcherUseProcessedURL | Dispatcher によるすべての詳細な処理に事前処理された URL を使用するかどうかを定義します。<br/>**0** - Web サーバーに渡された元の URL を使用します。<br/>**1** - Dispatcher は、Web サーバーに渡された元の URL の代わりに、Dispatcher に先行するハンドラー（つまり、`mod_rewrite`）が既に処理した URL を使用します。例えば、元の URL または処理された URL のどちらかが Dispatcher のフィルターと一致する場合などです。URL は、キャッシュファイル構造の基礎としても使用されます。mod_rewrite については、Apache Web サイトのドキュメント（Apache 2.4 など）を参照してください。mod_rewrite を使用する場合は、&#39;passthrough | PT&#39;（pass through to next handler）フラグを使用して、内部の request_rec 構造の uri フィールドに filename フィールドの値を設定するよう、書き換えエンジンに指示することをお勧めします。 |
-| DispatcherPassError | ErrorDocument 処理のエラーコードのサポート方法を定義します。<br/>**0** - Dispatcher はクライアントへのすべてのエラー応答をスプールします。<br/>**1** - Dispatcher はクライアントへのエラー応答（ステータスコードが 400 以上）をスプールしませんが、ステータスコードを Apache に渡します。Apache では、ErrorDocument 命令によってそのようなステータスコードを処理できます。<br/>**コード範囲** - 応答を Apache に渡すエラーコードの範囲を指定します。その他のエラーコードはクライアントに渡されます。例えば、次の設定では、エラー 412 の応答をクライアントに渡し、その他すべてのエラーを Apache に渡します。DispatcherPassError 400-411,413-417 |
+| DispatcherLogLevel | ログファイルのログレベル： <br/>0 — エラー <br/>1 — 警告 <br/>2 — 情報 <br/>3 — デバッグ <br/>**注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
+| DispatcherNoServerHeader | *このパラメーターは廃止されており、効果はありません。*<br/><br/> 使用するサーバーヘッダーを定義します。 <br/><ul><li>未定義または 0 - HTTP サーバーヘッダーには AEM バージョンが含まれます。 </li><li> 1 - Apache サーバーヘッダーを使用します。</li></ul> |
+| DispatcherDeclineRoot | ルート「/」への要求を拒否するかどうかを定義します。 <br/>**0** - /へのリクエストを受け入れます <br/>**1** - /への要求は Dispatcher で処理されません。適切なマッピングをおこなうには mod_alias を使用してください。 |
+| DispatcherUseProcessedURL | Dispatcher によるすべての詳細な処理に事前処理された URL を使用するかどうかを定義します。 <br/>**0** - Web サーバーに渡された元の URL を使用します。 <br/>**1** - Dispatcher は、Dispatcher に先行するハンドラーによって既に処理された URL を使用します ( つまり、 `mod_rewrite`) です。  例えば、元の URL または処理された URL のどちらかが Dispatcher のフィルターと一致する場合などです。URL は、キャッシュファイル構造の基礎としても使用されます。mod_rewrite については、Apache Web サイトのドキュメント（Apache 2.4 など）を参照してください。mod_rewrite を使用する場合は、&#39;passthrough | PT&#39;（pass through to next handler）フラグを使用して、内部の request_rec 構造の uri フィールドに filename フィールドの値を設定するよう、書き換えエンジンに指示することをお勧めします。 |
+| DispatcherPassError | ErrorDocument 処理のエラーコードのサポート方法を定義します。 <br/>**0** - Dispatcher は、クライアントに対するすべてのエラー応答をスプールします。 <br/>**1** - Dispatcher は、クライアントへのエラー応答（ステータスコードが 400 以上）をスプールしませんが、ステータスコードを Apache に渡します。Apache では、ErrorDocument 命令によってそのようなステータスコードを処理できます。 <br/>**コード範囲**  — 応答を Apache に渡すエラーコードの範囲を指定します。 その他のエラーコードはクライアントに渡されます。例えば、次の設定では、エラー 412 の応答をクライアントに渡し、その他すべてのエラーを Apache に渡します。DispatcherPassError 400-411,413-417 |
 | DispatcherKeepAliveTimeout | キープアライブタイムアウトを秒単位で指定します。 Dispatcher バージョン 4.2.0 以降では、デフォルトのキープアライブ値は 60 です。値 0 はキープアライブを無効にします。 |
-| DispatcherNoCanonURL | このパラメーターを On に設定すると、正規化された URL ではなく 生の URL がバックエンドに渡され、DispatcherUseProcessedURLの設定がオーバーライドされます。デフォルト値は Off です。<br/>**注意**：Dispatcher 設定内のフィルタールールは、名前の URL ではなく、サニタイズされた URL に対して評価されます。 |
+| DispatcherNoCanonURL | このパラメーターを On に設定すると、正規化された URL ではなく 生の URL がバックエンドに渡され、DispatcherUseProcessedURLの設定がオーバーライドされます。デフォルト値は Off です。<br/>**注意**:Dispatcher 設定内のフィルタールールは、生の URL ではなく、サニタイズされた URL に対して評価されます。 |
 
 
 
@@ -428,7 +428,7 @@ DispatcherKeepAliveTimeout 60
 
 >[!NOTE]
 >
->サーバーヘッダーのデフォルトの設定は次のとおりです。
+>サーバーヘッダーのデフォルト設定は次のとおりです。
 >
 >`ServerTokens Full`
 >
@@ -449,7 +449,7 @@ DispatcherKeepAliveTimeout 60
 ```
 ...  
 <Directory />  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
   
@@ -469,7 +469,7 @@ AllowOverride None
 ServerName www.mycompany.com  
 DocumentRoot _\[cache-path\]_\\docs  
 <Directory _\[cache-path\]_\\docs>  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
 AllowOverride None  
@@ -486,7 +486,7 @@ AllowOverride None
 ServerName www.mycompany.com  
 DocumentRoot /usr/apachecache/docs  
 <Directory /usr/apachecache/docs>  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
 AllowOverride None  
@@ -526,7 +526,7 @@ mod_mime モジュール ( 例： [Apache モジュール mod_mime](https://http
 ```
 ...  
 <Directory />  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 ModMimeUsePathInfo On  
 </IfModule>  
@@ -537,7 +537,7 @@ AllowOverride None
 ...
 ```
 
-### HTTPS のサポートの有効化（UNIX および Linux）  {#enable-support-for-https-unix-and-linux}
+### HTTPS のサポートの有効化（UNIX および Linux） {#enable-support-for-https-unix-and-linux}
 
 Dispatcher は、OpenSSL を使用して HTTP 経由の安全な通信を実装します。 Dispatcher のバージョンからの開始 **4.2.0**、OpenSSL 1.0.0 および OpenSSL 1.0.1 がサポートされています。 Dispatcher は、デフォルトで OpenSSL 1.0.0 を使用します。 OpenSSL 1.0.1 を使用するには、以下の手順を実行して、Dispatcher がインストールされている OpenSSL ライブラリを使用できるように、シンボリックリンクを作成します。
 
@@ -556,7 +556,7 @@ Dispatcher は、OpenSSL を使用して HTTP 経由の安全な通信を実装�
 
 >[!NOTE]
 >
->カスタマイズバージョンのApacheを使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/) / を使用してコンパイルされていることを確認してください。
+>カスタマイズバージョンの Apache を使用している場合は、Apache と Dispatcher が同じバージョンの [OpenSSL](https://www.openssl.org/source/).
 
 ### 次の手順 {#next-steps-1}
 
@@ -565,7 +565,7 @@ Dispatcher の使用を始める前に、次の作業を実行する必要があ
 * [Dispatcher の設定](dispatcher-configuration.md)
 * Dispatcher と連携するように [AEM を設定](page-invalidate.md)する
 
-## Sun Java System Web Server／iPlanet {#sun-java-system-web-server-iplanet}
+## Sun Java System Web Server/iPlanet {#sun-java-system-web-server-iplanet}
 
 >[!NOTE]
 >
@@ -573,14 +573,14 @@ Dispatcher の使用を始める前に、次の作業を実行する必要があ
 >
 >実行する手順を選択する際に注意してください。
 
-### Sun Java System Web Server／iPlanet - Web サーバーのインストール {#sun-java-system-web-server-iplanet-installing-your-web-server}
+### Sun Java System Web Server/iPlanet - Web サーバーのインストール {#sun-java-system-web-server-iplanet-installing-your-web-server}
 
 次の Web サーバーのインストール方法について詳しくは、各サーバーのドキュメントを参照してください。
 
 * Sun Java System Web Server
 * iPlanet Web Server
 
-### Sun Java System Web Server／iPlanet - Dispatcher モジュールの追加 {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
+### Sun Java System Web Server/iPlanet - Dispatcher モジュールの追加 {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 Dispatcher は次のどちらかの形式で提供されます。
 
@@ -603,7 +603,7 @@ Dispatcher は次のどちらかの形式で提供されます。
 
 1. 次の Dispatcher ファイルを、Web サーバーの `plugin` ディレクトリに配置します。
 
-### Sun Java System Web Server／iPlanet - Dispatcher 用の設定 {#sun-java-system-web-server-iplanet-configure-for-the-dispatcher}
+### Sun Java System Web Server/iPlanet - Dispatcher 用の設定 {#sun-java-system-web-server-iplanet-configure-for-the-dispatcher}
 
 Web サーバーは、`obj.conf` を使用して設定する必要があります。Dispatcher インストールキットには、`obj.conf.disp` というサンプルの設定ファイルがあります。
 
@@ -647,7 +647,7 @@ keepalivetimeout="60"
 |--- |--- |
 | config | 設定ファイル `dispatcher.any.` の場所と名前。 |
 | logfile | ログファイルの場所と名前。 |
-| loglevel | ログファイルにメッセージを書き込む際のログレベル：<br/>**0** - エラー&#x200B;<br/>**1** - 警告&#x200B;<br/>**2** - 情報&#x200B;<br/>**3** - デバッグ&#x200B;<br/>**注意**：インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
+| loglevel | ログファイルにメッセージを書き込む際のログレベル： <br/>**0** エラー <br/>**1** 警告 <br/>**2** 情報 <br/>**3** デバッグ <br/>**注意：** インストールおよびテスト時はログレベルを 3 に設定し、実稼動環境で実行する場合は 0 に設定することをお勧めします。 |
 | keepalivetimeout | キープアライブタイムアウトを秒単位で指定します。 Dispatcher バージョン 4.2.0 以降では、デフォルトのキープアライブ値は 60 です。値 0 はキープアライブを無効にします。 |
 
 要件に応じて、Dispatcher をオブジェクトのサービスとして定義できます。Web サイト全体で Dispacher によってデフォルトのオブジェクトを変更できるよう設定するには、次のように指定します。
