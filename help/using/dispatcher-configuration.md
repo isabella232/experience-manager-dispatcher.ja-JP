@@ -1,11 +1,11 @@
 ---
 title: Dispatcher の設定
-description: Dispatcher の設定方法について説明します。IPv4 および IPv6 のサポート、構成ファイル、環境変数、インスタンス名の設定、ファームの定義、仮想ホストの識別などについて説明します。
+description: Dispatcher の設定方法について説明します。 IPv4 および IPv6 のサポート、構成ファイル、環境変数、インスタンス名の設定、ファームの定義、仮想ホストの識別などについて説明します。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 5fe3bb534b239d5aec892623cab65e84e04c7d10
+source-git-commit: 410346694a134c0f32a24de905623655f15269b4
 workflow-type: tm+mt
-source-wordcount: '8941'
-ht-degree: 44%
+source-wordcount: '8857'
+ht-degree: 40%
 
 ---
 
@@ -355,7 +355,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 * いいえの場合 `virtualhosts` 値は、 `scheme` および `uri` 両方とも一致する部分 `scheme` および `uri` リクエストの最初に見つかった仮想ホストで、 `host` の値が使用されます。
 * 要求の host に一致する host 部を持つ `virtualhosts` 値がない場合は、最上位ファームの最上位の仮想ホストを使用します。
 
-したがって、デフォルトの仮想ホストは ファイルの最上位ファームの `virtualhosts` プロパティの一番上に配置する必要があります。`dispatcher.any`
+したがって、デフォルトの仮想ホストを `virtualhosts` プロパティを `dispatcher.any` ファイル。
 
 ### 仮想ホストの解決の例 {#example-virtual-host-resolution}
 
@@ -398,7 +398,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
 | `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/` |
 | `https://www.mycompany.com/about.html` | `www.mycompany.com` |
 
-## セキュアセッションの有効化 - /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
+## セキュアセッションの有効化 — /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
 
 >[!CAUTION]
 >
@@ -503,7 +503,7 @@ Dispatcher は、以下の方法で最良一致の仮想ホスト値を探しま
   }
 ```
 
-### レンダーのオプション {#renders-options}
+### レンダリングオプション {#renders-options}
 
 **/timeout**
 
@@ -578,7 +578,7 @@ The `/filter` セクションは、HTTP 要求の要求行部分のパターン�
 
 >[!NOTE]
 >
->要求行のうち、これらの各要素が参照する部分について詳しくは、[Sling の URL の分解](https://sling.apache.org/documentation/the-sling-engine/url-decomposition.html) Wiki ページを参照してください。
+>要求行のどの部分を参照するかについて詳しくは、 [Sling URL の分解](https://sling.apache.org/documentation/the-sling-engine/url-decomposition.html) wiki ページを開きます。
 
 * **glob プロパティ：** HTTP 要求の要求行全体と照合するには、`/glob` プロパティを使用します。
 
@@ -634,7 +634,7 @@ The `<CRLF>` 文字は、キャリッジリターンとそれに続くライン�
 /0002  { /type "deny" /url "*.asp"  }
 ```
 
-#### サンプルフィルター：POST 要求の有効化 {#example-filter-enable-post-requests}
+#### サンプルフィルター：POST要求の有効化 {#example-filter-enable-post-requests}
 
 次のサンプルフィルターを使用して、POST メソッドでフォームデータを送信できます。
 
@@ -693,12 +693,12 @@ The `<CRLF>` 文字は、キャリッジリターンとそれに続くライン�
         }
 ```
 
-### サンプルの /filter セクション {#example-filter-section}
+### /filter セクションの例 {#example-filter-section}
 
 Dispatcher を設定する場合は、外部アクセスをできるだけ制限する必要があります。 次の例では、外部訪問者に対するアクセスを最小限に抑えます。
 
 * `/content`
-* デザインやクライアントライブラリなどのその他のコンテンツ。例：
+* デザインやクライアントライブラリなどのその他のコンテンツ。 次に例を示します。
 
    * `/etc/designs/default*`
    * `/etc/designs/mydesign*`
@@ -807,7 +807,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 >
 >次の場合、 [パブリッシュ環境でのレポートの使用](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=en#using-reports-in-a-publish-environment)を使用する場合は、へのアクセスを拒否するように Dispatcher を設定する必要があります。 `/etc/reports` 外部の訪問者用。
 
-### クエリ文字列の制約 {#restricting-query-strings}
+### クエリ文字列の制限 {#restricting-query-strings}
 
 Dispatcher バージョン 4.1.5 以降では、`/filter` セクションを使用してクエリ文字列を制約します。`allow` フィルター要素を使用して、クエリ文字列を明示的に許可し、一般的な許可を除外することを強くお勧めします。
 
@@ -952,7 +952,7 @@ AEMページ用に設定されたバニティー URL へのアクセスを有効
 
 必要に応じて、 `/propagateSyndPost` プロパティを `"1"` シンジケーション要求を Dispatcher に転送する場合。 設定する場合、フィルターセクションで POST 要求が拒否されていないことを確認する必要があります。
 
-## Dispatcher キャッシュの設定 - /cache {#configuring-the-dispatcher-cache-cache}
+## Dispatcher キャッシュの設定 — /cache {#configuring-the-dispatcher-cache-cache}
 
 `/cache` セクションは、Dispatcher によるドキュメントのキャッシュ方法を制御します。次のいくつかのサブプロパティを設定して、キャッシュ戦略を実装します。
 
@@ -1018,7 +1018,7 @@ statfile にはコンテンツがありません。 コンテンツが更新さ�
 >
 >次の場合 `/statfileslevel` が設定されている場合、Dispatcher は `/statfile` プロパティと使用 `.stat` 名前として。
 
-### エラー発生時の古くなったドキュメントの返送 {#serving-stale-documents-when-errors-occur}
+### エラー発生時の古くなったドキュメントの提供 {#serving-stale-documents-when-errors-occur}
 
 `/serveStaleOnError` プロパティは、レンダーサーバーがエラーを返した場合に Dispatcher が無効になったドキュメントを返すかどうかを制御します。デフォルトでは、statfile にアクセスし、キャッシュされたコンテンツが無効になると、Dispatcher は次回要求時にキャッシュされたコンテンツを削除します。
 
@@ -1296,10 +1296,10 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 ```xml
 /ignoreUrlParams
 {
+    # ignore-all-url-parameters-by-dispatcher-and-requests-are-cached
+    /0001 { /glob "*" /type "allow" }
     # allow-the-url-parameter-nocache-to-bypass-dispatcher-on-every-request
-    /0001 { /glob "nocache" /type "deny" }
-    # all-other-url-parameters-are-ignored-by-dispatcher-and-requests-are-cached
-    /0002 { /glob "*" /type "allow" }
+    /0002 { /glob "nocache" /type "deny" }
 }
 ```
 
@@ -1364,17 +1364,17 @@ glob プロパティについて詳しくは、[glob プロパティのパター
 
 * `0400` 所有者による読み取りを許可します。
 * `0200` 所有者による書き込みを許可します。
-* `0100` 所有者によるディレクトリ内の検索を許可します。
+* `0100` 所有者がディレクトリ内を検索できるようにします。
 * `0040` グループメンバーによる読み取りを許可します。
 * `0020` グループメンバーによる書き込みを許可します。
-* `0010` グループメンバーによるディレクトリ内の検索を許可します。
-* `0004` その他のユーザーによる読み取りを許可します。
-* `0002` その他のユーザーによる書き込みを許可します。
-* `0001` その他のユーザーによるディレクトリ内の検索を許可します。
+* `0010` グループメンバーがディレクトリ内を検索するのを許可します。
+* `0004` 他のユーザーによる読み取りを許可します。
+* `0002` 他のユーザーによる書き込みを許可します。
+* `0001` 他のユーザーがディレクトリ内を検索することを許可します。
 
 デフォルト値は `0755` これにより、所有者は読み取り、書き込み、または検索を行い、グループとその他のユーザーは読み取りや検索を行うことができます。
 
-### . stat ファイルの更新のスロットリング {#throttling-stat-file-touching}
+### .stat ファイルの更新のスロットリング {#throttling-stat-file-touching}
 
 デフォルトの `/invalidate` のプロパティでは、アクティベーションごとに、すべての `.html` ファイルが無効化されます（パスが `/invalidate` セクションに一致する場合）。トラフィック量が多い Web サイトでは、複数回のアクティベーションを実行すると、バックエンドの CPU 負荷が増加します。 このようなシナリオでは、「スロットル」が望ましい `.stat` web サイトをレスポンシブに保つために、ファイルに touch します。 このアクションは、 `/gracePeriod` プロパティ。
 
@@ -1382,7 +1382,7 @@ The `/gracePeriod` プロパティは、自動的に無効化された古いリ�
 
 詳細については、上記の `/invalidate` および `/statfileslevel` セクションも参照してください。
 
-### 時間に基づくキャッシュの無効化の設定 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
+### 時間に基づくキャッシュの無効化の設定 — /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
 時間ベースのキャッシュの無効化は、 `/enableTTL` プロパティに含まれ、HTTP 標準の正規の有効期限ヘッダーが存在することを確認します。 プロパティを 1 に設定した場合 (`/enableTTL "1"`) の場合、バックエンドからの応答ヘッダーを評価します。 ヘッダーに `Cache-Control`, `max-age` または `Expires` 日付：キャッシュされたファイルの横に、有効期限と同じ変更時刻を持つ、補助的な空のファイルが作成されます。 変更時刻を過ぎてキャッシュされたファイルがリクエストされると、バックエンドから自動的に再リクエストされます。
 
@@ -1418,7 +1418,7 @@ Dispatcher 4.3.5 以前は、TTL 無効化ロジックは設定済みの TTL 値
 >
 >この機能は、バージョンで使用できます **4.1.11** または Dispatcher の後半で呼び出します。
 
-## ロードバランシングの設定 - /statistics {#configuring-load-balancing-statistics}
+## ロードバランシングの設定 — /statistics {#configuring-load-balancing-statistics}
 
 `/statistics` セクションは、Dispatcher が各レンダーの応答性のスコアを付けるファイルのカテゴリを定義します。Dispatcher は、スコアを使用して、要求を送信するレンダーを決定します。
 
@@ -1484,7 +1484,7 @@ URI のカテゴリを決定するために、Dispatcher は一致が見つか�
   }
 ```
 
-### Dispatcher 統計へのサーバー使用不可能状態の反映 {#reflecting-server-unavailability-in-dispatcher-statistics}
+### Dispatcher 統計へのサーバー使用不可の反映 {#reflecting-server-unavailability-in-dispatcher-statistics}
 
 `/unavailablePenalty` プロパティは、レンダーへの接続が失敗した場合にレンダー統計に適用される時間（0.1 秒単位）を設定します。Dispatcher は、要求された URI に一致する統計カテゴリにこの時間を追加します。
 
@@ -1498,7 +1498,7 @@ URI のカテゴリを決定するために、Dispatcher は一致が見つか�
 /unavailablePenalty "1"
 ```
 
-## スティッキー接続フォルダーの識別 - /stickyConnectionsFor {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
+## スティッキー接続フォルダーの識別 — /stickyConnectionsFor {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
 
 The `/stickyConnectionsFor` プロパティは、スティッキードキュメントを格納する 1 つのフォルダーを定義します。 このプロパティには、URL を使用してアクセスします。 Dispatcher は、このフォルダーにある 1 人のユーザーから同じレンダーインスタンスに、すべての要求を送信します。 スティッキー接続を使用すると、セッションデータがすべてのドキュメントに対して一貫性を保ち、存在することを確認できます。 このメカニズムは、`renderid` cookie を利用しています。
 
@@ -1562,7 +1562,7 @@ The `/retryDelay` プロパティは、Dispatcher が待機する、ファーム
 
 周期ごとに、Dispatcher が 1 つのレンダーに対して接続を試行する最大回数は、ファーム内のレンダーの数です。したがって、Dispatcher が接続を試みる最大回数は（`/numberOfRetries`）x（レンダー数）になります。
 
-明示的な定義がない場合、`5` がデフォルトの値として使用されます。
+明示的な定義がない場合、デフォルト値は `5`.
 
 ```xml
 /numberOfRetries "5"
@@ -1619,17 +1619,17 @@ read more data
 
 ## glob プロパティのパターンのデザイン {#designing-patterns-for-glob-properties}
 
-Dispatcher 設定ファイルのいくつかのセクションでは、`glob` プロパティをクライアント要求の選択条件として使用します。の値 `glob` プロパティとは、要求されたリソースのパスやクライアントの IP アドレスなど、Dispatcher が要求の側面と比較するパターンです。 例えば、`/filter` セクションのアイテムは、 パターンを使用して、Dispatcher が従う、または拒否するページのパスを識別します。`glob`
+Dispatcher 設定ファイルのいくつかのセクションでは、`glob` プロパティをクライアント要求の選択条件として使用します。の値 `glob` プロパティとは、要求されたリソースのパスやクライアントの IP アドレスなど、Dispatcher が要求の側面と比較するパターンです。 例えば、 `/filter` セクション使用 `glob` Dispatcher が従う、または拒否するページのパスを識別するパターン。
 
 The `glob` の値には、ワイルドカード文字と英数字を含めて、パターンを定義できます。
 
 | ワイルドカード文字 | 説明 | 例 |
 |--- |--- |--- |
 | `*` | 文字列内の任意の文字の 0 個以上の連続したインスタンスに一致します。 一致の最終文字は、次のいずれかの状況で決定されます。 <br/>文字列内のある文字がパターン内の次の文字に一致し、パターンの文字が次の特性を持つ。<br/><ul><li>*以外</li><li>ではない場合</li><li>リテラル文字（空白を含む）または文字クラス。</li><li>パターンの終わりに達しました。</li></ul>文字クラス内の文字は、リテラルとして解釈されます。 | `*/geo*` `/content/geometrixx`ノードと `/content/geometrixx-outdoors` ノードの下にあるすべてのページに一致します。以下の HTTP 要求は、glob パターンに一致します。<br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*`<br/> `/content/geometrixx-outdoors` ノードの下にあるすべてのページに一致します。例えば、次の HTTP 要求は glob パターンに一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
-| `?` | 任意の 1 文字に一致します。文字クラス外で使用します。文字クラス内のこの文字は、リテラルとして解釈されます。 | `*outdoors/??/*`<br/>geometrixx-outdoors サイトのすべての言語のページに一致します。例えば、次の HTTP 要求は glob パターンに一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>次の要求は glob パターンに一致しません。<br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
-| `[ and ]` | 文字クラスの最初と最後を定めます。文字クラスには、1 つまたは複数の文字範囲および単一の文字を含めることができます。<br/>ターゲット文字が文字クラス内または定義されている範囲内のいずれかの文字に一致する場合、一致が発生します。<br/>閉じ角括弧が含まれない場合、パターンによって一致は発生しません。 | `*[o]men.html*`<br/>次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*`<br/>次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `-` | 文字の範囲を定めます。文字クラス内で使用します。文字クラス外のこの文字は、リテラルとして解釈されます。 | `*[m-p]men.html*`次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | 後続の文字または文字クラスを否定します。 文字クラス内の文字と文字範囲を無効にする場合にのみ使用します。 ワイルドカード文字 `^ wildcard`.<br/>文字クラス外のこの文字は、リテラルとして解釈されます。 | `*[!o]men.html*`<br/>次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` または `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `?` | 任意の 1 文字に一致します。文字クラス外で使用します。文字クラス内のこの文字は、リテラルとして解釈されます。 | `*outdoors/??/*`<br/> geometrixx-outdoors サイトのすべての言語のページに一致します。 例えば、次の HTTP 要求は glob パターンに一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>次の要求は glob パターンに一致しません。<br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
+| `[ and ]` | 文字クラスの最初と最後を定めます。文字クラスには、1 つまたは複数の文字範囲および単一の文字を含めることができます。<br/>ターゲット文字が文字クラス内または定義されている範囲内のいずれかの文字に一致する場合、一致が発生します。<br/>閉じ角括弧が含まれない場合、パターンによって一致は発生しません。 | `*[o]men.html*`<br/> 次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*`<br/>次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `-` | 文字の範囲を定めます。文字クラスで使用します。 文字クラス外のこの文字は、リテラルとして解釈されます。 | `*[m-p]men.html*`次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `!` | 後続の文字または文字クラスを否定します。 文字クラス内の文字と文字範囲を無効にする場合にのみ使用します。 ワイルドカード文字 `^ wildcard`.<br/>文字クラス外のこの文字は、リテラルとして解釈されます。 | `*[!o]men.html*`<br/>次の HTTP 要求に一致します。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> 次の HTTP 要求に一致しません。<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` または `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 後続の文字または文字範囲を打ち消します。 文字クラス内の文字と文字範囲のみを否定する場合に使用します。 `!` ワイルドカードに相当します。<br/>文字クラス外のこの文字は、リテラルとして解釈されます。 | ワイルドカード文字 `!` の例と同様、サンプルパターンの文字 `!` が 文字 `^` に置き換えられます。 |
 
 
@@ -1793,7 +1793,7 @@ Web サーバー、Dispatcher および AEM インスタンスの基本の操作
 1. `loglevel` を `3`.に設定します。
 
 1. Web サーバーを起動します。 また、Dispatcher も起動します。
-1. AEM インスタンスを起動します。
+1. AEMインスタンスを起動します。
 1. Web サーバーと Dispatcher のログファイルとエラーファイルを確認します。
    * Web サーバーに応じて、次のようなメッセージが表示されます。
       * `[Thu May 30 05:16:36 2002] [notice] Apache/2.0.50 (Unix) configured` および
@@ -1803,7 +1803,7 @@ Web サーバー、Dispatcher および AEM インスタンスの基本の操作
    例えば、AEM がポート `4502` で、Web サーバーがポート `80` で実行されているローカルインストール上で、以下の両方を使用して Web サイトコンソールにアクセスします。
    * `https://localhost:4502/libs/wcm/core/content/siteadmin.html`
    * `https://localhost:80/libs/wcm/core/content/siteadmin.html`
-   * 結果は同じになるはずです。同じメカニズムで他のページへのアクセスを確認します。
+   * 結果は同じになるはずです。 同じメカニズムで他のページへのアクセスを確認します。
 
 1. キャッシュディレクトリがいっぱいになっていることを確認します。
 1. キャッシュが正しくフラッシュされていることを確認するには、ページをアクティブ化します。
@@ -1863,7 +1863,7 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
   一時ファイル名テンプレートが、システムで使用可能な最長ファイル名を超えています。Dispatcher は、キャッシュされたファイルを作成または上書きする前に、まず一時ファイルを作成します。 一時ファイル名は、ターゲットファイル名と文字を含む名前です。 `_YYYYXXXXXX` その後に `Y` および `X` は、一意の名前を作成するために置き換えられます。
 * **not cacheable: request URL has no extension**\
   リクエスト URL に拡張子がないか、ファイル拡張子の後にパスがあります（例：`/test.html/a/path`）。
-* **not cacheable: request wasn&#39;t a GET or HEAD**
+* **not cacheable: request wasn&#39;t aGETまたはHEAD**
 HTTP メソッドは、GETやHEADではありません。 Dispatcher は、出力にキャッシュしてはならない動的データが含まれていると想定します。
 * **not cacheable: request contained a query string**\
   リクエストにクエリ文字列が含まれていました。Dispatcher は、出力が指定されたクエリ文字列に依存しているので、キャッシュされないと想定します。
