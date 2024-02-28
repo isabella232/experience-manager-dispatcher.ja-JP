@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 570eafa7889ff4db820f80eccd529046464d9cfb
+source-git-commit: c3a5f415df91bee4b6e0a6c9b813b62a906670c6
 workflow-type: tm+mt
-source-wordcount: '3797'
-ht-degree: 52%
+source-wordcount: '3798'
+ht-degree: 51%
 
 ---
 
@@ -44,7 +44,7 @@ Comment Type: draft
 | Web サーバー | インストールキット |
 |--- |--- |
 | Apache 2.4 | dispatcher-apache **2.4**-&lt;other parameters> |
-| Microsoft Internet Information Server 7.5、8、8.5 | dispatcher-**iis**-&lt;other parameters> |
+| Microsoft Internet Information Server 7.5、8、8.5、10 | dispatcher-**iis**-&lt;other parameters> |
 | Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;other parameters> |
 
 >[!CAUTION]
