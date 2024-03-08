@@ -11,9 +11,9 @@ content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: 31eaa42b17838d97cacd5c535e04be01a3eb6807
-workflow-type: tm+mt
-source-wordcount: '918'
-ht-degree: 75%
+workflow-type: ht
+source-wordcount: '910'
+ht-degree: 100%
 
 ---
 
@@ -21,23 +21,23 @@ ht-degree: 75%
 
 権限を区別するキャッシュを使用して、セキュリティ保護されたページをキャッシュできます。Dispatcher は、ページに対するユーザーのアクセス権限を確認してから、キャッシュされたページを配信します。
 
-Dispatcher には、権限を区別するキャッシュを実装する AuthChecker モジュールが含まれます。モジュールがアクティブ化されると、Dispatcher はAEMサーブレットを呼び出して、要求されたコンテンツに対するユーザー認証と認証を実行します。 サーブレットの応答は、コンテンツがキャッシュから Web ブラウザーに配信されるかどうかを決定します。
+Dispatcher には、権限を区別するキャッシュを実装する AuthChecker モジュールが含まれます。このモジュールがアクティベートされると、Dispatcher が AEM サーブレットを呼び出して、ユーザー認証とリクエストされたコンテンツに対する承認を実行します。サーブレットの応答によって、キャッシュからコンテンツを web ブラウザーに配信するかどうかが決定されます。
 
-認証および承認メソッドは AEM デプロイメントに固有なので、サーブレットを作成する必要があります。
+認証方法と承認方法は AEM デプロイメントに固有なので、サーブレットを作成する必要があります。
 
 >[!NOTE]
 >
 >全体にセキュリティ制約を課すには、`deny` フィルターを使用します。ユーザーまたはグループのサブセットへのアクセスを許可するように設定されているページに対しては、権限を区別するキャッシュを使用します。
 
-以下の図は、Web ブラウザーが権限を区別するキャッシュを使用するページを要求したときに発生するイベントの順序を示したものです。
+次の図は、web ブラウザーが権限を区別するキャッシュを使用するページをリクエストしたときに発生するイベントの順序を示したものです。
 
 ## ページがキャッシュされていて、ユーザーが承認されている場合 {#page-is-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1.png)
 
-1. Dispatcher が、要求されたコンテンツがキャッシュされていて有効であると判断します。
-1. Dispatcher がレンダーに要求メッセージを送信します。HEAD セクションには、ブラウザー要求のヘッダー行がすべて含まれます。
-1. レンダーは、認証チェッカーサーブレットを呼び出してセキュリティチェックを実行し、Dispatcher に応答します。 応答メッセージには、ユーザーが承認されていることを示す HTTP ステータスコード 200 が含まれます。
+1. Dispatcher が、リクエストされたコンテンツがキャッシュされていて有効であると判断します。
+1. Dispatcher がレンダーにリクエストメッセージを送信します。HEAD セクションには、ブラウザーリクエストのヘッダー行がすべて含まれます。
+1. レンダーが、認証チェッカーサーブレットを呼び出してセキュリティチェックを実行し、Dispatcher に応答します。応答メッセージには、ユーザーが承認されていることを示す HTTP ステータスコード 200 が含まれます。
 1. Dispatcher がブラウザーに応答メッセージを送信します。応答メッセージは、レンダーの応答のヘッダー行と、本文としてキャッシュされたコンテンツで構成されます。
 
 ## ページがキャッシュされていないが、ユーザーが承認されている場合 {#page-is-not-cached-and-user-is-authorized}
@@ -45,8 +45,8 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 ![](assets/chlimage_1-1.png)
 
 1. Dispatcher が、コンテンツがキャッシュされていない、または更新が必要であると判断します。
-1. Dispatcher が、元の要求をレンダーに転送します。
-1. レンダーは、AEM Authorizer サーブレット（Dispatcher AuthChcker サーブレットではありません）を呼び出してセキュリティチェックを実行します。 ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
+1. Dispatcher が、レンダーに元のリクエストを転送します。
+1. レンダーが、AEM オーソライザーサーブレット（これは Dispatcher 認証チェッカーサーブレットではありません）を呼び出して、セキュリティチェックを実行します。ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
 1. Dispatcher がブラウザーに応答を転送します。Dispatcher が、レンダーの応答メッセージの本文をキャッシュに追加します。
 
 ## ユーザーが承認されていない場合 {#user-is-not-authorized}
@@ -54,33 +54,33 @@ Dispatcher には、権限を区別するキャッシュを実装する AuthChec
 ![](assets/chlimage_1-2.png)
 
 1. Dispatcher がキャッシュを調べます。
-1. Dispatcher がレンダーに要求メッセージを送信します。要求メッセージには、ブラウザーの要求のヘッダー行がすべて含まれます。
-1. レンダーは Auth Checker サーブレットを呼び出してセキュリティチェックを実行しますが、失敗し、レンダーは元の要求を Dispatcher に転送します。
-1. Dispatcher が、元の要求をレンダーに転送します。
-1. レンダーは、AEM Authorizer サーブレット（Dispatcher AuthChcker サーブレットではありません）を呼び出してセキュリティチェックを実行します。 ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
+1. Dispatcher がレンダーにリクエストメッセージを送信します。リクエストメッセージには、ブラウザーのリクエストのヘッダー行がすべて含まれます。
+1. レンダーが認証チェッカーサーブレットを呼び出してセキュリティチェックを実行し、失敗すると、Dispatcher に元のリクエストを転送します。
+1. Dispatcher が、レンダーに元のリクエストを転送します。
+1. レンダーが、AEM オーソライザーサーブレット（これは Dispatcher 認証チェッカーサーブレットではありません）を呼び出して、セキュリティチェックを実行します。ユーザーが承認されると、レンダーは応答メッセージの本文にレンダリングされるページを含めます。
 1. Dispatcher がブラウザーに応答を転送します。Dispatcher が、レンダーの応答メッセージの本文をキャッシュに追加します。
 
-## 権限に影響を受けるキャッシュの実装 {#implementing-permission-sensitive-caching}
+## 権限を区別するキャッシュの実装 {#implementing-permission-sensitive-caching}
 
-権限に影響を受けるキャッシュを実装するには、以下のタスクを実行します。
+権限を区別するキャッシュを実装するには、次のタスクを実行します。
 
-* 認証と承認を実行するサーブレットを作成します。
-* Dispatcher を設定します。
-
->[!NOTE]
->
->一般的に、安全なリソースは、安全ではないファイルとは別のフォルダーに保存します。例：/content/secure/
+* 認証と承認を実行するサーブレットの作成
+* Dispatcher の設定
 
 >[!NOTE]
 >
->Dispatcher の前に CDN（またはその他のキャッシュ）がある場合、CDN がプライベートコンテンツをキャッシュしないように、それに応じてキャッシュヘッダーを設定する必要があります。 （例：`Header always set Cache-Control private`）。
->AEMas a Cloud Serviceの場合は、 [キャッシュ](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html) プライベートキャッシュヘッダーを設定する方法の詳細については、ページを参照してください。
+>一般的に、セキュアなリソースは、セキュアではないファイルとは別のフォルダーに保存します。例：/content/secure/
 
-## Auth Checker サーブレットの作成 {#create-the-auth-checker-servlet}
+>[!NOTE]
+>
+>Dispatcher の前に CDN（またはその他のキャッシュ）がある場合、CDN がプライベートコンテンツをキャッシュしないように、キャッシュヘッダーを設定する必要があります。例：`Header always set Cache-Control private`。
+>AEM as a Cloud Service におけるプライベートキャッシュヘッダーの設定方法について詳しくは、[キャッシュ](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html?lang=ja)ページを参照してください。
 
-Web コンテンツを要求するユーザーの認証と承認を実行するサーブレットを作成し、デプロイします。このサーブレットは、AEM のユーザーアカウントとリポジトリの ACL や、LDAP 検索サービスなど、あらゆる認証および承認メソッドを使用できます。Dispatcher がレンダーとして使用する AEM インスタンスにサーブレットをデプロイします。
+## 認証チェッカーサーブレットの作成 {#create-the-auth-checker-servlet}
 
-このサーブレットには、すべてのユーザーがアクセスできなければなりません。そのため、サーブレットは、`org.apache.sling.api.servlets.SlingSafeMethodsServlet` クラスを拡張して、システムに対して読み取り専用アクセス権を付与する必要があります。
+Web コンテンツをリクエストするユーザーの認証と承認を実行するサーブレットを作成し、デプロイします。このサーブレットは、AEM のユーザーアカウントとリポジトリの ACL、または LDAP 検索サービスなど、あらゆる認証と承認方法を使用できます。Dispatcher がレンダーとして使用する AEM インスタンスにサーブレットをデプロイします。
+
+このサーブレットには、すべてのユーザーがアクセスできる必要があります。そのため、サーブレットは、`org.apache.sling.api.servlets.SlingSafeMethodsServlet` クラスを拡張して、システムに対して読み取り専用アクセス権を付与する必要があります。
 
 サーブレットは、レンダーから HEAD 要求のみを受信するので、実装する必要があるのは `doHead` メソッドだけです。
 
@@ -92,7 +92,7 @@ Web コンテンツを要求するユーザーの認証と承認を実行する�
 
 * 200：認証および承認が成功しました。
 
-以下のサンプルサーブレットでは、要求されたリソースの URL を HTTP 要求から取得しています。このコードでは、Felix SCR の `Property` 注釈を使用して、`sling.servlet.paths` プロパティの値を /bin/permissioncheck に設定しています。`doHead` メソッドでは、サーブレットがセッションオブジェクトを取得し、`checkPermission` メソッドを使用して適切な応答コードを判断します。
+次のサンプルサーブレットは、リクエストされたリソースの URL を HTTP リクエストから取得します。このコードでは、Felix SCR の `Property` 注釈を使用して、`sling.servlet.paths` プロパティの値を /bin/permissioncheck に設定しています。`doHead` メソッドでは、サーブレットがセッションオブジェクトを取得し、`checkPermission` メソッドを使用して適切な応答コードを判断します。
 
 >[!NOTE]
 >
@@ -151,9 +151,9 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 >[!NOTE]
 >
->要件によって認証済みドキュメントのキャッシュが許可されている場合は、/cache セクションの/allowAuthorized プロパティをに設定します。 `/allowAuthorized 1`. 詳しくは、 [認証使用時のキャッシュ](/help/using/dispatcher-configuration.md) を参照してください。
+>要件で認証済みドキュメントのキャッシュが許可されている場合は、/cache セクションの /allowAuthorized プロパティを `/allowAuthorized 1` に設定します。詳しくは、[認証使用時のキャッシュ](/help/using/dispatcher-configuration.md)を参照してください。
 
-dispatcher.any ファイルの auth_checker セクションで、権限を区別するキャッシュの動作を制御します。auth_checker セクションには、以下のサブセクションが含まれます。
+dispatcher.any ファイルの auth_checker セクションで、権限を区別するキャッシュの動作を制御します。auth_checker セクションには、次のサブセクションが含まれます。
 
 * `url`：セキュリティチェックを実行するサーブレットの `sling.servlet.paths` プロパティの値。
 
@@ -165,7 +165,7 @@ Dispatcher が起動すると、Dispatcher のログファイルには、次の�
 
 `AuthChecker: initialized with URL 'configured_url'.`
 
-以下の auth_checker の例では、前のトピックのサーブレットを使用するように Dispatcher を設定しています。 filter セクションは、権限チェックをセキュアな HTML リソースに対してのみ実行するようにします。
+次の auth_checker セクションの例では、前のトピックのサーブレットを使用するように Dispatcher を設定します。filter セクションは、権限チェックをセキュアな HTML リソースに対してのみ実行するようにします。
 
 ### 設定例 {#example-configuration}
 

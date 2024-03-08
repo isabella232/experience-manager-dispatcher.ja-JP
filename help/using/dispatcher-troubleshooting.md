@@ -14,9 +14,9 @@ content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
-workflow-type: tm+mt
-source-wordcount: '560'
-ht-degree: 43%
+workflow-type: ht
+source-wordcount: '538'
+ht-degree: 100%
 
 ---
 
@@ -26,28 +26,28 @@ ht-degree: 43%
 >
 >Dispatcher のバージョンは AEM とは無関係ですが、Dispatcher のドキュメントは AEM のドキュメントに組み込まれています。最新バージョンの AEM のドキュメントに組み込まれている Dispatcher のドキュメントを必ず使用してください。
 >
->以前のバージョンの AEM のドキュメントに組み込まれている Dispatcher のドキュメントへのリンクをたどると、このページにリダイレクトされる可能性があります。
+>以前のバージョンの AEM のドキュメントに組み込まれている Dispatcher ドキュメントへのリンクをたどると、このページにリダイレクトされる可能性があります。
 
 >[!NOTE]
 >
->次を確認します。 [Dispatcher ナレッジベース](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), [Dispatcher のフラッシュ問題のトラブルシューティング](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) そして [Dispatcher に関する主な問題とよくある質問](dispatcher-faq.md) を参照してください。
+>詳しくは、[Dispatcher ナレッジベース](https://helpx.adobe.com/jp/experience-manager/kb/index/dispatcher.html?lang=ja)、[Dispatcher のフラッシュ問題のトラブルシューティング](https://experienceleague.adobe.com/search.html?lang=jp#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager])および [Dispatcher に関する主な問題とよくある質問](dispatcher-faq.md)を参照してください。
 
 ## 基本設定の確認 {#check-the-basic-configuration}
 
-最初の手順は常に、基本事項を確認することです。
+通常どおり、基本事項を確認することが最初の手順です。
 
 * [基本操作の確認](/help/using/dispatcher-configuration.md#confirming-basic-operation)
-* Web サーバーおよび Dispatcher のすべてのログファイルを確認します。 必要に応じて、 `loglevel` Dispatcher に使用されます。 [ログ](/help/using/dispatcher-configuration.md#logging).
+* Web サーバーおよび Dispatcher のログファイルをすべて確認します。必要に応じて、Dispatcher の[ログ](/help/using/dispatcher-configuration.md#logging)に使用する `loglevel` を増やします。
 
 * [設定の確認](/help/using/dispatcher-configuration.md)：
 
    * 複数の Dispatcher があるか。
 
       * 調査中の Web サイトまたはページを処理している Dispatcher が特定されているか。
+
    * フィルターが実装されているか。
 
-      * これらのフィルターは、調査中の問題に影響を与えていますか？
-
+      * これらのフィルターが調査中の問題に影響しているか。
 
 ## IIS 診断ツール {#iis-diagnostic-tools}
 
@@ -56,32 +56,32 @@ IIS には、実際のバージョンに応じて様々なトレースツール�
 * IIS 6 - IIS 診断ツールをダウンロードし設定できます。
 * IIS 7 - トレース機能が完全に組み込まれています。
 
-これらのツールは、アクティビティを監視するのに役立ちます。
+これらのツールを使用して、アクティビティを監視できます。
 
 ## IIS と 404 Not Found {#iis-and-not-found}
 
-IIS を使用する場合、次のことが考えられます `404 Not Found` 様々なシナリオで返されます。 このエラーが返された場合は、次のナレッジベース記事を参照してください。
+IIS の使用時、様々な場面で `404 Not Found` が返されることがあります。その場合は、次のナレッジベース記事を参照してください。
 
-* [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
-* [IIS 6:ベースパスを含む URL へのリクエスト `/bin` 戻る `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6/7：POST メソッドが 404 を返す](https://helpx.adobe.com/jp/experience-manager/kb/IIS6IsapiFilters.html)
+* [IIS 6：ベースパス `/bin` を含む URL へのリクエストが `404 Not Found` を返す](https://helpx.adobe.com/jp/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-また、Dispatcher のキャッシュルートと IIS のドキュメントルートが同じディレクトリに設定されていることを確認します。
+また、Dispatcher のキャッシュルートと IIS のドキュメントルートが同じディレクトリに設定されていることも確認します。
 
 ## ワークフローモデルの削除に関する問題 {#problems-deleting-workflow-models}
 
-**エラー内容**
+**症状**
 
-Dispatcher 経由で AEM のオーサーインスタンスにアクセスしていて、ワークフローモデルを削除しようとしたときの問題。
+Dispatcher 経由で AEM のオーサーインスタンスへのアクセス時に、ワークフローモデルの削除を試みた際に発生する問題。
 
-**再現の手順：**
+**再現手順：**
 
-1. オーサーインスタンスにログインします（要求が Dispatcher を通じてルーティングされていることを確認します）。
-1. ワークフローの作成例えば、「タイトル」が「workflowToDelete」に設定されているとします。
+1. オーサーインスタンスにログインします（リクエストが Dispatcher を経由することを確認します）。
+1. 新しいワークフローを作成します。タイトルは、例えば workflowToDelete と設定します。
 1. ワークフローが正しく作成されたことを確認します。
-1. ワークフローを選択して右クリックし、「 **削除**.
+1. ワークフローを選択して右クリックし、「**削除**」をクリックします。
 
-1. 「**はい**」をクリックして確認します。
-1. 次の内容を示すエラーメッセージボックスが表示されます。\
+1. 「**はい**」をクリックして確定します。
+1. 次のメッセージを示すエラーメッセージボックスが表示されます。\
    「`ERROR 'Could not delete workflow model!!`」。
 
 **解決方法**
@@ -102,29 +102,29 @@ Dispatcher 経由で AEM のオーサーインスタンスにアクセスして�
 }
 ```
 
-## mod_dir（Apache）との干渉 {#interference-with-mod-dir-apache}
+## mod_dir（Apache）による干渉 {#interference-with-mod-dir-apache}
 
-このプロセスでは、Dispatcher とのやり取りを説明します `mod_dir` Apache Web サーバー内で、予期しない様々な問題が発生する可能性があるので、
+このプロセスでは、Dispatcher と Apache web サーバー内の `mod_dir` がどのようにやり取りするかを説明します。このやり取りは、予期しない様々な影響を与える可能性があります。
 
 ### Apache 1.3 {#apache}
 
-Apache 1.3 では、 `mod_dir` は、URL がファイルシステム内のディレクトリにマッピングされるすべての要求を処理します。
+Apache 1.3 では、`mod_dir` は URL がファイルシステムのディレクトリにマッピングされたすべてのリクエストを処理します。
 
 次のいずれかを実行します。
 
 * 要求を既存の `index.html` ファイルへリダイレクト
 * ディレクトリのリストを生成
 
-Dispatcher が有効な場合、Dispatcher をコンテンツタイプのハンドラーとして登録することで、このような要求を処理します `httpd/unix-directory`.
+Dispatcher が有効な場合、Dispatcher をコンテンツタイプ `httpd/unix-directory` のハンドラーとして登録することで、このようなリクエストを処理します。
 
 ### Apache 2.x {#apache-x}
 
-Apache 2.x では、内容が異なります。 モジュールで、URL の修正など様々なステージの要求を処理できます。この `mod_dir` は、要求（URL がディレクトリにマッピングされている場合）を `/` 追加されました。
+Apache 2.x では、内容が異なります。モジュールで、URL の修正など、リクエストの様々なステージを処理できます。`mod_dir` でこのステージを処理するには、リクエスト（URL がディレクトリにマッピングされている場合）を `/` 付きの URL にリダイレクトします。
 
-Dispatcher は `mod_dir` 修正しましたが、リダイレクトされた URL( `/` ) を追加しました。 このプロセスでは、リモートサーバー (AEMなど ) がに対する要求を処理する場合に問題が発生する可能性があります。 `/a_path` ～への要求とは異なる `/a_path/` ( `/a_path` は既存のディレクトリにマッピングされます )。
+Dispatcher は `mod_dir` による修正の処理に影響しませんが、リダイレクトされた（`/` 付きの）URL へのリクエストを完全に処理します。この処理は、リモートサーバー（AEM など）で `/a_path` へのリクエストの処理が `/a_path/` へのリクエストの処理と異なる場合（`/a_path` が既存のディレクトリにマッピングされる場合）に、問題となることがあります。
 
-この状況が発生した場合は、次のいずれかを実行する必要があります。
+状況が発生した場合は、次のいずれかを実行します。
 
-* 無効 `mod_dir` の `Directory` または `Location` Dispatcher が処理するサブツリー
+* Dispatcher によって処理される `Directory` サブツリーまたは `Location` サブツリーでの `mod_dir` を無効にします。
 
-* `DirectorySlash Off` を使用して、`mod_dir` によって「`/`」が付加されないように設定します。
+* `DirectorySlash Off` を使用して、「`/`」が付加されないように `mod_dir` を設定します。

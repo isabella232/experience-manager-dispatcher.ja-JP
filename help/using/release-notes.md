@@ -10,9 +10,9 @@ products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: f2036e8f73d5f9f58ff713df8f04caad89d660fc
-workflow-type: tm+mt
-source-wordcount: '1063'
-ht-degree: 50%
+workflow-type: ht
+source-wordcount: '1040'
+ht-degree: 100%
 
 ---
 
@@ -31,9 +31,9 @@ ht-degree: 50%
 
 ## システム要件および使用条件 {#system-requirements-and-prerequisites}
 
-詳しくは、 [サポートされるプラットフォーム](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/technical-requirements.html)要件と前提条件に関する詳細は、こちらのページを参照してください。
+要件と前提条件について詳しくは、[サポートされたプラットフォーム](https://helpx.adobe.com/jp/experience-manager/6-4/sites/deploying/using/technical-requirements.html)ページを参照してください。
 
-Adobeでは、最新の機能、最新のバグ修正、そして最高のパフォーマンスを得るために、最新バージョンのAEM Dispatcher を使用することを強くお勧めします。
+アドビでは、最新バージョンの AEM Dispatcher を使用して、最新の機能、最新のバグ修正、可能な限り最高のパフォーマンスを活用することを強くお勧めします。
 
 ## インストール手順 {#installation-instructions}
 
@@ -41,61 +41,61 @@ Adobeでは、最新の機能、最新のバグ修正、そして最高のパフ
 
 ## リリース履歴 {#release-history}
 
-### リリース 4.3.6（2023 年 7 月 25 日） {#jyly}
+### リリース 4.3.6（2023年7月25日）（PT） {#jyly}
 
-**機能強化**：
+**改善点**：
 
-* DISP-911 AEM-05 - X-Edge-Key は disp_apache2.c でリークされる可能性があります
-* DISP-937 すべてのセレクターのログ記録
-* DISP-998 起動時のバニティー URL の読み込みを設定可能にする
+* DISP-911 AEM‑05 ‑ X‑Edge‑Key が disp_apache2.c で漏洩する可能性あり
+* DISP-937 すべてのセレクターをログに記録
+* DISP-998 起動時のバニティ URL の読み込みを設定可能に
 
-### リリース 4.3.5（2022 年 4 月） {#apr}
+### リリース 4.3.5（2022年4月4日）（PT）） {#apr}
 
-**機能強化**：
+**改善点**：
 
-* DISP-954 — 有効期限が過ぎない場合でもサポートの無効化
-* DISP-949 — フィルターによってPOST要求がブロックされている場合でも、Dispatcher が 404 ではなく 200 を返す
+* DISP-954 - 有効期限が過ぎていない場合でも無効化をサポート
+* DISP-949 - フィルターによって POST 要求がブロックされている場合でも、Dispatcher が 404 ではなく 200 を返す
 
-### リリース 4.3.4（2021 年 11 月 29 日） {#nov}
+### リリース 4.3.4（2021年11月29日）（PT） {#nov}
 
-**バグ修正**:
+**バグ修正**：
 
-* DISP-833 - X-Forwarded-Host ヘッダーには、コンマで区切られたホスト名のリストが含まれている場合があります
-* DISP-835 - DispatcherUseForwardedHost が最後に来た場合にホストヘッダーをスローする
+* DISP-833 - X-Forwarded-Host ヘッダーには、コンマで区切られたホスト名のリストが含まれる場合がある
+* DISP-835 - DispatcherUseForwardedHost が、最後にある場合は Host ヘッダーをスワローする
 
-**機能強化**：
+**改善点**：
 
-* DISP-874 - DISP-818 の実装をフラグを介してオンまたはオフにする Dispatcher 設定を作成します。 `DispatcherRestrictUncacheableContent`. デフォルト値は Off です。オンにすると、mod によって設定されたキャッシュヘッダーがキャッシュ不能なコンテンツの有効期限切れになり、すべて削除されます。 これは、バージョン 4.3.3（デフォルトはオン）で見つかった動作とは異なりますが、4.3.3 より前のバージョン（デフォルトはオフ）と同じです。 保持 `DispatcherRestrictUncacheableContent`ブラウザーキャッシュの柔軟性を高めるため、のデフォルトの「オフ」が推奨されるアプローチです。 バージョン 4.3.3 から 4.3.4 にアップグレードする際に、バージョン 4.3.3 と同じ動作を維持する場合は、明示的に `DispatcherRestrictUncacheableContent` をオンにします。
-* DISP-841 - Dispatcher は、504 応答コードに対して/serverStaleOnError を考慮しません
+* DISP-874 - `DispatcherRestrictUncacheableContent` フラグを使用して、DISP-818 の実装をオンまたはオフにする Dispatcher 設定を作成する。デフォルト値はオフです。オンにすると、キャッシュできないコンテンツに対して mod 期限切れによって設定されたキャッシュヘッダーが削除されます。これは、バージョン 4.3.3（デフォルトはオン）の動作とは異なりますが、4.3.3 より前のバージョン（デフォルトはオフ）と同じです。ブラウザーのキャッシュの柔軟性を高めるため、`DispatcherRestrictUncacheableContent` のデフォルトをオフのままにすることをお勧めします。バージョン 4.3.3 から 4.3.4 にアップグレードする際に、バージョン 4.3.3 と同じ動作を保持する場合は、`DispatcherRestrictUncacheableContent` を明示的にオンに設定する必要があります。
+* DISP-841 - Dispatcher が 504 応答コードの /serverStaleOnError を考慮しない
 * DISP-874 - DISP-818 の実装をオンまたはオフにする Dispatcher 設定を作成する
-* DISP-883 - Dispatcher での URL リクエストの分解を示すトレース
-* DISP-944 — バニティー URL のプリロード
+* DISP-883 - Dispatcher での URL 要求の分解を示すトレース
+* DISP-944 - バニティ URL をプリロードする
 
-### リリース 4.3.3（2019 年 10 月 18 日） {#october}
+### リリース 4.3.3（2019年10月18日）（PT） {#october}
 
-**バグ修正**:
+**バグ修正**：
 
-* DISP-739 - LogLevel Dispatcher: **レベル** 動作しない
+* DISP-739 - LogLevel Dispatcher：**レベル**&#x200B;が機能しない
 * DISP-749 - Alpine Linux Dispatcher がトレースログレベルでクラッシュする
 
-**機能強化**：
+**改善点**：
 
-* DISP-813 - Dispatcher での OpenSSL 1.1.x のサポート
-* DISP-814 — キャッシュフラッシュ中の Apache 40x エラー
-* DISP-818 - mod_expires は、キャッシュ不可のコンテンツ用に Cache-Control ヘッダーを追加します。
-* DISP-821 — ログコンテキストをソケットに格納しない
+* DISP-813 - openssl 1.1.x の Dispatcher でのサポート
+* DISP-814 - キャッシュフラッシュ中の Apache 40x エラー
+* DISP-818 - mod_expires がキャッシュできないコンテンツ用の Cache-Control ヘッダーを追加する
+* DISP-821 - ソケットにログコンテキストを保存しない
 * DISP-822 - Dispatcher は pselect の代わりに ppoll を使用する必要がある
-* DISP-824 — セキュアな DispatcherUseForwardedHost
-* DISP-825 — ディスクに空き容量がなくなった場合の特殊メッセージをログに記録する
-* DISP-826 — クエリ文字列を使用した URI の再取得のサポート
+* DISP-824 - セキュアな DispatcherUseForwardedHost
+* DISP-825 - ディスクに空き容量がなくなった場合の特殊メッセージをログに記録する
+* DISP-826 - クエリ文字列を使用した URI の再取得をサポートする
 
-**新機能**:
+**新機能**：
 
-* DISP-703 — ファーム固有のキャッシュヒット率
-* DISP-827 — テスト用のローカルサーバー
-* DISP-828 - Dispatcher 用のテスト用 Docker イメージの作成
+* DISP-703 - ファーム固有のキャッシュヒット率
+* DISP-827 - テスト用のローカルサーバー
+* DISP-828 - Dispatcher のテスト用 Docker イメージを作成する
 
-### リリース 4.3.2（2019 年 1月 31 日）  {#jan}
+### リリース 4.3.2（2019年1月31日）（PT） {#jan}
 
 **バグ修正**:
 
@@ -112,7 +112,7 @@ Adobeでは、最新の機能、最新のバグ修正、そして最高のパフ
 
 * DISP-747 - Apache 環境で要求の情報を提供
 
-### リリース 4.3.1（2018 年 10 月 16 日）  {#oct}
+### リリース 4.3.1（2018年10月16日）（PT） {#oct}
 
 **バグ修正**:
 
@@ -140,7 +140,7 @@ Adobeでは、最新の機能、最新のバグ修正、そして最高のパフ
 * DESP-722 - キャッシュファイルが 8 進数モード 0600 で作成される
 * DISP-726 - ファームが受信ホストと一致していない場合に警告が記録される
 
-### リリース 4.3.0（2018 年 6 月 13 日）  {#jun}
+### リリース 4.3.0（2018年6月13日（PT）） {#jun}
 
 **バグ修正**:
 
@@ -171,7 +171,7 @@ Adobeでは、最新の機能、最新のバグ修正、そして最高のパフ
 
 ### Apache 2.4 {#apache}
 
-| プラットフォーム | アーキテクチャ | OpenSSL のサポート | ダウンロード |
+| プラットフォーム | アーキテクチャ | OpenSSL サポート | ダウンロード |
 |---|---|---|---|
 | Linux | i686（32 ビット） | なし | [dispatcher-apache2.4-linux-i686-4.3.6.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.6.tar.gz) |
 | Linux | i686（32 ビット） | 1.0 | [dispatcher-apache2.4-linux-i686-ssl1.0-4.3.6.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.6.tar.gz) |
@@ -187,7 +187,7 @@ Adobeでは、最新の機能、最新のバグ修正、そして最高のパフ
 
 ### IIS {#iis}
 
-| プラットフォーム | アーキテクチャ | OpenSSL のサポート | ダウンロード |
+| プラットフォーム | アーキテクチャ | OpenSSL サポート | ダウンロード |
 |---|---|---|---|
 | Windows | x86（32ビット） | なし | [dispatcher-iis-windows-x86-4.3.6.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.6.zip) |
 | Windows | x86（32ビット） | 1.0 | [dispatcher-iis-windows-x86-ssl1.0-4.3.6.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.0-4.3.6.zip) |

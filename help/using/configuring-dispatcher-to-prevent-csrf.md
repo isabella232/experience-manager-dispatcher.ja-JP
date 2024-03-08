@@ -1,16 +1,16 @@
 ---
 title: CSRF 攻撃を防止するための Dispatcher の設定
-seo-title: CSRF 攻撃を防止するための Adobe AEM Dispatcher の設定
-description: クロスサイトリウクエストフォージェリー攻撃を防ぐための AEM Dispatcher の設定方法について説明します。
-seo-description: クロスサイトリウクエストフォージェリー攻撃を防ぐための Adobe AEM Dispatcher の設定方法について説明します。
+seo-title: Configuring Adobe AEM Dispatcher to Prevent CSRF Attacks
+description: クロスサイトリクエストフォージェリー攻撃を防ぐための AEM Dispatcher の設定方法について説明します。
+seo-description: Learn how to configure Adobe AEM Dispatcher to prevent Cross-Site Request Forgery attacks.
 uuid: f290bdeb-54e2-4649-b0fc-6257b422af2d
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: d61d021e-b338-4a1d-91ee-55427557e931
 exl-id: bcd38878-f977-46a6-b01a-03e4d90aef01
 source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
-workflow-type: tm+mt
-source-wordcount: '246'
+workflow-type: ht
+source-wordcount: '227'
 ht-degree: 100%
 
 ---
@@ -21,7 +21,7 @@ AEM には、クロスサイトリクエストフォージェリ攻撃を防ぐ�
 
 >[!NOTE]
 >
->既存の設定に基づいて、以下の例のルールの数字を必ず変更してください。Dispatcher は、最後に一致したルールを使用して許可または拒否するので、既存リストの下部にルールを配置してください。
+>既存の設定に基づいて、以下の例のルール番号を必ず変更してください。Dispatcher は、最後に一致したルールを使用して許可または拒否するので、既存リストの下部にルールを配置してください。
 
 1. author-farm.any ファイルと publish-farm.any ファイルの `/clientheaders` セクションで、リストの下部に次のエントリを追加します。\
    `CSRF-Token`
